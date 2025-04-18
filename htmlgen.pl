@@ -1,9 +1,4 @@
-go :- generate_html_file('manual_output.html').
-
-generate_html_file(FileName) :-
-    open(FileName, write, Stream, [encoding(utf8)]),
-    html(Stream),
-    close(Stream).
+go :- current_output(S), html(S).
 
 html(S) :-
     write(S, '<!DOCTYPE html>\n'),
