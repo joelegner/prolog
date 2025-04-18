@@ -88,3 +88,14 @@ concrete_source_code :- concrete_file, concrete_imports, concrete_functions.
 ```
 
 This may be the most exciting thing related to Prolog I have stumbled upon. 
+
+# Chord Finding
+
+ChatGPT wrote this program at my request. 
+
+```bash
+% make chords
+swipl -s chords.pl
+Enter chord name (e.g., C, Dm, G7, Fmaj7, Ddim, D+): Dm
+Notes in D minor: [D,F,A]
+```
