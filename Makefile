@@ -4,4 +4,4 @@ go:
 
 .PHONY: chords
 chords:
-	swipl -s chords.pl
+	swipl -s chords.pl -g main

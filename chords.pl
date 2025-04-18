@@ -1,6 +1,10 @@
-:- initialization(main).
+% Entry point: get notes from chord string (e.g., "Cm7")
+notes_for_chord(ChordStr, Notes) :-
+    parse_chord(ChordStr, Root, Type),
+    notes_for_chord(Root, Type, RawNotes),
+    maplist(to_preferred_note, RawNotes, Notes).
 
-% Entry point for running tests and interactive mode
+% Main interactive loop
 main :-
     run_tests,
     repeat,
@@ -29,9 +33,8 @@ prompt_for_chord :-
     read_line_to_string(user_input, Input),
     (   Input == end_of_file
     ->  halt
-    ;   parse_chord(Input, Root, Type),
-        notes_for_chord(Root, Type, Notes),
-        format('Notes in ~w ~w: ~w~n', [Root, Type, Notes]),
+    ;   notes_for_chord(Input, Notes),
+        format('Notes in ~w: ~w~n', [Input, Notes]),
         fail
     ).
 
@@ -46,7 +49,7 @@ test_minor :-
 
 test_augmented :-
     notes_for_chord('F', augmented, Notes),
-    (Notes == ['F', 'A', 'C#'] -> writeln('Test passed: F augmented'); writeln('Test failed: F augmented')).
+    (Notes == ['F', 'A', 'Db'] -> writeln('Test passed: F augmented'); writeln('Test failed: F augmented')).
 
 test_diminished :-
     notes_for_chord('G', diminished, Notes),
@@ -78,7 +81,7 @@ test_dominant9 :-
 
 test_diminished9 :-
     notes_for_chord('B', diminished9, Notes),
-    (Notes == ['B', 'D', 'F', 'G', 'C'] -> writeln('Test passed: B diminished9'); writeln('Test failed: B diminished9')).
+    (Notes == ['B', 'D', 'F', 'Ab', 'C'] -> writeln('Test passed: B diminished9'); writeln('Test failed: B diminished9')).
 
 test_sus2 :-
     notes_for_chord('D', sus2, Notes),
@@ -134,19 +137,29 @@ chord_formula(dominant7, [0, 4, 7, 10]).
 chord_formula(major9, [0, 4, 7, 11, 14]).
 chord_formula(minor9, [0, 3, 7, 10, 14]).
 chord_formula(dominant9, [0, 4, 7, 10, 14]).
-chord_formula(diminished9, [0, 3, 6, 9, 12]).
+chord_formula(diminished9, [0, 3, 6, 8, 10]).
 chord_formula(sus2, [0, 2, 7]).
 chord_formula(sus4, [0, 5, 7]).
 
-% Root notes in semitone order (for building intervals)
+% Semitone scale (C-major style)
 semitone_order(['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']).
+
+% Enharmonic input normalization
 enharmonic('Db', 'C#').
 enharmonic('Eb', 'D#').
 enharmonic('Gb', 'F#').
 enharmonic('Ab', 'G#').
 enharmonic('Bb', 'A#').
 
-% Calculate the notes for a given chord
+% Enharmonic output preference: prefer flats
+to_preferred_note('A#', 'Bb').
+to_preferred_note('Db', 'C#').
+to_preferred_note('D#', 'Eb').
+to_preferred_note('F#', 'Gb').
+to_preferred_note('Ab', 'G#').
+to_preferred_note(Note, Note).
+
+% Chord calculation
 notes_for_chord(Root, Type, Notes) :-
     semitone_order(Scale),
     chord_formula(Type, Intervals),
