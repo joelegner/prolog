@@ -6,7 +6,9 @@ notes_for_chord(ChordStr, Notes) :-
 
 % Main interactive loop
 main :-
+    writeln('Welcome to Chord Notes! This program was written by Joe Legner with help from ChatGPT on April 18, 2025.'),
     run_tests,
+    writeln('Type `help` for help or enter a chord name.'),
     repeat,
     prompt_for_chord,
     fail.
@@ -27,16 +29,34 @@ run_tests :-
     test_sus2,
     test_sus4.
 
-% Prompt the user for a chord and display the notes
+% Prompt the user for a chord and display the notes or help
 prompt_for_chord :-
-    write('Enter chord name (e.g., C, Dm, G7, Fmaj7, Ddim, D+, Csus2, A9), or Ctrl+D to stop: '),
+    write('Chord name: '),
     read_line_to_string(user_input, Input),
     (   Input == end_of_file
     ->  halt
-    ;   notes_for_chord(Input, Notes),
-        format('Notes in ~w: ~w~n', [Input, Notes]),
+    ;   normalize_space(string(Trimmed), Input),
+        (   Trimmed = "help"
+        ->  print_help
+        ;   notes_for_chord(Trimmed, Notes),
+            format('Notes in ~w: ~w~n', [Trimmed, Notes])
+        ),
         fail
     ).
+
+% Help message
+print_help :-
+    writeln('--- Help: Enter a chord to get its notes ---'),
+    writeln('Supported chord formats include:'),
+    writeln('  C       (C major)'),
+    writeln('  Dm      (D minor)'),
+    writeln('  G7      (G dominant 7)'),
+    writeln('  Fmaj7   (F major 7)'),
+    writeln('  Ddim    (D diminished)'),
+    writeln('  D+      (D augmented)'),
+    writeln('  Csus2   (C suspended 2)'),
+    writeln('  A9      (A dominant 9)'),
+    writeln('Type Ctrl+D to exit.').
 
 % Individual tests
 test_major :-
