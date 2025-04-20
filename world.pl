@@ -1,18 +1,17 @@
 practiced(Player, NewSongs, OldSongs) :-
-    tries(Player, NewSongs),
-    practices(Player, OldSongs).
+    tried(Player, NewSongs),
+    practiced(Player, OldSongs).
 
-tries(_, []).
-tries(Player, [Song | Songs]) :-
-    format("~w tries ~w.~n", [Player, Song]),
-    tries(Player, Songs).
+tried(_, []).
+tried(Player, [Song | Songs]) :-
+    format("~w tried ~w.~n", [Player, Song]),
+    tried(Player, Songs).
 
-practices(_, []).
-practices(Player, [Song | Songs]) :-
-    format("~w practices ~w.~n", [Player, Song]),
-    practices(Player, Songs).
+practiced(_, []).
+practiced(Player, [Song | Songs]) :-
+    format("~w practiced ~w.~n", [Player, Song]),
+    practiced(Player, Songs).
 
 main :-
     writeln('World simulator 2025-04-20 Blaze It!'),
     practiced(joe, [song1, song2, song3], [song4, song5, song6]).
-
