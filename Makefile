@@ -6,6 +6,6 @@ go:
 chords:
 	swipl -s chords.pl -g main
 
-.PHONY: world
-world:
-	swipl -s world.pl -g main -t halt
+.PHONY: practice
+practice:
+	swipl -s practice.pl -g main -t halt
