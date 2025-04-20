@@ -1,7 +1,11 @@
+% This one demonstrates list processing.
 practiced(Player, NewSongs, OldSongs) :-
     tried(Player, NewSongs),
     practiced(Player, OldSongs).
 
+% Notice the list-processing paradigm here:
+% We handle the base case with an empty list, then recursively process the head of the list (Song),
+% performing an action (printing) and recursing on the tail (Songs).
 tried(_, []).
 tried(Player, [Song | Songs]) :-
     format("~w tried ~w.~n", [Player, Song]),
