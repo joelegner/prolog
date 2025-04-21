@@ -223,3 +223,7 @@ chord_suffix(augmented, "+").
 chord_suffix(sus2, "sus2").
 chord_suffix(sus4, "sus4").
 chord_suffix(unknown, "").
+
+print_chords(ChordList) :-
+    atomic_list_concat(ChordList, ' ', ChordsAtom),
+    format('"~w".~n', [ChordsAtom]).
