@@ -17,3 +17,7 @@ kowalski:
 .PHONY: world
 world:
 	swipl -s world.pl
+
+.PHONY: page
+page:
+	swipl -s page.pl
