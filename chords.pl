@@ -194,3 +194,32 @@ notes_from_intervals(Scale, RootIndex, [I|Is], [Note|Ns]) :-
     Index is (RootIndex + I) mod 12,
     nth0(Index, Scale, Note),
     notes_from_intervals(Scale, RootIndex, Is, Ns).
+
+% --- transpose predicates ---
+transpose(ChordStrs, Semitones, TransposedChordStrs) :-
+    maplist(transpose_chord(Semitones), ChordStrs, TransposedChordStrs).
+
+transpose_chord(Semitones, ChordStr, TransposedStr) :-
+    parse_chord(ChordStr, Root, Type),
+    semitone_order(Scale),
+    note_index(Root, Scale, Index),
+    TransposedIndex is (Index + Semitones) mod 12,
+    nth0(TransposedIndex, Scale, TransposedRoot),
+    chord_suffix(Type, Suffix),
+    string_concat(TransposedRoot, Suffix, TransposedStr).
+
+chord_suffix(major, "").
+chord_suffix(minor, "m").
+chord_suffix(minor7, "m7").
+chord_suffix(minor9, "m9").
+chord_suffix(major7, "maj7").
+chord_suffix(major9, "maj9").
+chord_suffix(diminished, "dim").
+chord_suffix(diminished7, "dim7").
+chord_suffix(diminished9, "dim9").
+chord_suffix(dominant7, "7").
+chord_suffix(dominant9, "9").
+chord_suffix(augmented, "+").
+chord_suffix(sus2, "sus2").
+chord_suffix(sus4, "sus4").
+chord_suffix(unknown, "").
