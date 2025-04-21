@@ -1,12 +1,68 @@
-% There is a page in the world.
-page.
+% -------------------------
+% Compiler directives
+% -------------------------
+:- discontiguous width/2.
+:- discontiguous height/2.
 
-% Give it properties.
-width(page, 8.5).
-height(page, 11.0).
+% -------------------------
+% Stack definition
+% -------------------------
 
-% Give it a calculated property.
+% Stack 'calcs' has three pages.
+pages(calcs, [page1, page2, page3]).
+
+% Title and dimensions for the stack.
+title(calcs, "Footing Design Calculations").
+width(calcs, 8.5).
+height(calcs, 11.0).
+
+% -------------------------
+% Page-stack relationship
+% -------------------------
+
+% Determine which stack a page belongs to.
+page_in_stack(Page, Stack) :-
+    pages(Stack, PageList),
+    member(Page, PageList).
+
+% -------------------------
+% Width definitions
+% -------------------------
+
+% Width of a stack
+width(Stack, Width) :-
+    title(Stack, _),  % guard for stacks
+    width_stack(Stack, Width).
+
+width_stack(calcs, 8.5).
+
+% Width of a page inherited from its stack
+width(Page, Width) :-
+    page_in_stack(Page, Stack),
+    width(Stack, Width).
+
+% -------------------------
+% Height definitions
+% -------------------------
+
+% Height of a stack
+height(Stack, Height) :-
+    title(Stack, _),
+    height_stack(Stack, Height).
+
+height_stack(calcs, 11.0).
+
+% Height of a page inherited from its stack
+height(Page, Height) :-
+    page_in_stack(Page, Stack),
+    height(Stack, Height).
+
+% -------------------------
+% Derived properties
+% -------------------------
+
+% Area of a page based on inherited dimensions
 area(Page, Area) :-
-    width(Page, B),
+    width(Page, W),
     height(Page, H),
-    Area is B*H.
+    Area is W * H.
