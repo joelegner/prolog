@@ -13,6 +13,8 @@ pages(calcs, [page1, page2, page3]).
 
 % Title and dimensions for the stack.
 title(calcs, "Footing Design Calculations").
+author(calcs, "Joe Legner, PE, SE").
+date(calcs, "April 21, 2025").
 width(calcs, 8.5).
 height(calcs, 11.0).
 
@@ -66,3 +68,24 @@ area(Page, Area) :-
     width(Page, W),
     height(Page, H),
     Area is W * H.
+
+complete(Stack) :- 
+    title(Stack, _),
+    author(Stack, _),
+    date(Stack, _).
+
+print_head(Stack) :- 
+    title(Stack, Title),
+    author(Stack, Author),
+    date(Stack, Date),
+    writeln(Title),
+    writeln(Author),
+    writeln(Date).
+
+print_body(_) :- 
+    writeln("Body of calcs goes here").
+
+print(Stack) :-
+    complete(Stack), % guard
+    print_head(Stack),
+    print_body(Stack).
