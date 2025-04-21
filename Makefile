@@ -1,5 +1,5 @@
 .PHONY: all
-all: go chords practice kowalski world physics virtues
+all: go chords practice kowalski world physics virtues measurement
 
 .PHONY: go
 go: 
@@ -36,3 +36,7 @@ physics:
 .PHONY: virtues
 virtues:
 	swipl -s virtues.pl
+
+.PHONY: measurement
+measurement:
+	swipl -s measurement.pl -g main -t halt
