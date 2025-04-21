@@ -21,3 +21,7 @@ world:
 .PHONY: page
 page:
 	swipl -s page.pl
+
+.PHONY: dueling
+dueling:
+	swipl -s dueling.pl
