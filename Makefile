@@ -1,5 +1,5 @@
 .PHONY: all
-all: go chords practice kowalski world physics
+all: go chords practice kowalski world physics virtues
 
 .PHONY: go
 go: 
@@ -32,3 +32,7 @@ dueling:
 .PHONY: physics
 physics:
 	swipl -s physics.pl
+
+.PHONY: virtues
+virtues:
+	swipl -s virtues.pl
