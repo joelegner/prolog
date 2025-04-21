@@ -1,3 +1,6 @@
+.PHONY: all
+all: go chords practice kowalski world physics
+
 .PHONY: go
 go: 
 	swipl -s htmlgen.pl -g go -t halt
@@ -25,3 +28,7 @@ page:
 .PHONY: dueling
 dueling:
 	swipl -s dueling.pl
+
+.PHONY: physics
+physics:
+	swipl -s physics.pl
