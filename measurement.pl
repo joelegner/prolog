@@ -1,4 +1,7 @@
-:- use_module(library(clpr)).
+% Import module for constraint programming for real (floating point) numbers clpr.
+% - https://www.swi-prolog.org/pldoc/man?section=clp
+% - https://www.swi-prolog.org/pldoc/man?section=clpqr
+:- use_module(library(clpr)). 
 
 % millimeters: supports both directions
 millimeters(Inches, inch, Millimeters) :-
@@ -8,6 +11,7 @@ millimeters(Feet, foot, Millimeters) :-
     { Millimeters = 12.0 * 25.4 * Feet }.
 
 % meters: supports both directions
+% The braces are for clpr which is constraint programming for real numbers.
 meters(Inches, inch, Meters) :-
     millimeters(Inches, inch, Millimeters),
     { Meters = Millimeters / 1000.0 }.
