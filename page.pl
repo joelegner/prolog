@@ -82,8 +82,14 @@ print_head(Stack) :-
     writeln(Author),
     writeln(Date).
 
-print_body(_) :- 
-    writeln("Body of calcs goes here").
+print_body(Stack) :-
+    pages(Stack, PageList),
+    print_pages(PageList).
+
+print_pages([]).
+print_pages([Page | Rest]) :-
+    writeln(Page),
+    print_pages(Rest).
 
 print(Stack) :-
     complete(Stack), % guard
