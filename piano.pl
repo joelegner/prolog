@@ -1,4 +1,4 @@
-:- module(piano, [key/3, major_triad/2, print_notes/1]).
+:- module(piano, [key/3, major_triad/2, print_notes/1, print_inversions/1]).
 
 % Declare all 88 keys on a piano keyboard.
 % key(Number, AtomName, Text).
@@ -107,3 +107,32 @@ print_notes([Note | Notes]) :-
     ; format("Unknown note: ~w~n", [Note])
     ),
     print_notes(Notes).
+
+% All inversions of a major triad
+major_triad_inversions(Root, Inversions) :-
+    major_triad(Root, [N1, N2, N3]),
+    Inversions = [
+        [N1, N2, N3],  % root position
+        [N2, N3, N1],  % 1st inversion
+        [N3, N1, N2]   % 2nd inversion
+    ].
+
+print_inversions(Root) :-
+    major_triad_inversions(Root, Inversions),
+    print_inversions_with_separator(Inversions).
+
+print_inversions_with_separator([]).
+print_inversions_with_separator([Chord | Rest]) :-
+    print_inversion(Chord),
+    writeln("------------"),
+    print_inversions_with_separator(Rest).
+
+print_inversion(Chord) :-
+    maplist(print_note, Chord),
+    nl.
+
+print_note(Note) :-
+    ( key(_, Note, Text) ->
+        write(Text), write(" ")
+    ; format("Unknown note: ~w ", [Note])
+    ).
