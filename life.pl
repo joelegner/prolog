@@ -75,5 +75,8 @@ loves(X, X).
 loves(joe, aristotle).
 
 % P is deceased if P is a person and P is not living.
+% Another way to say it:
+% For every P, P is a member of deceased if P is a 
+% member of person and P is not a member of living.
 % The symbol \+ is negation.
 deceased(P) :- person(P), \+ living(P).
