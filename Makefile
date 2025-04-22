@@ -40,3 +40,7 @@ virtues:
 .PHONY: measurement
 measurement:
 	swipl -s measurement.pl -g main -t halt
+
+.PHONY: footing
+footing:
+	swipl -s footing.pl -g main -t halt
