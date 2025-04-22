@@ -73,3 +73,7 @@ family(P1, P2) :-
 loves(P1, P2) :- family(P1, P2).
 loves(X, X).
 loves(joe, aristotle).
+
+% P is deceased if P is a person and P is not living.
+% The symbol \+ is negation.
+deceased(P) :- person(P), \+ living(P).
