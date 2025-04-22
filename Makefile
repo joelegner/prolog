@@ -52,3 +52,7 @@ life:
 .PHONY: buddhism
 buddhism:
 	swipl -s buddhism.pl -g main -t halt
+
+.PHONY: journey
+journey:
+	swipl -s journey.pl
