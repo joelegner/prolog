@@ -64,12 +64,13 @@ wife(margo, terry).
 spouse(H, W) :- husband(H, W), wife(W, H).
 
 % Relationship rules
-parent(P, C) :- father(P, C); mother(P, C).
-child(C, P) :- father(P, C); mother(P, C).
-family(P1, P2) :- 
-    parent(P1, P2);
-    child(P1, P2);
-    spouse(P1, P2).
+parent(P, C) :- father(P, C).
+parent(P, C) :- mother(P, C).
+child(C, P) :- father(P, C).
+child(C, P) :- mother(P, C).
+family(P1, P2) :- parent(P1, P2).
+family(P1, P2) :- child(P1, P2).
+family(P1, P2) :- spouse(P1, P2).
 loves(P1, P2) :- family(P1, P2).
 loves(X, X).
 loves(joe, aristotle).

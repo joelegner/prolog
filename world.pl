@@ -10,7 +10,8 @@ female(julie).
 male(joe).
 male(tommy).
 male(joey).
-person(X) :- male(X); female(X).
+person(X) :- male(X).
+person(X) :- female(X).
 mammal(X) :- person(X).
 legs(X, 2) :- person(X).
 
