@@ -1,4 +1,4 @@
-:- module(piano, [key/3, major_triad/2, print_notes/1, print_inversions/1]).
+:- module(piano, [key/3, major_triad/2, print_notes/1, print_inversions/1, muscle_memory/2]).
 
 % Declare all 88 keys on a piano keyboard.
 % key(Number, AtomName, Text).
@@ -136,3 +136,14 @@ print_note(Note) :-
         write(Text), write(" ")
     ; format("Unknown note: ~w ", [Note])
     ).
+
+player.
+c_scale.
+d_scale.
+
+muscle_memory(Person, Action) :-
+    does_correctly(Person, Action),
+    repeats(Person, Action).
+
+does_correctly(player, c_scale).
+repeats(player, c_scale).
