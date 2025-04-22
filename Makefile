@@ -44,3 +44,7 @@ measurement:
 .PHONY: footing
 footing:
 	swipl -s footing.pl -g main -t halt
+
+.PHONY: life
+life:
+	swipl -s life.pl
