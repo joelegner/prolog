@@ -1,6 +1,7 @@
 :- dynamic player_position/2.
 :- dynamic game_map/1.
 :- use_module(library(random)).
+:- use_module(timestamp).
 
 % Size of the map (excluding border)
 map_width(24).
@@ -19,7 +20,8 @@ start_game :-
     asserta(player_position(RandX, RandY)),
     generate_map(W, H, RandX, RandY, Map),
     asserta(game_map(Map)),
-    print_bordered_map(Map, RandX, RandY).
+    print_bordered_map(Map, RandX, RandY),
+    print_timestamp.
 
 % Generate the full map with a character at (CharX, CharY)
 generate_map(W, H, CharX, CharY, Map) :-
