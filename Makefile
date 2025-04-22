@@ -56,3 +56,7 @@ buddhism:
 .PHONY: journey
 journey:
 	swipl -s journey.pl
+
+.PHONY: roguelike
+roguelike:
+	swipl -s roguelike.pl -g start_game -t halt
