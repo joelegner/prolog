@@ -58,7 +58,9 @@ grandmother(GP, C) :- grandparent(GP, C), female(GP).
 grandfather(GP, C) :- grandparent(GP, C), male(GP).
 
 husband(joe, julie).
+husband(terry, margo).
 wife(julie, joe).
+wife(margo, terry).
 spouse(H, W) :- husband(H, W), wife(W, H).
 
 % Relationship rules
