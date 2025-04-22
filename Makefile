@@ -59,4 +59,4 @@ journey:
 
 .PHONY: roguelike
 roguelike:
-	swipl -s roguelike.pl -g start_game -t halt
+	swipl -s roguelike.pl -g start_game

@@ -1,3 +1,5 @@
+:- dynamic player_position/2.
+:- dynamic game_map/1.
 :- use_module(library(random)).
 
 % Size of the map (excluding border)
@@ -12,7 +14,11 @@ start_game :-
     W1 is W - 1,
     random_between(0, H1, RandY),
     random_between(0, W1, RandX),
+    retractall(player_position(_, _)),
+    retractall(game_map(_)),
+    asserta(player_position(RandX, RandY)),
     generate_map(W, H, RandX, RandY, Map),
+    asserta(game_map(Map)),
     print_bordered_map(Map, RandX, RandY).
 
 % Generate the full map with a character at (CharX, CharY)
@@ -73,3 +79,28 @@ squares(N) :-
     map_width(W),
     map_height(H),
     N is W*H.
+
+move(dx(DX), dy(DY)) :-
+    player_position(X, Y),
+    NX is X + DX,
+    NY is Y + DY,
+    map_width(W),
+    map_height(H),
+    NX >= 0, NX < W,
+    NY >= 0, NY < H,
+    retract(player_position(X, Y)),
+    asserta(player_position(NX, NY)),
+    generate_map(W, H, NX, NY, NewMap),
+    retractall(game_map(_)),
+    asserta(game_map(NewMap)),
+    print_bordered_map(NewMap, NX, NY).
+
+n   :- move(dx( 0), dy(-1)).
+s   :- move(dx( 0), dy( 1)).
+e   :- move(dx( 1), dy( 0)).
+w   :- move(dx(-1), dy( 0)).
+ne  :- move(dx( 1), dy(-1)).
+nw  :- move(dx(-1), dy(-1)).
+se  :- move(dx( 1), dy( 1)).
+sw  :- move(dx(-1), dy( 1)).
+map :- move(dx(0), dy(0)).
