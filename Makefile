@@ -48,3 +48,7 @@ footing:
 .PHONY: life
 life:
 	swipl -s life.pl
+
+.PHONY: buddhism
+buddhism:
+	swipl -s buddhism.pl -g main -t halt
