@@ -7,7 +7,7 @@ The name Prolog is a shortened version of the statement, "programming with logic
 - SWI-Prolog Manual: [https://www.swi-prolog.org/pldoc/refman/](https://www.swi-prolog.org/pldoc/refman/)
 - SWI-Tinker: [https://wasm.swi-prolog.org/wasm/tinker](https://wasm.swi-prolog.org/wasm/tinker)
 
-SWI-Tinker is "SWI-Prolog" running inside your browser.
+**SWI-Tinker** is described as, "SWI-Prolog running inside your browser".
 
 ## HTML Generation
 
