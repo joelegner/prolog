@@ -148,7 +148,7 @@ This starts a Prolog session with the `world.pl` clauses loaded. Now we can star
 
 ```prolog
 ?- run_tests.
-[2/2] marriage:Julie is married to Joe ................................................. passed (0.000 sec)
+[2/2] marriage:Julie is married to Joe ................. passed (0.000 sec)
 % All 2 tests passed in 0.016 seconds (0.012 cpu)
 true.
 ```
