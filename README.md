@@ -125,3 +125,30 @@ test('Julie is married to Joe') :-
 :- end_tests(marriage).
 % END TESTS ================================================
 ```
+
+To run the tests, you need to do the following:
+
+1. Start SWI-Prolog.
+2. Consult the file `world.pl`.
+3. Use `run_tests.` predicate.
+
+At the command line:
+
+```bash
+% swipl -s world.pl
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.2.9)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+```
+
+This starts a Prolog session with the `world.pl` clauses loaded. Now we can start the tests using `run_tests/0` predicate.
+
+```prolog
+?- run_tests.
+[2/2] marriage:Julie is married to Joe ................................................. passed (0.000 sec)
+% All 2 tests passed in 0.016 seconds (0.012 cpu)
+true.
+```
