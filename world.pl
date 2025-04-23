@@ -50,3 +50,23 @@ legs(X, 2) :- person(X).
 % P = tommy ;
 % P = joey ;
 % P = julie.
+
+% Facts
+married(joe, julie).
+
+% Predicate that handles symmetry
+are_married(X, Y) :-
+    married(X, Y), !; % note the cut operator `!`
+    married(Y, X).
+
+% BEGIN TESTS ================================================
+:- begin_tests(marriage).
+
+test('Joe is married to Julie') :-
+    are_married(joe, julie).
+
+test('Julie is married to Joe') :-
+    are_married(julie, joe).
+
+:- end_tests(marriage).
+% END TESTS ================================================
