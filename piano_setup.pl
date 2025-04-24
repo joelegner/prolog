@@ -59,26 +59,6 @@ needs(monitor_speaker, power).
 source(keyboard, signal).
 source(microphone, signal).
 
-% SEQUENCE HAND CODED
-depends_on(unload(piano_shell), load(piano_shell)).
-depends_on(setup(piano_shell), unload(piano_shell)).
-depends_on(setup(power_supply_kb), setup(piano_shell)).
-depends_on(setup(keyboard), setup(power_supply_kb)).
-
-% public interface — no visited list needed from user
-depends_on_safe(Act, Prep) :-
-    depends_on_safe(Act, Prep, []).
-
-% base case (direct dependency)
-depends_on_safe(Act, Prep, _) :-
-    depends_on(Act, Prep).
-
-% recursive case with visited list
-depends_on_safe(Act, Prep, Visited) :-
-    depends_on(Act, Intermediate),
-    \+ member(Intermediate, Visited),
-    depends_on_safe(Intermediate, Prep, [Intermediate | Visited]).
-
 % Usage example:
 % ?- depends_on_safe(setup(keyboard), X).
 % X = setup(power_supply_kb) ;
@@ -86,6 +66,13 @@ depends_on_safe(Act, Prep, Visited) :-
 % X = unload(piano_shell) ;
 % X = load(piano_shell) ;
 % false.
+
+setup(piano_shell) :- writeln("Set up piano shell").
+setup(drum_throne) :- writeln("Set up drum throne").
+setup(microphone_stand) :- setup(piano_shell), writeln("Set up microphone stand.").
+setup(keyboard) :- setup(piano_shell), setup(drum_throne), writeln("Set up keyboard").
+setup(microphone) :- setup(microphone_stand), writeln("Set up microphone.").
+
 
 % ready_to_play/0 is the over-arching goal. It is the starting goal for when you
 % use swipl at the command line. The usage works like this:
@@ -96,5 +83,10 @@ depends_on_safe(Act, Prep, Visited) :-
 % -s piano_setup.pl: Consults the file 'piano_setup.pl'.
 % -g ready_to_play: Invokes this goal to get things started.
 % -t halt: Stops the interpreter after the goal is met. Remove to interact.
-ready_to_play :- 
+ready_to_play :-
+    setup(piano_shell),
+    setup(drum_throne),
+    setup(keyboard),
+    setup(microphone),
+    setup(microphone_stand),
     writeln("Ready to play!").
