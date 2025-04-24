@@ -51,13 +51,15 @@ legs(X, 2) :- person(X).
 % P = joey ;
 % P = julie.
 
-% Facts
 married(joe, julie).
-
-% Predicate that handles symmetry
 are_married(X, Y) :-
     married(X, Y), !; % note the cut operator `!`
     married(Y, X).
+
+best_friend(joe, julie).
+are_best_friends(X, Y) :-
+    best_friend(X, Y), !; % note the cut operator `!`
+    best_friend(Y, X).
 
 % BEGIN TESTS ================================================
 :- begin_tests(marriage).

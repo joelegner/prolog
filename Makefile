@@ -65,3 +65,15 @@ roguelike:
 piano_setup:
 	swipl -s piano_setup.pl -g ready_to_play
 	# swipl -s piano_setup.pl -g ready_to_play -t halt
+
+.PHONY: system
+system:
+	swipl -s system.pl
+
+.PHONY: numbers
+numbers:
+	swipl -s numbers.pl -g run_tests
+
+.PHONY: philosophy
+philosophy:
+	swipl -s philosophy.pl
