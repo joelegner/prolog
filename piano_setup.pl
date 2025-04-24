@@ -59,6 +59,34 @@ needs(monitor_speaker, power).
 source(keyboard, signal).
 source(microphone, signal).
 
+% SEQUENCE HAND CODED
+depends_on(unload(piano_shell), load(piano_shell)).
+depends_on(setup(piano_shell), unload(piano_shell)).
+depends_on(setup(power_supply_kb), setup(piano_shell)).
+depends_on(setup(keyboard), setup(power_supply_kb)).
+
+% public interface — no visited list needed from user
+depends_on_safe(Act, Prep) :-
+    depends_on_safe(Act, Prep, []).
+
+% base case (direct dependency)
+depends_on_safe(Act, Prep, _) :-
+    depends_on(Act, Prep).
+
+% recursive case with visited list
+depends_on_safe(Act, Prep, Visited) :-
+    depends_on(Act, Intermediate),
+    \+ member(Intermediate, Visited),
+    depends_on_safe(Intermediate, Prep, [Intermediate | Visited]).
+
+% Usage example:
+% ?- depends_on_safe(setup(keyboard), X).
+% X = setup(power_supply_kb) ;
+% X = setup(piano_shell) ;
+% X = unload(piano_shell) ;
+% X = load(piano_shell) ;
+% false.
+
 % ready_to_play/0 is the over-arching goal. It is the starting goal for when you
 % use swipl at the command line. The usage works like this:
 %
