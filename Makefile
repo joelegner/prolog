@@ -60,3 +60,7 @@ journey:
 .PHONY: roguelike
 roguelike:
 	swipl -s roguelike.pl -g start_game
+
+.PHONY: piano_setup
+piano_setup:
+	swipl -s piano_setup.pl -g ready_to_play -t halt
