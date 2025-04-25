@@ -58,8 +58,8 @@ print_sorted_goals :-
     ).
 
 % EXAMPLE USAGE: 
-%
-% ?- print_sorted_goals.
+% make goals
+% swipl -s goals.pl -g print_sorted_goals -t halt
 % 4: Take the keyboard out of the case.
 % 5: Set the keyboard in the shell.
 % 6: Plug the instrument cables into the keyboard.
