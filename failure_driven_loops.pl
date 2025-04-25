@@ -1,8 +1,12 @@
+% IMPORTANT NOTE: USE forall/n INSTEAD OF FAILURE DRIVEN LOOPS.
+% Reason given here:
+% https://logtalk.org/2019/08/02/failure-driven-loops-when-and-how.html
+%
 % Consider these pets
 pet(maggie).
 pet(rocky).
 pet(josey).
-
+%
 % We want to write all their names at once without
 % typing the ';' character each time at an interactive
 % prompt. How this is done is something called in the 
