@@ -85,3 +85,7 @@ failure_driven_loops:
 .PHONY: forall
 forall:
 	swipl -s forall.pl 
+
+.PHONY: goals
+goals:
+	swipl -s goals.pl
