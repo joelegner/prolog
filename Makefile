@@ -89,3 +89,7 @@ forall:
 .PHONY: goals
 goals:
 	swipl -s goals.pl -g print_sorted_goals -t halt
+
+.PHONY: colors
+colors:
+	swipl -s colors.pl
