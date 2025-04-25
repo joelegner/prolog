@@ -81,3 +81,7 @@ philosophy:
 .PHONY: failure_driven_loops
 failure_driven_loops:
 	swipl -s failure_driven_loops.pl -g write_pet_names -t halt
+
+.PHONY: forall
+forall:
+	swipl -s forall.pl 
