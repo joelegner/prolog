@@ -97,3 +97,7 @@ colors:
 .PHONY: book
 book:
 	swipl -s book.pl
+
+.PHONY: gma
+gma:
+	swipl -s gma.pl -g main
