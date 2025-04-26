@@ -93,3 +93,7 @@ goals:
 .PHONY: colors
 colors:
 	swipl -s colors.pl
+
+.PHONY: book
+book:
+	swipl -s book.pl
