@@ -31,6 +31,10 @@ print_variables :-
     ( writeln(Variable), print_variable(Variable))
     ).
 
+% TODO: Add configureation which is a set of values
+% TODO: Some variables can have more than one selection
+% TODO: When value a is selected, these other values become unavailable
+
 main :-
     writeln("General Morphological Analysis"),
     print_variables.
