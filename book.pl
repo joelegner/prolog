@@ -4,7 +4,12 @@ print_tree(Node) :-
     print_tree(Node, 0).
 
 print_tree(Node, Indent) :-
-    tab(Indent), write(Node), nl,
+    tab(Indent),
+    (   value(Node, String)
+    ->  format('"~w"', [String])  % print the string with quotes
+    ;   write(Node)
+    ),
+    nl,
     (   children(Node, Children)
     ->  NewIndent is Indent + 4,
         print_children(Children, NewIndent)
@@ -16,7 +21,7 @@ print_children([Child|Rest], Indent) :-
     print_tree(Child, Indent),
     print_children(Rest, Indent).
 
-% Define children relationships manually based on your facts
+% Define children relationships
 
 children(book, [frontmatter, mainmatter, backmatter]).
 children(frontmatter, [title_page, contents, preface, introduction]).
@@ -29,3 +34,7 @@ children(preface, []).
 children(introduction, []).
 children(mainmatter, []).
 children(backmatter, []).
+
+% Define values for specific nodes
+
+value(author, "Joe Legner").
