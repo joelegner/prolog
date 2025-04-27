@@ -101,3 +101,11 @@ book:
 .PHONY: gma
 gma:
 	swipl -s gma.pl -g main
+
+.PHONY: axiomatic_design
+axiomatic_design:
+	swipl -s axiomatic_design.pl
+
+.PHONY: dcg_calc
+dcg_calc:
+	swipl -s dcg_calc.pl -g main -t halt
