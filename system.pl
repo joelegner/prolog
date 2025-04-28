@@ -1,3 +1,6 @@
+% Let's declare a flashlight system with subsystem parts.
+% Template:
+% system(name, function, [part1, part2, ..., part_n]).
 system(flashlight, illuminate_area, [head, body]).
 system(body, contain_battery, [cylinder, battery]).
 system(head, make_light, [lens, bulb, housing]).
@@ -23,6 +26,9 @@ assembly(X) :-
 
 % A system with zero parts is an assembly.
 % An assembly has an empty parts list.
-% P is a list of parts.
+%  X = the system being checked.
+% [] = standard Prolog for "empty list".
+%  _ = standard Prolog for "anonymous variable".
+% I wrote this totally on my own and am proud of it. :-)
 unit(X) :-
     system(X, _, []).
