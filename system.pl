@@ -7,6 +7,8 @@ system(head, make_light, [lens, bulb, housing]).
 system(bulb, convert_elec_to_light, [enclosure, filament, connections]).
 system(battery, supply_voltage, []).
 
+% system/1 checks to see if X is a system.
+% It gets this from the structures above.
 system(X) :- system(X, _, _).
 
 % A subsystem is a system that is part of a larger system.
