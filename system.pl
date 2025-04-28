@@ -4,7 +4,7 @@
 system(flashlight, illuminate_area, [head, body]).
 system(body, contain_battery, [cylinder, battery]).
 system(head, make_light, [lens, bulb, housing]).
-system(bulb, convert_elec_to_light, [enclosure, filament, connections]).
+system(bulb, convert_elec_to_light, []).
 system(battery, supply_voltage, []).
 
 % system/1 checks to see if X is a system.
