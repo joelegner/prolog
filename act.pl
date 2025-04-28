@@ -1,3 +1,5 @@
+% This is about ACT which is Acceptance and Commitment Therapy
+% Look up the author Stephen Hayes.
 practice_act(
     be_present(
         connect_with_present_moment,
