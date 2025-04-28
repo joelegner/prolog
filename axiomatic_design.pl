@@ -43,3 +43,10 @@ print_subparts([SubPart|Rest], Indent) :-
 %     edge_treatment provides provide_comfort
 %   leg_assembly provides support_working_surface
 % true.
+
+% Let's define the physicality of the system
+% A design parameter is a physical variable.
+physical(X) :- provides(dp(X), _).
+
+all_physical_objects(List) :-
+    findall(X, physical(X), List).
