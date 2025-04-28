@@ -117,3 +117,7 @@ accounting:
 .PHONY: act
 act:
 	swipl -s act.pl
+
+.PHONY: bridge
+bridge:
+	swipl -s bridge.pl
