@@ -113,3 +113,7 @@ dcg_calc:
 .PHONY: accounting
 accounting:
 	swipl -s accounting.pl
+
+.PHONY: act
+act:
+	swipl -s act.pl
