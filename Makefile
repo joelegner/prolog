@@ -121,3 +121,7 @@ act:
 .PHONY: bridge
 bridge:
 	swipl -s bridge.pl
+
+.PHONY: live_another_day
+live_another_day:
+	swipl -s live_another_day.pl
