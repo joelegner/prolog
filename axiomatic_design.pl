@@ -1,14 +1,34 @@
-% dp_desk
-provides(dp_desktop, fr_provide_working_surface).
-provides(dp_leg_assembly, fr_support_working_surface).
+% Your facts
+provides(dp(desk), fr(provides_desk_functionality)).
+provides(dp(desktop), fr(provide_working_surface)).
+provides(dp(leg_assembly), fr(support_working_surface)).
 
-% dp_desktop
-provides(dp_wood_panel, fr_provide_writing_surface).
-provides(dp_drilled_holes, fr_attach_to_legs).
-provides(dp_edge_treatment, fr_provide_comfort).
+provides(dp(wood_panel), fr(provide_writing_surface)).
+provides(dp(drilled_holes), fr(attach_to_legs)).
+provides(dp(edge_treatment), fr(provide_comfort)).
 
-% dp_wood_panel
-provides(dp_wood, fr_act_as_panel).
-provides(dp_wood_finish_system, fr_protect_wood).
+provides(dp(wood), fr(act_as_panel)).
+provides(dp(wood_finish_system), fr(protect_wood)).
 
-% dp_leg_assembly
+parts(desk, [desktop, leg_assembly]).
+parts(desktop, [wood_panel, drilled_holes, edge_treatment]).
+parts(wood_panel, [wood, wood_finish_system]).
+
+% Recursive hierarchy printing
+print_hierarchy :-
+    print_dp(dp(desk), 0).
+
+print_dp(DP, Indent) :-
+    provides(DP, FR),
+    DP = dp(DPName),
+    FR = fr(FRName),
+    tab(Indent), format("~w provides ~w~n", [DPName, FRName]),
+    ( parts(DPName, SubParts) ->
+        NextIndent is Indent + 2,
+        print_subparts(SubParts, NextIndent)
+    ; true ).
+
+print_subparts([], _).
+print_subparts([SubPart|Rest], Indent) :-
+    print_dp(dp(SubPart), Indent),
+    print_subparts(Rest, Indent).
