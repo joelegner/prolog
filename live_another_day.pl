@@ -29,3 +29,35 @@ divvy(Minutes, TotalWeight, Node, Weight, node_minutes(Node, Allocated)) :-
 report(Report) :-
     minutes(live_another_day, Mins),
     distribute_minutes(Mins, [be_awake, sleep], Report).
+
+get_minutes(Node, Minutes) :-
+    minutes(Node, Minutes), !.   % directly assigned
+get_minutes(Node, Minutes) :-
+    parent_minutes(Node, ParentMinutes),
+    sibling_weights(Node, TotalWeight, NodeWeight),
+    Minutes is ParentMinutes * NodeWeight / TotalWeight.
+
+children(live_another_day, [be_awake, sleep]).
+children(be_awake, [rest, play, work]).
+children(sleep, []).
+children(rest, []).
+children(play, []).
+children(work, []).
+
+parent(Child, Parent) :-
+    children(Parent, Children),
+    member(Child, Children).
+
+parent_minutes(Child, ParentMinutes) :-
+    parent(Child, Parent),
+    evaluate(Parent, ParentMinutes).
+
+sibling_weights(Node, TotalWeight, NodeWeight) :-
+    parent(Node, Parent),
+    children(Parent, Siblings),
+    maplist(get_weight, Siblings, Weights),
+    sum_list(Weights, TotalWeight),
+    get_weight(Node, NodeWeight).
+
+evaluate(Node, Minutes) :-
+    get_minutes(Node, Minutes).
