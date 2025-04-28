@@ -32,3 +32,14 @@ print_subparts([], _).
 print_subparts([SubPart|Rest], Indent) :-
     print_dp(dp(SubPart), Indent),
     print_subparts(Rest, Indent).
+
+% ?- print_hierarchy.
+% desk provides provide_desk_functionality
+%   desktop provides provide_working_surface
+%     wood_panel provides provide_writing_surface
+%       wood provides act_as_panel
+%       wood_finish_system provides protect_wood
+%     drilled_holes provides attach_to_legs
+%     edge_treatment provides provide_comfort
+%   leg_assembly provides support_working_surface
+% true.
