@@ -47,6 +47,12 @@ print_subparts([SubPart|Rest], Indent) :-
 % Let's define the physicality of the system
 % A design parameter is a physical variable.
 physical(X) :- provides(dp(X), _).
-
+    
 all_physical_objects(List) :-
     findall(X, physical(X), List).
+
+% Get functional requirements from facts
+functional_requirement(X) :- provides(_, fr(X)).
+
+all_functional_requirements(List) :-
+    findall(X, functional_requirement(X), List).
