@@ -15,18 +15,24 @@ children(dueler_mvp_project, [install_app, run_app]).
 children(install_app, [develop_app, deploy_app, host_app_for_download]).
 children(use_app, [interface_with_user, manage_data]).
 
+% `Child` is a child of `Parent` if `Parent` has list `Children`, and
+% `Child` is a member of list `Children`.
 child(Child, Parent) :-
     children(Parent, Children),
     member(Child, Children).
 
+% Works like child/2 but the operands are in reverse order. 
 parent(Parent, Child) :-
     children(Parent, Children),
     member(Child, Children).
 
+% A customer need, `CN`, is any member of the `CNs` in the `ad/3` structures.
 need(CN) :-
     ad(_, _, CNs), 
     member(CN, CNs).
 
+% `Need` is satisfied by an `FR` if the `FR` satisfies a list of needs `CNs`
+% and `Need` is a member of the list `CNs`.
 satisfied_by(Need, FR) :-
     ad(FR, _, CNs),
     member(Need, CNs).
