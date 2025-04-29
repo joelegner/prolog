@@ -125,3 +125,7 @@ bridge:
 .PHONY: live_another_day
 live_another_day:
 	swipl -s live_another_day.pl
+
+.PHONY: lists
+lists:
+	swipl -s lists.pl -g run_tests
