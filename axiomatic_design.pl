@@ -36,3 +36,12 @@ need(CN) :-
 satisfied_by(Need, FR) :-
     ad(FR, _, CNs),
     member(Need, CNs).
+
+% A DP is used in an ad/3 entry
+dp(DP) :-
+    ad(_, DP, _).
+
+% A DP has no parent if it is never a child in any children/2 relationship
+dp_without_parent(DP) :-
+    dp(DP),
+    \+ child(DP, _).
