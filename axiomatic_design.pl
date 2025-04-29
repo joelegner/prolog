@@ -1,4 +1,4 @@
-% ad(FR, DP, [Needs_met]).
+% ad(FR, DP, [CN]).
 ad(make_dueling_more_fun, dueler_mvp_project, [have_fun, edit_database, find_songs, play_songs, sing_songs]).
 ad(install_app, app_store_entry, [download, install, play_with]).
 ad(run_app, dueler_mvp_app, [use_app]).
@@ -14,10 +14,10 @@ children(make_dueling_more_fun, [install_app, run_app]).
 children(install_app, [develop_app, deploy_app, host_app_for_download]).
 children(use_app, [interface_with_user, manage_data]).
 
-need(X) :-
-    ad(_, _, Needs), 
-    member(X, Needs).
+need(CN) :-
+    ad(_, _, CNs), 
+    member(CN, CNs).
 
 satisfied_by(Need, FR) :-
-    ad(FR, _, Needs),
-    member(Need, Needs).
+    ad(FR, _, CNs),
+    member(Need, CNs).
