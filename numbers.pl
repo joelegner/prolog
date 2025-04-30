@@ -2,6 +2,9 @@ natural_number(N) :-
     integer(N),
     N > 0.
 
+counting_number(N) :-
+    natural_number(N).
+
 whole_number(N) :-
     integer(N),
     N >= 0.
