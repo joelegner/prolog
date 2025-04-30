@@ -1,47 +1,58 @@
-% ad stands for "Axiomatic Design" by Professor Nam P. Suh.
-% ad(FR, DP, [CN]).
-ad(make_dueling_more_fun, dueler_mvp_project, [have_fun, edit_database, find_songs, play_songs, sing_songs]).
-ad(install_app, app_store_entry, [download, install, play_with]).
-ad(run_app, dueler_mvp_app, [use_app]).
+:- discontiguous depends_on/2.
+:- discontiguous zag/2.
+:- discontiguous zig/2.
 
-ad(develop_app, development_system, [use_app]).
-ad(deploy_app, app_store_process, [download, install, play_with]).
-ad(host_app_for_download, app_store, [discover_app, download, install, play_with]).
+% First zig-zag
+zig(make_dueling_pianos_fun, dueler_mvp_system).
+zag(dueler_mvp_system, [learn, install, run, update, uninstall]).
 
-ad(interface_with_user, user_interface_code, [use_app, play_with]).
-ad(manage_data, data_model_code, [find_songs, edit_database]).
+% learn zig-zag
+zig(learn, documentation_system).
+zag(documentation_system, [publish_documentation, view_documentation]).
+depends_on(view_documentation, publish_documentation).
 
-children(dueler_mvp_project, [install_app, run_app]).
-children(install_app, [develop_app, deploy_app, host_app_for_download]).
-children(use_app, [interface_with_user, manage_data]).
+% install zig-zag
+zig(install, app_store_interface).
+zag(app_store_interface, [upload_app, approve_app, publish_app, install_app]).
+depends_on(approve_app, upload_app).
+depends_on(publish_app, approve_app).
+depends_on(install, approve_app).
 
-% `Child` is a child of `Parent` if `Parent` has list `Children`, and
-% `Child` is a member of list `Children`.
-child(Child, Parent) :-
-    children(Parent, Children),
-    member(Child, Children).
+% run zig-zag
+zig(run, dueler_mvp_app).
+zag(dueler_mvp_app, [host_files, manage_versioning, develop_app]).
 
-% Works like child/2 but the operands are in reverse order. 
-parent(Parent, Child) :-
-    children(Parent, Children),
-    member(Child, Children).
+% update zig-zag
+zig(update, update_system).
+zag(update_system, [capture_bugs, debug_code, push_update]).
+depends_on(debug_code, capture_bugs).
+depends_on(push_update, debug_code).
 
-% A customer need, `CN`, is any member of the `CNs` in the `ad/3` structures.
-need(CN) :-
-    ad(_, _, CNs), 
-    member(CN, CNs).
+% uninstall zig-zag
+zig(uninstall, ios_uninstall_procedure).
+zag(ios_uninstall_procedure, [find_app, tap_and_hold, tap_delete]).
 
-% `Need` is satisfied by an `FR` if the `FR` satisfies a list of needs `CNs`
-% and `Need` is a member of the list `CNs`.
-satisfied_by(Need, FR) :-
-    ad(FR, _, CNs),
-    member(Need, CNs).
+% publish_documentation zig-zag
+zig(publish_documentation, documentation_development_system).
 
-% A DP is used in an ad/3 entry
-dp(DP) :-
-    ad(_, DP, _).
+% view_documentation zig-zag
+zig(view_documentation, documentation_website).
 
-% A DP has no parent if it is never a child in any children/2 relationship
-dp_without_parent(DP) :-
-    dp(DP),
-    \+ child(DP, _).
+% upload_app zig-zag
+zig(upload_app, app_store_upload_process).
+
+% approve_app zig-zag
+zig(approve_app, app_store_approval_process).
+
+% publish_app zig-zag
+zig(publish_app, xcode_publish_procedure).
+
+% install_app zig-zag
+zig(install_app, app_store_app).
+
+% Link up DPs by parent and child relationships through shared FRs.
+parent(P, C) :-
+    zig(_, P),
+    zag(P, FRs),
+    member(FR, FRs),
+    zig(FR, C).
