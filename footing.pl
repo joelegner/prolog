@@ -1,15 +1,14 @@
-footing_area(B, A) :- 
-    A is B*B.
+read_input(_, Input) :- 
+    Input = "This is the data to use.".
 
-design_footing(P, Q, B) :-
-    B is ceil(4*sqrt(1000.0*P/Q))/4.0.
+design(_, Model) :-
+    Model = designed_model.
+
+report(_, Report) :-
+    Report = "This is your report.".
 
 main :-
-    writeln('Design a spread footing.'), 
-    nl,
-    P = 35,
-    Q = 1500.0,
-    design_footing(P, Q, B),
-    write('Required footing dimension: '),
-    write(B), write(' ft'), 
-    nl.
+    read_input("filename", Input),
+    design(Input, Model),
+    report(Model, Report),
+    write(Report), nl, nl.
