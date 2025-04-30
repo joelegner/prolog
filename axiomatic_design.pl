@@ -2,14 +2,16 @@
 :- discontiguous zag/2.
 :- discontiguous zig/2.
 
-% First zig-zag
-zig(make_dueling_pianos_fun, dueler_mvp_system). % Note 1
-zag(dueler_mvp_system, [learn, install, run, update, uninstall]). % Note 3
-
+% Zig-Zag Process from Axiomatic Design (AD) by Nam P. Suh.
 % 1. Start with FR.
 % 2. Zig to create one new DP for FR.
 % 3. Zag to create n new FRs for DP.
 % 4. For each of n new FRs: go to 1.
+
+% First zig-zag
+zig(make_dueling_pianos_fun, dueler_mvp_system). % Note 1
+zag(dueler_mvp_system, [learn, install, run, update, uninstall]). % Note 3
+
 
 % learn zig-zag
 zig(learn, documentation_system).
