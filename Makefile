@@ -108,7 +108,7 @@ axiomatic_design:
 
 .PHONY: dcg_calc
 dcg_calc:
-	swipl -s dcg_calc.pl -g main -t halt
+	swipl -s dcg_calc.pl -g run_tests
 
 .PHONY: accounting
 accounting:
