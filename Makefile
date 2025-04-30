@@ -129,3 +129,11 @@ live_another_day:
 .PHONY: lists
 lists:
 	swipl -s lists.pl -g run_tests
+
+.PHONY: business
+business:
+	swipl -s business.pl
+
+.PHONY: law
+law:
+	swipl -s law.pl
