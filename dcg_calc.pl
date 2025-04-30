@@ -1,41 +1,39 @@
-:- use_module(library(dcg/basics)).
-:- use_module(library(plunit)).
+% dcg_calc.pl
+% Provides DCG rules like number//1, blanks//0
+:- use_module(library(dcg/basics)).    
+% For unit testing:
+:- use_module(library(plunit)).        
 
-% Entry point to parse a simple expression like "2+3"
+% Parses a simple arithmetic expression like "2+3" into a result.
 parse(String, Result) :-
-    string_codes(String, Codes),
-    phrase(expr(Result), Codes).
+    string_codes(String, Codes),        % Convert string to list of character codes
+    phrase(expr(Result), Codes).        % Parse codes using the DCG grammar
 
-% How does this work?
+% --- How parsing works ---
+%
 % ?- parse("2+3", Result).
-% 
-% Look at our parse predicate:
 %
-% parse(String, Result) :-
-%     string_codes(String, Codes),
-%     phrase(expr(Result), Codes).
+% Step-by-step:
 %
-% String = "2+3" — a normal Prolog string. Given in the query.
-% string_codes(String, Codes) turns "2+3" into a list of character codes:
-% Codes = [50,43,51]  % ASCII for '2', '+', '3'
-% phrase(expr(Result), Codes) runs the DCG expr//1 on the character code list.
+% 1. "2+3" is a Prolog string. `string_codes/2` turns it into character codes:
+%    [50,43,51] = ['2','+','3']
 %
-% Now we turn our attention to the DCG rule.
+% 2. `phrase/2` runs the DCG rule `expr//1` on this list.
 %
-% expr(Result) --> 
-%     integer(A),     % parse first number
-%     "+",            % match plus sign
-%     integer(B),     % parse second number
-%     { Result is A + B }.  % evaluate result
+% 3. The rule:
+%
+%       expr(Result) -->
+%           trimmed_integer(A),   % parses a number (with optional spaces)
+%           "+",                  % matches the '+' character
+%           trimmed_integer(B),   % parses another number
+%           { Result is A + B }.  % evaluates and returns the sum
 %
 % Notes:
-% 1. integer(A) consumes codes for the first number and binds A.
-% 2. "+" matches the character code 43 (the plus sign).
-% 3. integer(B) consumes the second number and binds B.
-% 4. { Result is A + B } computes and returns the result.
+% - `trimmed_integer//1` ensures only valid digit sequences are parsed.
+% - It uses `number//1` internally, which recognizes digit character codes.
+% - The `{ ... }` block runs normal Prolog code after parsing.
 
-% Integer parser with optional surrounding whitespace.
-% This is the part that ensures A and B in expr/1 below are numbers.
+% Parses an integer, allowing surrounding whitespace.
 trimmed_integer(N) --> blanks, number(N), blanks.
 
 % Grammar rule for expressions of the form A + B
@@ -44,7 +42,6 @@ expr(Result) -->
     "+",
     trimmed_integer(B),
     { Result is A + B }.
-
 
 % Unit tests
 :- begin_tests(parser).
