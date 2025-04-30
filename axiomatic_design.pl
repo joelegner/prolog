@@ -1,3 +1,14 @@
+:- module(axiomatic_design, [
+    funtional_requirement/1,
+    design_parameter/1,
+    depends_on/2,
+    zig/2,
+    zag/2,
+    need_to_zag/1,
+    parent/2,
+    all_need_to_zag/1
+]).
+
 :- discontiguous depends_on/2.
 :- discontiguous zag/2.
 :- discontiguous zig/2.
