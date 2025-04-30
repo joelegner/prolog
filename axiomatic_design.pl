@@ -3,8 +3,13 @@
 :- discontiguous zig/2.
 
 % First zig-zag
-zig(make_dueling_pianos_fun, dueler_mvp_system).
-zag(dueler_mvp_system, [learn, install, run, update, uninstall]).
+zig(make_dueling_pianos_fun, dueler_mvp_system). % Note 1
+zag(dueler_mvp_system, [learn, install, run, update, uninstall]). % Note 3
+
+% 1. Start with FR.
+% 2. Zig to create one new DP for FR.
+% 3. Zag to create n new FRs.
+% 4. For each of n new FR: go to 1.
 
 % learn zig-zag
 zig(learn, documentation_system).
