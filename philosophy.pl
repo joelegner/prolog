@@ -1,6 +1,9 @@
 % philosophy.pl
 :- use_module('axiomatic_design.pl').
 
+:- multifile axiomatic_design:zig/2.
+:- multifile axiomatic_design:zag/2.
+
 % Note: if you leave off the :- the above line results in an error:
 %
 % use_module(library('axiomatic_design')).
@@ -49,4 +52,4 @@ all_good(Goods) :-
      findall(Good, has(Good, goodness), Goods).
 
 % Psychology
-zig(live_examined_life, philosopher).
+axiomatic_design:zig(live_examined_life, philosopher).
