@@ -40,9 +40,10 @@ test(write_and_read_json_roundtrip) :-
     File = 'test.json',
     Project = _{
         name: "Test Project",
-        design: _{
-            name: "Footing 1",
-            footing: [4, 4, 1],
+        number: "Project No. 1",
+        engineer: "Joe Legner",
+        footings: _{
+            name: "Footing A-1",
             load: [20, 40, 60]
         }
     },
