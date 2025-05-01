@@ -43,7 +43,7 @@ measurement:
 
 .PHONY: footing
 footing:
-	swipl -s footing.pl -g main -t halt
+	swipl -s footing.pl -g run_tests
 
 .PHONY: life
 life:
