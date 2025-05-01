@@ -118,6 +118,10 @@ physics:
 practice:
 	swipl -s practice.pl -g main -t halt
 
+.PHONY: probability
+probability:
+	swipl -s probability.pl
+
 .PHONY: roguelike
 roguelike:
 	swipl -s roguelike.pl -g start_game
