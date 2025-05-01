@@ -160,3 +160,19 @@ This starts a Prolog session with the `world.pl` clauses loaded. Now we can star
 % All 2 tests passed in 0.016 seconds (0.012 cpu)
 true.
 ```
+
+# Interesting Code
+
+I don't know exactly what this code does, but it is intriguing. See how `repeat` and `!` delineate the repeat block. 
+
+```prolog
+process_queries :-
+    repeat,
+        read_query(Q),
+        handle(Q),
+        Q = [quit],
+    !,
+    write(’All done.’), nl.
+```
+
+The code is from a Prolog coding guidelines paper.
