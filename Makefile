@@ -137,3 +137,7 @@ virtues:
 .PHONY: world
 world:
 	swipl -s world.pl
+
+.PHONY: basics
+basics:
+	swipl -s basics.pl
