@@ -3,6 +3,7 @@
         cable_report/1,
         key/3,
         major_triad/2,
+        print_cable_report/0,
         print_notes/1,
         print_inversions/1,
         muscle_memory/2
@@ -192,3 +193,9 @@ cable_report(Report) :-
         member(Cable, CableTypes),
         cable_summary(Cable, Count, Devices)
     ), Report).
+
+print_cable_report :-
+    cable_report(Report),
+    forall(member([Cable, Count, Devices], Report), (
+        format('~w, ~d, ~w~n', [Cable, Count, Devices])
+    )).
