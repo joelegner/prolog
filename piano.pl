@@ -176,5 +176,19 @@ needs_cable(player2, microphone_cable).
 needs_cable(monitor1, instrument_cable).
 needs_cable(monitor2, instrument_cable).
 
+% Helper to find all devices for a given Cable
+cable_summary(Cable, Count, Devices) :-
+    findall(Device, needs_cable(Device, Cable), Devices),
+    length(Devices, Count).
+
+% Get unique cable types
+unique_cables(Cables) :-
+    setof(Cable, Device^needs_cable(Device, Cable), Cables).
+
+% Generate the full report
 cable_report(Report) :-
-    findall(Cable, needs_cable(_, Cable), Report).
+    unique_cables(CableTypes),
+    findall([Cable, Count, Devices], (
+        member(Cable, CableTypes),
+        cable_summary(Cable, Count, Devices)
+    ), Report).
