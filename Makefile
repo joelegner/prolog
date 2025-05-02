@@ -141,3 +141,7 @@ world:
 .PHONY: basics
 basics:
 	swipl -s basics.pl
+
+.PHONY: tree
+tree:
+	swipl -s tree.pl
