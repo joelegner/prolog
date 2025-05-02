@@ -1,4 +1,13 @@
-:- module(piano, [key/3, major_triad/2, print_notes/1, print_inversions/1, muscle_memory/2]).
+:- module(piano,
+    [
+        cable_report/1,
+        key/3,
+        major_triad/2,
+        print_notes/1,
+        print_inversions/1,
+        muscle_memory/2
+    ]
+).
 
 % Declare all 88 keys on a piano keyboard.
 % key(Number, AtomName, Text).
@@ -147,3 +156,25 @@ muscle_memory(Person, Action) :-
 
 does_correctly(player, c_scale).
 repeats(player, c_scale).
+
+% Counting cables
+% POWER cables
+needs_cable(mains1, long_iec_cable).
+needs_cable(mains2, long_iec_cable).
+needs_cable(lightbar1, long_iec_cable).
+needs_cable(monitor1, iec_cable).
+needs_cable(monitor2, iec_cable).
+needs_cable(mixer1, iec_cable).
+needs_cable(power_strip1, extension_cord).
+needs_cable(power_strip2, extension_cord).
+
+% SIGNAL cables
+needs_cable(piano1, double_instrument_cable).
+needs_cable(piano2, double_instrument_cable).
+needs_cable(player1, microphone_cable).
+needs_cable(player2, microphone_cable).
+needs_cable(monitor1, instrument_cable).
+needs_cable(monitor2, instrument_cable).
+
+cable_report(Report) :-
+    findall(Cable, needs_cable(_, Cable), Report).

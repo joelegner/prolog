@@ -105,6 +105,10 @@ page:
 philosophy:
 	swipl -s philosophy.pl
 
+.PHONY: piano
+piano:
+	swipl -s piano.pl
+
 .PHONY: piano_setup
 piano_setup:
 	swipl -s piano_setup.pl -g ready_to_play
