@@ -168,12 +168,17 @@ needs_cable(monitor2, iec_cable).
 needs_cable(mixer1, iec_cable).
 needs_cable(power_strip1, extension_cord).
 needs_cable(power_strip2, extension_cord).
+needs_cable(shell1, power_strip).
+needs_cable(shell2, power_strip).
+needs_cable(wall_outlet, power_strip).
 
 % SIGNAL cables
 needs_cable(piano1, double_instrument_cable).
 needs_cable(piano2, double_instrument_cable).
-needs_cable(player1, microphone_cable).
-needs_cable(player2, microphone_cable).
+needs_cable(microphone1, xlr_cable).
+needs_cable(microphone2, xlr_cable).
+needs_cable(mains1, xlr_cable).
+needs_cable(mains2, xlr_cable).
 needs_cable(monitor1, instrument_cable).
 needs_cable(monitor2, instrument_cable).
 
@@ -189,9 +194,10 @@ unique_cables(Cables) :-
 % Generate the full report
 cable_report(Report) :-
     unique_cables(CableTypes),
-    findall([Cable, Count, Devices], (
+    findall([Cable, CountWithSpare, Devices], (
         member(Cable, CableTypes),
-        cable_summary(Cable, Count, Devices)
+        cable_summary(Cable, Count, Devices),
+        CountWithSpare is Count + 1
     ), Report).
 
 print_cable_report :-
