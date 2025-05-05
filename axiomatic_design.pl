@@ -197,7 +197,8 @@ depends_on(install, approve_app).
 
 % run zig-zag
 zig(run, dueler_mvp_app).
-zag(dueler_mvp_app, [host_files, manage_versioning, develop_app]).
+zag(dueler_mvp_app, [manage_data, display_gui]).
+depends_on(display_gui, manage_data).
 
 % update zig-zag
 zig(update, update_system).
@@ -266,3 +267,9 @@ zag(xcode_debugging_features, []).
 
 zig(profile_app, xcode_profiling_features).
 zag(xcode_profiling_features, []).
+
+zig(display_gui, duelermvp_gui).
+zag(duelermvp_gui, []).
+
+zig(manage_data, dueler_mvp_data_model).
+zag(dueler_mvp_data_model, []).
