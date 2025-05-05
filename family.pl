@@ -1,63 +1,100 @@
-female(julie).
-female(julie).
-female(elaine).
-female(margo).
-female(cher).
-female(laura).
-female(eileen).
-female(jennifer).
-female(molly).
-female(lorraine).
 female(carol).
+female(cher).
+female(eileen).
+female(elaine).
+female(jennifer).
+female(julie).
+female(laura).
+female(lorraine).
+female(margo).
+female(molly).
+female(cecelia).
+female(ruth).
 
-male(joe).
-male(tommy).
-male(joey).
 male(bob).
-male(terry).
-male(steve).
-male(scott).
-male(ron).
-male(butch).
-male(paul).
-male(tom).
 male(bruce).
+male(butch).
+male(joe).
+male(joey).
+male(paul).
 male(richard).
+male(ron).
+male(scott).
+male(steve).
+male(terry).
+male(tom).
+male(tommy).
+male(meritt).
+male(francis).
 
-person(X) :- male(X).
-person(X) :- female(X).
-
-parent(joe, joey).
-parent(julie, joey).
-parent(joe, tommy).
-parent(julie, tommy).
-parent(terry, julie).
-parent(terry, steve).
-parent(terry, scott).
-parent(margo, julie).
-parent(margo, scott).
-parent(margo, steve).
 parent(bob, joe).
-parent(bob, ron).
 parent(bob, richard).
+parent(bob, ron).
+parent(bruce, laura).
+parent(bruce, paul).
+parent(carol, laura).
+parent(carol, paul).
+parent(cecelia, bob).
 parent(elaine, joe).
 parent(elaine, richard).
 parent(elaine, ron).
-parent(tom, eileen).
-parent(tom, butch).
-parent(lorraine, eileen).
+parent(francis, bob).
+parent(joe, joey).
+parent(joe, tommy).
+parent(julie, joey).
+parent(julie, tommy).
 parent(lorraine, butch).
-parent(carol, paul).
-parent(carol, laura).
-parent(bruce, paul).
-parent(bruce, laura).
+parent(lorraine, eileen).
+parent(margo, julie).
+parent(margo, scott).
+parent(margo, steve).
+parent(meritt, carol).
+parent(meritt, elaine).
+parent(meritt, lorraine).
+parent(ruth, carol).
+parent(ruth, elaine).
+parent(ruth, lorraine).
+parent(terry, julie).
+parent(terry, scott).
+parent(terry, steve).
+parent(tom, butch).
+parent(tom, eileen).
 
-father(F, C) :- parent(F, C), male(F).
-mother(F, C) :- parent(F, C), female(F).
-grandparent(GP, C) :- parent(GP, P), parent(P, C).
-grandmother(GP, C) :- grandparent(GP, C), female(GP).
-grandfather(GP, C) :- grandparent(GP, C), male(GP).
-child(C, P) :- parent(P, C).
+father(F, C) :- 
+    male(F),
+    parent(F, C). 
+
+mother(F, C) :- 
+    female(F),
+    parent(F, C).
+
+grandparent(GP, C) :- 
+    parent(GP, P), 
+    parent(P, C).
+
+grandmother(GP, C) :- 
+    female(GP),
+    grandparent(GP, C).
+
+grandfather(GP, C) :- 
+    male(GP),
+    grandparent(GP, C).
+
+sibling(X,Y) :- 
+    mother(Out1,X),
+    father(Out2,X),
+    mother(Out1,Y),
+    father(Out2,Y),
+    X \= Y.
+
+cousin(C1, C2) :-
+    parent(AU1, C1),
+    parent(AU2, C2),
+    sibling(AU1, AU2),
+    C1 \= C2.
+
+child(C, P) :- father(P, C).
+child(C, P) :- mother(P, C).
 
 married(joe, julie).
 are_married(X, Y) :-
