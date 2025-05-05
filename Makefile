@@ -11,7 +11,7 @@ act:
 
 .PHONY: axiomatic_design
 axiomatic_design:
-	swipl -s axiomatic_design.pl
+	swipl -s axiomatic_design.pl -g print_design_report
 
 .PHONY: book
 book:

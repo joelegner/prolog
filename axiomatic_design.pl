@@ -10,7 +10,8 @@
     print_zig_templates/0,
     print_zag_templates/0,
     print_fr_hierarchy/0,
-    print_dp_hierarchy/0
+    print_dp_hierarchy/0,
+    print_design_report/0
     ]).
 
 :- discontiguous depends_on/2.
