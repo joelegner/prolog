@@ -6,8 +6,10 @@
     zag/2,
     need_to_zag/1,
     parent/2,
-    all_need_to_zag/1
-]).
+    all_need_to_zag/1,
+    print_need_to_zig_snippets/0,
+    print_need_to_zag_snippets/0
+    ]).
 
 :- discontiguous depends_on/2.
 :- discontiguous zag/2.
@@ -56,6 +58,14 @@ print_need_to_zig_snippets :-
 print_zig_template(FR) :-
     format('% ~w zig-zag~n', [FR]),
     format('zig(~w, replace_with_design_parameter).~n~n', [FR]).
+
+print_need_to_zag_snippets :-
+    all_need_to_zag(DPs),
+    forall(member(DP, DPs), print_zag_template(DP)).
+
+print_zag_template(DP) :-
+    format('% ~w zig-zag~n', [DP]),
+    format('% TODO: zag/2~n~n').
 
 % Start zig-zagging ========================================================
 
@@ -145,3 +155,48 @@ zig(tap_and_hold, app_icon).
 
 % tap_delete zig-zag
 zig(tap_delete, ios_delete_app_feature).
+
+% documentation_development_system zig-zag
+% TODO: zag/2
+
+% documentation_website zig-zag
+% TODO: zag/2
+
+% app_store_upload_process zig-zag
+% TODO: zag/2
+
+% app_store_approval_process zig-zag
+% TODO: zag/2
+
+% xcode_publish_procedure zig-zag
+% TODO: zag/2
+
+% app_store_app zig-zag
+% TODO: zag/2
+
+% bug_collection_system zig-zag
+% TODO: zag/2
+
+% xcode_debug_system zig-zag
+% TODO: zag/2
+
+% development_system zig-zag
+% TODO: zag/2
+
+% app_store_search_feature zig-zag
+% TODO: zag/2
+
+% github zig-zag
+% TODO: zag/2
+
+% git zig-zag
+% TODO: zag/2
+
+% git_push_command zig-zag
+% TODO: zag/2
+
+% app_icon zig-zag
+% TODO: zag/2
+
+% ios_delete_app_feature zig-zag
+% TODO: zag/2
