@@ -8,7 +8,8 @@
     parent/2,
     all_need_to_zag/1,
     print_need_to_zig_snippets/0,
-    print_need_to_zag_snippets/0
+    print_need_to_zag_snippets/0,
+    print_fr_hierarchy/0
     ]).
 
 :- discontiguous depends_on/2.
@@ -66,6 +67,31 @@ print_need_to_zag_snippets :-
 print_zag_template(DP) :-
     format('% ~w zig-zag~n', [DP]),
     format('% TODO: zag/2~n~n').
+
+% Print FR hierarchy ========================================================
+
+% Top-level FRs: Those that appear in zig/2 but not in any zag/2 child list.
+top_level_fr(FR) :-
+    zig(FR, _),
+    \+ (zag(_, FRs), member(FR, FRs)).
+
+% Get child FRs of a given FR through zig-zag
+child_frs(FR, ChildFRs) :-
+    zig(FR, DP),
+    zag(DP, ChildFRs), !.
+child_frs(_, []).  % If no zag, no children.
+
+% Print FR with indentation
+print_fr(FR, Indent) :-
+    tab(Indent),
+    format('~w~n', [FR]),
+    NextIndent is Indent + 4,
+    child_frs(FR, Children),
+    forall(member(C, Children), print_fr(C, NextIndent)).
+
+% Entry point
+print_fr_hierarchy :-
+    forall(top_level_fr(FR), print_fr(FR, 0)).
 
 % Start zig-zagging ========================================================
 
