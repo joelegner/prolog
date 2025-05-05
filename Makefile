@@ -142,9 +142,9 @@ system:
 virtues:
 	swipl -s virtues.pl
 
-.PHONY: world
-world:
-	swipl -s world.pl
+.PHONY: family
+family:
+	swipl -s family.pl
 
 .PHONY: basics
 basics:
