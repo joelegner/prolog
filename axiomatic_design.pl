@@ -136,6 +136,13 @@ print_design_report :-
     print_dp_hierarchy,
     nl.
 
+% Append to file helper ====================================================
+
+append_to_file(Filename, Lines) :-
+    open(Filename, append, Stream),
+    forall(member(Line, Lines), write(Stream, Line)),
+    close(Stream).
+
 % Start zig-zagging ========================================================
 
 % Zig-Zag Process from Axiomatic Design (AD) by Nam P. Suh.
@@ -145,20 +152,27 @@ print_design_report :-
 % 4. For each of n new FRs: go to 1.
 
 zigzag :-
-    all_need_to_zig(FRs),
-    forall(member(FR, FRs), process_zigzag(FR)).
+    zigzag('axiomatic_design.pl').
 
-process_zigzag(FR) :-
+zigzag(Filename) :-
+    all_need_to_zig(FRs),
+    forall(member(FR, FRs), process_zigzag(FR, Filename)).
+
+process_zigzag(FR, Filename) :-
     format('Name of DP for FR "~w"? ', [FR]),
     read(DP),
-    format(atom(ZigText), 'zig(~w, ~w).~n', [FR, DP]),
-    format(atom(ZagText), 'zag(~w, []).~n', [DP]),
-    atom_concat(ZigText, ZagText, FullText),
+    format(atom(ZigLine), 'zig(~w, ~w).~n', [FR, DP]),
+    format(atom(ZagLine), 'zag(~w, []).~n', [DP]),
+    atom_concat(ZigLine, ZagLine, FullText),
     format('~w', [FullText]),
     assertz(zig(FR, DP)),
     assertz(zag(DP, [])),
-    copy_to_clipboard(FullText),
-    writeln('Copied to clipboard.').
+    ( Filename \= '' ->
+        append_to_file(Filename, ['\n', FullText]),
+        writeln('Appended to file.')
+    ;   copy_to_clipboard(FullText),
+        writeln('Copied to clipboard.')
+    ).
 
 copy_to_clipboard(Text) :-
     process_create(path(pbcopy), [], [stdin(pipe(Out))]),
@@ -205,8 +219,11 @@ zag(bug_tracking_system, []).
 zig(debug_code, code_debugging_system).
 zag(code_debugging_system, []).
 
-zig(develop_app, development_envrionment).
-zag(development_envrionment, []).
+zig(develop_app, xcode).
+zag(xcode, [edit_code, build_app, profile_app, manage_debugging]).
+depends_on(build_app, edit_code).
+depends_on(profile_app, build_app).
+depends_on(manage_debugging, build_app).
 
 zig(find_app, iphone_app_finding_method).
 zag(iphone_app_finding_method, []).
@@ -235,3 +252,17 @@ zag(ios_edit_app_procedure, []).
 zig(tap_delete, ios_delete_app_procedure).
 zag(ios_delete_app_procedure, []).
 
+zig(view_documentation, documentation_website).
+zag(documentation_website, []).
+
+zig(build_app, xcode_build_feature).
+zag(xcode_build_feature, []).
+
+zig(edit_code, xcode_editing_features).
+zag(xcode_editing_features, []).
+
+zig(manage_debugging, xcode_debugging_features).
+zag(xcode_debugging_features, []).
+
+zig(profile_app, xcode_profiling_features).
+zag(xcode_profiling_features, []).
