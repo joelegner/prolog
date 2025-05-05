@@ -9,7 +9,8 @@
     all_need_to_zag/1,
     print_need_to_zig_snippets/0,
     print_need_to_zag_snippets/0,
-    print_fr_hierarchy/0
+    print_fr_hierarchy/0,
+    print_dp_hierarchy/0
     ]).
 
 :- discontiguous depends_on/2.
@@ -92,6 +93,34 @@ print_fr(FR, Indent) :-
 % Entry point
 print_fr_hierarchy :-
     forall(top_level_fr(FR), print_fr(FR, 0)).
+
+% Print DP hierarchy ========================================================
+
+% Top-level DPs: appear in zig/2 but not as children of any other DP
+top_level_dp(DP) :-
+    design_parameter(DP),
+    \+ parent(_, DP).
+
+% Get child DPs of a given DP through shared FRs
+child_dps(DP, Children) :-
+    zag(DP, FRs),
+    findall(ChildDP,
+        (member(FR, FRs), zig(FR, ChildDP)),
+        Children), !.
+child_dps(_, []).
+
+% Print DP with indentation
+print_dp(DP, Indent) :-
+    tab(Indent),
+    format('~w~n', [DP]),
+    NextIndent is Indent + 4,
+    child_dps(DP, Children),
+    forall(member(C, Children), print_dp(C, NextIndent)).
+
+% Entry point
+print_dp_hierarchy :-
+    forall(top_level_dp(DP), print_dp(DP, 0)).
+
 
 % Start zig-zagging ========================================================
 
