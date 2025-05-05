@@ -109,6 +109,10 @@ philosophy:
 piano:
 	swipl -s piano.pl
 
+.PHONY: tpe
+tpe:
+	swipl -s tpe.pl
+
 .PHONY: piano_setup
 piano_setup:
 	swipl -s piano_setup.pl -g ready_to_play
