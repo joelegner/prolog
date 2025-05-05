@@ -59,7 +59,8 @@ print_zig_templates :-
 
 print_zig_template(FR) :-
     format('% ~w zig-zag~n', [FR]),
-    format('zig(~w, replace_with_design_parameter).~n~n', [FR]).
+    format('zig(~w, replace_with_design_parameter).~n', [FR]),
+    format('% TODO: zag/2~n~n').
 
 print_zag_templates :-
     all_need_to_zag(DPs),
@@ -68,7 +69,7 @@ print_zag_templates :-
 print_zag_template(DP) :-
     format('% ~w zig-zag~n', [DP]),
     format('zag(~w, [ ]).~n', [DP]),
-    format('% TODO: zag/2~n~n').
+    format('% TODO: zig/2~n~n').
 
 % Print FR hierarchy ========================================================
 
@@ -173,3 +174,64 @@ depends_on(push_update, debug_code).
 % uninstall zig-zag
 zig(uninstall, ios_uninstall_procedure).
 zag(ios_uninstall_procedure, [find_app, tap_and_hold, tap_delete]).
+
+% approve_app zig-zag
+zig(approve_app, replace_with_design_parameter).
+% TODO: zag/2
+
+% capture_bugs zig-zag
+zig(capture_bugs, replace_with_design_parameter).
+% TODO: zag/2
+
+% debug_code zig-zag
+zig(debug_code, replace_with_design_parameter).
+% TODO: zag/2
+
+% develop_app zig-zag
+zig(develop_app, replace_with_design_parameter).
+% TODO: zag/2
+
+% find_app zig-zag
+zig(find_app, replace_with_design_parameter).
+% TODO: zag/2
+
+% host_files zig-zag
+zig(host_files, replace_with_design_parameter).
+% TODO: zag/2
+
+% install_app zig-zag
+zig(install_app, replace_with_design_parameter).
+% TODO: zag/2
+
+% manage_versioning zig-zag
+zig(manage_versioning, replace_with_design_parameter).
+% TODO: zag/2
+
+% publish_app zig-zag
+zig(publish_app, replace_with_design_parameter).
+% TODO: zag/2
+
+% publish_documentation zig-zag
+zig(publish_documentation, replace_with_design_parameter).
+% TODO: zag/2
+
+% push_update zig-zag
+zig(push_update, replace_with_design_parameter).
+% TODO: zag/2
+
+% tap_and_hold zig-zag
+zig(tap_and_hold, replace_with_design_parameter).
+% TODO: zag/2
+
+% tap_delete zig-zag
+zig(tap_delete, replace_with_design_parameter).
+% TODO: zag/2
+
+% upload_app zig-zag
+zig(upload_app, replace_with_design_parameter).
+% TODO: zag/2
+
+% view_documentation zig-zag
+zig(view_documentation, replace_with_design_parameter).
+% TODO: zag/2
+
