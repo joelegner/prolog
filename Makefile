@@ -81,10 +81,6 @@ kowalski:
 law:
 	swipl -s law.pl
 
-.PHONY: life
-life:
-	swipl -s life.pl
-
 .PHONY: lists
 lists:
 	swipl -s lists.pl -g run_tests
