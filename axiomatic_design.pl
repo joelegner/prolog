@@ -123,19 +123,13 @@ print_dp(DP, Indent) :-
 print_dp_hierarchy :-
     forall(top_level_dp(DP), print_dp(DP, 0)).
 
-% Print zig-zag templates ==================================================
+% Print design report ========================================================
 
-print_zig_zag_templates :-
-    all_need_to_zig(FRs),
-    all_need_to_zag(DPs),
-    writeln(FRs),
-    writeln(DPs).
-
-print_zig_zag_template(Zig, Zag) :-
-    format('% ~w zig-zag~n', [Zig]),
-    format('zig(~w, ~w).~n', [Zig, Zag]),
-    format('zag(~w, [ ]).~n~n', [Zag]).
-
+print_design_report :-
+    print_fr_hierarchy,
+    nl,
+    print_dp_hierarchy,
+    nl.
 
 % Start zig-zagging ========================================================
 
@@ -176,62 +170,62 @@ zig(uninstall, ios_uninstall_procedure).
 zag(ios_uninstall_procedure, [find_app, tap_and_hold, tap_delete]).
 
 % approve_app zig-zag
-zig(approve_app, replace_with_design_parameter).
-% TODO: zag/2
+zig(approve_app, app_store_approval_system).
+zag(app_store_approval_system, []).
 
 % capture_bugs zig-zag
-zig(capture_bugs, replace_with_design_parameter).
+zig(capture_bugs, bug_tracker).
 % TODO: zag/2
 
 % debug_code zig-zag
-zig(debug_code, replace_with_design_parameter).
+zig(debug_code, xcode_debugging_system).
 % TODO: zag/2
 
 % develop_app zig-zag
-zig(develop_app, replace_with_design_parameter).
+zig(develop_app, developer_envrionment).
 % TODO: zag/2
 
 % find_app zig-zag
-zig(find_app, replace_with_design_parameter).
+zig(find_app, iphone_app_finding_procedure).
 % TODO: zag/2
 
 % host_files zig-zag
-zig(host_files, replace_with_design_parameter).
+zig(host_files, github_repository).
 % TODO: zag/2
 
 % install_app zig-zag
-zig(install_app, replace_with_design_parameter).
+zig(install_app, app_store_install_procedure).
 % TODO: zag/2
 
 % manage_versioning zig-zag
-zig(manage_versioning, replace_with_design_parameter).
+zig(manage_versioning, git_repository).
 % TODO: zag/2
 
 % publish_app zig-zag
-zig(publish_app, replace_with_design_parameter).
+zig(publish_app, app_store_publishing_procedure).
 % TODO: zag/2
 
 % publish_documentation zig-zag
-zig(publish_documentation, replace_with_design_parameter).
+zig(publish_documentation, documentation_publication_system).
 % TODO: zag/2
 
 % push_update zig-zag
-zig(push_update, replace_with_design_parameter).
+zig(push_update, app_store_update_procedure).
 % TODO: zag/2
 
 % tap_and_hold zig-zag
-zig(tap_and_hold, replace_with_design_parameter).
+zig(tap_and_hold, ios_default_behavior).
 % TODO: zag/2
 
 % tap_delete zig-zag
-zig(tap_delete, replace_with_design_parameter).
+zig(tap_delete, ios_remove_app_procedure).
 % TODO: zag/2
 
 % upload_app zig-zag
-zig(upload_app, replace_with_design_parameter).
+zig(upload_app, app_store_upload_procedure).
 % TODO: zag/2
 
 % view_documentation zig-zag
-zig(view_documentation, replace_with_design_parameter).
+zig(view_documentation, documentation_website).
 % TODO: zag/2
 
