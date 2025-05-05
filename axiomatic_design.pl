@@ -33,6 +33,15 @@ need_to_zag(DP) :-          % DP needs to zag if:
 all_need_to_zag(DPs) :-
      findall(DP, need_to_zag(DP), DPs).
 
+% Holds when FR has not yet been assigned a design parameter using zig/2.
+need_to_zig(FR) :-
+    zag(_, FRs),       % For each DP's list of child FRs
+    member(FR, FRs),   % Take each FR
+    \+ zig(FR, _).     % That hasn't been zigged yet.
+
+all_need_to_zig(FRs) :-
+    setof(FR, need_to_zig(FR), FRs).
+
 % Start zig-zagging ========================================================
 
 % Zig-Zag Process from Axiomatic Design (AD) by Nam P. Suh.
