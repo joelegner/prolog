@@ -7,8 +7,8 @@
     need_to_zag/1,
     parent/2,
     all_need_to_zag/1,
-    print_need_to_zig_snippets/0,
-    print_need_to_zag_snippets/0,
+    print_zig_templates/0,
+    print_zag_templates/0,
     print_fr_hierarchy/0,
     print_dp_hierarchy/0
     ]).
@@ -53,7 +53,7 @@ need_to_zig(FR) :-
 all_need_to_zig(FRs) :-
     setof(FR, need_to_zig(FR), FRs).
 
-print_need_to_zig_snippets :-
+print_zig_templates :-
     all_need_to_zig(FRs),
     forall(member(FR, FRs), print_zig_template(FR)).
 
@@ -61,7 +61,7 @@ print_zig_template(FR) :-
     format('% ~w zig-zag~n', [FR]),
     format('zig(~w, replace_with_design_parameter).~n~n', [FR]).
 
-print_need_to_zag_snippets :-
+print_zag_templates :-
     all_need_to_zag(DPs),
     forall(member(DP, DPs), print_zag_template(DP)).
 
