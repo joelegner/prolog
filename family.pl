@@ -80,13 +80,21 @@ grandfather(GP, C) :-
     male(GP),
     grandparent(GP, C).
 
+% X = child 1
+% Y = child 2
+% M = mother
+% F = father
 sibling(X,Y) :- 
-    mother(Out1,X),
-    father(Out2,X),
-    mother(Out1,Y),
-    father(Out2,Y),
+    mother(M,X),
+    father(F,X),
+    mother(M,Y),
+    father(F,Y),
     X \= Y.
 
+% C1 = cousin 1
+% C2 = cousin 2
+% AU1 = aunt or uncle 1, parent of cousin 1
+% AU2 = aunt or uncle 2, parent of cousin 2
 cousin(C1, C2) :-
     parent(AU1, C1),
     parent(AU2, C2),
