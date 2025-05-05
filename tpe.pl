@@ -29,6 +29,13 @@ needs_cable(mains2, xlr_cable).
 needs_cable(monitor1, instrument_cable).
 needs_cable(monitor2, instrument_cable).
 
+% Commodities
+commodity(iec_cable).
+commodity(long_iec_cable).
+commodity(extension_cord).
+commodity(double_instrument_cable).
+commodity(xlr_cable).
+
 % Helper to find all devices for a given Cable
 cable_summary(Cable, Count, Devices) :-
     findall(Device, needs_cable(Device, Cable), Devices),
