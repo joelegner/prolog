@@ -122,6 +122,19 @@ print_dp(DP, Indent) :-
 print_dp_hierarchy :-
     forall(top_level_dp(DP), print_dp(DP, 0)).
 
+% Print zig-zag templates ==================================================
+
+print_zig_zag_templates :-
+    all_need_to_zig(FRs),
+    all_need_to_zag(DPs),
+    writeln(FRs),
+    writeln(DPs).
+
+print_zig_zag_template(Zig, Zag) :-
+    format('% ~w zig-zag~n', [Zig]),
+    format('zig(~w, ~w).~n', [Zig, Zag]),
+    format('zag(~w, [ ]).~n~n', [Zag]).
+
 
 % Start zig-zagging ========================================================
 
@@ -160,114 +173,3 @@ depends_on(push_update, debug_code).
 % uninstall zig-zag
 zig(uninstall, ios_uninstall_procedure).
 zag(ios_uninstall_procedure, [find_app, tap_and_hold, tap_delete]).
-
-% publish_documentation zig-zag
-zig(publish_documentation, documentation_development_system).
-% TODO: zag/2
-
-% view_documentation zig-zag
-zig(view_documentation, documentation_website).
-% TODO: zag/2
-
-% upload_app zig-zag
-zig(upload_app, app_store_upload_process).
-% TODO: zag/2
-
-% approve_app zig-zag
-zig(approve_app, app_store_approval_process).
-% TODO: zag/2
-
-% publish_app zig-zag
-zig(publish_app, xcode_publish_procedure).
-% TODO: zag/2
-
-% install_app zig-zag
-zig(install_app, app_store_app).
-% TODO: zag/2
-
-% capture_bugs zig-zag
-zig(capture_bugs, bug_collection_system).
-
-% debug_code zig-zag
-zig(debug_code, xcode_debug_system).
-
-% develop_app zig-zag
-zig(develop_app, development_system).
-
-% find_app zig-zag
-zig(find_app, app_store_search_feature).
-
-% host_files zig-zag
-zig(host_files, github).
-
-% manage_versioning zig-zag
-zig(manage_versioning, git).
-
-% push_update zig-zag
-zig(push_update, git_push_command).
-
-% tap_and_hold zig-zag
-zig(tap_and_hold, app_icon).
-
-% tap_delete zig-zag
-zig(tap_delete, ios_delete_app_feature).
-
-% documentation_development_system zig-zag
-zag(documentation_development_system, [ ]).
-% TODO: zag/2
-
-% documentation_website zig-zag
-zag(documentation_website, [ ]).
-% TODO: zag/2
-
-% app_store_upload_process zig-zag
-zag(app_store_upload_process, [ ]).
-% TODO: zag/2
-
-% app_store_approval_process zig-zag
-zag(app_store_approval_process, [ ]).
-% TODO: zag/2
-
-% xcode_publish_procedure zig-zag
-zag(xcode_publish_procedure, [ ]).
-% TODO: zag/2
-
-% app_store_app zig-zag
-zag(app_store_app, [ ]).
-% TODO: zag/2
-
-% bug_collection_system zig-zag
-zag(bug_collection_system, [ ]).
-% TODO: zag/2
-
-% xcode_debug_system zig-zag
-zag(xcode_debug_system, [ ]).
-% TODO: zag/2
-
-% development_system zig-zag
-zag(development_system, [ ]).
-% TODO: zag/2
-
-% app_store_search_feature zig-zag
-zag(app_store_search_feature, [ ]).
-% TODO: zag/2
-
-% github zig-zag
-zag(github, [ ]).
-% TODO: zag/2
-
-% git zig-zag
-zag(git, [ ]).
-% TODO: zag/2
-
-% git_push_command zig-zag
-zag(git_push_command, [ ]).
-% TODO: zag/2
-
-% app_icon zig-zag
-zag(app_icon, [ ]).
-% TODO: zag/2
-
-% ios_delete_app_feature zig-zag
-zag(ios_delete_app_feature, [ ]).
-% TODO: zag/2
