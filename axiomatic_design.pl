@@ -20,6 +20,13 @@ funtional_requirement(X) :-
 design_parameter(X) :-
     zig(_, X).
 
+% Link up DPs by parent and child relationships through shared FRs.
+parent(P, C) :-
+    zig(_, P),
+    zag(P, FRs),
+    member(FR, FRs),
+    zig(FR, C).
+
 % Holds when DP has not been split up into functional requirements
 % using the zag/2 predicate.
 need_to_zag(DP) :-          % DP needs to zag if:
@@ -41,6 +48,14 @@ need_to_zig(FR) :-
 
 all_need_to_zig(FRs) :-
     setof(FR, need_to_zig(FR), FRs).
+
+print_need_to_zig_snippets :-
+    all_need_to_zig(FRs),
+    forall(member(FR, FRs), print_zig_template(FR)).
+
+print_zig_template(FR) :-
+    format('% ~w zig-zag~n', [FR]),
+    format('zig(~w, replace_with_design_parameter).~n~n', [FR]).
 
 % Start zig-zagging ========================================================
 
@@ -104,10 +119,29 @@ zig(publish_app, xcode_publish_procedure).
 zig(install_app, app_store_app).
 % TODO: zag/2
 
+% capture_bugs zig-zag
+zig(capture_bugs, bug_collection_system).
 
-% Link up DPs by parent and child relationships through shared FRs.
-parent(P, C) :-
-    zig(_, P),
-    zag(P, FRs),
-    member(FR, FRs),
-    zig(FR, C).
+% debug_code zig-zag
+zig(debug_code, xcode_debug_system).
+
+% develop_app zig-zag
+zig(develop_app, development_system).
+
+% find_app zig-zag
+zig(find_app, app_store_search_feature).
+
+% host_files zig-zag
+zig(host_files, github).
+
+% manage_versioning zig-zag
+zig(manage_versioning, git).
+
+% push_update zig-zag
+zig(push_update, git_push_command).
+
+% tap_and_hold zig-zag
+zig(tap_and_hold, app_icon).
+
+% tap_delete zig-zag
+zig(tap_delete, ios_delete_app_feature).
