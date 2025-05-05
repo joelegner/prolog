@@ -151,10 +151,19 @@ zigzag :-
 process_zigzag(FR) :-
     format('Name of DP for FR "~w"? ', [FR]),
     read(DP),
-    format('zig(~w, ~w).~n', [FR, DP]),
-    format('zag(~w, []).~n', [DP]),
+    format(atom(ZigText), 'zig(~w, ~w).~n', [FR, DP]),
+    format(atom(ZagText), 'zag(~w, []).~n', [DP]),
+    atom_concat(ZigText, ZagText, FullText),
+    format('~w', [FullText]),
     assertz(zig(FR, DP)),
-    assertz(zag(DP, [])).
+    assertz(zag(DP, [])),
+    copy_to_clipboard(FullText),
+    writeln('Copied to clipboard.').
+
+copy_to_clipboard(Text) :-
+    process_create(path(pbcopy), [], [stdin(pipe(Out))]),
+    format(Out, '~w', [Text]),
+    close(Out).
 
 % First zig-zag
 zig(make_dueling_pianos_fun, dueler_mvp_system). % Note 1
@@ -189,3 +198,40 @@ zag(ios_uninstall_procedure, [find_app, tap_and_hold, tap_delete]).
 % approve_app zig-zag
 zig(approve_app, app_store_approval_system).
 zag(app_store_approval_system, []).
+
+zig(capture_bugs, bug_tracking_system).
+zag(bug_tracking_system, []).
+
+zig(debug_code, code_debugging_system).
+zag(code_debugging_system, []).
+
+zig(develop_app, development_envrionment).
+zag(development_envrionment, []).
+
+zig(find_app, iphone_app_finding_method).
+zag(iphone_app_finding_method, []).
+
+zig(host_files, github_repository).
+zag(github_repository, []).
+
+zig(install_app, app_store_install_procedure).
+zag(app_store_install_procedure, []).
+
+zig(manage_versioning, version_control_system).
+zag(version_control_system, []).
+
+zig(publish_app, app_store_publish_procedure).
+zag(app_store_publish_procedure, []).
+
+zig(publish_documentation, documentation_build_system).
+zag(documentation_build_system, []).
+
+zig(push_update, app_store_update_procedure).
+zag(app_store_update_procedure, []).
+
+zig(tap_and_hold, ios_edit_app_procedure).
+zag(ios_edit_app_procedure, []).
+
+zig(tap_delete, ios_delete_app_procedure).
+zag(ios_delete_app_procedure, []).
+
