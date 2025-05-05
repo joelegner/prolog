@@ -11,8 +11,12 @@
     print_zag_templates/0,
     print_fr_hierarchy/0,
     print_dp_hierarchy/0,
-    print_design_report/0
+    print_design_report/0,
+    zigzag/0
     ]).
+
+:- dynamic zig/2.
+:- dynamic zag/2.
 
 :- discontiguous depends_on/2.
 :- discontiguous zag/2.
@@ -140,6 +144,18 @@ print_design_report :-
 % 3. Zag to create n new FRs for DP.
 % 4. For each of n new FRs: go to 1.
 
+zigzag :-
+    all_need_to_zig(FRs),
+    forall(member(FR, FRs), process_zigzag(FR)).
+
+process_zigzag(FR) :-
+    format('Name of DP for FR "~w"? ', [FR]),
+    read(DP),
+    format('zig(~w, ~w).~n', [FR, DP]),
+    format('zag(~w, []).~n', [DP]),
+    assertz(zig(FR, DP)),
+    assertz(zag(DP, [])).
+
 % First zig-zag
 zig(make_dueling_pianos_fun, dueler_mvp_system). % Note 1
 zag(dueler_mvp_system, [learn, install, run, update, uninstall]). % Note 3
@@ -173,60 +189,3 @@ zag(ios_uninstall_procedure, [find_app, tap_and_hold, tap_delete]).
 % approve_app zig-zag
 zig(approve_app, app_store_approval_system).
 zag(app_store_approval_system, []).
-
-% capture_bugs zig-zag
-zig(capture_bugs, bug_tracker).
-% TODO: zag/2
-
-% debug_code zig-zag
-zig(debug_code, xcode_debugging_system).
-% TODO: zag/2
-
-% develop_app zig-zag
-zig(develop_app, developer_envrionment).
-% TODO: zag/2
-
-% find_app zig-zag
-zig(find_app, iphone_app_finding_procedure).
-% TODO: zag/2
-
-% host_files zig-zag
-zig(host_files, github_repository).
-% TODO: zag/2
-
-% install_app zig-zag
-zig(install_app, app_store_install_procedure).
-% TODO: zag/2
-
-% manage_versioning zig-zag
-zig(manage_versioning, git_repository).
-% TODO: zag/2
-
-% publish_app zig-zag
-zig(publish_app, app_store_publishing_procedure).
-% TODO: zag/2
-
-% publish_documentation zig-zag
-zig(publish_documentation, documentation_publication_system).
-% TODO: zag/2
-
-% push_update zig-zag
-zig(push_update, app_store_update_procedure).
-% TODO: zag/2
-
-% tap_and_hold zig-zag
-zig(tap_and_hold, ios_default_behavior).
-% TODO: zag/2
-
-% tap_delete zig-zag
-zig(tap_delete, ios_remove_app_procedure).
-% TODO: zag/2
-
-% upload_app zig-zag
-zig(upload_app, app_store_upload_procedure).
-% TODO: zag/2
-
-% view_documentation zig-zag
-zig(view_documentation, documentation_website).
-% TODO: zag/2
-
