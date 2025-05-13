@@ -1,35 +1,28 @@
 #!/bin/bash
 #
-# ChatGPT wrote this at my prompting on May 13, 2025.
-# Here is the prompt:
-#
-#I have a bunch of Prolog files with .pl suffix. I want the top of each file to be the
-# filename in a comment. % accounting.pl
-#
-# Exmaple usage from May 13, 2025:
-#
-# % ./label_files.sh 
-# Updating accounting.pl
-# Updating act.pl
-# Updating axiology.pl
-# Skipping axiomatic_design.pl (already has filename comment)
-# Skipping basics.pl (already has filename comment)
-# ...
-#
-# Cycle through .pl files and add first comment:
+# ChatGPT wrote this at Joe Legner's prompting on May 13, 2025.
+# This version does not change files — it only reports what would happen.
+
+total=0
+to_update=0
+skipped=0
+
 for file in *.pl; do
+    total=$((total + 1))
     first_line=$(head -n 1 "$file")
     filename_comment="% $file"
 
     if [ "$first_line" != "$filename_comment" ]; then
-        echo "Updating $file"
-        tmpfile=$(mktemp)
-        {
-            echo "$filename_comment"
-            cat "$file"
-        } > "$tmpfile"
-        mv "$tmpfile" "$file"
+        echo "Would update $file"
+        to_update=$((to_update + 1))
     else
-        echo "Skipping $file (already has filename comment)"
+        echo "Would skip $file (already has filename comment)"
+        skipped=$((skipped + 1))
     fi
 done
+
+echo
+echo "Summary:"
+echo "  Out of $total .pl files:"
+echo "  Modified: $to_update"
+echo "  Skipped:  $skipped"

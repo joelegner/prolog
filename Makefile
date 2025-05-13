@@ -167,3 +167,7 @@ testing_example:
 .PHONY: axiology
 axiology:
 	swipl -s axiology.pl -g run_tests
+
+.PHONY: labels
+labels:
+	./label_files.sh
