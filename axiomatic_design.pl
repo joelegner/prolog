@@ -1,3 +1,7 @@
+% axiomatic_design.pl
+/*
+The Axiom of Formal Axiology: Value is the degree in which a thing fulfills the attributes contained in the intension of its concept.
+*/
 :- module(axiomatic_design, [
     funtional_requirement/1,
     design_parameter/1,
