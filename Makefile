@@ -171,3 +171,7 @@ axiology:
 .PHONY: labels
 labels:
 	./label_files.sh
+
+.PHONY: universe
+universe:
+	swipl -s universe.pl
