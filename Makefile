@@ -163,3 +163,7 @@ zag:
 .PHONY: testing_example
 testing_example:
 	swipl -s testing_example.pl
+
+.PHONY: axiology
+axiology:
+	swipl -s axiology.pl -g run_tests
