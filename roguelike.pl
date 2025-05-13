@@ -1,3 +1,4 @@
+% roguelike.pl
 :- dynamic player_position/2.
 :- dynamic game_map/1.
 :- use_module(library(random)).

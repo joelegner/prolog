@@ -1,3 +1,4 @@
+% gma.pl
 % General morphological analysis
 
 % Terms

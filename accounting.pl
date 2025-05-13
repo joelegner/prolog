@@ -1,3 +1,4 @@
+% accounting.pl
 % This is an accounting proof of concept.
 % Here is the structure of the data. It was adapted from a (much longer) spreadsheet.
 show(date(2025, 04, 20), venue(escape), pay(base(56250), tips(cash(8800), venmo(0)))).

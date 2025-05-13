@@ -1,3 +1,4 @@
+% live_another_day.pl
 live_another_day(
     be_awake(
         rest,

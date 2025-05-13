@@ -1,3 +1,4 @@
+% system.pl
 % Let's declare a flashlight system with subsystem parts.
 % Template:
 % system(name, function, [part1, part2, ..., part_n]).

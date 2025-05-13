@@ -1,3 +1,4 @@
+% htmlgen.pl
 go :- current_output(S), html(S).
 
 html(S) :-

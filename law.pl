@@ -1,3 +1,4 @@
+% law.pl
 principles(law, [principle(live_honestly), principle(hurt_nobody), principle(give_everybody_their_due)]).
 
 % Extract all principles from the list

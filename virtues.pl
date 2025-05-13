@@ -1,3 +1,4 @@
+% virtues.pl
 brave(joe).
 has_integrity(joe).
 persistant(joe).

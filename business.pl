@@ -1,3 +1,4 @@
+% business.pl
 synonym(deliverable, work_product).
 
 is_synonym(X, Y) :- synonym(X, Y).

@@ -1,3 +1,4 @@
+% timestamp.pl
 :- module(timestamp, [print_timestamp/0]).
 
 :- use_module(library(date)).

@@ -1,3 +1,4 @@
+% goals.pl
 % Specify goal numbers and names
 goal(1, "Play the show").
 goal(2, "Turn on the keyboard.").

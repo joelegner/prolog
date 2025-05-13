@@ -1,3 +1,4 @@
+% colors.pl
 thing(apple, red, yes).
 thing(broccoli, green, yes).
 thing(carrot, orange, yes).

@@ -1,3 +1,4 @@
+% numbers.pl
 natural_number(N) :-
     integer(N),
     N > 0.

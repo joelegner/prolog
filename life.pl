@@ -1,3 +1,4 @@
+% life.pl
 female(julie).
 female(elaine).
 female(margo).

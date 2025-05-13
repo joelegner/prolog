@@ -1,3 +1,4 @@
+% forall.pl
 % Let's look at forall/2.
 %
 % Here is the SWI-Prolog documentation on forall/2:

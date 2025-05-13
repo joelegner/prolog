@@ -1,3 +1,4 @@
+% journey.pl
 % J is a journey if:
 % J has a start, S.
 % J has a (current) position, P.

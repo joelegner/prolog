@@ -1,3 +1,4 @@
+% chords.pl
 % Entry point: get notes from chord string (e.g., "Cm7")
 notes_for_chord(ChordStr, Notes) :-
     parse_chord(ChordStr, Root, Type),

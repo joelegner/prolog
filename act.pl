@@ -1,3 +1,4 @@
+% act.pl
 % Your ACT tree as a single compound term
 act_tree(
     practice_act(
