@@ -183,3 +183,7 @@ files:
 .PHONY: inheritance
 inheritance:
 	swipl -s inheritance.pl
+
+.PHONY: project_ethernet
+project_ethernet:
+	swipl -s project_ethernet.pl
