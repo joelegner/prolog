@@ -1,5 +1,6 @@
 % lists.pl
 % Handling lists is an important thing in Prolog.
+:- dynamic design_structure/2.
 
 % Declare a list
 my_list([apple, banana, cherry]).
@@ -25,6 +26,38 @@ remove_duplicates([], []).
 remove_duplicates([First|Rest], [First|New_Rest]) :-
     exclude(==(First), Rest, Filtered),
     remove_duplicates(Filtered, New_Rest).
+
+% Double a list
+% This is textbook recursion over lists using the cons constructor. 
+% H = head, T = tail
+% H2 = doubled list head, T2 = doubled list tail
+double_list([], []).
+double_list([H | T], [H2 | T2]) :-
+    H2 is H * 2,
+    double_list(T, T2).
+
+/*
+# Analysis of `double_list/2`
+
+The pattern is this:
+
+predicate([Head|Tail],...) :- 
+    %Do something with Head,%
+    predicate(Tail,...).
+
+In Prolog literature, this pattern is generally referred to as a "recursive list transformation" or "recursive list processing" pattern.
+
+More specifically, this example fits the common _map_ pattern, where a function is recursively applied to each element of a list to produce a new list. Although Prolog doesn't have higher-order functions like map/2 in functional languages, this recursive structure serves the same purpose:
+
+1. The base case handles the empty list: `double_list([], [])`
+2. The recursive case applies a transformation (H2 is H * 2) and recurses on the tail: `double_list([H|T], [H2|T2])`.
+
+# Common Terminology in Prolog Contexts
+- Recursive list predicate
+- List mapping
+- Element-wise transformation
+- Structural recursion over lists
+*/
 
 % TEST CODE FOR LISTS
 :- begin_tests(list_utils).
@@ -63,5 +96,10 @@ test(remove_duplicates_all_same) :-
 test(remove_duplicates_empty) :-
     remove_duplicates([], R),
     assertion(R == []).
+
+% This is the first hand-coded test I ever wrote on May 13, 2025 in Valirco, Florida.
+test(double_list) :- 
+    double_list([5, 4, 3, 2, 1], Doubled),
+    assertion(Doubled == [10, 8, 6, 4, 2]).
 
 :- end_tests(list_utils).
