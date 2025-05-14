@@ -179,3 +179,7 @@ universe:
 .PHONY: files
 files:
 	swipl -s files.pl -g run
+
+.PHONY: inheritance
+inheritance:
+	swipl -s inheritance.pl
