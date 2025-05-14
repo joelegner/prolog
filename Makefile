@@ -175,3 +175,7 @@ labels:
 .PHONY: universe
 universe:
 	swipl -s universe.pl
+
+.PHONY: files
+files:
+	swipl -s files.pl -g run
