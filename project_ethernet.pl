@@ -1,6 +1,9 @@
 % project_ethernet.pl
 % This demonstrated planning a project using logic.
 
+run :-
+    complete(tommy_ethernet).
+
 % It is a top-down design. 
 %
 % LEVEL 0 =====================================================================

@@ -186,4 +186,4 @@ inheritance:
 
 .PHONY: project_ethernet
 project_ethernet:
-	swipl -s project_ethernet.pl
+	swipl -s project_ethernet.pl -g run -t halt
