@@ -4,11 +4,23 @@
 ready_to_play :- 
     sound_system_ready,
     ready_to_play(julie),
-    ready_to_play(joe).
+    ready_to_play(joe),
+    sound_check_completed,
+    writeln("Say 'We are ready to play'").
 
 ready_to_play(julie) :-
     piano_ready,
+    throne_setup(julie),
     microphone_ready(julie).
+
+ready_to_play(joe) :-
+    key_drums_ready,
+    throne_setup(joe),
+    microphone_ready(joe).
+
+throne_setup(Person) :-
+    write("Set up throne for "),
+    writeln(Person).
 
 microphone_ready(Person) :-
     mic_stand_setup(Person),
@@ -28,11 +40,24 @@ mic_cable_installed(Person) :-
     writeln(Person).
 
 piano_ready :-
-    shell_erected,
     cables_routed_in_shell,
     piano_installed_in_shell,
     piano_turned_on,
     piano_tested.
+
+key_drums_stand_erected :-
+    writeln("Set up key drums stand").
+
+macbook_ready :-
+    writeln("Set up Macbook").
+
+key_drums_tested :-
+    writeln("Test key drums").
+
+key_drums_ready :-
+    key_drums_stand_erected,
+    macbook_ready,
+    key_drums_tested.
 
 shell_erected :-
     writeln("Set up piano shell").
@@ -64,7 +89,22 @@ monitors_ready :-
     monitors_connected,
     monitors_powered_on.
 
+power_strips_set_in_place :-
+    shell_erected,
+    writeln("Set power strips in place").
+
+power_strips_connected_to_power :-
+    writeln("Plug power strips into building power").
+
+power_system_ready :-
+    power_strips_set_in_place,
+    power_strips_connected_to_power.
+
+sound_check_completed :-
+    writeln("Do a sound check").
+
 sound_system_ready :-
+    power_system_ready,
     mixer_ready,
     mains_ready,
     monitors_ready.
