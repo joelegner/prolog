@@ -203,3 +203,8 @@ json:
 .PHONY: determine
 determine:
 	swipl -s determine.pl
+
+.PHONY: design
+design:
+	swipl -s design.pl -g run -t halt
+
