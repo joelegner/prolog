@@ -8,8 +8,3 @@ factorial(N, F) :-
     N1 is N - 1,
     factorial(N1, F1),
     F is N * F1.
-
-main :-
-    factorial(5, F),
-    format('Factorial of 5 is ~w~n', [F]).
-

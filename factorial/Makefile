@@ -1,5 +1,5 @@
 EXEC = factorial_exec
-PROLOG_SRC = factorial.pl
+PROLOG_SRC = factorial.pl main.pl
 
 .PHONY: executable clean
 
