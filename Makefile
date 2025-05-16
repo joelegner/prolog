@@ -195,3 +195,7 @@ twt_setup:
 .PHONY: prologscript
 prologscript:
 	swipl -s prologscript.pl
+
+.PHONY: json
+json:
+	swipl -s json.pl
