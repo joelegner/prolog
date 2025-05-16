@@ -1,23 +1,27 @@
 #!/usr/bin/env swipl
-% design_report.pl
+% determine.pl
 %
-% Usage: ./design_report.pl
-% Reads report.json and writes report.tex and report.pdf using pdflatex
+% Usage: ./determine.pl
+% Reads report.json and template.tex, writes report.tex and compiles to report.pdf using pdflatex
 
 :- use_module(library(http/json)).
 :- use_module(library(readutil)).
 :- use_module(library(process)).
+:- use_module(library(strings)).
 
 :- initialization(main, main).
 
 main(_) :-
-    InputFile = 'report.json',
+    JsonFile = 'report.json',
+    TemplateFile = 'template.tex',
     OutputTex = 'report.tex',
     OutputPdf = 'report.pdf',
 
-    (   exists_file(InputFile)
-    ->  read_json(InputFile, ReportData),
-        generate_latex(ReportData, OutputTex),
+    (   exists_file(JsonFile), exists_file(TemplateFile)
+    ->  read_json(JsonFile, ReportData),
+        read_file_to_string(TemplateFile, Template, []),
+        fill_template(Template, ReportData, FinalLatex),
+        write_file(OutputTex, FinalLatex),
         run_pdflatex(OutputTex),
         (   exists_file(OutputPdf)
         ->  format('Report generated: ~w~n', [OutputPdf])
@@ -27,47 +31,45 @@ main(_) :-
     ).
 
 print_usage :-
-    format('Usage: ./design_report.pl~n'),
-    format('Ensure that report.json is present in the current directory.~n').
+    format('Usage: ./determine.pl~n'),
+    format('Requires: report.json and template.tex in the current directory.~n').
 
 read_json(File, Data) :-
     open(File, read, Stream),
     json_read_dict(Stream, Data),
     close(Stream).
 
-generate_latex(Data, File) :-
+write_file(File, Content) :-
     open(File, write, Stream),
-    write(Stream, '\\documentclass{article}\n'),
-    write(Stream, '\\usepackage[utf8]{inputenc}\n'),
-    write(Stream, '\\title{Design Report}\n'),
-    write(Stream, '\\begin{document}\n'),
-    write(Stream, '\\maketitle\n\n'),
-
-    (   _{title: Title} :< Data
-    ->  format(Stream, '\\section*{Title}\n~w\n\n', [Title])
-    ;   true
-    ),
-
-    (   _{author: Author} :< Data
-    ->  format(Stream, '\\textbf{Author:} ~w\\\\\n\n', [Author])
-    ;   true
-    ),
-
-    (   _{sections: Sections} :< Data
-    ->  write_sections(Stream, Sections)
-    ;   true
-    ),
-
-    write(Stream, '\\end{document}\n'),
+    write(Stream, Content),
     close(Stream).
 
-write_sections(_, []).
-write_sections(Stream, [Section|Rest]) :-
-    (   _{heading: Heading, content: Content} :< Section
-    ->  format(Stream, '\\section{~w}\n~w\n\n', [Heading, Content])
-    ;   true
-    ),
-    write_sections(Stream, Rest).
+fill_template(Template, Data, Final) :-
+    dict_get(title, Data, "", Title),
+    dict_get(author, Data, "", Author),
+    dict_get(sections, Data, [], Sections),
+    sections_to_latex(Sections, SectionText),
+    replace_placeholders(Template, Title, Author, SectionText, Final).
+
+replace_placeholder(Template, Placeholder, Replacement, Result) :-
+    split_string(Template, Placeholder, "", Parts),
+    atomic_list_concat(Parts, Replacement, Result).
+
+replace_placeholders(Template, Title, Author, Sections, Final) :-
+    replace_placeholder(Template, "<<TITLE>>", Title, T1),
+    replace_placeholder(T1, "<<AUTHOR>>", Author, T2),
+    replace_placeholder(T2, "<<SECTIONS>>", Sections, Final).
+
+sections_to_latex([], "").
+sections_to_latex([S|Rest], Latex) :-
+    _{heading: H, content: C} :< S,
+    format(string(Section), "\\section{~w}\n~w\n\n", [H, C]),
+    sections_to_latex(Rest, OtherSections),
+    string_concat(Section, OtherSections, Latex).
 
 run_pdflatex(TexFile) :-
     process_create(path(pdflatex), ['-interaction=nonstopmode', TexFile], [process(_)]).
+
+% Helper predicate: get dict value with default
+dict_get(Key, Dict, Default, Value) :-
+    ( get_dict(Key, Dict, V) -> Value = V ; Value = Default ).
