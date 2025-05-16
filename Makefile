@@ -199,3 +199,7 @@ prologscript:
 .PHONY: json
 json:
 	swipl -s json.pl
+
+.PHONY: determine
+determine:
+	swipl -s determine.pl

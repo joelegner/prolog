@@ -1,0 +1,18 @@
+{
+  "title": "System Design for Smart Widget",
+  "author": "Joe Legner",
+  "sections": [
+    {
+      "heading": "Introduction",
+      "content": "This report outlines the system design of the Smart Widget."
+    },
+    {
+      "heading": "Functional Requirements",
+      "content": "The system must support input from multiple sensors and respond in real time."
+    },
+    {
+      "heading": "Conclusion",
+      "content": "The Smart Widget meets the outlined requirements and is ready for implementation."
+    }
+  ]
+}
