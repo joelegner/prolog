@@ -2,14 +2,14 @@
 % Planning for The Wonder Twins dueling setup with key drums.
 
 ready_to_play :- 
-    sound_system_ready,
     ready_to_play(julie),
     ready_to_play(joe),
+    sound_system_ready,
     sound_check_completed,
     writeln("Say 'We are ready to play'").
 
 ready_to_play(julie) :-
-    piano_ready,
+    keyboard_ready,
     throne_setup(julie),
     microphone_ready(julie).
 
@@ -39,11 +39,11 @@ mic_cable_installed(Person) :-
     write("Connect mic to mixer for "),
     writeln(Person).
 
-piano_ready :-
+keyboard_ready :-
     cables_routed_in_shell,
-    piano_installed_in_shell,
-    piano_turned_on,
-    piano_tested.
+    keyboard_installed_in_shell,
+    keyboard_turned_on,
+    keyboard_tested.
 
 key_drums_stand_erected :-
     writeln("Set up key drums stand").
@@ -60,19 +60,20 @@ key_drums_ready :-
     key_drums_tested.
 
 shell_erected :-
-    writeln("Set up piano shell").
+    writeln("Set up shell").
     
 cables_routed_in_shell :-
+    shell_erected,
     writeln("Route cables in shell").
 
-piano_installed_in_shell :-
-    writeln("Install piano in shell").
+keyboard_installed_in_shell :-
+    writeln("Install keyboard in shell").
 
-piano_turned_on :-
-    writeln("Turn on piano power").
+keyboard_turned_on :-
+    writeln("Turn on keyboard power").
 
-piano_tested :-
-    writeln("Test piano for sound").
+keyboard_tested :-
+    writeln("Test keyboard for sound").
 
 monitors_powered_on :-
     writeln("Power on monitors").
@@ -90,7 +91,6 @@ monitors_ready :-
     monitors_powered_on.
 
 power_strips_set_in_place :-
-    shell_erected,
     writeln("Set power strips in place").
 
 power_strips_connected_to_power :-
