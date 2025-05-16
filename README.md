@@ -176,3 +176,7 @@ process_queries :-
 ```
 
 The code is from a Prolog coding guidelines paper.
+
+# Userful Prolog References
+
+[https://swi-prolog.discourse.group/t/useful-prolog-references/1089](https://swi-prolog.discourse.group/t/useful-prolog-references/1089)
