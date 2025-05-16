@@ -1,3 +1,6 @@
+% factorial.pl
+% https://www.swi-prolog.org/pldoc/man?section=cmdlinecomp
+%
 % factorial(N, F) means F is the factorial of N
 factorial(0, 1).
 factorial(N, F) :-
