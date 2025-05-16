@@ -1,8 +1,8 @@
 #!/usr/bin/env swipl
 % determine.pl
 %
-% Usage: ./determine.pl
-% Reads report.json and template.tex, writes report.tex and compiles to report.pdf using pdflatex
+% Usage: ./determine.pl report.json
+% Reads the given JSON file and template.tex, writes report.tex, and compiles report.pdf using pdflatex
 
 :- use_module(library(http/json)).
 :- use_module(library(readutil)).
@@ -11,8 +11,14 @@
 
 :- initialization(main, main).
 
-main(_) :-
-    JsonFile = 'report.json',
+main(Argv) :-
+    ( Argv = [JsonFile] ->
+        true
+    ; 
+        print_usage,
+        halt(1)
+    ),
+
     TemplateFile = 'template.tex',
     OutputTex = 'report.tex',
     OutputPdf = 'report.pdf',
@@ -27,11 +33,13 @@ main(_) :-
         ->  format('Report generated: ~w~n', [OutputPdf])
         ;   format('Failed to generate PDF.~n')
         )
-    ;   print_usage
+    ;   format('Error: Required files missing: ~w or ~w~n', [JsonFile, TemplateFile]),
+        print_usage,
+        halt(1)
     ).
 
 print_usage :-
-    format('Usage: ./determine.pl~n'),
+    format('Usage: ./determine.pl report.json~n'),
     format('Requires: report.json and template.tex in the current directory.~n').
 
 read_json(File, Data) :-
