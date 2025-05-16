@@ -191,3 +191,7 @@ project_ethernet:
 .PHONY: twt_setup
 twt_setup:
 	swipl -s twt_setup.pl
+
+.PHONY: prologscript
+prologscript:
+	swipl -s prologscript.pl
