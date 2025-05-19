@@ -208,3 +208,7 @@ determine:
 design:
 	swipl -s design.pl -g run -t halt
 
+
+.PHONY: language
+language:
+	swipl -s language.pl -g run_tests
