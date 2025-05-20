@@ -180,3 +180,97 @@ The code is from a Prolog coding guidelines paper.
 # Userful Prolog References
 
 [https://swi-prolog.discourse.group/t/useful-prolog-references/1089](https://swi-prolog.discourse.group/t/useful-prolog-references/1089)
+
+# Topic Outline
+
+```
+Prolog
+    Core Concepts
+        Logic Programming
+            Declarative Paradigm
+            Facts and Rules
+            Queries
+            Inference Engine
+            Backtracking
+        Terms and Syntax
+            Atoms
+            Numbers
+            Variables
+            Structures
+            Lists
+        Execution Model
+            Unification
+            Resolution
+            Goal Evaluation
+            Choice Points
+            Cuts (!)
+    Program Structure
+        Clauses
+            Facts
+            Rules
+            Queries
+        Modules
+            Encapsulation
+            Importing
+            Exporting
+            Namespacing
+        Directives
+            Initialization
+            Meta-predicates
+            Operators
+            Module Declarations
+    Data Handling
+        Data Types
+            Atoms and Strings
+            Numbers
+            Lists
+            Tuples and Pairs
+            Compound Terms
+        Pattern Matching
+            Unification
+            Destructuring
+            Anonymous Variables
+            Matching with Lists
+        Control Structures
+            If-Then-Else
+            Conjunction (`,`)
+            Disjunction (`;`)
+            Cut and Fail
+    Built-in Capabilities
+        Standard Predicates
+            Arithmetic
+            Comparison
+            List Processing
+            Type Checking
+            Term Manipulation
+        Input/Output
+            Reading Terms
+            Writing Output
+            Files and Streams
+            Formatting
+        Debugging Tools
+            Trace
+            Spy
+            Print Debug
+            Step Execution
+    Extensions and Ecosystem
+        Meta-programming
+            Call/N
+            Term Expansion
+            Reflection
+            Higher-order Predicates
+        Constraint Logic Programming
+            Finite Domain (CLP(FD))
+            Real Numbers (CLP(R))
+            Booleans and Sets
+        Integration
+            Foreign Language Interfaces
+            Web and Networking
+            Databases
+            GUI Frameworks
+        Implementations
+            SWI-Prolog
+            GNU Prolog
+            SICStus Prolog
+            ECLiPSe Prolog
+```
