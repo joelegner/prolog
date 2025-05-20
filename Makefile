@@ -212,3 +212,7 @@ design:
 .PHONY: language
 language:
 	swipl -s language.pl -g run_tests
+
+.PHONY: crossword
+crossword:
+	swipl -s crossword.pl
