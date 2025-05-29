@@ -220,3 +220,7 @@ crossword:
 .PHONY: task
 task:
 	swipl -s task.pl
+
+.PHONY: decomposition
+decomposition:
+	swipl -s decomposition.pl -g main
