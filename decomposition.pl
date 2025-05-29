@@ -1,24 +1,20 @@
 % Functional Requirements
 % Level 0
-fr(fr0, 'FR0', 'Kill it at Fluffernutters 2025').
+fr(fr0, 'Kill it at Fluffernutters 2025').
 
 % Level 1
-fr(fr1, 'FR1', 'Travel there and back').
-fr(fr2, 'FR2', 'Produce the shows').
-fr(fr3, 'FR3', 'Perform shows').
-
-% Level 2
+fr(fr1, 'Travel there and back').
+fr(fr2, 'Produce the shows').
+fr(fr3, 'Perform shows').
 
 % Design Parameters
 % Level 0
-dp(dp0, 'DP0', 'Fluffernutters 2025 Project').
+dp(dp0, 'Fluffernutters 2025 Project').
 
 % Level 1
-dp(dp1, 'DP1', 'Travel Arrangements').
-dp(dp2, 'DP2', 'Production System').
-dp(dp3, 'DP3', 'Stage Setup'). 
-
-% Level 2
+dp(dp1, 'Travel Arrangements').
+dp(dp2, 'Production System').
+dp(dp3, 'Stage Setup').
 
 % Relationships
 link(fr0, dp0).
@@ -29,7 +25,7 @@ link(fr2, dp2).
 link(dp0, fr3).
 link(fr3, dp3).
 
-% Wrapping
+% Wrapping utility
 wrap_text(Text, Width, Wrapped) :-
     split_string(Text, " ", "", Words),
     wrap_words(Words, Width, "", [], Lines),
@@ -56,12 +52,16 @@ main :-
     writeln('digraph AxiomaticDesign {'),
     writeln('    node [shape=box width=1];'),
     nl,
-    forall(fr(Id, Label, Desc),
-        ( wrap_text(Desc, 24, WrappedDesc),
+    forall(fr(Id, Desc),
+        ( atom_string(Id, AtomStr),
+          string_upper(AtomStr, Label),
+          wrap_text(Desc, 24, WrappedDesc),
           escape_newlines(WrappedDesc, EscapedDesc),
           format('    ~w [label="~w\\n~w"];\n', [Id, Label, EscapedDesc]) )),
-    forall(dp(Id, Label, Desc),
-        ( wrap_text(Desc, 24, WrappedDesc),
+    forall(dp(Id, Desc),
+        ( atom_string(Id, AtomStr),
+          string_upper(AtomStr, Label),
+          wrap_text(Desc, 24, WrappedDesc),
           escape_newlines(WrappedDesc, EscapedDesc),
           format('    ~w [label="~w\\n~w"];\n', [Id, Label, EscapedDesc]) )),
     nl,
