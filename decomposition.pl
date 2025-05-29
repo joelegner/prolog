@@ -1,22 +1,22 @@
 % Functional Requirements
 % Level 0
-fr(fr0, 'FR0', 'Kill it at Hedonism II').
+fr(fr0, 'FR0', 'Kill it at Fluffernutters 2025').
 
 % Level 1
-fr(fr1, 'FR1', 'Define and design a manufacturable product').
-fr(fr2, 'FR2', 'Produce the designed product').
-fr(fr3, 'FR3', 'Distribute the finished product').
+fr(fr1, 'FR1', 'Travel there and back').
+fr(fr2, 'FR2', 'Produce the shows').
+fr(fr3, 'FR3', 'Perform shows').
 
 % Level 2
 
 % Design Parameters
 % Level 0
-dp(dp0, 'DP0', 'Corporate System').
+dp(dp0, 'DP0', 'Fluffernutters 2025 Project').
 
 % Level 1
-dp(dp1, 'DP1', 'Product Definition system').
-dp(dp2, 'DP2', 'Manufacturing System').
-dp(dp3, 'DP3', 'Product Distribution System').
+dp(dp1, 'DP1', 'Travel Arrangements').
+dp(dp2, 'DP2', 'Production System').
+dp(dp3, 'DP3', 'Stage Setup'). 
 
 % Level 2
 
