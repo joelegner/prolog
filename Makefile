@@ -223,4 +223,4 @@ task:
 
 .PHONY: decomposition
 decomposition:
-	swipl -s decomposition.pl -g main
+	@swipl -s decomposition.pl -g main -t halt
