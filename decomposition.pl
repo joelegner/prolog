@@ -164,3 +164,39 @@ dp_hierarchy :-
     nl,
     print_dp_edges,
     writeln('}').
+
+% FR Hierarchy stuff
+
+% Print fr nodes in DOT format
+print_fr_nodes :-
+    forall(fr(Id, Desc),
+        ( atom_string(Id, AtomStr),
+          string_upper(AtomStr, Label),
+          wrap_text(Desc, 24, WrappedDesc),
+          escape_newlines(WrappedDesc, EscapedDesc),
+          format('    ~w [label="~w\\n~w"];\n', [Id, Label, EscapedDesc]) )).
+
+% Print fr->fr edges in DOT format (only links where both ends are FR nodes)
+% Print inferred FR hierarchy edges based on FR ID prefixes
+print_fr_edges :-
+    forall((fr(Child, _),
+            atom_string(Child, ChildStr),
+            sub_atom(ChildStr, 2, _, 0, Suffix),  % Get numeric part
+            atom_number(Suffix, Num),
+            Num > 0,  % Exclude fr0 itself
+            ParentNum is Num // 10,
+            atomic_list_concat([fr, ParentNum], ParentAtom),
+            fr(ParentAtom, _)),
+        format('    ~w -> ~w;\n', [ParentAtom, Child])).
+
+
+
+% fr_hierarchy entry point
+fr_hierarchy :-
+    writeln('digraph AxiomaticDesign {'),
+    writeln('    node [shape=box width=1];'),
+    nl,
+    print_fr_nodes,
+    nl,
+    print_fr_edges,
+    writeln('}').

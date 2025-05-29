@@ -225,6 +225,10 @@ task:
 decomposition:
 	@swipl -s decomposition.pl -g main -t halt
 
+.PHONY: decomposition_fr
+decomposition_fr:
+	@swipl -s decomposition.pl -g fr_hierarchy -t halt
+
 .PHONY: decomposition_dp
 decomposition_dp:
 	@swipl -s decomposition.pl -g dp_hierarchy -t halt
