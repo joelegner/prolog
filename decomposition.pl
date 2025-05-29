@@ -7,6 +7,11 @@ fr(fr1, 'Travel there and back').
 fr(fr2, 'Produce the shows').
 fr(fr3, 'Perform shows').
 
+% Level 2
+fr(fr11, 'Prepare to travel').
+fr(fr12, 'Travel to Fluffernutters').
+fr(fr13, 'Travel back home').
+
 % Design Parameters
 % Level 0
 dp(dp0, 'Fluffernutters 2025 Project').
@@ -16,6 +21,11 @@ dp(dp1, 'Travel Arrangements').
 dp(dp2, 'Production System').
 dp(dp3, 'Stage Setup').
 
+% Level 2
+dp(dp11, 'Packing System').
+dp(dp12, 'Travel Day 1').
+dp(dp13, 'Travel Day 2').
+
 % Relationships
 link(fr0, dp0).
 link(dp0, fr1).
@@ -24,6 +34,12 @@ link(dp0, fr2).
 link(fr2, dp2).
 link(dp0, fr3).
 link(fr3, dp3).
+link(dp1, fr11).
+link(dp1, fr12).
+link(dp1, fr13).
+link(fr11, dp11).
+link(fr12, dp12).
+link(fr13, dp13).
 
 % Wrapping utility
 wrap_text(Text, Width, Wrapped) :-
