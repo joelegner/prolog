@@ -1,14 +1,24 @@
 % Functional Requirements
-fr(fr0, 'FR0\nAchieve the corporate\nbusiness strategy plan').
-fr(fr1, 'FR1\nDefine and design\na manufacturable\nproduct').
-fr(fr2, 'FR2\nProduce the\ndesigned product').
-fr(fr3, 'FR3\nDistribute the\nfinished product').
+% Level 0
+fr(fr0, 'FR0', 'Kill it at Hedonism II').
+
+% Level 1
+fr(fr1, 'FR1', 'Define and design a manufacturable product').
+fr(fr2, 'FR2', 'Produce the designed product').
+fr(fr3, 'FR3', 'Distribute the finished product').
+
+% Level 2
 
 % Design Parameters
-dp(dp0, 'DP0\nCorporate System').
-dp(dp1, 'DP1\nProduct Definition\nsystem').
-dp(dp2, 'DP2\nManufacturing\nSystem').
-dp(dp3, 'DP3\nProduct\nDistribution System').
+% Level 0
+dp(dp0, 'DP0', 'Corporate System').
+
+% Level 1
+dp(dp1, 'DP1', 'Product Definition system').
+dp(dp2, 'DP2', 'Manufacturing System').
+dp(dp3, 'DP3', 'Product Distribution System').
+
+% Level 2
 
 % Relationships
 link(fr0, dp0).
@@ -24,10 +34,10 @@ main :-
     writeln('digraph AxiomaticDesign {'),
     writeln('    node [shape=box];'),
     nl,
-    forall(fr(Id, Label),
-        format('    ~w [label="~w"];\n', [Id, Label])),
-    forall(dp(Id, Label),
-        format('    ~w [label="~w"];\n', [Id, Label])),
+    forall(fr(Id, Label, Desc),
+        format('    ~w [label="~w\\n~w"];\n', [Id, Label, Desc])),
+    forall(dp(Id, Label, Desc),
+        format('    ~w [label="~w\\n~w"];\n', [Id, Label, Desc])),
     nl,
     forall(link(From, To),
         format('    ~w -> ~w;\n', [From, To])),
