@@ -4,7 +4,7 @@ fr(fr0, 'Kill it at Fluffernutters 2025').
 
 % FR0 Level 1
 fr(fr1, 'Travel there and back').
-fr(fr2, 'Produce the shows').
+fr(fr2, 'Manage the project').
 fr(fr3, 'Perform shows').
 
 % FR1 Level 2
@@ -26,9 +26,9 @@ fr(fr113, 'Contain and carry things').
 dp(dp0, 'Fluffernutters 2025 Project').
 
 % DP0 Level 1
-dp(dp1, 'Travel Arrangements').
-dp(dp2, 'Production System').
-dp(dp3, 'Stage Setup').
+dp(dp1, 'Travel System').
+dp(dp2, 'Project Management System').
+dp(dp3, 'Performance System').
 
 % DP1 Level 2
 dp(dp11, 'Packing System').
