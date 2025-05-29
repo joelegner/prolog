@@ -216,3 +216,7 @@ language:
 .PHONY: crossword
 crossword:
 	swipl -s crossword.pl
+
+.PHONY: task
+task:
+	swipl -s task.pl
