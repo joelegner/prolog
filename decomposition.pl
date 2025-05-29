@@ -120,3 +120,47 @@ main :-
     forall(link(From, To),
         format('    ~w -> ~w;\n', [From, To])),
     writeln('}').
+
+% DP Hierarchy stuff
+
+% Find DP to DP links via zero or more FR nodes (transitive)
+dp_to_dp(FromDP, ToDP) :-
+    dp(FromDP, _),
+    dp(ToDP, _),
+    FromDP \= ToDP,
+    dp_path(FromDP, ToDP, []).
+
+% Helper predicate: dp_path(+Current, +Target, +Visited)
+% Path from Current to Target, passing only through FR nodes (except start and end)
+dp_path(Current, Target, _) :-
+    link(Current, Target),
+    dp(Target, _).
+dp_path(Current, Target, Visited) :-
+    link(Current, Next),
+    fr(Next, _),
+    \+ member(Next, Visited),
+    dp_path(Next, Target, [Next|Visited]).
+
+% Print dp nodes in DOT format
+print_dp_nodes :-
+    forall(dp(Id, Desc),
+        ( atom_string(Id, AtomStr),
+          string_upper(AtomStr, Label),
+          wrap_text(Desc, 24, WrappedDesc),
+          escape_newlines(WrappedDesc, EscapedDesc),
+          format('    ~w [label="~w\\n~w"];\n', [Id, Label, EscapedDesc]) )).
+
+% Print dp->dp edges in DOT format using transitive dp_to_dp
+print_dp_edges :-
+    forall(dp_to_dp(From, To),
+        format('    ~w -> ~w;\n', [From, To])).
+
+% dp_hierarchy entry point
+dp_hierarchy :-
+    writeln('digraph AxiomaticDesign {'),
+    writeln('    node [shape=box width=1];'),
+    nl,
+    print_dp_nodes,
+    nl,
+    print_dp_edges,
+    writeln('}').
