@@ -12,6 +12,11 @@ fr(fr11, 'Prepare to travel').
 fr(fr12, 'Travel to Fluffernutters').
 fr(fr13, 'Travel back home').
 
+% Level 3
+fr(fr111, 'Document what is needed').
+fr(fr112, 'Make sure everything gets packed').
+fr(fr113, 'Contain and carry things').
+
 % Design Parameters
 % Level 0
 dp(dp0, 'Fluffernutters 2025 Project').
@@ -25,6 +30,11 @@ dp(dp3, 'Stage Setup').
 dp(dp11, 'Packing System').
 dp(dp12, 'Travel Day 1').
 dp(dp13, 'Travel Day 2').
+
+% Level 3
+dp(dp111, 'Apple Reminders Fluffernutters 2025 note').
+dp(dp112, 'Packing checklist instance').
+dp(dp113, 'Luggage and travel equipment and supplies').
 
 % Relationships
 link(fr0, dp0).
@@ -40,6 +50,12 @@ link(dp1, fr13).
 link(fr11, dp11).
 link(fr12, dp12).
 link(fr13, dp13).
+link(dp11, fr111).
+link(dp11, fr112).
+link(dp11, fr113).
+link(fr111, dp111).
+link(fr112, dp112).
+link(fr113, dp113).
 
 % Wrapping utility
 wrap_text(Text, Width, Wrapped) :-
