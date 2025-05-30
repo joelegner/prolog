@@ -237,3 +237,7 @@ decomposition_fr:
 .PHONY: decomposition_dp
 decomposition_dp:
 	@swipl -s decomposition.pl -g dp_hierarchy -t halt
+
+.PHONY: clean
+clean:
+	rm $(DESIGN_EXE)
