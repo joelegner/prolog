@@ -102,8 +102,8 @@ escape_newlines(Input, Escaped) :-
     split_string(Input, "\n", "", Parts),
     atomic_list_concat(Parts, '\\n', Escaped).
 
-% Main predicate to generate DOT code
-main :-
+% Main predicate to generate DOT code for DP-FR hierarchy.
+dp_fr_hierarchy :-
     writeln('digraph AxiomaticDesign {'),
     writeln('    node [shape=box width=1];'),
     nl,
