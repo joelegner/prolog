@@ -248,3 +248,8 @@ $(DP_FR_PNG):
 .PHONY: clean
 clean:
 	rm $(DESIGN_EXE)
+
+.PHONY: builder
+builder: builder.pl fluffernutters.pl
+	swipl -o builder -c builder.pl
+	./builder fluffernutters.pl
