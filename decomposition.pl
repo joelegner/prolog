@@ -1,4 +1,7 @@
 % Functional Requirements
+% See axiomat Prolog branch:
+% https://github.com/joelegner/axiomat/tree/prolog
+
 % Level 0
 fr(fr0, 'Kill it at Fluffernutters 2025').
 
