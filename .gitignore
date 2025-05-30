@@ -8,3 +8,5 @@ fr_hierarchy.png
 dp_hierarchy.png
 *.aux
 *.log
+.build/*
+builder

@@ -253,3 +253,4 @@ clean:
 builder: builder.pl fluffernutters.pl
 	swipl -o builder -c builder.pl
 	./builder fluffernutters.pl
+	open .build/fluffernutters.pl/main.pdf

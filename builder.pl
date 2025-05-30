@@ -61,14 +61,13 @@ replace_placeholder(String, Placeholder, Replacement, Result) :-
 
 % --- Run pdflatex to produce PDF in BuildDir
 run_pdflatex(BuildDir) :-
-    atomic_list_concat([BuildDir, '/main.tex'], MainTex),
-    atomic_list_concat([BuildDir, '/main.pdf'], PdfPath),
-
+    MainTex = 'main.tex',
     process_create(path(pdflatex),
-        ['-interaction=nonstopmode', '-output-directory', BuildDir, MainTex],
+        ['-interaction=nonstopmode', MainTex],
         [cwd(BuildDir), process(PID)]),
     process_wait(PID, _Status),
 
+    atomic_list_concat([BuildDir, '/main.pdf'], PdfPath),
     format("📄 PDF created at ~w~n", [PdfPath]).
 
 % Run main on startup
