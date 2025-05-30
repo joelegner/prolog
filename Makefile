@@ -1,5 +1,8 @@
 DESIGN_SOURCES = design.pl main.pl
 DESIGN_EXE = ./design
+DP_PNG = dp_hierarchy.png
+FR_PNG = fr_hierarchy.png
+DP_FR_PNG = dp_fr_hierarchy.png
 
 .PHONY: all
 all: buddhism goals htmlgen kowalski measurement practice
@@ -227,16 +230,20 @@ task:
 	swipl -s task.pl
 
 .PHONY: decomposition
-decomposition:
-	@swipl -s decomposition.pl -g main -t halt
+decomposition: $(DP_PNG) $(FR_PNG) $(DP_FR_PNG)
+	@open $(DP_PNG)
+	@open $(FR_PNG)
+	@open $(DP_FR_PNG)
 
-.PHONY: decomposition_fr
-decomposition_fr:
-	@swipl -s decomposition.pl -g fr_hierarchy -t halt
+$(FR_PNG):
+	@swipl -s decomposition.pl -g fr_hierarchy -t halt | dot -Tpng -o $(FR_PNG)
 
-.PHONY: decomposition_dp
-decomposition_dp:
-	@swipl -s decomposition.pl -g dp_hierarchy -t halt
+$(DP_PNG):
+	@swipl -s decomposition.pl -g dp_hierarchy -t halt | dot -Tpng -o $(DP_PNG)
+
+$(DP_FR_PNG):
+	@swipl -s decomposition.pl -g dp_fr_hierarchy -t halt | dot -Tpng -o $(DP_FR_PNG)
+
 
 .PHONY: clean
 clean:
