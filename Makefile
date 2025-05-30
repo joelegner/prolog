@@ -1,3 +1,6 @@
+DESIGN_SOURCES = design.pl main.pl
+DESIGN_EXE = ./design
+
 .PHONY: all
 all: buddhism goals htmlgen kowalski measurement practice
 
@@ -204,10 +207,12 @@ json:
 determine:
 	swipl -s determine.pl
 
-.PHONY: design
-design:
-	swipl -s design.pl -g run -t halt
+$(DESIGN_EXE): $(DESIGN_SOURCES)
+	swipl -o $(DESIGN_EXE) -c main.pl
 
+.PHONY: main
+main: $(DESIGN_EXE)
+	$(DESIGN_EXE)
 
 .PHONY: language
 language:
