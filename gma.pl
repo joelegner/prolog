@@ -56,7 +56,7 @@ eliminates_value(sold(both), tommy_home(ottawa)).
 eliminates_value(sold(both), joey_home(walsingham)).
 eliminates_value(sold(both), joey_home(ottawa)).
 
-% valid_family_config(JOE_JULIE_HOME, JOEY_HOME, TOMMY_HOME, SOLD) :-
+valid_family_config(JOE_JULIE_HOME, JOEY_HOME, TOMMY_HOME, SOLD) :-
     joe_julie_home(JOE_JULIE_HOME),
     joey_home(JOEY_HOME),
     tommy_home(TOMMY_HOME),
