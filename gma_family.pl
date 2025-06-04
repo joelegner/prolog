@@ -18,9 +18,9 @@ sold(walsingham).
 sold(ottawa).
 
 % --- Constraints ---
-eliminates_value(sold(walsingham), joe_julie_home(walsingham)).
-eliminates_value(sold(walsingham), joey_home(walsingham)).
-eliminates_value(sold(walsingham), tommy_home(walsingham)).
+eliminates_value(sold(Home), joe_julie_home(Home)).
+eliminates_value(sold(Home), joey_home(Home)).
+eliminates_value(sold(Home), tommy_home(Home)).
 
 % --- Convenience wrapper for the vehicle problem ---
 valid_family_config(JOE_JULIE_HOME, JOEY_HOME, TOMMY_HOME) :-
