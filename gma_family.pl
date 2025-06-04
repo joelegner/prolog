@@ -1,4 +1,5 @@
-:- consult('gma.pl').
+% gma_family.pl
+% Family-inspired General Morphological Analysis example
 
 % --- Parameters ---
 joe_julie_home(walsingham).
@@ -18,7 +19,8 @@ sold(ottawa).
 sold(neither).
 sold(both).
 
-% --- Constraints ---
+% Cross-consistency constraints
+% Selecting the left value eliminates the right value.
 eliminates_value(sold(Home), joe_julie_home(Home)).
 eliminates_value(sold(Home), joey_home(Home)).
 eliminates_value(sold(Home), tommy_home(Home)).
@@ -31,7 +33,6 @@ eliminates_value(sold(both), tommy_home(ottawa)).
 eliminates_value(sold(both), joey_home(walsingham)).
 eliminates_value(sold(both), joey_home(ottawa)).
 
-% --- Convenience wrapper for the vehicle problem ---
 valid_family_config(JOE_JULIE_HOME, JOEY_HOME, TOMMY_HOME, SOLD) :-
     joe_julie_home(JOE_JULIE_HOME),
     joey_home(JOEY_HOME),
