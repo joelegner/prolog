@@ -17,8 +17,13 @@ tommy_home(apartment).
 
 sold(walsingham).
 sold(ottawa).
-sold(neither).
-sold(both).
+sold([]).
+sold([walsingham, ottawa]).
+
+% No apartment together with keeping Walsingham
+eliminates_value(_, joe_julie_home(apartment)) :- \+ sold(walsingham).
+eliminates_value(_, tommy_home(apartment)) :- \+ sold(walsingham).
+eliminates_value(_, joey_home(apartment)) :- \+ sold(walsingham).
 
 % Cross-consistency constraints
 % Selecting the left value eliminates the right
@@ -27,12 +32,12 @@ eliminates_value(sold(Home), joey_home(Home)).
 eliminates_value(sold(Home), tommy_home(Home)).
 
 % Selling both houses elimiates them as anyone's home
-eliminates_value(sold(both), joe_julie_home(walsingham)).
-eliminates_value(sold(both), joe_julie_home(ottawa)).
-eliminates_value(sold(both), tommy_home(walsingham)).
-eliminates_value(sold(both), tommy_home(ottawa)).
-eliminates_value(sold(both), joey_home(walsingham)).
-eliminates_value(sold(both), joey_home(ottawa)).
+eliminates_value(sold([walsingham, ottawa]), joe_julie_home(walsingham)).
+eliminates_value(sold([walsingham, ottawa]), joe_julie_home(ottawa)).
+eliminates_value(sold([walsingham, ottawa]), tommy_home(walsingham)).
+eliminates_value(sold([walsingham, ottawa]), tommy_home(ottawa)).
+eliminates_value(sold([walsingham, ottawa]), joey_home(walsingham)).
+eliminates_value(sold([walsingham, ottawa]), joey_home(ottawa)).
 
 valid_family_config([JOE_JULIE_HOME, JOEY_HOME, TOMMY_HOME, SOLD]) :-
     joe_julie_home(JOE_JULIE_HOME),
