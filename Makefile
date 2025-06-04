@@ -261,4 +261,4 @@ gma_example:
 
 .PHONY: gma_family
 gma_family:
-	swipl -s gma_family.pl
+	swipl -s gma_family.pl -g print_valid_family_configs -t halt > gma_family.txt
