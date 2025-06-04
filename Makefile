@@ -254,3 +254,7 @@ builder: builder.pl fluffernutters.pl
 	swipl -o builder -c builder.pl
 	./builder fluffernutters.pl
 	open .build/fluffernutters.pl/main.pdf
+
+.PHONY: gma_example
+gma_example:
+	swipl -s gma_example.pl gma.pl
