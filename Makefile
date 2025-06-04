@@ -258,3 +258,7 @@ builder: builder.pl fluffernutters.pl
 .PHONY: gma_example
 gma_example:
 	swipl -s gma_example.pl gma.pl
+
+.PHONY: gma_family
+gma_family:
+	swipl -s gma_family.pl
