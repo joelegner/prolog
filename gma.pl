@@ -2,7 +2,7 @@
 % General Morphological Analysis
 
 % General predicate to check if two attributes conflict using a constraint predicate
-% conflict(Eliminates, X, Y) :-
+conflict(Eliminates, X, Y) :-
     call(Eliminates, X, Y);
     call(Eliminates, Y, X).
 
@@ -18,6 +18,7 @@ conflicts(Eliminates, [_|Xs]) :-
 % True if the config has no conflicts according to a given eliminates predicate 
 % Config is expected to be a list of value terms.
 valid_config(Eliminates, Config) :-
+    maplist(ground, Config),
     \+ conflicts(Eliminates, Config).
 
 % Working example: 

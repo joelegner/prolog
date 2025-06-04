@@ -1,5 +1,6 @@
 % gma_family.pl
 % Family-inspired General Morphological Analysis example
+:- consult('gma.pl').
 
 % --- Parameters ---
 joe_julie_home(walsingham).
@@ -20,7 +21,7 @@ sold(neither).
 sold(both).
 
 % Cross-consistency constraints
-% Selecting the left value eliminates the right value.
+% Selecting the left value eliminates the right
 eliminates_value(sold(Home), joe_julie_home(Home)).
 eliminates_value(sold(Home), joey_home(Home)).
 eliminates_value(sold(Home), tommy_home(Home)).
@@ -33,10 +34,30 @@ eliminates_value(sold(both), tommy_home(ottawa)).
 eliminates_value(sold(both), joey_home(walsingham)).
 eliminates_value(sold(both), joey_home(ottawa)).
 
-valid_family_config(JOE_JULIE_HOME, JOEY_HOME, TOMMY_HOME, SOLD) :-
+valid_family_config([JOE_JULIE_HOME, JOEY_HOME, TOMMY_HOME, SOLD]) :-
     joe_julie_home(JOE_JULIE_HOME),
     joey_home(JOEY_HOME),
     tommy_home(TOMMY_HOME),
     sold(SOLD),
     valid_config(eliminates_value, [joe_julie_home(JOE_JULIE_HOME), joey_home(JOEY_HOME), tommy_home(TOMMY_HOME), sold(SOLD)]).
-    
+
+valid_family_config(Config) :-
+    Config = [JOE_JULIE_HOME, JOEY_HOME, TOMMY_HOME, SOLD],
+    maplist(ground, Config),
+    joe_julie_home(JOE_JULIE_HOME),
+    joey_home(JOEY_HOME),
+    tommy_home(TOMMY_HOME),
+    sold(SOLD),
+    valid_config(eliminates_value, [
+        joe_julie_home(JOE_JULIE_HOME),
+        joey_home(JOEY_HOME),
+        tommy_home(TOMMY_HOME),
+        sold(SOLD)
+    ]).
+
+valid_family_configs(Configs) :-
+    findall(
+        [JOE_JULIE_HOME, JOEY_HOME, TOMMY_HOME, SOLD],
+        valid_family_config([JOE_JULIE_HOME, JOEY_HOME, TOMMY_HOME, SOLD]),
+        Configs
+    ).
