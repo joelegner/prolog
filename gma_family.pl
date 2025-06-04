@@ -15,13 +15,15 @@ joey_home(apartment).
 tommy_home(walsingham).
 tommy_home(apartment).
 
-% List of all houses that can be sold
-all_houses([walsingham, ottawa]).
-
 sold(walsingham).
 sold(ottawa).
 sold([]).
 sold([walsingham, ottawa]).
+
+% Relations start here 
+
+% List of all houses that can be sold
+all_houses([walsingham, ottawa]).
 
 % No apartment together with keeping Walsingham
 % If anyone lives at Walsingham, nobody lives in an apartment
