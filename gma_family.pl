@@ -2,25 +2,33 @@
 % Family-inspired General Morphological Analysis example
 :- consult('gma.pl').
 
-% --- Parameters ---
+% # Dimensions and possible values
+
+% dimension1(value1). 
+% dimension2(value2). 
+
+% Dimension 1
 joe_julie_home(walsingham).
 joe_julie_home(ottawa).
 joe_julie_home(rv).
 joe_julie_home(apartment).
 
+% Dimension 2
 joey_home(walsingham).
 joey_home(ottawa).
 joey_home(apartment).
 
+% Dimension 3
 tommy_home(walsingham).
 tommy_home(apartment).
 
+% Dimension 4
 sold(walsingham).
 sold(ottawa).
 sold([]).
 sold([walsingham, ottawa]).
 
-% Relations start here 
+% # Relations among dimensions
 
 % List of all houses that can be sold
 all_houses([walsingham, ottawa]).
