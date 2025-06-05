@@ -3,112 +3,102 @@ Config 1
   Joe & Julie: walsingham
   Joey       : walsingham
   Tommy      : walsingham
-  Kept       : [ottawa]
-  Sold       : [walsingham]
+  Kept       : [walsingham]
+  Sold       : ottawa
   Implications:
-    sold(walsingham) ⇒ $100K cash on hand
-    sold(walsingham) ⇒ Greatly reduced expenses
-    sold(walsingham) ⇒ Need much additional storage
+    sold(ottawa) ⇒ $10K cash on hand
+    sold(ottawa) ⇒ Reduced expenses
 
 Config 2
   Joe & Julie: walsingham
   Joey       : walsingham
   Tommy      : walsingham
-  Kept       : [walsingham]
-  Sold       : [ottawa]
+  Kept       : [walsingham,ottawa]
+  Sold       : []
   Implications:
-    sold(ottawa) ⇒ $10K cash on hand
-    sold(ottawa) ⇒ Reduced expenses
 
 Config 3
   Joe & Julie: walsingham
-  Joey       : walsingham
+  Joey       : ottawa
   Tommy      : walsingham
   Kept       : [walsingham,ottawa]
   Sold       : []
   Implications:
 
 Config 4
-  Joe & Julie: walsingham
-  Joey       : ottawa
+  Joe & Julie: ottawa
+  Joey       : walsingham
   Tommy      : walsingham
-  Kept       : [ottawa]
-  Sold       : [walsingham]
+  Kept       : [walsingham,ottawa]
+  Sold       : []
   Implications:
-    sold(walsingham) ⇒ $100K cash on hand
-    sold(walsingham) ⇒ Greatly reduced expenses
-    sold(walsingham) ⇒ Need much additional storage
 
 Config 5
-  Joe & Julie: walsingham
-  Joey       : ottawa
-  Tommy      : walsingham
-  Kept       : [walsingham]
-  Sold       : [ottawa]
-  Implications:
-    sold(ottawa) ⇒ $10K cash on hand
-    sold(ottawa) ⇒ Reduced expenses
-
-Config 6
-  Joe & Julie: walsingham
+  Joe & Julie: ottawa
   Joey       : ottawa
   Tommy      : walsingham
   Kept       : [walsingham,ottawa]
   Sold       : []
   Implications:
 
-Config 7
+Config 6
   Joe & Julie: ottawa
-  Joey       : walsingham
-  Tommy      : walsingham
+  Joey       : ottawa
+  Tommy      : apartment
   Kept       : [ottawa]
-  Sold       : [walsingham]
+  Sold       : walsingham
   Implications:
     sold(walsingham) ⇒ $100K cash on hand
     sold(walsingham) ⇒ Greatly reduced expenses
     sold(walsingham) ⇒ Need much additional storage
 
+Config 7
+  Joe & Julie: ottawa
+  Joey       : ottawa
+  Tommy      : apartment
+  Kept       : [walsingham,ottawa]
+  Sold       : []
+  Implications:
+
 Config 8
   Joe & Julie: ottawa
-  Joey       : walsingham
-  Tommy      : walsingham
-  Kept       : [walsingham]
-  Sold       : [ottawa]
+  Joey       : apartment
+  Tommy      : apartment
+  Kept       : [ottawa]
+  Sold       : walsingham
   Implications:
-    sold(ottawa) ⇒ $10K cash on hand
-    sold(ottawa) ⇒ Reduced expenses
+    sold(walsingham) ⇒ $100K cash on hand
+    sold(walsingham) ⇒ Greatly reduced expenses
+    sold(walsingham) ⇒ Need much additional storage
 
 Config 9
   Joe & Julie: ottawa
-  Joey       : walsingham
-  Tommy      : walsingham
+  Joey       : apartment
+  Tommy      : apartment
   Kept       : [walsingham,ottawa]
   Sold       : []
   Implications:
 
 Config 10
-  Joe & Julie: ottawa
-  Joey       : ottawa
-  Tommy      : walsingham
-  Kept       : [ottawa]
-  Sold       : [walsingham]
-  Implications:
-    sold(walsingham) ⇒ $100K cash on hand
-    sold(walsingham) ⇒ Greatly reduced expenses
-    sold(walsingham) ⇒ Need much additional storage
-
-Config 11
-  Joe & Julie: ottawa
-  Joey       : ottawa
+  Joe & Julie: rv
+  Joey       : walsingham
   Tommy      : walsingham
   Kept       : [walsingham]
-  Sold       : [ottawa]
+  Sold       : ottawa
   Implications:
     sold(ottawa) ⇒ $10K cash on hand
     sold(ottawa) ⇒ Reduced expenses
 
+Config 11
+  Joe & Julie: rv
+  Joey       : walsingham
+  Tommy      : walsingham
+  Kept       : [walsingham,ottawa]
+  Sold       : []
+  Implications:
+
 Config 12
-  Joe & Julie: ottawa
+  Joe & Julie: rv
   Joey       : ottawa
   Tommy      : walsingham
   Kept       : [walsingham,ottawa]
@@ -116,180 +106,54 @@ Config 12
   Implications:
 
 Config 13
-  Joe & Julie: ottawa
+  Joe & Julie: rv
   Joey       : ottawa
   Tommy      : apartment
   Kept       : [ottawa]
-  Sold       : [walsingham]
+  Sold       : walsingham
   Implications:
     sold(walsingham) ⇒ $100K cash on hand
     sold(walsingham) ⇒ Greatly reduced expenses
     sold(walsingham) ⇒ Need much additional storage
 
 Config 14
-  Joe & Julie: ottawa
+  Joe & Julie: rv
   Joey       : ottawa
   Tommy      : apartment
-  Kept       : [walsingham]
-  Sold       : [ottawa]
+  Kept       : [walsingham,ottawa]
+  Sold       : []
   Implications:
-    sold(ottawa) ⇒ $10K cash on hand
-    sold(ottawa) ⇒ Reduced expenses
 
 Config 15
-  Joe & Julie: ottawa
-  Joey       : ottawa
+  Joe & Julie: rv
+  Joey       : apartment
   Tommy      : apartment
-  Kept       : [walsingham,ottawa]
-  Sold       : []
+  Kept       : [ottawa]
+  Sold       : walsingham
   Implications:
+    sold(walsingham) ⇒ $100K cash on hand
+    sold(walsingham) ⇒ Greatly reduced expenses
+    sold(walsingham) ⇒ Need much additional storage
 
 Config 16
-  Joe & Julie: ottawa
+  Joe & Julie: rv
   Joey       : apartment
   Tommy      : apartment
-  Kept       : [ottawa]
-  Sold       : [walsingham]
+  Kept       : [walsingham]
+  Sold       : ottawa
   Implications:
-    sold(walsingham) ⇒ $100K cash on hand
-    sold(walsingham) ⇒ Greatly reduced expenses
-    sold(walsingham) ⇒ Need much additional storage
+    sold(ottawa) ⇒ $10K cash on hand
+    sold(ottawa) ⇒ Reduced expenses
 
 Config 17
-  Joe & Julie: ottawa
+  Joe & Julie: rv
   Joey       : apartment
   Tommy      : apartment
-  Kept       : [walsingham]
-  Sold       : [ottawa]
+  Kept       : [walsingham,ottawa]
+  Sold       : []
   Implications:
-    sold(ottawa) ⇒ $10K cash on hand
-    sold(ottawa) ⇒ Reduced expenses
 
 Config 18
-  Joe & Julie: ottawa
-  Joey       : apartment
-  Tommy      : apartment
-  Kept       : [walsingham,ottawa]
-  Sold       : []
-  Implications:
-
-Config 19
-  Joe & Julie: rv
-  Joey       : walsingham
-  Tommy      : walsingham
-  Kept       : [ottawa]
-  Sold       : [walsingham]
-  Implications:
-    sold(walsingham) ⇒ $100K cash on hand
-    sold(walsingham) ⇒ Greatly reduced expenses
-    sold(walsingham) ⇒ Need much additional storage
-
-Config 20
-  Joe & Julie: rv
-  Joey       : walsingham
-  Tommy      : walsingham
-  Kept       : [walsingham]
-  Sold       : [ottawa]
-  Implications:
-    sold(ottawa) ⇒ $10K cash on hand
-    sold(ottawa) ⇒ Reduced expenses
-
-Config 21
-  Joe & Julie: rv
-  Joey       : walsingham
-  Tommy      : walsingham
-  Kept       : [walsingham,ottawa]
-  Sold       : []
-  Implications:
-
-Config 22
-  Joe & Julie: rv
-  Joey       : ottawa
-  Tommy      : walsingham
-  Kept       : [ottawa]
-  Sold       : [walsingham]
-  Implications:
-    sold(walsingham) ⇒ $100K cash on hand
-    sold(walsingham) ⇒ Greatly reduced expenses
-    sold(walsingham) ⇒ Need much additional storage
-
-Config 23
-  Joe & Julie: rv
-  Joey       : ottawa
-  Tommy      : walsingham
-  Kept       : [walsingham]
-  Sold       : [ottawa]
-  Implications:
-    sold(ottawa) ⇒ $10K cash on hand
-    sold(ottawa) ⇒ Reduced expenses
-
-Config 24
-  Joe & Julie: rv
-  Joey       : ottawa
-  Tommy      : walsingham
-  Kept       : [walsingham,ottawa]
-  Sold       : []
-  Implications:
-
-Config 25
-  Joe & Julie: rv
-  Joey       : ottawa
-  Tommy      : apartment
-  Kept       : [ottawa]
-  Sold       : [walsingham]
-  Implications:
-    sold(walsingham) ⇒ $100K cash on hand
-    sold(walsingham) ⇒ Greatly reduced expenses
-    sold(walsingham) ⇒ Need much additional storage
-
-Config 26
-  Joe & Julie: rv
-  Joey       : ottawa
-  Tommy      : apartment
-  Kept       : [walsingham]
-  Sold       : [ottawa]
-  Implications:
-    sold(ottawa) ⇒ $10K cash on hand
-    sold(ottawa) ⇒ Reduced expenses
-
-Config 27
-  Joe & Julie: rv
-  Joey       : ottawa
-  Tommy      : apartment
-  Kept       : [walsingham,ottawa]
-  Sold       : []
-  Implications:
-
-Config 28
-  Joe & Julie: rv
-  Joey       : apartment
-  Tommy      : apartment
-  Kept       : [ottawa]
-  Sold       : [walsingham]
-  Implications:
-    sold(walsingham) ⇒ $100K cash on hand
-    sold(walsingham) ⇒ Greatly reduced expenses
-    sold(walsingham) ⇒ Need much additional storage
-
-Config 29
-  Joe & Julie: rv
-  Joey       : apartment
-  Tommy      : apartment
-  Kept       : [walsingham]
-  Sold       : [ottawa]
-  Implications:
-    sold(ottawa) ⇒ $10K cash on hand
-    sold(ottawa) ⇒ Reduced expenses
-
-Config 30
-  Joe & Julie: rv
-  Joey       : apartment
-  Tommy      : apartment
-  Kept       : [walsingham,ottawa]
-  Sold       : []
-  Implications:
-
-Config 31
   Joe & Julie: rv
   Joey       : apartment
   Tommy      : apartment
@@ -302,28 +166,18 @@ Config 31
     sold(ottawa) ⇒ $10K cash on hand
     sold(ottawa) ⇒ Reduced expenses
 
-Config 32
+Config 19
   Joe & Julie: apartment
   Joey       : ottawa
   Tommy      : apartment
   Kept       : [ottawa]
-  Sold       : [walsingham]
+  Sold       : walsingham
   Implications:
     sold(walsingham) ⇒ $100K cash on hand
     sold(walsingham) ⇒ Greatly reduced expenses
     sold(walsingham) ⇒ Need much additional storage
 
-Config 33
-  Joe & Julie: apartment
-  Joey       : ottawa
-  Tommy      : apartment
-  Kept       : [walsingham]
-  Sold       : [ottawa]
-  Implications:
-    sold(ottawa) ⇒ $10K cash on hand
-    sold(ottawa) ⇒ Reduced expenses
-
-Config 34
+Config 20
   Joe & Julie: apartment
   Joey       : ottawa
   Tommy      : apartment
@@ -331,28 +185,28 @@ Config 34
   Sold       : []
   Implications:
 
-Config 35
+Config 21
   Joe & Julie: apartment
   Joey       : apartment
   Tommy      : apartment
   Kept       : [ottawa]
-  Sold       : [walsingham]
+  Sold       : walsingham
   Implications:
     sold(walsingham) ⇒ $100K cash on hand
     sold(walsingham) ⇒ Greatly reduced expenses
     sold(walsingham) ⇒ Need much additional storage
 
-Config 36
+Config 22
   Joe & Julie: apartment
   Joey       : apartment
   Tommy      : apartment
   Kept       : [walsingham]
-  Sold       : [ottawa]
+  Sold       : ottawa
   Implications:
     sold(ottawa) ⇒ $10K cash on hand
     sold(ottawa) ⇒ Reduced expenses
 
-Config 37
+Config 23
   Joe & Julie: apartment
   Joey       : apartment
   Tommy      : apartment
@@ -360,7 +214,7 @@ Config 37
   Sold       : []
   Implications:
 
-Config 38
+Config 24
   Joe & Julie: apartment
   Joey       : apartment
   Tommy      : apartment
