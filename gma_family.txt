@@ -6,8 +6,9 @@ Config 1
   Kept       : [walsingham]
   Sold       : ottawa
   Implications:
-    sold(ottawa) ⇒ $10K cash on hand
+    sold(ottawa) ⇒ +$10K net proceeds after USDA cut
     sold(ottawa) ⇒ Reduced expenses
+    sold(ottawa) ⇒ Joey has to move
 
 Config 2
   Joe & Julie: walsingham
@@ -48,9 +49,11 @@ Config 6
   Kept       : [ottawa]
   Sold       : walsingham
   Implications:
-    sold(walsingham) ⇒ $100K cash on hand
+    sold(walsingham) ⇒ +$100K cash from sale
     sold(walsingham) ⇒ Greatly reduced expenses
     sold(walsingham) ⇒ Need much additional storage
+    sold(walsingham) ⇒ Joe, Julie, and Tommy have to move
+    sold(walsingham) ⇒ No home for kayak trailer
 
 Config 7
   Joe & Julie: ottawa
@@ -67,9 +70,11 @@ Config 8
   Kept       : [ottawa]
   Sold       : walsingham
   Implications:
-    sold(walsingham) ⇒ $100K cash on hand
+    sold(walsingham) ⇒ +$100K cash from sale
     sold(walsingham) ⇒ Greatly reduced expenses
     sold(walsingham) ⇒ Need much additional storage
+    sold(walsingham) ⇒ Joe, Julie, and Tommy have to move
+    sold(walsingham) ⇒ No home for kayak trailer
 
 Config 9
   Joe & Julie: ottawa
@@ -86,8 +91,10 @@ Config 10
   Kept       : [walsingham]
   Sold       : ottawa
   Implications:
-    sold(ottawa) ⇒ $10K cash on hand
+    joe_julie_home(rv) ⇒ -$100K cash outlay for RV
+    sold(ottawa) ⇒ +$10K net proceeds after USDA cut
     sold(ottawa) ⇒ Reduced expenses
+    sold(ottawa) ⇒ Joey has to move
 
 Config 11
   Joe & Julie: rv
@@ -96,6 +103,7 @@ Config 11
   Kept       : [walsingham,ottawa]
   Sold       : []
   Implications:
+    joe_julie_home(rv) ⇒ -$100K cash outlay for RV
 
 Config 12
   Joe & Julie: rv
@@ -104,6 +112,7 @@ Config 12
   Kept       : [walsingham,ottawa]
   Sold       : []
   Implications:
+    joe_julie_home(rv) ⇒ -$100K cash outlay for RV
 
 Config 13
   Joe & Julie: rv
@@ -112,9 +121,12 @@ Config 13
   Kept       : [ottawa]
   Sold       : walsingham
   Implications:
-    sold(walsingham) ⇒ $100K cash on hand
+    joe_julie_home(rv) ⇒ -$100K cash outlay for RV
+    sold(walsingham) ⇒ +$100K cash from sale
     sold(walsingham) ⇒ Greatly reduced expenses
     sold(walsingham) ⇒ Need much additional storage
+    sold(walsingham) ⇒ Joe, Julie, and Tommy have to move
+    sold(walsingham) ⇒ No home for kayak trailer
 
 Config 14
   Joe & Julie: rv
@@ -123,6 +135,7 @@ Config 14
   Kept       : [walsingham,ottawa]
   Sold       : []
   Implications:
+    joe_julie_home(rv) ⇒ -$100K cash outlay for RV
 
 Config 15
   Joe & Julie: rv
@@ -131,9 +144,12 @@ Config 15
   Kept       : [ottawa]
   Sold       : walsingham
   Implications:
-    sold(walsingham) ⇒ $100K cash on hand
+    joe_julie_home(rv) ⇒ -$100K cash outlay for RV
+    sold(walsingham) ⇒ +$100K cash from sale
     sold(walsingham) ⇒ Greatly reduced expenses
     sold(walsingham) ⇒ Need much additional storage
+    sold(walsingham) ⇒ Joe, Julie, and Tommy have to move
+    sold(walsingham) ⇒ No home for kayak trailer
 
 Config 16
   Joe & Julie: rv
@@ -142,8 +158,10 @@ Config 16
   Kept       : [walsingham]
   Sold       : ottawa
   Implications:
-    sold(ottawa) ⇒ $10K cash on hand
+    joe_julie_home(rv) ⇒ -$100K cash outlay for RV
+    sold(ottawa) ⇒ +$10K net proceeds after USDA cut
     sold(ottawa) ⇒ Reduced expenses
+    sold(ottawa) ⇒ Joey has to move
 
 Config 17
   Joe & Julie: rv
@@ -152,6 +170,7 @@ Config 17
   Kept       : [walsingham,ottawa]
   Sold       : []
   Implications:
+    joe_julie_home(rv) ⇒ -$100K cash outlay for RV
 
 Config 18
   Joe & Julie: rv
@@ -160,11 +179,15 @@ Config 18
   Kept       : []
   Sold       : [walsingham,ottawa]
   Implications:
-    sold(walsingham) ⇒ $100K cash on hand
+    joe_julie_home(rv) ⇒ -$100K cash outlay for RV
+    sold(walsingham) ⇒ +$100K cash from sale
     sold(walsingham) ⇒ Greatly reduced expenses
     sold(walsingham) ⇒ Need much additional storage
-    sold(ottawa) ⇒ $10K cash on hand
+    sold(walsingham) ⇒ Joe, Julie, and Tommy have to move
+    sold(walsingham) ⇒ No home for kayak trailer
+    sold(ottawa) ⇒ +$10K net proceeds after USDA cut
     sold(ottawa) ⇒ Reduced expenses
+    sold(ottawa) ⇒ Joey has to move
 
 Config 19
   Joe & Julie: apartment
@@ -173,9 +196,11 @@ Config 19
   Kept       : [ottawa]
   Sold       : walsingham
   Implications:
-    sold(walsingham) ⇒ $100K cash on hand
+    sold(walsingham) ⇒ +$100K cash from sale
     sold(walsingham) ⇒ Greatly reduced expenses
     sold(walsingham) ⇒ Need much additional storage
+    sold(walsingham) ⇒ Joe, Julie, and Tommy have to move
+    sold(walsingham) ⇒ No home for kayak trailer
 
 Config 20
   Joe & Julie: apartment
@@ -192,9 +217,11 @@ Config 21
   Kept       : [ottawa]
   Sold       : walsingham
   Implications:
-    sold(walsingham) ⇒ $100K cash on hand
+    sold(walsingham) ⇒ +$100K cash from sale
     sold(walsingham) ⇒ Greatly reduced expenses
     sold(walsingham) ⇒ Need much additional storage
+    sold(walsingham) ⇒ Joe, Julie, and Tommy have to move
+    sold(walsingham) ⇒ No home for kayak trailer
 
 Config 22
   Joe & Julie: apartment
@@ -203,8 +230,9 @@ Config 22
   Kept       : [walsingham]
   Sold       : ottawa
   Implications:
-    sold(ottawa) ⇒ $10K cash on hand
+    sold(ottawa) ⇒ +$10K net proceeds after USDA cut
     sold(ottawa) ⇒ Reduced expenses
+    sold(ottawa) ⇒ Joey has to move
 
 Config 23
   Joe & Julie: apartment
@@ -221,8 +249,11 @@ Config 24
   Kept       : []
   Sold       : [walsingham,ottawa]
   Implications:
-    sold(walsingham) ⇒ $100K cash on hand
+    sold(walsingham) ⇒ +$100K cash from sale
     sold(walsingham) ⇒ Greatly reduced expenses
     sold(walsingham) ⇒ Need much additional storage
-    sold(ottawa) ⇒ $10K cash on hand
+    sold(walsingham) ⇒ Joe, Julie, and Tommy have to move
+    sold(walsingham) ⇒ No home for kayak trailer
+    sold(ottawa) ⇒ +$10K net proceeds after USDA cut
     sold(ottawa) ⇒ Reduced expenses
+    sold(ottawa) ⇒ Joey has to move

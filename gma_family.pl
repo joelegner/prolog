@@ -106,11 +106,15 @@ print_configs([[JJ, JY, TM, SD]|Rest], N) :-
 wrap_sold(House, sold(House)).
 
 % Implications
-implies(sold(walsingham), '$100K cash on hand').
+implies(sold(walsingham), '+$100K cash from sale').
 implies(sold(walsingham), 'Greatly reduced expenses').
 implies(sold(walsingham), 'Need much additional storage').
-implies(sold(ottawa), '$10K cash on hand').
+implies(sold(walsingham), 'Joe, Julie, and Tommy have to move').
+implies(sold(walsingham), 'No home for kayak trailer').
+implies(sold(ottawa), '+$10K net proceeds after USDA cut').
 implies(sold(ottawa), 'Reduced expenses').
+implies(sold(ottawa), 'Joey has to move').
+implies(joe_julie_home(rv), '-$100K cash outlay for RV').
 
 % Print implications for a config
 print_implications([]).
