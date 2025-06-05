@@ -17,6 +17,7 @@ Config 2
   Kept       : [walsingham,ottawa]
   Sold       : []
   Implications:
+    [inferred] ⇒ +Rental income from Ottawa house
 
 Config 3
   Joe & Julie: walsingham
@@ -104,6 +105,7 @@ Config 11
   Sold       : []
   Implications:
     joe_julie_home(rv) ⇒ -$100K cash outlay for RV
+    [inferred] ⇒ +Rental income from Ottawa house
 
 Config 12
   Joe & Julie: rv
@@ -150,6 +152,7 @@ Config 15
     sold(walsingham) ⇒ Need much additional storage
     sold(walsingham) ⇒ Joe, Julie, and Tommy have to move
     sold(walsingham) ⇒ No home for kayak trailer
+    [inferred] ⇒ +Rental income from Ottawa house
 
 Config 16
   Joe & Julie: rv
@@ -171,6 +174,7 @@ Config 17
   Sold       : []
   Implications:
     joe_julie_home(rv) ⇒ -$100K cash outlay for RV
+    [inferred] ⇒ +Rental income from Ottawa house
 
 Config 18
   Joe & Julie: rv
@@ -222,6 +226,7 @@ Config 21
     sold(walsingham) ⇒ Need much additional storage
     sold(walsingham) ⇒ Joe, Julie, and Tommy have to move
     sold(walsingham) ⇒ No home for kayak trailer
+    [inferred] ⇒ +Rental income from Ottawa house
 
 Config 22
   Joe & Julie: apartment
@@ -241,6 +246,7 @@ Config 23
   Kept       : [walsingham,ottawa]
   Sold       : []
   Implications:
+    [inferred] ⇒ +Rental income from Ottawa house
 
 Config 24
   Joe & Julie: apartment
