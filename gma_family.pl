@@ -118,15 +118,17 @@ implies(joe_julie_home(rv), '-$100K cash outlay for RV').
 
 % Print implications for a config
 print_implications(Facts) :-
-    % Print implications based on the implies/2 facts
+    % Print static implications
     forall(
         member(Fact, Facts),
         (   findall(Implication, implies(Fact, Implication), Implied),
             print_implication_list(Fact, Implied)
         )
     ),
-    % Custom implication: Ottawa house kept and unoccupied ⇒ Rental income
-    ottawa_rental_implication(Facts).
+    % Custom implications
+    ottawa_rental_implication(Facts),
+    walsingham_rental_implication(Facts).
+
 
 print_implication_list(_, []).
 print_implication_list(Fact, [I|Rest]) :-
@@ -143,3 +145,14 @@ ottawa_rental_implication(Facts) :-
     % Then, print the custom implication
     format("    [inferred] ⇒ Rental income from Ottawa house~n").
 ottawa_rental_implication(_).
+
+walsingham_rental_implication(Facts) :-
+    % Walsingham is kept (not sold)
+    \+ member(sold(walsingham), Facts),
+    % Nobody lives there
+    \+ member(joe_julie_home(walsingham), Facts),
+    \+ member(joey_home(walsingham), Facts),
+    \+ member(tommy_home(walsingham), Facts),
+    % Then, print the custom implication
+    format("    [inferred] ⇒ Rental income from Walsingham house~n").
+walsingham_rental_implication(_).
