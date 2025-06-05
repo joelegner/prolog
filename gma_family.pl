@@ -4,10 +4,6 @@
 
 % # Dimensions and possible values
 
-joe_julie_home_now(walsingham).
-joey_home_now(ottawa).
-tommy_home_now(walsingham).
-
 % Dimension 1
 joe_julie_home(walsingham).
 joe_julie_home(ottawa).
