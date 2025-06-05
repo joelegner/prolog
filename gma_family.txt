@@ -3,164 +3,262 @@ Config 1
   Joe & Julie: walsingham
   Joey       : walsingham
   Tommy      : walsingham
-  Kept       : [walsingham]
-  Sold       : ottawa
+  Kept       : [ottawa]
+  Sold       : [walsingham]
 
 Config 2
   Joe & Julie: walsingham
   Joey       : walsingham
   Tommy      : walsingham
+  Kept       : [walsingham]
+  Sold       : [ottawa]
+
+Config 3
+  Joe & Julie: walsingham
+  Joey       : walsingham
+  Tommy      : walsingham
   Kept       : [walsingham,ottawa]
   Sold       : []
 
-Config 3
+Config 4
+  Joe & Julie: walsingham
+  Joey       : ottawa
+  Tommy      : walsingham
+  Kept       : [ottawa]
+  Sold       : [walsingham]
+
+Config 5
+  Joe & Julie: walsingham
+  Joey       : ottawa
+  Tommy      : walsingham
+  Kept       : [walsingham]
+  Sold       : [ottawa]
+
+Config 6
   Joe & Julie: walsingham
   Joey       : ottawa
   Tommy      : walsingham
   Kept       : [walsingham,ottawa]
   Sold       : []
 
-Config 4
+Config 7
   Joe & Julie: ottawa
   Joey       : walsingham
   Tommy      : walsingham
-  Kept       : [walsingham,ottawa]
-  Sold       : []
-
-Config 5
-  Joe & Julie: ottawa
-  Joey       : ottawa
-  Tommy      : walsingham
-  Kept       : [walsingham,ottawa]
-  Sold       : []
-
-Config 6
-  Joe & Julie: ottawa
-  Joey       : ottawa
-  Tommy      : apartment
   Kept       : [ottawa]
-  Sold       : walsingham
-
-Config 7
-  Joe & Julie: ottawa
-  Joey       : ottawa
-  Tommy      : apartment
-  Kept       : [walsingham,ottawa]
-  Sold       : []
+  Sold       : [walsingham]
 
 Config 8
   Joe & Julie: ottawa
-  Joey       : apartment
-  Tommy      : apartment
-  Kept       : [ottawa]
-  Sold       : walsingham
+  Joey       : walsingham
+  Tommy      : walsingham
+  Kept       : [walsingham]
+  Sold       : [ottawa]
 
 Config 9
   Joe & Julie: ottawa
-  Joey       : apartment
-  Tommy      : apartment
+  Joey       : walsingham
+  Tommy      : walsingham
   Kept       : [walsingham,ottawa]
   Sold       : []
 
 Config 10
-  Joe & Julie: rv
-  Joey       : walsingham
+  Joe & Julie: ottawa
+  Joey       : ottawa
   Tommy      : walsingham
-  Kept       : [walsingham]
-  Sold       : ottawa
+  Kept       : [ottawa]
+  Sold       : [walsingham]
 
 Config 11
-  Joe & Julie: rv
-  Joey       : walsingham
+  Joe & Julie: ottawa
+  Joey       : ottawa
   Tommy      : walsingham
-  Kept       : [walsingham,ottawa]
-  Sold       : []
+  Kept       : [walsingham]
+  Sold       : [ottawa]
 
 Config 12
-  Joe & Julie: rv
+  Joe & Julie: ottawa
   Joey       : ottawa
   Tommy      : walsingham
   Kept       : [walsingham,ottawa]
   Sold       : []
 
 Config 13
+  Joe & Julie: ottawa
+  Joey       : ottawa
+  Tommy      : apartment
+  Kept       : [ottawa]
+  Sold       : [walsingham]
+
+Config 14
+  Joe & Julie: ottawa
+  Joey       : ottawa
+  Tommy      : apartment
+  Kept       : [walsingham]
+  Sold       : [ottawa]
+
+Config 15
+  Joe & Julie: ottawa
+  Joey       : ottawa
+  Tommy      : apartment
+  Kept       : [walsingham,ottawa]
+  Sold       : []
+
+Config 16
+  Joe & Julie: ottawa
+  Joey       : apartment
+  Tommy      : apartment
+  Kept       : [ottawa]
+  Sold       : [walsingham]
+
+Config 17
+  Joe & Julie: ottawa
+  Joey       : apartment
+  Tommy      : apartment
+  Kept       : [walsingham]
+  Sold       : [ottawa]
+
+Config 18
+  Joe & Julie: ottawa
+  Joey       : apartment
+  Tommy      : apartment
+  Kept       : [walsingham,ottawa]
+  Sold       : []
+
+Config 19
+  Joe & Julie: rv
+  Joey       : walsingham
+  Tommy      : walsingham
+  Kept       : [ottawa]
+  Sold       : [walsingham]
+
+Config 20
+  Joe & Julie: rv
+  Joey       : walsingham
+  Tommy      : walsingham
+  Kept       : [walsingham]
+  Sold       : [ottawa]
+
+Config 21
+  Joe & Julie: rv
+  Joey       : walsingham
+  Tommy      : walsingham
+  Kept       : [walsingham,ottawa]
+  Sold       : []
+
+Config 22
+  Joe & Julie: rv
+  Joey       : ottawa
+  Tommy      : walsingham
+  Kept       : [ottawa]
+  Sold       : [walsingham]
+
+Config 23
+  Joe & Julie: rv
+  Joey       : ottawa
+  Tommy      : walsingham
+  Kept       : [walsingham]
+  Sold       : [ottawa]
+
+Config 24
+  Joe & Julie: rv
+  Joey       : ottawa
+  Tommy      : walsingham
+  Kept       : [walsingham,ottawa]
+  Sold       : []
+
+Config 25
   Joe & Julie: rv
   Joey       : ottawa
   Tommy      : apartment
   Kept       : [ottawa]
-  Sold       : walsingham
+  Sold       : [walsingham]
 
-Config 14
+Config 26
+  Joe & Julie: rv
+  Joey       : ottawa
+  Tommy      : apartment
+  Kept       : [walsingham]
+  Sold       : [ottawa]
+
+Config 27
   Joe & Julie: rv
   Joey       : ottawa
   Tommy      : apartment
   Kept       : [walsingham,ottawa]
   Sold       : []
 
-Config 15
+Config 28
   Joe & Julie: rv
   Joey       : apartment
   Tommy      : apartment
   Kept       : [ottawa]
-  Sold       : walsingham
+  Sold       : [walsingham]
 
-Config 16
+Config 29
   Joe & Julie: rv
   Joey       : apartment
   Tommy      : apartment
   Kept       : [walsingham]
-  Sold       : ottawa
+  Sold       : [ottawa]
 
-Config 17
+Config 30
   Joe & Julie: rv
   Joey       : apartment
   Tommy      : apartment
   Kept       : [walsingham,ottawa]
   Sold       : []
 
-Config 18
+Config 31
   Joe & Julie: rv
   Joey       : apartment
   Tommy      : apartment
   Kept       : []
   Sold       : [walsingham,ottawa]
 
-Config 19
+Config 32
   Joe & Julie: apartment
   Joey       : ottawa
   Tommy      : apartment
   Kept       : [ottawa]
-  Sold       : walsingham
+  Sold       : [walsingham]
 
-Config 20
+Config 33
+  Joe & Julie: apartment
+  Joey       : ottawa
+  Tommy      : apartment
+  Kept       : [walsingham]
+  Sold       : [ottawa]
+
+Config 34
   Joe & Julie: apartment
   Joey       : ottawa
   Tommy      : apartment
   Kept       : [walsingham,ottawa]
   Sold       : []
 
-Config 21
+Config 35
   Joe & Julie: apartment
   Joey       : apartment
   Tommy      : apartment
   Kept       : [ottawa]
-  Sold       : walsingham
+  Sold       : [walsingham]
 
-Config 22
+Config 36
   Joe & Julie: apartment
   Joey       : apartment
   Tommy      : apartment
   Kept       : [walsingham]
-  Sold       : ottawa
+  Sold       : [ottawa]
 
-Config 23
+Config 37
   Joe & Julie: apartment
   Joey       : apartment
   Tommy      : apartment
   Kept       : [walsingham,ottawa]
   Sold       : []
 
-Config 24
+Config 38
   Joe & Julie: apartment
   Joey       : apartment
   Tommy      : apartment

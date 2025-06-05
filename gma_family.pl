@@ -23,8 +23,8 @@ tommy_home(walsingham).
 tommy_home(apartment).
 
 % Dimension 4
-sold(walsingham).
-sold(ottawa).
+sold([walsingham]).
+sold([ottawa]).
 sold([]).
 sold([walsingham, ottawa]).
 
