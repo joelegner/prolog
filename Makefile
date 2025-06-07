@@ -99,6 +99,10 @@ live_another_day:
 measurement:
 	swipl -s measurement.pl -g main -t halt
 
+.PHONY: measurement_no_clpr
+measurement_no_clpr:
+	swipl -s measurement_no_clpr.pl -g main -t halt
+
 .PHONY: page
 page:
 	swipl -s page.pl
