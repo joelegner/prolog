@@ -7,7 +7,7 @@ act:
 	swipl -s act.pl
 
 .PHONY: all
-all: buddhism goals htmlgen kowalski measurement measurement_no_clpr practice project_ethernet zag zig gma_family
+all: buddhism goals htmlgen kowalski measurement measurement_no_clpr practice project_ethernet zag zig gma_family length_tests
 
 .PHONY: axiology
 axiology:
@@ -155,7 +155,11 @@ law:
 
 .PHONY: length
 length:
-	swipl -s length.pl -g run -t halt
+	swipl -s length.pl
+
+.PHONY: length_tests
+length_tests:
+	swipl -s length.pl -s length_tests.pl -g run_tests -t halt
 
 .PHONY: lists
 lists:
