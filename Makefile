@@ -153,6 +153,10 @@ language:
 law:
 	swipl -s law.pl
 
+.PHONY: length
+length:
+	swipl -s length.pl -g run -t halt
+
 .PHONY: lists
 lists:
 	swipl -s lists.pl -g run_tests
