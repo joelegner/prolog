@@ -135,12 +135,26 @@ program --> command, program.
 
 command --> keyword, identifier, [';'].
 
-keyword --> [print].
+keyword --> [print] | [call].
 
 identifier --> [joe].
 identifier --> [legner].
 
 /* 
+We will use iterative deepening to get all possible outcomes.
+Without iterative deepening, we may not get all possible outcomes.
+
+?- length(P, _), phrase(program, P).
+P = [] ;
+P = [print, joe, ;] ;
+P = [print, legner, ;] ;
+P = [call, joe, ;] ;
+P = [call, legner, ;] ;
+P = [print, joe, ;, print, joe, ;] ;
+P = [print, joe, ;, print, legner, ;] ;
+P = [print, joe, ;, call, joe, ;] ;
+P = [print, joe, ;, call, legner, ;] 
+
 Here is use of the pipe character | meaning "or".
 */
 xy --> [].
@@ -241,5 +255,46 @@ The next example finds any pairs of elements.
 X = l ;
 X = o ;
 X = ! ;
+false.
+
+What about parsing?
+
+Parsing is also called _syntactic analysis_ or _syntax analysis_.
+
+Parsing comes from the Latin word _pars_, _paris_ f.: "part"
+
+I thought Prolog was all about relations. If so, how can parsing be expressed as a relation? 
+
+Parsing is expressed as a relation between (1) syntax trees and (2) lists of characters (or tokens). 
+
+That is to say parsing is a relation between trees and lists.
+
+Parsing is a specific usage mode of DCGs. It is the case where the sequence of characters is known and the tree is needed.
+
+Let's parse expressions of the form "1", "1+1", "1+1+1", and so on.
+
+NO! WAIT! Let's not _parse_ them. Let's _describe_ them. That's what we do in Prolog. We describe relations.
+
+Let's _describe_ expressions of the form "1", "1+1", "1+1+1", and so on.
+*/
+
+% expr --> "1", expr_remainder.
+% expr_remainder --> [].
+% expr_remainder --> "+", expr.
+
+/*
+Let's try parsing. Parsing is relating lists of characters to syntax trees.  
+*/
+expr(1, [_|Rs], Rs) --> "1".
+expr(A+B, [_|Rs0], Rs) --> expr(A, Rs0, Rs1), "+", expr(B, Rs1, Rs).
+ 
+/*
+To test this code:
+
+?- Cs = "1+1+1", phrase(expr(E, Cs, _), Cs).
+Cs = ['1', +, '1', +, '1'],
+E = 1+(1+1) ;
+Cs = ['1', +, '1', +, '1'],
+E = 1+1+1 ;
 false.
 */
