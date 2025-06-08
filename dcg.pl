@@ -297,4 +297,39 @@ E = 1+(1+1) ;
 Cs = ['1', +, '1', +, '1'],
 E = 1+1+1 ;
 false.
+
+The above relates the list of characters (string) "1+1+1" to either of two syntax trees.
+1+(1+1)
+1+1+1
+
+Lexical analysis is also called lexing and tokenization.
+
+Lexical analysis is a relation.
+
+Lexical analysis is a relation between a string and a sequence of tokens.
+
+Tokens include keyword, literal, comment, identifer, and more.
+
+So, lexical analysis relates a string to tokens (keywords, literals, comments, identifiers, other tokens).
+
+We _tokenize_ a string by finding demarkations between its tokens.
+
+For example, we can relate a string to a list of its words. This is a form of lexical analysis. We will use a DCG nonterminal to define what we mean with a word.
+*/
+
+word --> [C], { char_type(C, alpha) }, word.
+word --> [].
+
+/* 
+We can now define a sequence of words separated and surrounded by whitespace.
+*/
+words --> [].
+words --> ws, word, ws, words.
+
+% ws stands for white space
+ws --> [W], { char_type(W, white)}, ws | [].
+
+/*
+?- phrase(words, "Joe Legner is cool").
+true ;
 */
