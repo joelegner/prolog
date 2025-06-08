@@ -139,3 +139,107 @@ keyword --> [print].
 
 identifier --> [joe].
 identifier --> [legner].
+
+/* 
+Here is use of the pipe character | meaning "or".
+*/
+xy --> [].
+xy --> ( "X" | "Y" ), xy.
+
+/*
+It works like this, for one example:
+
+?- phrase(xy, "XYXXYYXYXYXY").
+true ;
+
+Now we will look at **iterative deepening**. If we try this:
+?- phrase(xy, Phrase).
+Phrase = [] ;
+Phrase = ['X'] ;
+Phrase = ['X', 'X'] ;
+Phrase = ['X', 'X', 'X'] 
+
+This is called unfair enumeration. To make it fair, prefix the phrase call with a call to length.
+
+?- length(Ls, _), phrase(xy, Ls).
+Ls = [] ;
+Ls = ['X'] ;
+Ls = ['Y'] ;
+Ls = ['X', 'X'] ;
+Ls = ['X', 'Y'] ;
+
+We can ask for length 3:
+?- length(Ls, 3), phrase(xy, Ls).
+Ls = ['X', 'X', 'X'] ;
+Ls = ['X', 'X', 'Y'] ;
+Ls = ['X', 'Y', 'X'] ;
+Ls = ['X', 'Y', 'Y'] ;
+Ls = ['Y', 'X', 'X'] ;
+Ls = ['Y', 'X', 'Y'] ;
+Ls = ['Y', 'Y', 'X'] ;
+Ls = ['Y', 'Y', 'Y'] ;
+
+# `seq//1`
+
+Building block: seq//1 describing the list in its argument.
+
+Another is qes//1 which is backwards sequence.
+*/
+
+qes([]) --> [].
+qes([L|Ls]) --> qes(Ls), [L].
+
+palindrome(Ls) :- phrase(qes(Ls), Ls).
+
+/* 
+Now we can test it:
+?- palindrome("racecar").
+true.
+
+We can even complete a partial list:
+palindrome([x,y,z|Ls]).
+Ls = [y, x] ;
+Ls = [z, y, x] ;
+Ls = [_1888, z, y, x] ;
+Ls = [_1888, _1888, z, y, x] 
+
+Not sure what to make of the weird results like _1888.
+
+This is an important building block: ...//0
+*/
+
+... --> [] | [_], ... .
+
+/*
+Define ... as either an empty list or any terminal
+followed by dot-dot-dot (...). 
+
+What can it be used for?
+
+Get the last element of a list.
+?- phrase((..., [Last]), "abc").
+Last = c ;
+
+We can detect if a substring occurs in a string.
+?- phrase((..., "b", ...), "abcba").
+true ;
+true ;
+false.
+
+We can also generate lists that contain a substring. We will use our length/2 predicate to make a fair enumeration using **iterative deepening**. 
+
+?- length(Ls, _), phrase((..., "b", ...), Ls).
+Ls = [b] ;
+Ls = [b, _] ;
+Ls = [_, b] ;
+Ls = [b, _, _] ;
+Ls = [_, b, _] ;
+Ls = [_, _, b] 
+
+The next example finds any pairs of elements.
+?- phrase((..., [X,X], ...), "helloo!!").
+X = l ;
+X = o ;
+X = ! ;
+false.
+*/
