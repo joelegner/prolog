@@ -13,9 +13,9 @@
 pages(calcs, [page1, page2, page3]).
 
 % Title and dimensions for the stack.
-title(calcs, "Footing Design Calculations").
-author(calcs, "Joe Legner, PE, SE").
-date(calcs, "April 21, 2025").
+title(calcs, 'Footing Design Calculations').
+author(calcs, 'Joe Legner, PE, SE').
+date(calcs, 'April 21, 2025').
 width(calcs, 8.5).
 height(calcs, 11.0).
 

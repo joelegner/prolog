@@ -28,8 +28,8 @@ assembly(X) :-
 % A system with zero parts is an assembly.
 % An assembly has an empty parts list.
 %  X = the system being checked.
-% [] = standard Prolog for "empty list".
-%  _ = standard Prolog for "anonymous variable".
+% [] = standard Prolog for 'empty list'.
+%  _ = standard Prolog for 'anonymous variable'.
 % I wrote this totally on my own and am proud of it. :-)
 unit(X) :-
     system(X, _, []).

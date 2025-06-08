@@ -82,16 +82,16 @@ link(fr32, dp32).
 
 % Wrapping utility
 wrap_text(Text, Width, Wrapped) :-
-    split_string(Text, " ", "", Words),
-    wrap_words(Words, Width, "", [], Lines),
+    split_string(Text, ' ', '', Words),
+    wrap_words(Words, Width, '', [], Lines),
     atomic_list_concat(Lines, '\n', Wrapped).
 
 wrap_words([], _, Line, Acc, Lines) :-
-    ( Line \= "" -> append(Acc, [Line], Lines)
+    ( Line \= '' -> append(Acc, [Line], Lines)
     ; Lines = Acc ).
 wrap_words([Word|Rest], Width, Line, Acc, Lines) :-
-    ( Line = "" -> NewLine = Word
-    ; atomics_to_string([Line, Word], " ", Temp),
+    ( Line = '' -> NewLine = Word
+    ; atomics_to_string([Line, Word], ' ', Temp),
       string_length(Temp, Len),
       ( Len =< Width -> NewLine = Temp, NewAcc = Acc
       ; append(Acc, [Line], NewAcc), NewLine = Word )
@@ -99,7 +99,7 @@ wrap_words([Word|Rest], Width, Line, Acc, Lines) :-
     wrap_words(Rest, Width, NewLine, NewAcc, Lines).
 
 escape_newlines(Input, Escaped) :-
-    split_string(Input, "\n", "", Parts),
+    split_string(Input, '\n', '', Parts),
     atomic_list_concat(Parts, '\\n', Escaped).
 
 % Main predicate to generate DOT code for DP-FR hierarchy.
@@ -112,13 +112,13 @@ dp_fr_hierarchy :-
           string_upper(AtomStr, Label),
           wrap_text(Desc, 24, WrappedDesc),
           escape_newlines(WrappedDesc, EscapedDesc),
-          format('    ~w [label="~w\\n~w"];\n', [Id, Label, EscapedDesc]) )),
+          format('    ~w [label='~w\\n~w'];\n', [Id, Label, EscapedDesc]) )),
     forall(dp(Id, Desc),
         ( atom_string(Id, AtomStr),
           string_upper(AtomStr, Label),
           wrap_text(Desc, 24, WrappedDesc),
           escape_newlines(WrappedDesc, EscapedDesc),
-          format('    ~w [label="~w\\n~w"];\n', [Id, Label, EscapedDesc]) )),
+          format('    ~w [label='~w\\n~w'];\n', [Id, Label, EscapedDesc]) )),
     nl,
     forall(link(From, To),
         format('    ~w -> ~w;\n', [From, To])),
@@ -151,7 +151,7 @@ print_dp_nodes :-
           string_upper(AtomStr, Label),
           wrap_text(Desc, 24, WrappedDesc),
           escape_newlines(WrappedDesc, EscapedDesc),
-          format('    ~w [label="~w\\n~w"];\n', [Id, Label, EscapedDesc]) )).
+          format('    ~w [label='~w\\n~w'];\n', [Id, Label, EscapedDesc]) )).
 
 % Print dp->dp edges in DOT format using transitive dp_to_dp
 print_dp_edges :-
@@ -177,7 +177,7 @@ print_fr_nodes :-
           string_upper(AtomStr, Label),
           wrap_text(Desc, 24, WrappedDesc),
           escape_newlines(WrappedDesc, EscapedDesc),
-          format('    ~w [label="~w\\n~w"];\n', [Id, Label, EscapedDesc]) )).
+          format('    ~w [label='~w\\n~w'];\n', [Id, Label, EscapedDesc]) )).
 
 % Print fr->fr edges in DOT format (only links where both ends are FR nodes)
 % Print inferred FR hierarchy edges based on FR ID prefixes

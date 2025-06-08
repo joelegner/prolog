@@ -9,12 +9,12 @@ practiced(Player, NewSongs, OldSongs) :-
 % performing an action (printing) and recursing on the tail (Songs).
 tried(_, []).
 tried(Player, [Song | Songs]) :-
-    format("~w tried ~w.~n", [Player, Song]),
+    format('~w tried ~w.~n', [Player, Song]),
     tried(Player, Songs).
 
 practiced(_, []).
 practiced(Player, [Song | Songs]) :-
-    format("~w practiced ~w.~n", [Player, Song]),
+    format('~w practiced ~w.~n', [Player, Song]),
     practiced(Player, Songs).
 
 main :-

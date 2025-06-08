@@ -11,7 +11,7 @@ pet(josey).
 % We want to write all their names at once without
 % typing the ';' character each time at an interactive
 % prompt. How this is done is something called in the 
-% literature "FAILURE DRIVEN LOOPS". The reason it is 
+% literature 'FAILURE DRIVEN LOOPS'. The reason it is 
 % called that is the presence of the 'fail'
 write_pet_names :-
     pet(Name),
@@ -33,9 +33,9 @@ write_pet_names :-
 %    the engine calls the second predicate to print the name and
 %    a newline.
 %
-% 3. The engine comes to the fail/0 atom. Docs: "Always fail. The 
+% 3. The engine comes to the fail/0 atom. Docs: 'Always fail. The 
 %    predicate fail/0 is translated into a single virtual machine
-%    instruction." When it encounters this, it is led to believe 
+%    instruction.' When it encounters this, it is led to believe 
 %    that the predicate write_pet_names/0 has failed. This triggers
 %    back-tracking.
 %

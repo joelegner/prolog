@@ -23,4 +23,4 @@ mindful(Person) :-
     remembering(P, [buddha, dharma, sangha]).
 
 main :-
-    writeln("buddhism.pl").
+    writeln('buddhism.pl').

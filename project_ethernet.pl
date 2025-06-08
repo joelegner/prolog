@@ -13,7 +13,7 @@ complete(Project) :-
     delivers(Project, Cable),
     working(Cable),
     tools_put_away(Project),
-    write("END project: "),
+    write('END project: '),
     writeln(Project).
 
 % LEVEL 1 =====================================================================
@@ -23,13 +23,13 @@ cable(ethernet_cable).
 
 started(Project) :-
     project(Project),
-    write("START project: "),
+    write('START project: '),
     writeln(Project).
 
 specified(Cable) :-
     cable(Cable),
     length_known(Cable),
-    writeln("Determine cable type.").
+    writeln('Determine cable type.').
 
 working(Cable) :-
     cable(Cable),
@@ -39,12 +39,12 @@ working(Cable) :-
 tools_put_away(Project) :-
     project(Project),
     ladder_taken_down(Project),
-    writeln("Put tools away.").
+    writeln('Put tools away.').
 
 % LEVEL 2 =====================================================================
 length_known(Cable) :-
     cable(Cable),
-    writeln("Determine cable length in feet.").
+    writeln('Determine cable length in feet.').
 
 installed(Cable) :-
     cable(Cable),
@@ -53,29 +53,29 @@ installed(Cable) :-
 
 tested(Cable) :-
     cable(Cable),
-    writeln("Test network connection.").  
+    writeln('Test network connection.').  
 
 ladder_taken_down(_) :-
-    writeln("Take down ladder.").
+    writeln('Take down ladder.').
 
 % LEVEL 3 =====================================================================
 routed(Cable) :-
     % nl,
-    % writeln("Route Cable:"),
+    % writeln('Route Cable:'),
     cable(Cable),
     purchased(Cable),
     run_in_attic(Cable).
 
 terminated(Cable) :-
     cable(Cable),
-    writeln("Terminate cable at router."),
-    writeln("Terminate cable at computer."). 
+    writeln('Terminate cable at router.'),
+    writeln('Terminate cable at computer.'). 
 
 % LEVEL 4 =====================================================================
 purchased(Cable) :-
     cable(Cable),
     specified(Cable),
-    writeln("Buy network cable at Lowes or Home Depot.").
+    writeln('Buy network cable at Lowes or Home Depot.').
 
 run_in_attic(Cable) :-
     cable(Cable),
@@ -83,7 +83,7 @@ run_in_attic(Cable) :-
     tools(Project),
     ladder_set_up(Project),
     cable_pulled(Cable),
-    writeln("Run cable through attic").
+    writeln('Run cable through attic').
 
 % LEVEL 5 =====================================================================
 tools(Project) :-
@@ -96,16 +96,16 @@ tools(Project) :-
     tool(Project, vacuum).    
 
 ladder_set_up(_) :-
-    writeln("Set up ladder.").
+    writeln('Set up ladder.').
 
 cable_pulled(Cable) :-
     run_prepared(Cable),
-    writeln("Pull cable between endpoints.").
+    writeln('Pull cable between endpoints.').
 
 % LEVEL 6 =====================================================================
 tool(Project, Tool) :-
     project(Project),
-    write("Get tool: "),
+    write('Get tool: '),
     writeln(Tool).
 
 run_prepared(Cable) :-
@@ -115,7 +115,7 @@ run_prepared(Cable) :-
 
 % LEVEL 7 =====================================================================
 hole_cut_in_wall(_) :-
-    writeln("Cut hole in wall for cable.").
+    writeln('Cut hole in wall for cable.').
 
 hole_drilled_in_plate(_) :-
-    writeln("Drill hole in top plate of wall for cable.").
+    writeln('Drill hole in top plate of wall for cable.').

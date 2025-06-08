@@ -7,9 +7,9 @@
 read_input(_, Project) :-     
     % I think this is my first ever prolog dictionary (Project mock):
     Project = _{
-    name: "Test Project",
+    name: 'Test Project',
     design: _{
-        name: "Footing 1",
+        name: 'Footing 1',
         footing: [4, 4, 1],
         load: [20, 40, 60]
     }
@@ -31,7 +31,7 @@ design(_, Model) :-
     Model = designed_model.
 
 report(_, Report) :-
-    Report = "This is your report.".
+    Report = 'This is your report.'.
 
 :- begin_tests(json_io).
 :- use_module(library(http/json)).
@@ -39,11 +39,11 @@ report(_, Report) :-
 test(write_and_read_json_roundtrip) :-
     File = 'test.json',
     Project = _{
-        name: "Test Project",
-        number: "Project No. 1",
-        engineer: "Joe Legner",
+        name: 'Test Project',
+        number: 'Project No. 1',
+        engineer: 'Joe Legner',
         footings: _{
-            name: "Footing A-1",
+            name: 'Footing A-1',
             load: [20, 40, 60]
         }
     },

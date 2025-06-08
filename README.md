@@ -1,13 +1,13 @@
 # Prolog
 Playground for all things Prolog-related. I am especially interested in trying to use it for structural engineering. 
 
-The name Prolog is a shortened version of the statement, "programming with logic." There are various implementations of Prolog available. The one assumed here is **SWI-Prolog** which seems to be pronounced by spelling out the SWI part: "s-w-i prolog."
+The name Prolog is a shortened version of the statement, 'programming with logic.' There are various implementations of Prolog available. The one assumed here is **SWI-Prolog** which seems to be pronounced by spelling out the SWI part: 's-w-i prolog.'
 
 - Main website: [https://www.swi-prolog.org](https://www.swi-prolog.org)
 - SWI-Prolog Manual: [https://www.swi-prolog.org/pldoc/refman/](https://www.swi-prolog.org/pldoc/refman/)
 - SWI-Tinker: [https://wasm.swi-prolog.org/wasm/tinker](https://wasm.swi-prolog.org/wasm/tinker)
 
-**SWI-Tinker** is described as, "SWI-Prolog running inside your browser".
+**SWI-Tinker** is described as, 'SWI-Prolog running inside your browser'.
 
 ## HTML Generation
 

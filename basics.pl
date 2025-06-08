@@ -1,7 +1,7 @@
 % basics.pl
 % This file provides basics for Prolog. It is a good starting
 % point if you are just getting started with Prolog. It is
-% also a good "beginner's mind" file to return to when you are
+% also a good 'beginner's mind' file to return to when you are
 % getting plateaued.
 
 % This is a fact. It is also a clause. A binary relation is
@@ -17,7 +17,7 @@ loves(julie, joe).
 has_for(joe, love, julie).
 has_for(julie, love, joe).
 
-% Read the first one as "Joe has love for Julie." The point is you
+% Read the first one as 'Joe has love for Julie.' The point is you
 % can use Prolog however it suits you. 
 
 % You can put the operands in whatever order you like. But

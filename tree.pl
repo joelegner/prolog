@@ -37,7 +37,7 @@ tree(elem2, [elem2a, elem2b, elem2c]).
 % An element is a leaf if it appears in some Children list
 % but is never the first argument of tree/2. Since it is never
 % the first argument, it cannot have any subordinate elements.
-% That's what makes it a "leaf" in tree terminology.
+% That's what makes it a 'leaf' in tree terminology.
 leaf(Elem) :-
     tree(_, Children),
     member(Elem, Children),

@@ -4,18 +4,18 @@
 % For unit testing:
 :- use_module(library(plunit)).        
 
-% Parses a simple arithmetic expression like "2+3" or "2-3" into a result.
+% Parses a simple arithmetic expression like '2+3' or '2-3' into a result.
 parse(String, Result) :-
     string_codes(String, Codes),        % Convert string to list of character codes
     phrase(expr(Result), Codes).        % Parse codes using the DCG grammar
 
 % --- How parsing works ---
 %
-% ?- parse("2+3", Result).
+% ?- parse('2+3', Result).
 %
 % Step-by-step:
 %
-% 1. "2+3" is a Prolog string. `string_codes/2` turns it into character codes:
+% 1. '2+3' is a Prolog string. `string_codes/2` turns it into character codes:
 %    [50,43,51] = ['2','+','3']
 %
 % 2. `phrase/2` runs the DCG rule `expr//1` on this list.
@@ -24,7 +24,7 @@ parse(String, Result) :-
 %
 %       expr(Result) -->
 %           trimmed_integer(A),   % parses a number (with optional spaces)
-%           "+",                  % matches the '+' character
+%           '+',                  % matches the '+' character
 %           trimmed_integer(B),   % parses another number
 %           { Result is A + B }.  % evaluates and returns the sum
 %
@@ -44,8 +44,8 @@ expr(Result) -->
 % Parses additional terms (for addition and subtraction)
 add_sub_terms(Acc, Result) -->
     blanks,
-    (   "+" -> term(B), { NewAcc is Acc + B }, add_sub_terms(NewAcc, Result)
-    ;   "-" -> term(B), { NewAcc is Acc - B }, add_sub_terms(NewAcc, Result)
+    (   '+' -> term(B), { NewAcc is Acc + B }, add_sub_terms(NewAcc, Result)
+    ;   '-' -> term(B), { NewAcc is Acc - B }, add_sub_terms(NewAcc, Result)
     ;   { Result = Acc }
     ).
 
@@ -56,23 +56,23 @@ term(N) --> trimmed_integer(N).
 :- begin_tests(parser).
 
 test(simple_addition) :-
-    parse("2+3", Result),
+    parse('2+3', Result),
     assertion(Result == 5).
 
 test(simple_subtraction) :-
-    parse("2-3", Result),
+    parse('2-3', Result),
     assertion(Result == -1).
 
 test(with_spaces) :-
-    parse("  10 +  42 ", Result),
+    parse('  10 +  42 ', Result),
     assertion(Result == 52).
 
 test(leading_and_trailing_spaces) :-
-    parse("   7+8   ", Result),
+    parse('   7+8   ', Result),
     assertion(Result == 15).
 
 test(subtraction_with_spaces) :-
-    parse("  10 -  4 ", Result),
+    parse('  10 -  4 ', Result),
     assertion(Result == 6).
 
 :- end_tests(parser).

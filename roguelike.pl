@@ -47,7 +47,7 @@ print_bordered_map(Map, CharX, CharY) :-
     print_border_top(WChars),
     print_map_with_sides(Map),
     print_border_bottom(WChars),
-    format("@(~d, ~d)~n", [CharX, CharY]).
+    format('@(~d, ~d)~n', [CharX, CharY]).
 
 print_border_top(Len) :-
     write('╔'),

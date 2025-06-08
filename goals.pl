@@ -1,18 +1,18 @@
 % goals.pl
 % Specify goal numbers and names
-goal(1, "Play the show").
-goal(2, "Turn on the keyboard.").
+goal(1, 'Play the show').
+goal(2, 'Turn on the keyboard.').
 % goal 3 slot is open
-goal(4, "Take the keyboard out of the case.").
-goal(5, "Set the keyboard in the shell.").
-goal(6, "Plug the instrument cables into the keyboard.").
-goal(7, "Plug the sustain pedal cable into the keyboard.").
-goal(8, "Plug the power supply into the keyboard.").
-goal(9, "Plug the keyboard power supply into the power strip.").
-goal(11, "Plug the power strip into the wall.").
-goal(10, "Set the power strip in the shell with Velcro.").
+goal(4, 'Take the keyboard out of the case.').
+goal(5, 'Set the keyboard in the shell.').
+goal(6, 'Plug the instrument cables into the keyboard.').
+goal(7, 'Plug the sustain pedal cable into the keyboard.').
+goal(8, 'Plug the power supply into the keyboard.').
+goal(9, 'Plug the keyboard power supply into the power strip.').
+goal(11, 'Plug the power strip into the wall.').
+goal(10, 'Set the power strip in the shell with Velcro.').
 
-% Read before(8, 2) as "Goal 8 needs to be met before goal 2."
+% Read before(8, 2) as 'Goal 8 needs to be met before goal 2.'
 before(8, 2).
 before(9, 2).
 before(11, 2).
@@ -55,7 +55,7 @@ print_sorted_goals :-
     all_goals(Goals),
     topo_sort(Goals, Sorted),
     forall(member(N, Sorted),
-        (goal(N, Desc), format("~d: ~s~n", [N, Desc]))
+        (goal(N, Desc), format('~d: ~s~n', [N, Desc]))
     ).
 
 % EXAMPLE USAGE: 

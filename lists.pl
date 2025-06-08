@@ -45,7 +45,7 @@ predicate([Head|Tail],...) :-
     %Do something with Head,%
     predicate(Tail,...).
 
-In Prolog literature, this pattern is generally referred to as a "recursive list transformation" or "recursive list processing" pattern.
+In Prolog literature, this pattern is generally referred to as a 'recursive list transformation' or 'recursive list processing' pattern.
 
 More specifically, this example fits the common _map_ pattern, where a function is recursively applied to each element of a list to produce a new list. Although Prolog doesn't have higher-order functions like map/2 in functional languages, this recursive structure serves the same purpose:
 

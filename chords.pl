@@ -1,5 +1,5 @@
 % chords.pl
-% Entry point: get notes from chord string (e.g., "Cm7")
+% Entry point: get notes from chord string (e.g., 'Cm7')
 notes_for_chord(ChordStr, Notes) :-
     parse_chord(ChordStr, Root, Type),
     notes_for_chord(Root, Type, RawNotes),
@@ -37,7 +37,7 @@ prompt_for_chord :-
     (   Input == end_of_file
     ->  halt
     ;   normalize_space(string(Trimmed), Input),
-        (   Trimmed = "help"
+        (   Trimmed = 'help'
         ->  print_help
         ;   notes_for_chord(Trimmed, Notes),
             format('Notes in ~w: ~w~n', [Trimmed, Notes])
@@ -209,22 +209,22 @@ transpose_chord(Semitones, ChordStr, TransposedStr) :-
     chord_suffix(Type, Suffix),
     string_concat(TransposedRoot, Suffix, TransposedStr).
 
-chord_suffix(major, "").
-chord_suffix(minor, "m").
-chord_suffix(minor7, "m7").
-chord_suffix(minor9, "m9").
-chord_suffix(major7, "maj7").
-chord_suffix(major9, "maj9").
-chord_suffix(diminished, "dim").
-chord_suffix(diminished7, "dim7").
-chord_suffix(diminished9, "dim9").
-chord_suffix(dominant7, "7").
-chord_suffix(dominant9, "9").
-chord_suffix(augmented, "+").
-chord_suffix(sus2, "sus2").
-chord_suffix(sus4, "sus4").
-chord_suffix(unknown, "").
+chord_suffix(major, '').
+chord_suffix(minor, 'm').
+chord_suffix(minor7, 'm7').
+chord_suffix(minor9, 'm9').
+chord_suffix(major7, 'maj7').
+chord_suffix(major9, 'maj9').
+chord_suffix(diminished, 'dim').
+chord_suffix(diminished7, 'dim7').
+chord_suffix(diminished9, 'dim9').
+chord_suffix(dominant7, '7').
+chord_suffix(dominant9, '9').
+chord_suffix(augmented, '+').
+chord_suffix(sus2, 'sus2').
+chord_suffix(sus4, 'sus4').
+chord_suffix(unknown, '').
 
 print_chords(ChordList) :-
     atomic_list_concat(ChordList, ' ', ChordsAtom),
-    format('"~w".~n', [ChordsAtom]).
+    format(''~w'.~n', [ChordsAtom]).

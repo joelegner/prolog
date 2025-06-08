@@ -39,7 +39,7 @@ format_decimal_inches(Inches) :-
 
 % main: simple test
 main :-
-    writeln("Starting Measurement.pl Prolog"),
+    writeln('Starting Measurement.pl Prolog'),
     inches(12.0, foot, Inches1),
     writeln(Inches1),
     inches(12.0, inch, Inches2),

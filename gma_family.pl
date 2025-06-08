@@ -81,13 +81,13 @@ print_configs([[JJ, JY, TM, SD]|Rest], N) :-
     all_houses(All),
     (   is_list(SD) -> SoldList = SD ; SoldList = [SD] ),
     subtract(All, SoldList, Kept),
-    format("~nConfig ~d~n", [N]),
-    format("  Joe & Julie: ~w~n", [JJ]),
-    format("  Joey       : ~w~n", [JY]),
-    format("  Tommy      : ~w~n", [TM]),
-    format("  Kept       : ~w~n", [Kept]),
-    format("  Sold       : ~w~n", [SD]),
-    format("  Implications:~n"),
+    format('~nConfig ~d~n', [N]),
+    format('  Joe & Julie: ~w~n', [JJ]),
+    format('  Joey       : ~w~n', [JY]),
+    format('  Tommy      : ~w~n', [TM]),
+    format('  Kept       : ~w~n', [Kept]),
+    format('  Sold       : ~w~n', [SD]),
+    format('  Implications:~n'),
 
     % ✅ FIXED: Wrap sold items in sold/1 terms
     maplist(wrap_sold, SoldList, SoldTerms),
@@ -128,7 +128,7 @@ print_implications(Facts) :-
 
 print_implication_list(_, []).
 print_implication_list(Fact, [I|Rest]) :-
-    format("    ~w ⇒ ~w~n", [Fact, I]),
+    format('    ~w ⇒ ~w~n', [Fact, I]),
     print_implication_list(Fact, Rest).
 
 ottawa_rental_implication(Facts) :-
@@ -139,7 +139,7 @@ ottawa_rental_implication(Facts) :-
     \+ member(joey_home(ottawa), Facts),
     \+ member(tommy_home(ottawa), Facts),
     % Then, print the custom implication
-    format("    [inferred] ⇒ Rental income from Ottawa house~n").
+    format('    [inferred] ⇒ Rental income from Ottawa house~n').
 ottawa_rental_implication(_).
 
 walsingham_rental_implication(Facts) :-
@@ -150,5 +150,5 @@ walsingham_rental_implication(Facts) :-
     \+ member(joey_home(walsingham), Facts),
     \+ member(tommy_home(walsingham), Facts),
     % Then, print the custom implication
-    format("    [inferred] ⇒ Rental income from Walsingham house~n").
+    format('    [inferred] ⇒ Rental income from Walsingham house~n').
 walsingham_rental_implication(_).

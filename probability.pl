@@ -24,8 +24,8 @@
 % Rules of inference are on page 11 of the book.
 %
 % Boole's and Jaynes' notation:
-% AB            = conjunction   = logical product   = logical "and"
-% A+B           = disjunction   = logical sum       = logical "or"
+% AB            = conjunction   = logical product   = logical 'and'
+% A+B           = disjunction   = logical sum       = logical 'or'
 % \overline{A}  = denial of A
 % \overline{AB} = denial of AB conjunction = \overline{A} + \overline{B}
 % \overline{A} \overline{B} = denial of both A and B
@@ -35,4 +35,4 @@
 % 1. If A is true, then AB is true.
 % 2. If B is false, then A is false.
 % 
-% Start next time on page 12, section 1.6, "Adequate sets of operations" after May 1, 2025.
+% Start next time on page 12, section 1.6, 'Adequate sets of operations' after May 1, 2025.

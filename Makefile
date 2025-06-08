@@ -253,9 +253,9 @@ virtues:
 .PHONY: zag
 zag:
 	swipl -s axiomatic_design -g print_zag_templates -t halt | pbcopy
-	@echo "Copied zig templates to clipboard with pbcopy"
+	@echo 'Copied zig templates to clipboard with pbcopy'
 
 .PHONY: zig
 zig:
 	swipl -s axiomatic_design -g print_zig_templates -t halt | pbcopy
-	echo "Copied zig templates to clipboard with pbcopy"
+	echo 'Copied zig templates to clipboard with pbcopy'

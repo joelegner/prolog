@@ -1,7 +1,7 @@
 #!/usr/bin/env swipl
 % prologscript.pl
 %
-% Usage: ./prologscript.pl "2 + 2 * 3"
+% Usage: ./prologscript.pl '2 + 2 * 3'
 % Prints the result of the arithmetic expression.
 %
 % If no argument is given or evaluation fails, prints usage instructions.
@@ -20,6 +20,6 @@ main(Argv) :-
     ).
 
 print_usage :-
-    format('Usage:   ./prologscript.pl "EXPRESSION"~n'),
-    format('Example: ./prologscript.pl "2 + 3 * 4"~n'),
+    format('Usage:   ./prologscript.pl 'EXPRESSION'~n'),
+    format('Example: ./prologscript.pl '2 + 3 * 4'~n'),
     format('Note:    Expression must be in quotes.').

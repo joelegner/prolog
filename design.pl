@@ -34,9 +34,9 @@ run :-
     design_output(Input, Output),
     assertz(output_approved(Output)),
     (   acceptable_design(Design, FinalOutput)
-    ->  format('Design "~w" is acceptable.~n', [Design]),
+    ->  format('Design '~w' is acceptable.~n', [Design]),
         format('Output: ~w~n', [FinalOutput])
-    ;   format('Design "~w" is NOT acceptable.~n', [Design]),
+    ;   format('Design '~w' is NOT acceptable.~n', [Design]),
         halt(1)
     ),
     halt(0).

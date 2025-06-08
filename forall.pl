@@ -5,10 +5,10 @@
 %
 % forall(Cond, Action)
 %
-% "For all alternative bindings of Cond, Action can be proven. 
+% 'For all alternative bindings of Cond, Action can be proven. 
 % The example verifies that all arithmetic statements in the
 % given list are correct. It does not say which is wrong if one
-% proves wrong."
+% proves wrong.'
 %
 % Notes:
 % 1. forall/2 does not create variable bindings. If that's what 

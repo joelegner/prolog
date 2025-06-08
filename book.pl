@@ -7,7 +7,7 @@ print_tree(Node) :-
 print_tree(Node, Indent) :-
     tab(Indent),
     (   value(Node, String)
-    ->  format('"~w"', [String])  % print the string with quotes
+    ->  format(''~w'', [String])  % print the string with quotes
     ;   write(Node)
     ),
     nl,
@@ -38,4 +38,4 @@ children(backmatter, []).
 
 % Define values for specific nodes
 
-value(author, "Joe Legner").
+value(author, 'Joe Legner').

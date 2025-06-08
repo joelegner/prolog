@@ -15,24 +15,24 @@ main :-
     atomic_list_concat([BuildDir, '/images'], ImageDir),
     writeln(ImageDir),    
 
-    writeln("📂 Creating directories..."),
+    writeln('📂 Creating directories...'),
     make_directory_path(BuildDir),
     make_directory_path(ImageDir),
 
-    format("🔍 Consulting ~w~n", [InputFile]),
+    format('🔍 Consulting ~w~n', [InputFile]),
     consult(InputFile),
 
     % Verify consult worked by printing ingredient
     fluffernutter_ingredient(Ingredient),
-    format("🍞 Fluffernutter ingredient: ~w~n", [Ingredient]),
+    format('🍞 Fluffernutter ingredient: ~w~n', [Ingredient]),
 
-    format("📄 Creating LaTeX...~n", []),
+    format('📄 Creating LaTeX...~n', []),
     create_latex(BuildDir, ImageDir, Ingredient),
 
-    format("📚 Running pdflatex...~n", []),
+    format('📚 Running pdflatex...~n', []),
     run_pdflatex(BuildDir),
 
-    format("✅ Done.~n", []).
+    format('✅ Done.~n', []).
 
 % --- Create LaTeX file with substitution
 create_latex(BuildDir, _ImageDir, Ingredient) :-
@@ -50,7 +50,7 @@ create_latex(BuildDir, _ImageDir, Ingredient) :-
     % Write substituted LaTeX to main.tex
     setup_call_cleanup(
         open(TexPath, write, Out),
-        format(Out, "~s", [Content]),
+        format(Out, '~s', [Content]),
         close(Out)
     ).
 
@@ -68,7 +68,7 @@ run_pdflatex(BuildDir) :-
     process_wait(PID, _Status),
 
     atomic_list_concat([BuildDir, '/main.pdf'], PdfPath),
-    format("📄 PDF created at ~w~n", [PdfPath]).
+    format('📄 PDF created at ~w~n', [PdfPath]).
 
 % Run main on startup
 :- initialization(main, main).

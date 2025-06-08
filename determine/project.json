@@ -1,8 +1,8 @@
 {
-  "title": "Widget System Design",
-  "author": "Joe Legner",
-  "sections": [
-    { "heading": "Overview", "content": "This system manages widgets using microcontrollers." },
-    { "heading": "Specifications", "content": "The system must operate in real time with sensor integration." }
+  'title': 'Widget System Design',
+  'author': 'Joe Legner',
+  'sections': [
+    { 'heading': 'Overview', 'content': 'This system manages widgets using microcontrollers.' },
+    { 'heading': 'Specifications', 'content': 'The system must operate in real time with sensor integration.' }
   ]
 }

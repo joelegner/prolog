@@ -3,8 +3,8 @@
 
 ... --> [] | [_], ... .
 
-photo_file_name --> ... ,".pl".
+photo_file_name --> ... ,'.pl'.
 
 run :-
-    directory_files(".", Fs),
+    directory_files('.', Fs),
     writeln(Fs).

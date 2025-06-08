@@ -72,20 +72,20 @@ source(microphone, signal).
 
 setup(piano_shell) :-
     \+ done(piano_shell),
-    writeln("Set up piano shell"),
+    writeln('Set up piano shell'),
     assertz(done(piano_shell)).
 setup(piano_shell) :- done(piano_shell).
 
 setup(drum_throne) :-
     \+ done(drum_throne),
-    writeln("Set up drum throne"),
+    writeln('Set up drum throne'),
     assertz(done(drum_throne)).
 setup(drum_throne) :- done(drum_throne).
 
 setup(microphone_stand) :-
     setup(piano_shell),
     \+ done(microphone_stand),
-    writeln("Set up microphone stand."),
+    writeln('Set up microphone stand.'),
     assertz(done(microphone_stand)).
 setup(microphone_stand) :- done(microphone_stand).
 
@@ -93,21 +93,21 @@ setup(keyboard) :-
     setup(piano_shell),
     setup(drum_throne),
     \+ done(keyboard),
-    writeln("Set up keyboard"),
+    writeln('Set up keyboard'),
     assertz(done(keyboard)).
 setup(keyboard) :- done(keyboard).
 
 setup(microphone) :-
     setup(microphone_stand),
     \+ done(microphone),
-    writeln("Set up microphone."),
+    writeln('Set up microphone.'),
     assertz(done(microphone)).
 setup(microphone) :- done(microphone).
 
 setup(microphone_cable) :-
     setup(microphone),
     \+ done(microphone_cable),
-    writeln("Hook up microphone cable.").
+    writeln('Hook up microphone cable.').
 
 % ready_to_play/0 is the over-arching goal. It is the starting goal for when you
 % use swipl at the command line. The usage works like this:
@@ -126,4 +126,4 @@ ready_to_play :-
     setup(microphone),
     setup(microphone_stand),
     setup(microphone_cable),
-    writeln("Ready to play!").
+    writeln('Ready to play!').

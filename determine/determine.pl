@@ -53,25 +53,25 @@ write_file(File, Content) :-
     close(Stream).
 
 fill_template(Template, Data, Final) :-
-    dict_get(title, Data, "", Title),
-    dict_get(author, Data, "", Author),
+    dict_get(title, Data, '', Title),
+    dict_get(author, Data, '', Author),
     dict_get(sections, Data, [], Sections),
     sections_to_latex(Sections, SectionText),
     replace_placeholders(Template, Title, Author, SectionText, Final).
 
 replace_placeholder(Template, Placeholder, Replacement, Result) :-
-    split_string(Template, Placeholder, "", Parts),
+    split_string(Template, Placeholder, '', Parts),
     atomic_list_concat(Parts, Replacement, Result).
 
 replace_placeholders(Template, Title, Author, Sections, Final) :-
-    replace_placeholder(Template, "<<TITLE>>", Title, T1),
-    replace_placeholder(T1, "<<AUTHOR>>", Author, T2),
-    replace_placeholder(T2, "<<SECTIONS>>", Sections, Final).
+    replace_placeholder(Template, '<<TITLE>>', Title, T1),
+    replace_placeholder(T1, '<<AUTHOR>>', Author, T2),
+    replace_placeholder(T2, '<<SECTIONS>>', Sections, Final).
 
-sections_to_latex([], "").
+sections_to_latex([], '').
 sections_to_latex([S|Rest], Latex) :-
     _{heading: H, content: C} :< S,
-    format(string(Section), "\\section{~w}\n~w\n\n", [H, C]),
+    format(string(Section), '\\section{~w}\n~w\n\n', [H, C]),
     sections_to_latex(Rest, OtherSections),
     string_concat(Section, OtherSections, Latex).
 
