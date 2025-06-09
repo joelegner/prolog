@@ -327,7 +327,7 @@ words --> [].
 words --> ws, word, ws, words.
 
 % ws stands for white space
-ws --> [W], { char_type(W, white)}, ws | [].
+ws --> [W], { char_type(W, white) }, ws | [].
 
 /*
 ?- phrase(words, "Joe Legner is cool").
