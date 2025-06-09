@@ -259,3 +259,7 @@ zag:
 zig:
 	swipl -s axiomatic_design -g print_zig_templates -t halt | pbcopy
 	echo 'Copied zig templates to clipboard with pbcopy'
+
+.PHONY: planning
+planning:
+	swipl -s planning.pl

@@ -274,3 +274,29 @@ Prolog
             SICStus Prolog
             ECLiPSe Prolog
 ```
+
+# Planning
+
+**Action**: A simple operation that transforms one **State** of the **World** into another by adding or deleting **Facts** about **Objects**.  
+
+**Fact**: A **Relationship** that holds between **Objects** and helps define the current **State** of the **World**.  
+
+**Final State**: The set of **Facts** that describes the **World** after the **Sequence** of planned **Actions** has been completed and **Goals** have been achieved.  
+
+**Goal**: A **Fact** that must hold in the **Final State** of the **World** and is achieved by performing specific **Actions**.  
+
+**Initial State**: The set of **Facts** that describes the **World** before any **Actions** have been taken.  
+
+**Object**: An element of a closed **World** to which **Actions** apply and between which **Relationships**, or **Facts**, are defined.  
+
+**Planning**: The process of finding a **Sequence** of **Actions** that transforms an **Initial State** of the **World** into a **Final State** where certain **Goal** **Facts** hold.  
+
+**Relationship**: A connection between **Objects** that, when expressed as a **Fact**, describes part of the **State** of the **World**.  
+
+**Sequence**: An ordered list of **Actions** that, when applied in turn, transforms the **Initial State** of the **World** into the **Final State**.  
+
+**Set**: A finite collection of items, such as **Objects**, **Actions**, or **Facts**, used to define the components of the **World** and the process of **Planning**.  
+
+**State**: A complete set of **Facts** that describes the **World** at a specific moment.  
+
+**World**: A closed set of **Objects** whose **State** is fully described by the **Facts** that hold among those **Objects**.
