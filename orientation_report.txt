@@ -13,26 +13,26 @@ KEY OPPORTUNITIES AND THREATS
                                                                                                         
                                                                                                         
 ASSUMPTIONS AND BELIEFS                                                                                 
-- Pat George really will retire soon.                                                                   
-- A piano bar could be a big hit.                                                                       
+Pat George really will retire soon.                                                                     
+A piano bar could be a big hit.                                                                         
                                                                                                         
                                                                                                         
                                                                                                         
 RECENT ACTIONS AND OUTCOMES                                                                             
-- Moved solo show outside to good effect.                                                               
-- Katy Marquart played JF Kicks and did well. She is good.                                              
-- Joe and Julie played Italian Club, and it went well.                                                  
+Moved solo show outside to good effect.                                                                 
+Katy Marquart played JF Kicks and did well. She is good.                                                
+Joe and Julie played Italian Club, and it went well.                                                    
                                                                                                         
                                                                                                         
 TACTICAL PRIORITIES                                                                                     
-- Fix the CR-V.                                                                                         
-- Prepare for Fluffernutters.                                                                           
-- Be ready for next weekend's three shows.                                                              
+Fix the CR-V.                                                                                           
+Prepare for Fluffernutters.                                                                             
+Be ready for next weekend's three shows.                                                                
                                                                                                         
                                                                                                         
 CRITICAL UNKNOWNS                                                                                       
-- What schedule will Dezi come back with?                                                               
-- What does our 2026 look like?                                                                         
+What schedule will Dezi come back with?                                                                 
+What does our 2026 look like?                                                                           
                                                                                                         
                                                                                                         
                                                                                                         
@@ -45,4 +45,4 @@ CRITICAL UNKNOWNS
                                                                                                         
                                                                                                         
                                                                                                         
-2025-06-10 16:25:12                  https://github.com/joelegner/prolog/blob/main/orientation_report.pl
+2025-06-10 17:12:22                  https://github.com/joelegner/prolog/blob/main/orientation_report.pl

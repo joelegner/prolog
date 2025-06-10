@@ -139,49 +139,49 @@ write_lines(Row, Col, [Line|Rest], Justify) :-
 market_conditions(RowIn, Col, RowOut) :-
     Lines = [
         'CURRENT MARKET CONDITIONS',
-        '- Windish is advertising for solo piano, crew.'
+        'Windish is advertising for solo piano, crew.'
     ],
     write_section(RowIn, Col, Lines, RowOut).
 
 opportunities_and_threats(RowIn, Col, RowOut) :-
     Lines = [
         'KEY OPPORTUNITIES AND THREATS',
-        '- Dezi is working on cruise contracts for 2026.',
-        '- Pat George is going to retire soon.'
+        'Dezi is working on cruise contracts for 2026.',
+        'Pat George is going to retire soon.'
     ],
     write_section(RowIn, Col, Lines, RowOut).
 
 assumptions_and_beliefs(RowIn, Col, RowOut) :-
     Lines = [
         'ASSUMPTIONS AND BELIEFS',
-        '- Pat George really will retire soon.',
-        '- A piano bar could be a big hit.'
+        'Pat George really will retire soon.',
+        'A piano bar could be a big hit.'
     ],
     write_section(RowIn, Col, Lines, RowOut).
 
 recent_actions_outcomes(RowIn, Col, RowOut) :-
     Lines = [
         'RECENT ACTIONS AND OUTCOMES',
-        '- Moved solo show outside to good effect.',
-        '- Katy Marquart played JF Kicks and did well. She is good.',
-        '- Joe and Julie played Italian Club, and it went well.'
+        'Moved solo show outside to good effect.',
+        'Katy Marquart played JF Kicks and did well. She is good.',
+        'Joe and Julie played Italian Club, and it went well.'
     ],
     write_section(RowIn, Col, Lines, RowOut).
 
 tactical_priorities(RowIn, Col, RowOut) :-
     Lines = [
         'TACTICAL PRIORITIES',
-        '- Fix the CR-V.',
-        '- Prepare for Fluffernutters.',
-        '- Be ready for next weekend\'s three shows.'
+        'Fix the CR-V.',
+        'Prepare for Fluffernutters.',
+        'Be ready for next weekend\'s three shows.'
     ],
     write_section(RowIn, Col, Lines, RowOut).
 
 unknowns(RowIn, Col, RowOut) :-
     Lines = [
         'CRITICAL UNKNOWNS',
-        '- What schedule will Dezi come back with?',
-        '- What does our 2026 look like?'
+        'What schedule will Dezi come back with?',
+        'What does our 2026 look like?'
     ],
     write_section(RowIn, Col, Lines, RowOut).
 
