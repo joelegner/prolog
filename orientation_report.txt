@@ -2,47 +2,47 @@ Weekly Orientation Report            That Piano Entertainment, LLC              
 ────────────────────────────────────────────────────────────────────────────────────────────────────────
 CURRENT MARKET CONDITIONS                                                                               
 1. Windish is advertising for solo piano, crew.                                                         
-                                                                                                        
-                                                                                                        
-                                                                                                        
-                                                                                                        
+2.                                                                                                      
+3.                                                                                                      
+4.                                                                                                      
+5.                                                                                                      
                                                                                                         
 KEY OPPORTUNITIES AND THREATS                                                                           
 1. Dezi is working on cruise contracts for 2026.                                                        
 2. Pat George is going to retire soon.                                                                  
-                                                                                                        
-                                                                                                        
-                                                                                                        
+3.                                                                                                      
+4.                                                                                                      
+5.                                                                                                      
                                                                                                         
 ASSUMPTIONS AND BELIEFS                                                                                 
 1. Pat George really will retire soon.                                                                  
 2. A piano bar could be a big hit.                                                                      
-                                                                                                        
-                                                                                                        
-                                                                                                        
+3.                                                                                                      
+4.                                                                                                      
+5.                                                                                                      
                                                                                                         
 RECENT ACTIONS AND OUTCOMES                                                                             
 1. Moved solo show outside to good effect.                                                              
 2. Katy Marquart played JF Kicks and did well. She is good.                                             
 3. Joe and Julie played Italian Club, and it went well.                                                 
-                                                                                                        
-                                                                                                        
+4.                                                                                                      
+5.                                                                                                      
                                                                                                         
 TACTICAL PRIORITIES                                                                                     
 1. Fix the CR-V.                                                                                        
 2. Prepare for Fluffernutters.                                                                          
 3. Be ready for next weekend's three shows.                                                             
-                                                                                                        
-                                                                                                        
+4.                                                                                                      
+5.                                                                                                      
                                                                                                         
 CRITICAL UNKNOWNS                                                                                       
 1. What schedule will Dezi come back with?                                                              
 2. What does our 2026 look like?                                                                        
+3.                                                                                                      
+4.                                                                                                      
+5.                                                                                                      
                                                                                                         
                                                                                                         
                                                                                                         
                                                                                                         
-                                                                                                        
-                                                                                                        
-                                                                                                        
-2025-06-10 17:27:47                  https://github.com/joelegner/prolog/blob/main/orientation_report.pl
+2025-06-10 17:34:15                  https://github.com/joelegner/prolog/blob/main/orientation_report.pl

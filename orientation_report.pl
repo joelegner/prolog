@@ -6,6 +6,7 @@
 % Canvas settings
 canvas(rows, 48).
 canvas(columns, 104).
+number_blank_lines(false).
 
 rows(R) :- canvas(rows, R).
 columns(C) :- canvas(columns, C).
@@ -132,13 +133,16 @@ numbered(Start, Lines, Numbered) :-
     numbered_lines(Start, Lines, Numbered).
 
 numbered_lines(_, [], []).
-numbered_lines(N, [''|Rest], [''|More]) :-  % Blank line: no number, don't increment N
-    numbered_lines(N, Rest, More).
+numbered_lines(N, [''|Rest], [NumberedLine|More]) :-  % Blank line: number it but no text
+    format(atom(NumberedLine), '~w.', [N]),
+    N1 is N + 1,
+    numbered_lines(N1, Rest, More).
 numbered_lines(N, [Line|Rest], [NumberedLine|More]) :-
     Line \= '',
     format(atom(NumberedLine), '~w. ~w', [N, Line]),
     N1 is N + 1,
     numbered_lines(N1, Rest, More).
+
 
 blank_lines(0, []) :- !.
 blank_lines(N, [''|Rest]) :-
