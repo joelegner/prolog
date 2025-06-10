@@ -3,6 +3,10 @@
 market_conditions(RowIn, Col, RowOut) :-
     Lines = [
         'CURRENT MARKET CONDITIONS',
+        'AI is entering music in a big way.',
+        'Live music might be bigger than songwriting.',
+        'Cruise contracts offer most immediate income.',
+        'Piano bar offers most stable income.',
         'Windish is advertising for solo piano, crew.'
     ],
     orientation_reports:write_section(RowIn, Col, Lines, RowOut).
@@ -31,8 +35,10 @@ recent_actions_outcomes(RowIn, Col, RowOut) :-
     Lines = [
         'RECENT ACTIONS AND OUTCOMES',
         'Moved solo show outside to good effect.',
-        'Katy Marquart played JF Kicks and did well. She is good.',
-        'Joe and Julie played Italian Club, and it went well.'
+        'Katy Marquart played JF Kicks and did well. She is good enough.',
+        'Joe and Julie played Italian Club, and it went well. Not much in Italian.',
+        'Joey came to Florida and got to bond with his new girl.',
+        'Joe and Julie went thrifting and found costume ideas and show outfits.'
     ],
     orientation_reports:write_section(RowIn, Col, Lines, RowOut).
 

@@ -2,11 +2,11 @@ That Piano Entertainment, LLC                          Weekly Orientation Report
 ────────────────────────────────────────────────────────────────────────────────
                                                                Sunday    June  8
 CURRENT MARKET CONDITIONS                                      Monday    June  9
-1. Windish is advertising for solo piano, crew.                Tuesday   June 10
-2.                                                             Wednesday June 11
-3.                                                             Thursday  June 12
-4.                                                             Friday    June 13
-5.                                                             Saturday  June 14
+1. AI is entering music in a big way.                          Tuesday   June 10
+2. Live music might be bigger than songwriting.                Wednesday June 11
+3. Cruise contracts offer most immediate income.               Thursday  June 12
+4. Piano bar offers most stable income.                        Friday    June 13
+5. Windish is advertising for solo piano, crew.                Saturday  June 14
                                                                                 
 KEY OPPORTUNITIES AND THREATS                                                   
 1. => Booking cruise contracts with Dezi for 2026.                              
@@ -24,10 +24,10 @@ ASSUMPTIONS AND BELIEFS
                                                                                 
 RECENT ACTIONS AND OUTCOMES                                                     
 1. Moved solo show outside to good effect.                                      
-2. Katy Marquart played JF Kicks and did well. She is good.                     
-3. Joe and Julie played Italian Club, and it went well.                         
-4.                                                                              
-5.                                                                              
+2. Katy Marquart played JF Kicks and did well. She is good enough.              
+3. Joe and Julie played Italian Club, and it went well. Not much in Italian.    
+4. Joey came to Florida and got to bond with his new girl.                      
+5. Joe and Julie went thrifting and found costume ideas and show outfits.       
                                                                                 
 TACTICAL PRIORITIES                                                             
 1. Fitness, weight loss, working out, getting in shape, eating right.           
@@ -59,4 +59,4 @@ CRITICAL UNKNOWNS
                                                                                 
                                                                                 
 https://github.com/joelegner/prolog/blob/main/orientation_report.pl             
-                                                   Generated 2025-06-10 18:21:13
+                                                   Generated 2025-06-10 18:28:50
