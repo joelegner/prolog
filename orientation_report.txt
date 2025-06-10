@@ -1,62 +1,62 @@
-That Piano Entertainment, LLC                          Weekly Orientation Report
+┌h────────────────────────────────────────────────────────────────────────────r┐
 ────────────────────────────────────────────────────────────────────────────────
-                                                               Sunday    June  8
-CURRENT MARKET CONDITIONS                                      Monday    June  9
-1. AI is entering music in a big way.                          Tuesday   June 10
-2. Live music might be bigger than songwriting.                Wednesday June 11
-3. Cruise contracts offer most immediate income.               Thursday  June 12
-4. Piano bar offers most stable income.                        Friday    June 13
-5. Windish is advertising for solo piano, crew.                Saturday  June 14
-                                                                                
-KEY OPPORTUNITIES AND THREATS                                                   
-1. => Booking cruise contracts with Dezi for 2026.                              
-2. => Getting popular in the Lifestyle world.                                   
-3. => Booking cruise contracts with Dezi for 2026.                              
-4. => Getting better work when Pat George retires.                              
-5. XX Running out of savings.                                                   
-                                                                                
-ASSUMPTIONS AND BELIEFS                                                         
-1. Pat George really will retire soon.                                          
-2. A piano bar could be a big hit.                                              
-3. Tommy wants to continue living at Walsingham Way.                            
-4.                                                                              
-5.                                                                              
-                                                                                
-RECENT ACTIONS AND OUTCOMES                                                     
-1. Moved solo show outside to good effect.                                      
-2. Katy Marquart played JF Kicks and did well. She is good enough.              
-3. Joe and Julie played Italian Club, and it went well. Not much in Italian.    
-4. Joey came to Florida and got to bond with his new girl.                      
-5. Joe and Julie went thrifting and found costume ideas and show outfits.       
-                                                                                
-TACTICAL PRIORITIES                                                             
-1. Fitness, weight loss, working out, getting in shape, eating right.           
-2. Fix the CR-V.                                                                
-3. Prepare for Fluffernutters: bits, costumes, songs, parodies.                 
-4. Gig at Grand Central on Friday from 7-10pm. Joe plays.                       
-5. Gig at Made in Italy on Saturday from 9pm-12am. Joe plays.                   
-                                                                                
-CRITICAL UNKNOWNS                                                               
-1. What schedule will Dezi come back with?                                      
-2. What does our 2026 look like?                                                
-3. Is Joey moving back to Florida?                                              
-4. Are we selling either house?                                                 
-5. Is anyone moving at all?                                                     
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
+│                                                              Sunday    June  │
+│URRENT MARKET CONDITIONS                                      Monday    June  │
+│. AI is entering music in a big way.                          Tuesday   June 1│
+│. Live music might be bigger than songwriting.                Wednesday June 1│
+│. Cruise contracts offer most immediate income.               Thursday  June 1│
+│. Piano bar offers most stable income.                        Friday    June 1│
+│. Windish is advertising for solo piano, crew.                Saturday  June 1│
+│                                                                              │
+│EY OPPORTUNITIES AND THREATS                                                  │
+│. => Booking cruise contracts with Dezi for 2026.                             │
+│. => Getting popular in the Lifestyle world.                                  │
+│. => Booking cruise contracts with Dezi for 2026.                             │
+│. => Getting better work when Pat George retires.                             │
+│. XX Running out of savings.                                                  │
+│                                                                              │
+│SSUMPTIONS AND BELIEFS                                                        │
+│. Pat George really will retire soon.                                         │
+│. A piano bar could be a big hit.                                             │
+│. Tommy wants to continue living at Walsingham Way.                           │
+│.                                                                             │
+│.                                                                             │
+│                                                                              │
+│ECENT ACTIONS AND OUTCOMES                                                    │
+│. Moved solo show outside to good effect.                                     │
+│. Katy Marquart played JF Kicks and did well. She is good enough.             │
+│. Joe and Julie played Italian Club, and it went well. Not much in Italian.   │
+│. Joey came to Florida and got to bond with his new girl.                     │
+│. Joe and Julie went thrifting and found costume ideas and show outfits.      │
+│                                                                              │
+│ACTICAL PRIORITIES                                                            │
+│. Fitness, weight loss, working out, getting in shape, eating right.          │
+│. Fix the CR-V.                                                               │
+│. Prepare for Fluffernutters: bits, costumes, songs, parodies.                │
+│. Gig at Grand Central on Friday from 7-10pm. Joe plays.                      │
+│. Gig at Made in Italy on Saturday from 9pm-12am. Joe plays.                  │
+│                                                                              │
+│RITICAL UNKNOWNS                                                              │
+│. What schedule will Dezi come back with?                                     │
+│. What does our 2026 look like?                                               │
+│. Is Joey moving back to Florida?                                             │
+│. Are we selling either house?                                                │
+│. Is anyone moving at all?                                                    │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                                                              │
 https://github.com/joelegner/prolog/blob/main/orientation_report.pl             
-                                                   Generated 2025-06-10 18:28:50
+└ ────────────────────────────────────────────────────────────────────────────4┘

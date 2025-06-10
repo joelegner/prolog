@@ -1,4 +1,9 @@
+% orientation_report.pl
 % You can edit these lines daily. Each section should produce 5 lines (1 title + 4 or fewer lines padded to 5 total).
+
+% Canvas settings
+canvas(rows, 62).
+canvas(columns, 80).
 
 market_conditions(RowIn, Col, RowOut) :-
     Lines = [
@@ -67,7 +72,9 @@ unknowns(RowIn, Col, RowOut) :-
 % Build the page by calling specific report sections from orientation_report.pl
 build_page :-
     clear_canvas,
-    left_text(1, 'That Piano Entertainment, LLC'),
+    canvas(rows, Rows),
+    canvas(columns, Cols),
+    draw_border(Rows, Cols),    left_text(1, 'That Piano Entertainment, LLC'),
     right_text(1, 'Weekly Orientation Report'),
     horizontal_line(2),
     right_text(3, 'Sunday    June  8'),
