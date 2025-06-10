@@ -146,41 +146,42 @@ market_conditions(RowIn, Col, RowOut) :-
 opportunities_and_threats(RowIn, Col, RowOut) :-
     Lines = [
         'KEY OPPORTUNITIES AND THREATS',
-        '- One-off wedding gig possible for August.',
-        '- Competing agency lost a performer recently.'
+        '- Dezi is working on cruise contracts for 2026.',
+        '- Pat George is going to retire soon.'
     ],
     write_section(RowIn, Col, Lines, RowOut).
 
 assumptions_and_beliefs(RowIn, Col, RowOut) :-
     Lines = [
         'ASSUMPTIONS AND BELIEFS',
-        '- Summer weekday gigs are harder to fill.',
-        '- Weekend demand will stay strong through July.'
+        '- Pat George really will retire soon.',
+        '- A piano bar could be a big hit.'
     ],
     write_section(RowIn, Col, Lines, RowOut).
 
 recent_actions_outcomes(RowIn, Col, RowOut) :-
     Lines = [
         'RECENT ACTIONS AND OUTCOMES',
-        '- Tested Facebook ad — no significant response.',
-        '- Sent availability survey to three musicians.'
+        '- Moved solo show outside to good effect.',
+        '- Katy Marquart played JF Kicks and did well. She is good.',
+        '- Joe and Julie played Italian Club, and it went well.'
     ],
     write_section(RowIn, Col, Lines, RowOut).
 
 tactical_priorities(RowIn, Col, RowOut) :-
     Lines = [
         'TACTICAL PRIORITIES',
-        '- Follow up with wedding inquiry.',
-        '- Draft social media post for July events.',
-        '- Review musician backup list.'
+        '- Fix the CR-V.',
+        '- Prepare for Fluffernutters.',
+        '- Be ready for next weekend\'s three shows.'
     ],
     write_section(RowIn, Col, Lines, RowOut).
 
 unknowns(RowIn, Col, RowOut) :-
     Lines = [
         'CRITICAL UNKNOWNS',
-        '- Will June 22 booking confirm?',
-        '- Will repeat client reach out for July 13?'
+        '- What schedule will Dezi come back with?',
+        '- What does our 2026 look like?'
     ],
     write_section(RowIn, Col, Lines, RowOut).
 

@@ -7,32 +7,32 @@ CURRENT MARKET CONDITIONS
                                                                                                         
                                                                                                         
 KEY OPPORTUNITIES AND THREATS                                                                           
-- One-off wedding gig possible for August.                                                              
-- Competing agency lost a performer recently.                                                           
+- Dezi is working on cruise contracts for 2026.                                                         
+- Pat George is going to retire soon.                                                                   
                                                                                                         
                                                                                                         
                                                                                                         
 ASSUMPTIONS AND BELIEFS                                                                                 
-- Summer weekday gigs are harder to fill.                                                               
-- Weekend demand will stay strong through July.                                                         
+- Pat George really will retire soon.                                                                   
+- A piano bar could be a big hit.                                                                       
                                                                                                         
                                                                                                         
                                                                                                         
 RECENT ACTIONS AND OUTCOMES                                                                             
-- Tested Facebook ad — no significant response.                                                         
-- Sent availability survey to three musicians.                                                          
-                                                                                                        
+- Moved solo show outside to good effect.                                                               
+- Katy Marquart played JF Kicks and did well. She is good.                                              
+- Joe and Julie played Italian Club, and it went well.                                                  
                                                                                                         
                                                                                                         
 TACTICAL PRIORITIES                                                                                     
-- Follow up with wedding inquiry.                                                                       
-- Draft social media post for July events.                                                              
-- Review musician backup list.                                                                          
+- Fix the CR-V.                                                                                         
+- Prepare for Fluffernutters.                                                                           
+- Be ready for next weekend's three shows.                                                              
                                                                                                         
                                                                                                         
 CRITICAL UNKNOWNS                                                                                       
-- Will June 22 booking confirm?                                                                         
-- Will repeat client reach out for July 13?                                                             
+- What schedule will Dezi come back with?                                                               
+- What does our 2026 look like?                                                                         
                                                                                                         
                                                                                                         
                                                                                                         
@@ -45,4 +45,4 @@ CRITICAL UNKNOWNS
                                                                                                         
                                                                                                         
                                                                                                         
-2025-06-10 15:54:48                  https://github.com/joelegner/prolog/blob/main/orientation_report.pl
+2025-06-10 16:25:12                  https://github.com/joelegner/prolog/blob/main/orientation_report.pl
