@@ -38,6 +38,8 @@ draw_horizontal_line(Row, Col, MaxCol) :-
 
 % Draw a box with top-left at (Row1, Col1) and bottom-right at (Row2, Col2)
 % Draw a box given top-left (Row, Col), and dimensions (Width, Height)
+% Example of usage:
+% draw_box(13, 31, 20, 8).
 draw_box(TopRow, LeftCol, Width, Height) :-
     BottomRow is TopRow + Height - 1,
     RightCol  is LeftCol + Width - 1,
@@ -138,6 +140,14 @@ right_text(Row, Text) :-
     place_on_page(Row, Text, right_justified).
 
 % Write a list of lines starting at Row, Col, using specified justification
+% Example of usage:
+% Lines = [
+%     'Welcome to the show!',
+%     'Each player takes a turn.',
+%     'Make sure to stay in key.',
+%     'Have fun and engage the crowd!'
+% ],
+% write_lines(15, 13, Lines, left_justified).
 write_lines(_, _, [], _) :- !.
 write_lines(Row, Col, [Line|Rest], Justify) :-
     place_text(Row, Col, Line, Justify),
@@ -151,18 +161,53 @@ build_page :-
     left_text(1, 'Weekly Orientation Report'),
     right_text(1, 'June 8 - June 11, 2025'),
     horizontal_line(2),
+    market_conditions(3),
+    opportunities_and_threats(5),
+    assumptions_and_beliefs(7),
+    recent_actions_outcomes(9),
+    tactical_priorities(11),
+    unknowns(13),
     bottom_row(BRow),
     right_text(BRow, 'https://github.com/joelegner/prolog/blob/main/orientation_report.pl'),
-    timestamp(Stamp), left_text(BRow, Stamp),
-    draw_box(13, 11, 40, 16),
-    Lines = [
-        'Welcome to the show!',
-        'Each player takes a turn.',
-        'Make sure to stay in key.',
-        'Have fun and engage the crowd!'
-    ],
-    write_lines(15, 13, Lines, left_justified).
+    timestamp(Stamp), 
+    left_text(BRow, Stamp).
 
+/*
+Current Market Conditions: brief notes on demand trends, competitor moves, and customer feedback relevant this week
+*/
+market_conditions(Row) :-
+    left_text(Row, 'CURRENT MARKET CONDITIONS').
+
+/*
+Key Opportunities and Threats: what new prospects or risks have emerged or shifted recently
+Internal Status: updates on team availability, equipment readiness, bookings pipeline, and resource constraints
+*/
+opportunities_and_threats(Row) :-
+    left_text(Row, 'KEY OPPORTUNITIES AND THREATS').
+
+/*
+Assumptions and Beliefs: any assumptions about customer preferences, seasonality, or partner reliability you’re testing or updating
+*/
+assumptions_and_beliefs(Row) :-
+    left_text(Row, 'ASSUMPTIONS AND BELIEFS').
+
+/*
+Recent Actions and Outcomes: quick summary of last week’s initiatives and what was learned from results
+*/
+recent_actions_outcomes(Row) :-
+    left_text(Row, 'RECENT ACTIONS AND OUTCOMES').
+
+/*
+Tactical Priorities: top 3 to 5 focus areas or decisions for the coming week based on updated understanding
+*/
+tactical_priorities(Row) :-
+    left_text(Row, 'TACTICAL PRIORITIES').
+
+/*
+Critical Unknowns: key questions or uncertainties that could impact decisions and require observation or data gathering
+*/
+unknowns(Row) :-
+    left_text(Row, 'CRITICAL UNKNOWNS').
 
 % Write the canvas to a file
 write_canvas(File) :-
