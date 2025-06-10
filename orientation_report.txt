@@ -8,16 +8,16 @@ CURRENT MARKET CONDITIONS
 5.                                                                                                      
                                                                                                         
 KEY OPPORTUNITIES AND THREATS                                                                           
-1. Dezi is working on cruise contracts for 2026.                                                        
-2. Pat George is going to retire soon.                                                                  
-3.                                                                                                      
-4.                                                                                                      
-5.                                                                                                      
+1. => Booking cruise contracts with Dezi for 2026.                                                      
+2. => Getting popular in the Lifestyle world.                                                           
+3. => Booking cruise contracts with Dezi for 2026.                                                      
+4. => Getting better work when Pat George retires.                                                      
+5. XX Running out of savings.                                                                           
                                                                                                         
 ASSUMPTIONS AND BELIEFS                                                                                 
 1. Pat George really will retire soon.                                                                  
 2. A piano bar could be a big hit.                                                                      
-3.                                                                                                      
+3. Tommy wants to continue living at Walsingham Way.                                                    
 4.                                                                                                      
 5.                                                                                                      
                                                                                                         
@@ -38,11 +38,11 @@ TACTICAL PRIORITIES
 CRITICAL UNKNOWNS                                                                                       
 1. What schedule will Dezi come back with?                                                              
 2. What does our 2026 look like?                                                                        
-3.                                                                                                      
-4.                                                                                                      
-5.                                                                                                      
+3. Is Joey moving back to Florida?                                                                      
+4. Are we selling either house?                                                                         
+5. Is anyone moving at all?                                                                             
                                                                                                         
                                                                                                         
                                                                                                         
                                                                                                         
-2025-06-10 17:34:15                  https://github.com/joelegner/prolog/blob/main/orientation_report.pl
+2025-06-10 17:48:02                  https://github.com/joelegner/prolog/blob/main/orientation_report.pl

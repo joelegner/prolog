@@ -270,6 +270,6 @@ structural:
 
 .PHONY: orientation_report
 orientation_report:
-	swipl -s orientation_report.pl -g write_canvas -t halt
+	swipl -s orientation_report.pl -s orientation_reports -g write_canvas -t halt
 	cupsfilter -o landscape orientation_report.txt > orientation_report.pdf
 	open orientation_report.pdf
