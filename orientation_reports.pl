@@ -8,8 +8,10 @@
 :- dynamic cell/3.
 
 % Canvas settings
-canvas(rows, 48).
-canvas(columns, 104).
+% canvas(rows, 48).
+% canvas(columns, 104).
+canvas(rows, 62).
+canvas(columns, 80).
 
 rows(R) :- canvas(rows, R).
 columns(C) :- canvas(columns, C).
@@ -18,7 +20,7 @@ bottom_row(R) :- canvas(rows, R).
 % Timestamp formatting
 timestamp(Text) :-
     get_time(Time),
-    format_time(atom(Text), '%Y-%m-%d %H:%M:%S', Time).
+    format_time(atom(Text), 'Generated %Y-%m-%d %H:%M:%S', Time).
 
 % Clear canvas memory before writing
 clear_canvas :- retractall(cell(_, _, _)).
@@ -166,9 +168,10 @@ build_page :-
     horizontal_line(2),
     the_stack(3, 1),
     bottom_row(BRow),
-    right_text(BRow, 'https://github.com/joelegner/prolog/blob/main/orientation_report.pl'),
+    ARow is BRow - 1,
+    left_text(ARow, 'https://github.com/joelegner/prolog/blob/main/orientation_report.pl'),
     timestamp(Stamp), 
-    left_text(BRow, Stamp).
+    right_text(BRow, Stamp).
 
 % Write canvas to file
 write_canvas(File) :-
