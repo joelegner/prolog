@@ -39,9 +39,11 @@ recent_actions_outcomes(RowIn, Col, RowOut) :-
 tactical_priorities(RowIn, Col, RowOut) :-
     Lines = [
         'TACTICAL PRIORITIES',
+        'Fitness, weight loss, working out, getting in shape, eating right.',
         'Fix the CR-V.',
-        'Prepare for Fluffernutters.',
-        'Be ready for next weekend\'s three shows.'
+        'Prepare for Fluffernutters: bits, costumes, songs, parodies.',
+        'Gig at Grand Central on Friday from 7-10pm. Joe plays.',
+        'Gig at Made in Italy on Saturday from 9pm-12am. Joe plays.'
     ],
     orientation_reports:write_section(RowIn, Col, Lines, RowOut).
 

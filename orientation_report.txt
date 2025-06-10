@@ -30,11 +30,11 @@ RECENT ACTIONS AND OUTCOMES
 5.                                                                              
                                                                                 
 TACTICAL PRIORITIES                                                             
-1. Fix the CR-V.                                                                
-2. Prepare for Fluffernutters.                                                  
-3. Be ready for next weekend's three shows.                                     
-4.                                                                              
-5.                                                                              
+1. Fitness, weight loss, working out, getting in shape, eating right.           
+2. Fix the CR-V.                                                                
+3. Prepare for Fluffernutters: bits, costumes, songs, parodies.                 
+4. Gig at Grand Central on Friday from 7-10pm. Joe plays.                       
+5. Gig at Made in Italy on Saturday from 9pm-12am. Joe plays.                   
                                                                                 
 CRITICAL UNKNOWNS                                                               
 1. What schedule will Dezi come back with?                                      
@@ -59,4 +59,4 @@ CRITICAL UNKNOWNS
                                                                                 
                                                                                 
 https://github.com/joelegner/prolog/blob/main/orientation_report.pl             
-                                                   Generated 2025-06-10 18:15:09
+                                                   Generated 2025-06-10 18:21:13
