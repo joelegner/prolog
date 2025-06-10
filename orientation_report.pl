@@ -36,6 +36,49 @@ draw_horizontal_line(Row, Col, MaxCol) :-
     Col1 is Col + 1,
     draw_horizontal_line(Row, Col1, MaxCol).
 
+% Draw a box with top-left at (Row1, Col1) and bottom-right at (Row2, Col2)
+% Draw a box given top-left (Row, Col), and dimensions (Width, Height)
+draw_box(TopRow, LeftCol, Width, Height) :-
+    BottomRow is TopRow + Height - 1,
+    RightCol  is LeftCol + Width - 1,
+    draw_box_edges(TopRow, LeftCol, BottomRow, RightCol).
+
+% Helper to draw edges using calculated bottom-right corner
+draw_box_edges(Row1, Col1, Row2, Col2) :-
+    draw_horizontal_edge(Row1, Col1, Col2),         % Top edge
+    draw_horizontal_edge(Row2, Col1, Col2),         % Bottom edge
+    draw_vertical_edge(Col1, Row1, Row2),           % Left edge
+    draw_vertical_edge(Col2, Row1, Row2),           % Right edge
+    assertz(cell(Row1, Col1, '┌')),                 % Top-left corner
+    assertz(cell(Row1, Col2, '┐')),                 % Top-right corner
+    assertz(cell(Row2, Col1, '└')),                 % Bottom-left corner
+    assertz(cell(Row2, Col2, '┘')).                 % Bottom-right corner
+
+draw_horizontal_edge(Row, Col1, Col2) :-
+    Col1 < Col2,
+    ColMidStart is Col1 + 1,
+    ColMidEnd is Col2 - 1,
+    draw_horizontal(Row, ColMidStart, ColMidEnd).
+
+draw_horizontal(_, C1, C2) :-
+    C1 > C2, !.
+draw_horizontal(Row, Col, ColEnd) :-
+    assertz(cell(Row, Col, '─')),
+    Col1 is Col + 1,
+    draw_horizontal(Row, Col1, ColEnd).
+
+draw_vertical_edge(Col, Row1, Row2) :-
+    Row1 < Row2,
+    RowMidStart is Row1 + 1,
+    RowMidEnd is Row2 - 1,
+    draw_vertical(Col, RowMidStart, RowMidEnd).
+
+draw_vertical(_, R1, R2) :-
+    R1 > R2, !.
+draw_vertical(Col, Row, RowEnd) :-
+    assertz(cell(Row, Col, '│')),
+    Row1 is Row + 1,
+    draw_vertical(Col, Row1, RowEnd).
 
 % Place text at a specific Row and Starting Column
 % Default: left justification
@@ -103,7 +146,8 @@ build_page :-
     horizontal_line(2),
     bottom_row(BRow),
     right_text(BRow, 'https://github.com/joelegner/prolog/blob/main/orientation_report.pl'),
-    timestamp(Stamp), left_text(BRow, Stamp).
+    timestamp(Stamp), left_text(BRow, Stamp),
+    draw_box(13, 11, 40, 16).
 
 % Write the canvas to a file
 write_canvas(File) :-
@@ -125,7 +169,7 @@ write_canvas_rows(Row, MaxRow, MaxCol, Stream) :-
 write_canvas_row(_, Col, MaxCol, _) :-
     Col > MaxCol, !.
 write_canvas_row(Row, Col, MaxCol, Stream) :-
-    ( cell(Row, Col, Char) -> true ; Char = '.' ),
+    ( cell(Row, Col, Char) -> true ; Char = '·' ),
     put_char(Stream, Char),
     Col1 is Col + 1,
     write_canvas_row(Row, Col1, MaxCol, Stream).
