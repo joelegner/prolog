@@ -137,6 +137,13 @@ left_text(Row, Text) :-
 right_text(Row, Text) :-
     place_on_page(Row, Text, right_justified).
 
+% Write a list of lines starting at Row, Col, using specified justification
+write_lines(_, _, [], _) :- !.
+write_lines(Row, Col, [Line|Rest], Justify) :-
+    place_text(Row, Col, Line, Justify),
+    NextRow is Row + 1,
+    write_lines(NextRow, Col, Rest, Justify).
+
 % Build the page content before writing
 build_page :-
     clear_canvas,
@@ -147,7 +154,15 @@ build_page :-
     bottom_row(BRow),
     right_text(BRow, 'https://github.com/joelegner/prolog/blob/main/orientation_report.pl'),
     timestamp(Stamp), left_text(BRow, Stamp),
-    draw_box(13, 11, 40, 16).
+    draw_box(13, 11, 40, 16),
+    Lines = [
+        'Welcome to the show!',
+        'Each player takes a turn.',
+        'Make sure to stay in key.',
+        'Have fun and engage the crowd!'
+    ],
+    write_lines(15, 13, Lines, left_justified).
+
 
 % Write the canvas to a file
 write_canvas(File) :-
