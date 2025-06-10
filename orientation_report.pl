@@ -113,10 +113,12 @@ left_text(Row, Text) :- place_on_page(Row, Text, left_justified).
 right_text(Row, Text) :- place_on_page(Row, Text, right_justified).
 
 % Write exactly 5 lines with justification, padding with blanks if needed
-write_section(RowStart, Col, Lines, RowEnd) :-
+write_section(RowStart, Col, [Title|Lines], RowEnd) :-
     pad_to_five(Lines, Padded),
-    write_lines(RowStart, Col, Padded, left_justified),
-    RowEnd is RowStart + 5.
+    place_text(RowStart, Col, Title, left_justified),
+    Row is RowStart + 1,
+    write_lines(Row, Col, Padded, left_justified),
+    RowEnd is Row + 5.
 
 pad_to_five(Lines, Padded) :-
     length(Lines, L),

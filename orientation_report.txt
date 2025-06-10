@@ -1,14 +1,16 @@
 Weekly Orientation Report            That Piano Entertainment, LLC                June 8 - June 11, 2025
 ────────────────────────────────────────────────────────────────────────────────────────────────────────
 CURRENT MARKET CONDITIONS                                                                               
-- Windish is advertising for solo piano, crew.                                                          
+Windish is advertising for solo piano, crew.                                                            
+                                                                                                        
                                                                                                         
                                                                                                         
                                                                                                         
                                                                                                         
 KEY OPPORTUNITIES AND THREATS                                                                           
-- Dezi is working on cruise contracts for 2026.                                                         
-- Pat George is going to retire soon.                                                                   
+Dezi is working on cruise contracts for 2026.                                                           
+Pat George is going to retire soon.                                                                     
+                                                                                                        
                                                                                                         
                                                                                                         
                                                                                                         
@@ -18,16 +20,19 @@ A piano bar could be a big hit.
                                                                                                         
                                                                                                         
                                                                                                         
+                                                                                                        
 RECENT ACTIONS AND OUTCOMES                                                                             
 Moved solo show outside to good effect.                                                                 
 Katy Marquart played JF Kicks and did well. She is good.                                                
 Joe and Julie played Italian Club, and it went well.                                                    
                                                                                                         
                                                                                                         
+                                                                                                        
 TACTICAL PRIORITIES                                                                                     
 Fix the CR-V.                                                                                           
 Prepare for Fluffernutters.                                                                             
 Be ready for next weekend's three shows.                                                                
+                                                                                                        
                                                                                                         
                                                                                                         
 CRITICAL UNKNOWNS                                                                                       
@@ -40,9 +45,4 @@ What does our 2026 look like?
                                                                                                         
                                                                                                         
                                                                                                         
-                                                                                                        
-                                                                                                        
-                                                                                                        
-                                                                                                        
-                                                                                                        
-2025-06-10 17:12:22                  https://github.com/joelegner/prolog/blob/main/orientation_report.pl
+2025-06-10 17:19:10                  https://github.com/joelegner/prolog/blob/main/orientation_report.pl
