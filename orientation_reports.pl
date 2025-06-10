@@ -1,7 +1,14 @@
 :- module(orientation_reports, [
+    clear_canvas/0,
     write_canvas/1,
     write_canvas/0,
-    the_stack/2
+    the_stack/2,
+    left_text/2,
+    right_text/2,
+    center_text/2,
+    horizontal_line/1,
+    bottom_row/1,
+    timestamp/1
 ]).
 
 :- use_module(library(date)).
@@ -158,20 +165,6 @@ write_lines(Row, Col, [Line|Rest], Justify) :-
     place_text(Row, Col, Line, Justify),
     NextRow is Row + 1,
     write_lines(NextRow, Col, Rest, Justify).
-
-% Build the page by calling specific report sections from orientation_report.pl
-build_page :-
-    clear_canvas,
-    center_text(1, 'That Piano Entertainment, LLC'),
-    left_text(1, 'Weekly Orientation Report'),
-    right_text(1, 'June 8 - June 11, 2025'),
-    horizontal_line(2),
-    the_stack(3, 1),
-    bottom_row(BRow),
-    ARow is BRow - 1,
-    left_text(ARow, 'https://github.com/joelegner/prolog/blob/main/orientation_report.pl'),
-    timestamp(Stamp), 
-    right_text(BRow, Stamp).
 
 % Write canvas to file
 write_canvas(File) :-

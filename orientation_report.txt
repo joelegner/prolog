@@ -1,11 +1,12 @@
-Weekly Orientation ReportThat Piano Entertainment, LLC    June 8 - June 11, 2025
+That Piano Entertainment, LLC                          Weekly Orientation Report
 ────────────────────────────────────────────────────────────────────────────────
-CURRENT MARKET CONDITIONS                                                       
-1. Windish is advertising for solo piano, crew.                                 
-2.                                                                              
-3.                                                                              
-4.                                                                              
-5.                                                                              
+                                                               Sunday    June  8
+CURRENT MARKET CONDITIONS                                      Monday    June  9
+1. Windish is advertising for solo piano, crew.                Tuesday   June 10
+2.                                                             Wednesday June 11
+3.                                                             Thursday  June 12
+4.                                                             Friday    June 13
+5.                                                             Saturday  June 14
                                                                                 
 KEY OPPORTUNITIES AND THREATS                                                   
 1. => Booking cruise contracts with Dezi for 2026.                              
@@ -57,6 +58,5 @@ CRITICAL UNKNOWNS
                                                                                 
                                                                                 
                                                                                 
-                                                                                
 https://github.com/joelegner/prolog/blob/main/orientation_report.pl             
-                                                   Generated 2025-06-10 17:59:01
+                                                   Generated 2025-06-10 18:15:09

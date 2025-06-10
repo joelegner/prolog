@@ -55,3 +55,23 @@ unknowns(RowIn, Col, RowOut) :-
         'Is anyone moving at all?'
     ],
     orientation_reports:write_section(RowIn, Col, Lines, RowOut).
+
+% Build the page by calling specific report sections from orientation_report.pl
+build_page :-
+    clear_canvas,
+    left_text(1, 'That Piano Entertainment, LLC'),
+    right_text(1, 'Weekly Orientation Report'),
+    horizontal_line(2),
+    right_text(3, 'Sunday    June  8'),
+    right_text(4, 'Monday    June  9'),
+    right_text(5, 'Tuesday   June 10'),
+    right_text(6, 'Wednesday June 11'),
+    right_text(7, 'Thursday  June 12'),
+    right_text(8, 'Friday    June 13'),
+    right_text(9, 'Saturday  June 14'),
+    the_stack(4, 1),
+    bottom_row(BRow),
+    ARow is BRow - 1,
+    left_text(ARow, 'https://github.com/joelegner/prolog/blob/main/orientation_report.pl'),
+    timestamp(Stamp), 
+    right_text(BRow, Stamp).
