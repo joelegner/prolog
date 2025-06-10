@@ -263,3 +263,7 @@ zig:
 .PHONY: planning
 planning:
 	swipl -s planning.pl
+
+.PHONY: structural
+structural:
+	swipl -s structural.pl
