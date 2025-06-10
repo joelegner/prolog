@@ -72,9 +72,7 @@ unknowns(RowIn, Col, RowOut) :-
 % Build the page by calling specific report sections from orientation_report.pl
 build_page :-
     clear_canvas,
-    canvas(rows, Rows),
-    canvas(columns, Cols),
-    draw_border(Rows, Cols),    left_text(1, 'That Piano Entertainment, LLC'),
+    left_text(1, 'That Piano Entertainment, LLC'),
     right_text(1, 'Weekly Orientation Report'),
     horizontal_line(2),
     right_text(3, 'Sunday    June  8'),

@@ -9,8 +9,7 @@
     center_text/2,
     horizontal_line/1,
     bottom_row/1,
-    timestamp/1,
-    draw_border/2
+    timestamp/1
 ]).
 
 :- use_module(library(date)).
@@ -203,20 +202,3 @@ the_stack(RowIn, Col) :-
     tactical_priorities(R8, Col, R9),
     R10 is R9 + 1,
     unknowns(R10, Col, _).
-
-draw_border(Rows, Cols) :-
-    Top is 1,
-    Bottom is Rows,
-    Left is 1,
-    Right is Cols,
-    % Corners
-    assertz(cell(Top, Left, '┌')),
-    assertz(cell(Top, Right, '┐')),
-    assertz(cell(Bottom, Left, '└')),
-    assertz(cell(Bottom, Right, '┘')),
-    % Top and bottom edges
-    draw_horizontal_edge(Top, Left + 1, Right - 1),
-    draw_horizontal_edge(Bottom, Left + 1, Right - 1),
-    % Left and right edges
-    draw_vertical_edge(Left, Top + 1, Bottom - 1),
-    draw_vertical_edge(Right, Top + 1, Bottom - 1).
