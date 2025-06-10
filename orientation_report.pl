@@ -117,7 +117,9 @@ write_section(RowStart, Col, [Title|Lines], RowEnd) :-
     pad_to_five(Lines, Padded),
     place_text(RowStart, Col, Title, left_justified),
     Row is RowStart + 1,
-    write_lines(Row, Col, Padded, left_justified),
+    Number is Row - RowStart,
+    numbered(Number, Padded, Numbered),
+    write_lines(Row, Col, Numbered, left_justified),
     RowEnd is Row + 5.
 
 pad_to_five(Lines, Padded) :-
@@ -125,6 +127,15 @@ pad_to_five(Lines, Padded) :-
     Extra is max(0, 5 - L),
     blank_lines(Extra, Blanks),
     append(Lines, Blanks, Padded).
+
+numbered(Start, Lines, Numbered) :-
+    numbered_lines(Start, Lines, Numbered).
+
+numbered_lines(_, [], []).
+numbered_lines(N, [Line|Rest], [NumberedLine|More]) :-
+    format(atom(NumberedLine), '~w. ~w', [N, Line]),
+    N1 is N + 1,
+    numbered_lines(N1, Rest, More).
 
 blank_lines(0, []) :- !.
 blank_lines(N, [''|Rest]) :-
