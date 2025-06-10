@@ -24,6 +24,19 @@ timestamp(Text) :-
 clear_canvas :-
     retractall(cell(_, _, _)).
 
+% Draw a horizontal line using box-drawing characters
+horizontal_line(Row) :-
+    columns(C),
+    draw_horizontal_line(Row, 1, C).
+
+draw_horizontal_line(_, Col, MaxCol) :-
+    Col > MaxCol, !.
+draw_horizontal_line(Row, Col, MaxCol) :-
+    assertz(cell(Row, Col, '─')),
+    Col1 is Col + 1,
+    draw_horizontal_line(Row, Col1, MaxCol).
+
+
 % Place text at a specific Row and Starting Column
 % Default: left justification
 place_text(Row, Col, Text) :-
@@ -87,6 +100,7 @@ build_page :-
     center_text(1, 'That Piano Entertainment, LLC'),
     left_text(1, 'Weekly Orientation Report'),
     right_text(1, 'June 8 - June 11, 2025'),
+    horizontal_line(2),
     bottom_row(BRow),
     right_text(BRow, 'https://github.com/joelegner/prolog/blob/main/orientation_report.pl'),
     timestamp(Stamp), left_text(BRow, Stamp).
