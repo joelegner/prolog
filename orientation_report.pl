@@ -132,7 +132,10 @@ numbered(Start, Lines, Numbered) :-
     numbered_lines(Start, Lines, Numbered).
 
 numbered_lines(_, [], []).
+numbered_lines(N, [''|Rest], [''|More]) :-  % Blank line: no number, don't increment N
+    numbered_lines(N, Rest, More).
 numbered_lines(N, [Line|Rest], [NumberedLine|More]) :-
+    Line \= '',
     format(atom(NumberedLine), '~w. ~w', [N, Line]),
     N1 is N + 1,
     numbered_lines(N1, Rest, More).
