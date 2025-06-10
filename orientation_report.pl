@@ -16,7 +16,27 @@ clear_canvas :-
     retractall(cell(_, _, _)).
 
 % Place text at a specific Row and Starting Column
+% Default: left justification
 place_text(Row, Col, Text) :-
+    place_text(Row, Col, Text, left_justified).
+
+% Justified placement
+place_text(Row, Col, Text, left_justified) :-
+    place_text_direct(Row, Col, Text).
+
+place_text(Row, Col, Text, right_justified) :-
+    atom_length(Text, Len),
+    StartCol is Col - Len + 1,
+    place_text_direct(Row, StartCol, Text).
+
+place_text(Row, Col, Text, center_justified) :-
+    atom_length(Text, Len),
+    HalfLen is Len // 2,
+    StartCol is Col - HalfLen,
+    place_text_direct(Row, StartCol, Text).
+
+% Core placement logic (no justification logic here)
+place_text_direct(Row, Col, Text) :-
     atom_chars(Text, Chars),
     place_chars(Row, Col, Chars).
 
@@ -36,7 +56,12 @@ center_text(Row, Text) :-
 % Build the page content before writing
 build_page :-
     clear_canvas,
-    center_text(1, 'That Piano Entertainment').
+    center_text(1, 'That Piano Entertainment'),
+    place_text(1, 1, 'Weekly Orientation Report'),
+    place_text(5, 10, 'Left', left_justified),      % Starts at column 10
+    place_text(6, 10, 'Right', right_justified),    % Ends at column 10
+    place_text(7, 10, 'Center', center_justified).  % Centers at column 10
+
 
 % Write the canvas to a file
 write_canvas(File) :-
