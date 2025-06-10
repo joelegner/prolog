@@ -3,6 +3,26 @@
 
 :- dynamic cell/3.
 
+
+% Build the page content before writing
+build_page :-
+    clear_canvas,
+    center_text(1, 'That Piano Entertainment, LLC'),
+    left_text(1, 'Weekly Orientation Report'),
+    right_text(1, 'June 8 - June 11, 2025'),
+    horizontal_line(2),
+    market_conditions(3, 1),
+    opportunities_and_threats(13, 1),
+    assumptions_and_beliefs(23, 1),
+    recent_actions_outcomes(33, 1),
+    tactical_priorities(43, 1),
+    unknowns(53),
+    bottom_row(BRow),
+    right_text(BRow, 'https://github.com/joelegner/prolog/blob/main/orientation_report.pl'),
+    timestamp(Stamp), 
+    left_text(BRow, Stamp).
+
+
 canvas(rows, 48).
 canvas(columns, 104).
 
@@ -140,74 +160,77 @@ right_text(Row, Text) :-
     place_on_page(Row, Text, right_justified).
 
 % Write a list of lines starting at Row, Col, using specified justification
-% Example of usage:
-% Lines = [
-%     'Welcome to the show!',
-%     'Each player takes a turn.',
-%     'Make sure to stay in key.',
-%     'Have fun and engage the crowd!'
-% ],
-% write_lines(15, 13, Lines, left_justified).
 write_lines(_, _, [], _) :- !.
 write_lines(Row, Col, [Line|Rest], Justify) :-
     place_text(Row, Col, Line, Justify),
     NextRow is Row + 1,
     write_lines(NextRow, Col, Rest, Justify).
 
-% Build the page content before writing
-build_page :-
-    clear_canvas,
-    center_text(1, 'That Piano Entertainment, LLC'),
-    left_text(1, 'Weekly Orientation Report'),
-    right_text(1, 'June 8 - June 11, 2025'),
-    horizontal_line(2),
-    market_conditions(3),
-    opportunities_and_threats(5),
-    assumptions_and_beliefs(7),
-    recent_actions_outcomes(9),
-    tactical_priorities(11),
-    unknowns(13),
-    bottom_row(BRow),
-    right_text(BRow, 'https://github.com/joelegner/prolog/blob/main/orientation_report.pl'),
-    timestamp(Stamp), 
-    left_text(BRow, Stamp).
-
 /*
 Current Market Conditions: brief notes on demand trends, competitor moves, and customer feedback relevant this week
 */
-market_conditions(Row) :-
-    left_text(Row, 'CURRENT MARKET CONDITIONS').
+market_conditions(Row, Col) :-
+    Conditions = [
+        'CURRENT MARKET CONDITIONS',
+        '- Windish is advertising for solo piano, crew.'
+    ],
+    write_lines(Row, Col, Conditions, left_justified).
 
 /*
 Key Opportunities and Threats: what new prospects or risks have emerged or shifted recently
-Internal Status: updates on team availability, equipment readiness, bookings pipeline, and resource constraints
 */
-opportunities_and_threats(Row) :-
-    left_text(Row, 'KEY OPPORTUNITIES AND THREATS').
+opportunities_and_threats(Row, Col) :-
+    Items = [
+        'KEY OPPORTUNITIES AND THREATS',
+        '- One-off wedding gig possible for August.',
+        '- Competing agency lost a performer recently.'
+    ],
+    write_lines(Row, Col, Items, left_justified).
 
 /*
 Assumptions and Beliefs: any assumptions about customer preferences, seasonality, or partner reliability you’re testing or updating
 */
-assumptions_and_beliefs(Row) :-
-    left_text(Row, 'ASSUMPTIONS AND BELIEFS').
+assumptions_and_beliefs(Row, Col) :-
+    Beliefs = [
+        'ASSUMPTIONS AND BELIEFS',
+        '- Summer weekday gigs are harder to fill.',
+        '- Weekend demand will stay strong through July.'
+    ],
+    write_lines(Row, Col, Beliefs, left_justified).
 
 /*
 Recent Actions and Outcomes: quick summary of last week’s initiatives and what was learned from results
 */
-recent_actions_outcomes(Row) :-
-    left_text(Row, 'RECENT ACTIONS AND OUTCOMES').
+recent_actions_outcomes(Row, Col) :-
+    Results = [
+        'RECENT ACTIONS AND OUTCOMES',
+        '- Tested Facebook ad — no significant response.',
+        '- Sent availability survey to three musicians.'
+    ],
+    write_lines(Row, Col, Results, left_justified).
 
 /*
 Tactical Priorities: top 3 to 5 focus areas or decisions for the coming week based on updated understanding
 */
-tactical_priorities(Row) :-
-    left_text(Row, 'TACTICAL PRIORITIES').
+tactical_priorities(Row, Col) :-
+    Priorities = [
+        'TACTICAL PRIORITIES',
+        '- Follow up with wedding inquiry.',
+        '- Draft social media post for July events.',
+        '- Review musician backup list.'
+    ],
+    write_lines(Row, Col, Priorities, left_justified).
 
 /*
 Critical Unknowns: key questions or uncertainties that could impact decisions and require observation or data gathering
 */
 unknowns(Row) :-
-    left_text(Row, 'CRITICAL UNKNOWNS').
+    Lines = [
+        'CRITICAL UNKNOWNS',
+        '- Will June 22 booking confirm?',
+        '- Will repeat client reach out for July 13?'
+    ],
+    write_lines(Row, 1, Lines, left_justified).
 
 % Write the canvas to a file
 write_canvas(File) :-
@@ -229,7 +252,9 @@ write_canvas_rows(Row, MaxRow, MaxCol, Stream) :-
 write_canvas_row(_, Col, MaxCol, _) :-
     Col > MaxCol, !.
 write_canvas_row(Row, Col, MaxCol, Stream) :-
-    ( cell(Row, Col, Char) -> true ; Char = '·' ),
+    ( cell(Row, Col, Char) -> true ; Char = ' ' ),
+    % Uncomment this and comment above to draw grid.
+    % ( cell(Row, Col, Char) -> true ; Char = '·' ),
     put_char(Stream, Char),
     Col1 is Col + 1,
     write_canvas_row(Row, Col1, MaxCol, Stream).
