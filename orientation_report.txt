@@ -12,15 +12,15 @@ KEY OPPORTUNITIES AND THREATS
 1. => Booking cruise contracts with Dezi for 2026.                              
 2. => Getting popular in the Lifestyle world.                                   
 3. => Booking cruise contracts with Dezi for 2026.                              
-4. => Getting better work when Pat George retires.                              
+4. XX Scary political environment in the United States in 2025.                 
 5. XX Running out of savings.                                                   
                                                                                 
 ASSUMPTIONS AND BELIEFS                                                         
 1. Pat George really will retire soon.                                          
 2. A piano bar could be a big hit.                                              
-3. Tommy wants to continue living at Walsingham Way.                            
-4.                                                                              
-5.                                                                              
+3. We do not expect to try to leave the US in the next 12 months.               
+4. Tommy wants to continue living at Walsingham Way.                            
+5. Playing more together is better in variety of ways.                          
                                                                                 
 RECENT ACTIONS AND OUTCOMES                                                     
 1. Moved solo show outside to good effect.                                      
@@ -59,4 +59,4 @@ CRITICAL UNKNOWNS
                                                                                 
                                                                                 
 https://github.com/joelegner/prolog/blob/main/orientation_report.pl             
-                                                   Generated 2025-06-10 18:39:07
+                                                   Generated 2025-06-11 07:48:00

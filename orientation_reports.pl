@@ -188,17 +188,3 @@ write_canvas_row(Row, Col, MaxCol, Stream) :-
     put_char(Stream, Char),
     Col1 is Col + 1,
     write_canvas_row(Row, Col1, MaxCol, Stream).
-
-% The stack of sections, each 5 lines tall with 1-line spacing between
-the_stack(RowIn, Col) :-
-    market_conditions(RowIn, Col, R1),
-    R2 is R1 + 1,
-    opportunities_and_threats(R2, Col, R3),
-    R4 is R3 + 1,
-    assumptions_and_beliefs(R4, Col, R5),
-    R6 is R5 + 1,
-    recent_actions_outcomes(R6, Col, R7),
-    R8 is R7 + 1,
-    tactical_priorities(R8, Col, R9),
-    R10 is R9 + 1,
-    unknowns(R10, Col, _).

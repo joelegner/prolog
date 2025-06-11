@@ -22,7 +22,7 @@ opportunities_and_threats(RowIn, Col, RowOut) :-
         '=> Booking cruise contracts with Dezi for 2026.',
         '=> Getting popular in the Lifestyle world.',
         '=> Booking cruise contracts with Dezi for 2026.',
-        '=> Getting better work when Pat George retires.',
+        'XX Scary political environment in the United States in 2025.',
         'XX Running out of savings.'
     ],
     orientation_reports:write_section(RowIn, Col, Lines, RowOut).
@@ -32,7 +32,9 @@ assumptions_and_beliefs(RowIn, Col, RowOut) :-
         'ASSUMPTIONS AND BELIEFS',
         'Pat George really will retire soon.',
         'A piano bar could be a big hit.',
-        'Tommy wants to continue living at Walsingham Way.'
+        'We do not expect to try to leave the US in the next 12 months.',
+        'Tommy wants to continue living at Walsingham Way.',
+        'Playing more together is better in variety of ways.'
     ],
     orientation_reports:write_section(RowIn, Col, Lines, RowOut).
 
@@ -88,3 +90,17 @@ build_page :-
     left_text(ARow, 'https://github.com/joelegner/prolog/blob/main/orientation_report.pl'),
     timestamp(Stamp), 
     right_text(BRow, Stamp).
+
+% The stack of sections, each 5 lines tall with 1-line spacing between
+the_stack(RowIn, Col) :-
+    market_conditions(RowIn, Col, R1),
+    R2 is R1 + 1,
+    opportunities_and_threats(R2, Col, R3),
+    R4 is R3 + 1,
+    assumptions_and_beliefs(R4, Col, R5),
+    R6 is R5 + 1,
+    recent_actions_outcomes(R6, Col, R7),
+    R8 is R7 + 1,
+    tactical_priorities(R8, Col, R9),
+    R10 is R9 + 1,
+    unknowns(R10, Col, _).
