@@ -6,7 +6,7 @@ ready_to_play :-
     ready_to_play(joe),
     sound_system_ready,
     sound_check_completed,
-    writeln('Say 'We are ready to play'').
+    writeln('Ready to play').
 
 ready_to_play(julie) :-
     keyboard_ready,
