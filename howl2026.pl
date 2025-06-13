@@ -141,6 +141,24 @@ itinerary(16,
     new_york
 ).
 
+% August 2026
+itinerary(17,
+    'Halifax & Bermuda',
+    breakaway,
+    boston,
+    [boston, halifax, bermuda],
+    boston
+).
+
+% August 2026
+itinerary(18,
+    'Canada & New England: Bar Harbor & Halifax',
+    breakaway,
+    boston,
+    [boston, portland, bar_harbor, saint_john, halifax],
+    boston
+).
+
 % Other Epic Mediterranean cruises (July, August, September, October 2026)
 % These can reuse itinerary 9 or be split further if needed.
 
@@ -217,6 +235,15 @@ cruise(16, [2026, 8, 29], [2026, 9, 5]).
 cruise(16, [2026, 9, 5], [2026, 9, 12]).
 cruise(16, [2026, 9, 12], [2026, 9, 19]).
 cruise(16, [2026, 9, 19], [2026, 9, 26]).
+
+% Itinerary 17
+cruise(17, [2026, 8, 2], [2026, 8, 9]).
+cruise(17, [2026, 8, 9], [2026, 8, 16]).
+cruise(17, [2026, 8, 16], [2026, 8, 23]).
+
+% Itinerary 18
+cruise(18, [2026, 8, 23], [2026, 8, 30]).
+cruise(18, [2026, 8, 30], [2026, 9, 6]).
 
 gantt :-
     writeln('@startgantt'),
