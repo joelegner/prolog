@@ -114,6 +114,15 @@ itinerary(12,
     london
 ).
 
+% June 2026 - Breakaway: Halifax & Bermuda
+itinerary(13,
+    'Halifax & Bermuda',
+    escape,
+    boston,
+    [boston, bermuda, halifax],
+    boston
+).
+
 % Other Epic Mediterranean cruises (July, August, September, October 2026)
 % These can reuse itinerary 9 or be split further if needed.
 
@@ -178,6 +187,11 @@ cruise(11, [2026, 9, 26], [2026, 10, 12]).
 % Itinerary 12 - Escape Transatlantic October-November 2026
 cruise(12, [2026, 10, 28], [2026, 11, 13]).
 
+% Itinerary 13 -- Breakaway: Halifax & Bermuda-June 2026
+cruise(13, [2026, 6, 7], [2026, 6, 14]).
+cruise(13, [2026, 6, 14], [2026, 6, 21]).
+cruise(13, [2026, 6, 21], [2026, 6, 28]).
+cruise(13, [2026, 6, 28], [2026, 7, 5]).
 
 gantt :-
     writeln('@startgantt'),
