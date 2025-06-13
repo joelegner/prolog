@@ -62,3 +62,32 @@ gantt :-
 
 format_time_string([Y,M,D], Formatted) :-
     format(atom(Formatted), '~d-~|~`0t~d~2+-~|~`0t~d~2+', [Y, M, D]).
+
+calendar :-
+    writeln('BEGIN:VCALENDAR'),
+    writeln('VERSION:2.0'),
+    writeln('PRODID:-//NCL Cruises//Calendar Export//EN'),
+    forall(
+        (cruise(ItinID, Start, End),
+         itinerary(ItinID, Name, Ship, _, _, _),
+         date_to_ics(Start, DTSTART),
+         date_to_ics(End, DTEND),
+         generate_uid(ItinID, Start, UID)),
+        print_event(Name, Ship, DTSTART, DTEND, UID)
+    ),
+    writeln('END:VCALENDAR').
+
+print_event(Name, Ship, DTSTART, DTEND, UID) :-
+    writeln('BEGIN:VEVENT'),
+    format('UID:~w@ncl.com~n', [UID]),
+    format('SUMMARY:~w~n', [Name]),
+    format('DESCRIPTION:Ship: ~w~n', [Ship]),
+    format('DTSTART;VALUE=DATE:~w~n', [DTSTART]),
+    format('DTEND;VALUE=DATE:~w~n', [DTEND]),
+    writeln('END:VEVENT').
+
+date_to_ics([Y, M, D], DateStr) :-
+    format(atom(DateStr), '~d~|~`0t~d~2+~|~`0t~d~2+', [Y, M, D]).
+
+generate_uid(ItinID, [Y, M, D], UID) :-
+    format(atom(UID), 'itin~w-~w~|~`0t~w~2+~|~`0t~w~2+', [ItinID, Y, M, D]).

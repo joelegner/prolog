@@ -278,3 +278,11 @@ gantt.txt: howl2026.pl
 	swipl -s howl2026.pl -g gantt -t halt > gantt.txt
 	cat gantt.txt | pbcopy
 	cat gantt.txt
+
+howl2026.ics: howl2026.pl
+	swipl -s howl2026.pl -g calendar -t halt > howl2026.ics
+	cat howl2026.ics | pbcopy
+	cat howl2026.ics
+
+.PHONY: calendar
+calendar: howl2026.ics
