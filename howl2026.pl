@@ -385,3 +385,12 @@ print_cities([]).
 print_cities([City | Rest]) :-
     writeln(City),
     print_cities(Rest).
+
+print_contracts :-
+    forall(
+        ( contract(ItineraryID, StartDate, EndDate),
+          itinerary(ItineraryID, _, Ship, _, _, _) ),
+        ( writeln(Ship),
+          writeln(StartDate),
+          writeln(EndDate))
+    ).
