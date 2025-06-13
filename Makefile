@@ -273,3 +273,8 @@ orientation_report:
 	swipl -s orientation_report.pl -s orientation_reports -g write_canvas -t halt
 	cupsfilter orientation_report.txt > orientation_report.pdf
 	open orientation_report.pdf
+
+gantt.txt: howl2026.pl
+	swipl -s howl2026.pl -g gantt -t halt > gantt.txt
+	cat gantt.txt | pbcopy
+	cat gantt.txt
