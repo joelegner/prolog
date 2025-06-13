@@ -42,12 +42,12 @@ itinerary(4,
     miami
 ).
 
-% March 2026 - Getaway - Bounced Miami to Bahamas (4-day)
+% March 2026 - Bahamas: Great Stirrup Cay & Nassau
 itinerary(5,
-    'Bounced Miami to Bahamas',
+    'Bahamas: Great Stirrup Cay & Nassau',
     getaway,
     miami,
-    [nassau],
+    [nassau, great_stirrup_cay],
     miami
 ).
 
@@ -129,14 +129,22 @@ cruise(2, [2026, 1, 18], [2026, 1, 25]).
 cruise(2, [2026, 1, 25], [2026, 2, 1]).
 
 % Itinerary 3 - Getaway Caribbean Run 2
-cruise(3, [2026, 1, 19], [2026, 1, 26]).
+cruise(3, [2026, 1, 19], [2026, 1, 29]).
 
 % Itinerary 4 - Getaway Bahamas Runs 1 and 3
 cruise(4, [2026, 1, 15], [2026, 1, 19]).
 cruise(4, [2026, 1, 29], [2026, 2, 2]).
 
 % Itinerary 5 - Getaway Miami to Bahamas 4-day March 2026 (example)
-cruise(5, [2026, 3, 1], [2026, 3, 5]).
+cruise(5, [2026, 3, 2], [2026, 3, 6]).
+cruise(5, [2026, 3, 6], [2026, 3, 9]).
+cruise(5, [2026, 3, 9], [2026, 3, 13]).
+cruise(5, [2026, 3, 13], [2026, 3, 16]).
+cruise(5, [2026, 3, 16], [2026, 3, 20]).
+cruise(5, [2026, 3, 20], [2026, 3, 23]).
+cruise(5, [2026, 3, 23], [2026, 3, 27]).
+cruise(5, [2026, 3, 27], [2026, 3, 30]).
+cruise(5, [2026, 3, 30], [2026, 4, 3]).
 
 % Itinerary 6 - Epic Caribbean March-April 2026 Runs 1-5
 cruise(6, [2026, 3, 1], [2026, 3, 8]).
@@ -155,6 +163,7 @@ cruise(8, [2026, 4, 19], [2026, 5, 3]).
 cruise(9, [2026, 5, 3], [2026, 5, 10]).
 cruise(9, [2026, 5, 10], [2026, 5, 17]).
 cruise(9, [2026, 5, 17], [2026, 5, 24]).
+cruise(9, [2026, 5, 24], [2026, 5, 31]).
 cruise(9, [2026, 5, 31], [2026, 6, 7]).
 
 % Itinerary 10 - Escape Canada & New England August-September 2026
