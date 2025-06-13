@@ -288,6 +288,9 @@ gantt :-
 format_time_string([Y,M,D], Formatted) :-
     format(atom(Formatted), '~d-~|~`0t~d~2+-~|~`0t~d~2+', [Y, M, D]).
 
+format_short_date_string([_, M, D], Formatted) :-
+    format(atom(Formatted), '~|~`0t~d~2+/~|~`0t~d~2+', [M, D]).
+
 calendar :-
     writeln('BEGIN:VCALENDAR'),
     writeln('VERSION:2.0'),
@@ -390,7 +393,11 @@ print_contracts :-
     forall(
         ( contract(ItineraryID, StartDate, EndDate),
           itinerary(ItineraryID, _, Ship, _, _, _) ),
-        ( writeln(Ship),
-          writeln(StartDate),
-          writeln(EndDate))
+        (
+            atom_upper(Ship, ShipCaps),
+            format_short_date_string(StartDate, StartStr),
+            format_short_date_string(EndDate, EndStr),
+            format('~w-~w: ~w.~n', [StartStr, EndStr, ShipCaps])
+        )
     ).
+
