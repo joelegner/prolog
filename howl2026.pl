@@ -119,7 +119,7 @@ itinerary(14,
     'Caribbean: Dominican Republic & St. Thomas',
     escape,
     new_york,
-    [new_york, puerto_rico, st_maarten, st_thomas, tortola, puerto_plata],
+    [new_york, puerto_rico, st_maarten, st_thomas, bvi, puerto_plata],
     new_york
 ).
 
@@ -157,6 +157,24 @@ itinerary(18,
     boston,
     [boston, portland, bar_harbor, saint_john, halifax],
     boston
+).
+
+% December 2026
+itinerary(19,
+    'Caribbean: Curacao & Aruba',
+    breakaway,
+    san_juan_pr,
+    [san_juan_pr, punta_cana, oranjestad, willemstad, st_thomas, bvi],
+    san_juan_pr
+).
+
+% December 2026
+itinerary(20,
+    'Caribbean: Barbados, St. Lucia & St. Thomas',
+    breakaway,
+    san_juan_pr,
+    [san_juan_pr, bvi, st_kitts_nevis, barbados, st_lucia, st_maarten, st_thomas],
+    san_juan_pr
 ).
 
 % Other Epic Mediterranean cruises (July, August, September, October 2026)
@@ -244,6 +262,14 @@ cruise(17, [2026, 8, 16], [2026, 8, 23]).
 % Itinerary 18
 cruise(18, [2026, 8, 23], [2026, 8, 30]).
 cruise(18, [2026, 8, 30], [2026, 9, 6]).
+
+% Itinerary 19
+cruise(19, [2026, 12, 6], [2026, 12, 13]).
+cruise(19, [2026, 12, 20], [2026, 12, 27]).
+
+% Itinerary 20
+cruise(20, [2026, 12, 13], [2026, 12, 20]).
+cruise(20, [2026, 12, 27], [2027, 1, 3]).
 
 gantt :-
     writeln('@startgantt'),
