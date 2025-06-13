@@ -193,8 +193,8 @@ calendar :-
     forall(
         (cruise(ItinID, Start, End),
          itinerary(ItinID, Name, Ship, _, _, _),
-         date_to_ics(Start, DTSTART),
-         date_to_ics(End, DTEND),
+         date_to_ics(Start, DTSTART, start),
+         date_to_ics(End, DTEND, end),
          generate_uid(ItinID, Start, UID)),
         print_event(Name, Ship, DTSTART, DTEND, UID)
     ),
@@ -219,8 +219,12 @@ atom_upper(Atom, Upper) :-
 char_upper(Char, Upper) :-
     char_type(Char, to_upper(Upper)).
 
-date_to_ics([Y, M, D], DateStr) :-
+date_to_ics([Y, M, D], DateStr, start) :-
     format(atom(DateStr), '~d~|~`0t~d~2+~|~`0t~d~2+', [Y, M, D]).
+
+date_to_ics([Y, M, D], DateStr, end) :-
+    D1 is D+1,
+    format(atom(DateStr), '~d~|~`0t~d~2+~|~`0t~d~2+', [Y, M, D1]).
 
 generate_uid(ItinID, [Y, M, D], UID) :-
     format(atom(UID), 'itin~w-~w~|~`0t~w~2+~|~`0t~w~2+', [ItinID, Y, M, D]).
