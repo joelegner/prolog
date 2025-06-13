@@ -87,15 +87,6 @@ itinerary(9,
     nice
 ).
 
-% August-September 2026 - Escape - Canada & New England
-itinerary(10,
-    'Canada & New England',
-    escape,
-    new_york,
-    [boston, portland_me, halifax],
-    new_york
-).
-
 % September 2026 - Escape - Spain & Azores
 itinerary(11,
     'Spain & Azores',
@@ -121,6 +112,33 @@ itinerary(13,
     boston,
     [boston, bermuda, halifax],
     boston
+).
+
+% August 2026 - Escape: Caribbean: Dominican Republic & St. Thomas
+itinerary(14,
+    'Caribbean: Dominican Republic & St. Thomas',
+    escape,
+    new_york,
+    [new_york, puerto_rico, st_maarten, st_thomas, tortola, puerto_plata],
+    new_york
+).
+
+% August 2026 - Escape: Caribbean: Dominican Republic & St. Thomas
+itinerary(15,
+    'Caribbean: Harvest Caye, Cozumel, Roatan',
+    escape,
+    miami,
+    [miami, cozumel, roatan, harvest_caye, costa_maya],
+    miami
+).
+
+% August 2026 - Canada & New England: Boston & Halifax
+itinerary(16,
+    'Canada & New England: Boston & Halifax',
+    escape,
+    new_york,
+    [new_york, boston, portland_me, saint_john, halifax],
+    new_york
 ).
 
 % Other Epic Mediterranean cruises (July, August, September, October 2026)
@@ -175,12 +193,6 @@ cruise(9, [2026, 5, 17], [2026, 5, 24]).
 cruise(9, [2026, 5, 24], [2026, 5, 31]).
 cruise(9, [2026, 5, 31], [2026, 6, 7]).
 
-% Itinerary 10 - Escape Canada & New England August-September 2026
-cruise(10, [2026, 8, 29], [2026, 9, 5]).
-cruise(10, [2026, 9, 5], [2026, 9, 12]).
-cruise(10, [2026, 9, 12], [2026, 9, 19]).
-cruise(10, [2026, 9, 19], [2026, 9, 26]).
-
 % Itinerary 11 - Escape Spain & Azores September-October 2026
 cruise(11, [2026, 9, 26], [2026, 10, 12]).
 
@@ -192,6 +204,19 @@ cruise(13, [2026, 6, 7], [2026, 6, 14]).
 cruise(13, [2026, 6, 14], [2026, 6, 21]).
 cruise(13, [2026, 6, 21], [2026, 6, 28]).
 cruise(13, [2026, 6, 28], [2026, 7, 5]).
+
+% Itinerary 14 -- Escape: Caribbean
+cruise(14, [2026, 8, 19], [2026, 8, 29]).
+
+% Itinerary 15 -- Caribbean: Harvest Caye, Cozumel, Roatan
+cruise(15, [2026, 8, 2], [2026, 8, 9]).
+cruise(15, [2026, 8, 9], [2026, 8, 16]).
+
+% Itinerary 16
+cruise(16, [2026, 8, 29], [2026, 9, 5]).
+cruise(16, [2026, 9, 5], [2026, 9, 12]).
+cruise(16, [2026, 9, 12], [2026, 9, 19]).
+cruise(16, [2026, 9, 19], [2026, 9, 26]).
 
 gantt :-
     writeln('@startgantt'),
