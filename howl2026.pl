@@ -78,13 +78,23 @@ calendar :-
     writeln('END:VCALENDAR').
 
 print_event(Name, Ship, DTSTART, DTEND, UID) :-
+    atom_upper(Ship, ShipCaps),
+    format(atom(Title), '~w: ~w', [ShipCaps, Name]),
     writeln('BEGIN:VEVENT'),
     format('UID:~w@ncl.com~n', [UID]),
-    format('SUMMARY:~w~n', [Name]),
+    format('SUMMARY:~w~n', [Title]),
     format('DESCRIPTION:Ship: ~w~n', [Ship]),
     format('DTSTART;VALUE=DATE:~w~n', [DTSTART]),
     format('DTEND;VALUE=DATE:~w~n', [DTEND]),
     writeln('END:VEVENT').
+
+atom_upper(Atom, Upper) :-
+    atom_string(Atom, Str),
+    string_upper(Str, UpperStr),
+    atom_string(Upper, UpperStr).
+
+char_upper(Char, Upper) :-
+    char_type(Char, to_upper(Upper)).
 
 date_to_ics([Y, M, D], DateStr) :-
     format(atom(DateStr), '~d~|~`0t~d~2+~|~`0t~d~2+', [Y, M, D]).
