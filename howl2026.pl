@@ -155,7 +155,7 @@ itinerary(18,
     'Canada & New England: Bar Harbor & Halifax',
     breakaway,
     boston,
-    [boston, portland, bar_harbor, saint_john, halifax],
+    [boston, portland_me, bar_harbor, saint_john, halifax],
     boston
 ).
 
@@ -164,7 +164,7 @@ itinerary(19,
     'Caribbean: Curacao & Aruba',
     breakaway,
     san_juan_pr,
-    [san_juan_pr, punta_cana, oranjestad, willemstad, st_thomas, bvi],
+    [san_juan_pr, punta_cana, aruba, willemstad, st_thomas, bvi],
     san_juan_pr
 ).
 
@@ -329,3 +329,58 @@ date_to_ics([Y, M, D], DateStr, end) :-
 
 generate_uid(ItinID, [Y, M, D], UID) :-
     format(atom(UID), 'itin~w-~w~|~`0t~w~2+~|~`0t~w~2+', [ItinID, Y, M, D]).
+
+% ... [existing ship/itinerary/cruise facts] ...
+
+% === YOUR PREFERRED CONTRACT SCHEDULE ===
+
+% Already under contract: ESCAPE Jan 4 end (itinerary 1)
+% GETAWAY Jan 15 – Feb 2 (itinerary 4)
+contract(4, [2026,1,15], [2026,2,2]).
+
+% FEBRUARY: off from Feb 2 to Mar 2
+
+% Preferred: GETAWAY Mar 2 – Mar 30 (itinerary 5)
+contract(5, [2026,3,2], [2026,3,30]).
+% Or Plan B: EPIC Mar 1 – Mar 29 (comment/uncomment as needed)
+% cruise(6, [2026,3,1], [2026,3,29]).
+
+% EPIC Transatlantic Apr 19 – May 3 (itinerary 8)
+contract(8, [2026,4,19], [2026,5,3]).
+% Continue EPIC Mediterranean May 3 – May 31 (itinerary 9)
+contract(9, [2026,5,3], [2026,5,31]).
+
+% ESCAPE Boston/Halifax/Bermuda Jun 7 – Jul 5 (itinerary 13)
+contract(13, [2026,6,7], [2026,7,5]).
+
+% BREAKAWAY Halifax & Bermuda Aug 2 – Aug 23 (itinerary 17)
+contract(17, [2026,8,2], [2026,8,23]).
+% BREAKAWAY Canada/New England Aug 23 – Aug 30 (itinerary 18)
+contract(18, [2026,8,23], [2026,8,30]).
+
+% ESCAPE Can & New England Sep 5 – Sep 26 (itinerary 16)
+contract(16, [2026,9,5], [2026,9,26]).
+% ESCAPE Spain & Azores transatlantic Sep 26 – Oct 12 (itinerary 11)
+contract(11, [2026,9,26], [2026,10,12]).
+
+% ESCAPE dry dock break Oct 12–28
+% ESCAPE Transatlantic Oct 28 – Nov 13 (itinerary 12)
+contract(12, [2026,10,28], [2026,11,13]).
+
+% OFF after Nov 13 through early Dec
+
+% BREAKAWAY Caribbean Curacao/Aruba/etc. Dec 6 – Jan 3/2027 (itinerary 19/20)
+contract(19, [2026,12,6], [2026,12,13]).
+contract(20, [2026,12,13], [2027,1,3]).
+
+print_all_cities :-
+    forall(
+        ( contract(ItineraryID, _, _),
+          itinerary(ItineraryID, _, _, _, Cities, _) ),
+        print_cities(Cities)
+    ).
+
+print_cities([]).
+print_cities([City | Rest]) :-
+    writeln(City),
+    print_cities(Rest).
