@@ -300,3 +300,7 @@ Prolog
 **State**: A complete set of **Facts** that describes the **World** at a specific moment.  
 
 **World**: A closed set of **Objects** whose **State** is fully described by the **Facts** that hold among those **Objects**.
+
+# ECLiPSe Constraint Programming System
+
+TODO: Check out [https://eclipseclp.org](https://eclipseclp.org)
