@@ -212,7 +212,6 @@ plug_in_headphones -->
 check_monitoring_sound -->
     ['Test headphone output and adjust volume'].
 
-
 computer -->
     ['Set up Julie\'s laptop'].
 
