@@ -3,6 +3,9 @@ main :-
     make, phrase(twitch, Phrase),
     maplist(writeln, Phrase).
 
+elaborate -->
+    ['(How? This needs elaboration)'].
+
 twitch -->
     ['Make money on Twitch'],
     twitch_account,
@@ -64,13 +67,15 @@ streamlabs_scene_selector -->
     ['Use StreamLabs scene editor'].
 
 streamlabs_source_selector -->
-    ['Use StreamLabs source selector'].
+    ['Use StreamLabs source selector'],
+    elaborate.
 
 
 performance_setup -->
     ['Set up our performance system'],
     computer_software,
-    room_setup.
+    room_setup,
+    running_state.
 
 computer_software -->
     ['Set up computer software'],
@@ -81,6 +86,10 @@ room_setup -->
     composition,
     decor,
     equipment.
+
+running_state -->
+    ['Get everything up and running for a session'],
+    elaborate.
 
 decor -->
     ['Decorate room'].
@@ -165,10 +174,7 @@ microphone_mounting -->
     ['Mount microphone on stand or boom arm'].
 
 microphone_connection -->
-    ['Connect microphone to audio interface or mixer'],
-    locate_input_port,
-    plug_in_xlr_cable,
-    secure_connection.
+    ['Connect microphone to audio interface or mixer'].
 
 locate_input_port -->
     ['Find appropriate mic input on interface or mixer'].
@@ -186,7 +192,8 @@ mixer -->
     adjust_mixer_levels.
 
 place_mixer -->
-    ['Place mixer in accessible location'].
+    ['Place mixer in accessible location'],
+    elaborate.
 
 connect_mixer_to_computer -->
     ['Connect mixer output to laptop input'].
