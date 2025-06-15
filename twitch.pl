@@ -147,7 +147,64 @@ room_overhead_lights -->
     ['Adjust overhead light settings'].
 
 sound_equipment -->
-    ['Set up equipment for sound capture'].
+    ['Set up equipment for sound capture'],
+    microphone_system,
+    mixer,
+    headphones.
+
+microphone_system -->
+    ['Set up microphone system'],
+    microphone_selection,
+    microphone_mounting,
+    microphone_connection.
+
+microphone_selection -->
+    ['Choose appropriate microphone for the room'].
+
+microphone_mounting -->
+    ['Mount microphone on stand or boom arm'].
+
+microphone_connection -->
+    ['Connect microphone to audio interface or mixer'],
+    locate_input_port,
+    plug_in_xlr_cable,
+    secure_connection.
+
+locate_input_port -->
+    ['Find appropriate mic input on interface or mixer'].
+
+plug_in_xlr_cable -->
+    ['Plug one end of XLR cable into microphone, other into input'].
+
+secure_connection -->
+    ['Ensure XLR connection is snug and secure'].
+
+mixer -->
+    ['Set up audio mixer'],
+    place_mixer,
+    connect_mixer_to_computer,
+    adjust_mixer_levels.
+
+place_mixer -->
+    ['Place mixer in accessible location'].
+
+connect_mixer_to_computer -->
+    ['Connect mixer output to laptop input'].
+
+adjust_mixer_levels -->
+    ['Adjust mixer gain and EQ settings'].
+
+headphones -->
+    ['Set up monitoring headphones'],
+    plug_in_headphones,
+    check_monitoring_sound.
+
+plug_in_headphones -->
+    ['Connect headphones to mixer or interface'].
+
+check_monitoring_sound -->
+    ['Test headphone output and adjust volume'].
+
 
 computer -->
     ['Set up Julie\'s laptop'].
