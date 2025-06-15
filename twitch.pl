@@ -73,7 +73,7 @@ performance_setup -->
     room_setup.
 
 computer_software -->
-    ['Set up computer'],
+    ['Set up computer software'],
     streamlabs.
 
 room_setup --> 
@@ -95,20 +95,56 @@ equipment -->
 
 composition -->
     ['Compose the image by arranging the room'],
-    camera_placement,
     keyboard_placement,
+    camera_placement,
     microphone_placement,
-    lighting_placement,
-    sound_placement.
+    sound_placement,
+    lighting_placement.
 
 keyboards -->
-    ['Set up keyboards in the room'].
+    ['Set up keyboards in the room'],
+    julie_keyboard,
+    joe_keyboard.
+
+julie_keyboard -->
+    ['Set up Julie\'s keyboard in the room'].
+
+joe_keyboard -->
+    ['Set up Joe\'s keyboard in the room'].
 
 thrones -->
-    ['Set up two thrones'].
+    ['Set up two thrones'],
+    joe_throne,
+    julie_throne.
+
+joe_throne -->
+    ['Set up Joe\'s throne'].
+
+julie_throne -->
+    ['Set up Julie\'s throne'].
 
 lighting_equipment -->
-    ['Set up some lighting'].
+    ['Set up lighting'],
+    ring_light,
+    broadcast_lights,
+    room_lights.
+
+ring_light -->
+    ['Set up ring light'].
+
+broadcast_lights -->
+    ['Set up video lights on stands'].
+
+room_lights -->
+    ['Adjust room lighting'],
+    room_blinds,
+    room_overhead_lights.
+
+room_blinds -->
+    ['Adjust room blinds'].
+
+room_overhead_lights -->
+    ['Adjust overhead light settings'].
 
 sound_equipment -->
     ['Set up equipment for sound capture'].
