@@ -114,3 +114,7 @@ repairs -->
 
 play -->
     ['Play'].
+
+main :-
+    make, phrase(live_one_day, Phrase),
+    maplist(writeln, Phrase).

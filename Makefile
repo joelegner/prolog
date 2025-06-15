@@ -290,6 +290,11 @@ howl2026.ics: howl2026.pl
 
 .PHONY: calendar
 calendar: howl2026.ics
+
 .PHONY: live
 live:
-	swipl -s live.pl
+	swipl -s live.pl -g main -t halt
+
+.PHONY: twitch
+twitch:
+	swipl -s twitch.pl -g main -t halt
