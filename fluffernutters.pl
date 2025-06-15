@@ -63,6 +63,6 @@ print_human_task_list :-
             days_diff(Today, DueDate, DaysUntil),
             DaysUntil >= 0,  % only print tasks due today or later
             format_date_mdyyyy(DueDate, DateStr),
-            format('In ~w days\' on ~w ~w~n', [DaysUntil, DateStr, TaskName])
+            format('In ~w days on ~w ~w (~w days before Jamaica)~n', [DaysUntil, DateStr, TaskName, DaysBefore])
         )
     ).
