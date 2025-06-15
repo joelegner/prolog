@@ -13,6 +13,7 @@ task( 3, 'Trim beard').
 task( 2, 'Pedicure').
 task( 1, 'Apply coverage').
 task( 0, 'Shave legs').
+task( 0, 'Fly to Jamaica!').
 
 % days_before(+StartDate, +Days, -EndDate)
 days_before(date(Y, M, D), Days, date(Y2, M2, D2)) :-
@@ -36,5 +37,32 @@ print_task_list :-
             days_before(EventStart, DaysBefore, DueDate),
             format_date_mdyyyy(DueDate, DateStr),
             format('~w: ~w~n', [DateStr, TaskName])
+        )
+    ).
+
+% Helper predicate to compute days difference between two dates (Date2 - Date1)
+days_diff(date(Y1, M1, D1), date(Y2, M2, D2), Diff) :-
+    date_time_stamp(date(Y1, M1, D1, 0,0,0,0,-,-), Stamp1),
+    date_time_stamp(date(Y2, M2, D2, 0,0,0,0,-,-), Stamp2),
+    SecondsDiff is Stamp2 - Stamp1,
+    Diff is round(SecondsDiff / 86400).
+
+print_human_task_list :-
+    % Get today's date (local time)
+    get_time(NowStamp),
+    stamp_date_time(NowStamp, date(Year, Month, Day, _, _, _, _, _, _), local),
+    Today = date(Year, Month, Day),
+
+    % Get event start date
+    start_date(fluffernutters, EventStart),
+
+    forall(
+        task(DaysBefore, TaskName),
+        (
+            days_before(EventStart, DaysBefore, DueDate),
+            days_diff(Today, DueDate, DaysUntil),
+            DaysUntil >= 0,  % only print tasks due today or later
+            format_date_mdyyyy(DueDate, DateStr),
+            format('In ~w days\' on ~w ~w~n', [DaysUntil, DateStr, TaskName])
         )
     ).
