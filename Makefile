@@ -95,7 +95,7 @@ files:
 
 .PHONY: fluffernutters
 fluffernutters:
-	swipl -s fluffernutters.pl
+	swipl -s fluffernutters.pl -g print_human_task_list -t halt
 
 .PHONY: footing
 footing:
