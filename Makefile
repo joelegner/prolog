@@ -93,6 +93,10 @@ family:
 files:
 	swipl -s files.pl -g run
 
+.PHONY: fluffernutters
+fluffernutters:
+	swipl -s fluffernutters.pl
+
 .PHONY: footing
 footing:
 	swipl -s footing.pl -g run_tests
