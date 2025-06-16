@@ -71,3 +71,54 @@ print_human_task_list :-
             format('In ~w days on ~w ~w (~w days before Jamaica)~n', [DaysUntil, DateStr, TaskName, DaysBefore])
         )
     ).
+
+% Calendar stuff
+
+calendar :-
+    writeln('BEGIN:VCALENDAR'),
+    writeln('VERSION:2.0'),
+    writeln('PRODID:-//Fluffernutters//Calendar Export//EN'),
+    forall(
+        show(ShowID, Venue, Date, StartTime, Duration),
+        (writeln(ShowID),
+        writeln(Venue),
+        writeln(Date),
+        writeln(StartTime),
+        writeln(Duration))
+        %  itinerary(ShowID, Name, Ship, _, _, _),
+        %  date_to_ics(Start, DTSTART, start),
+        %  date_to_ics(End, DTEND, end),
+        %  generate_uid(ShowID, Start, UID)),
+        % print_event(Name, Ship, DTSTART, DTEND, UID)
+
+    ),
+    writeln('END:VCALENDAR').
+
+print_event(Name, Ship, DTSTART, DTEND, UID) :-
+    atom_upper(Ship, ShipCaps),
+    format(atom(Title), '~w: ~w', [ShipCaps, Name]),
+    writeln('BEGIN:VEVENT'),
+    format('UID:~w@ncl.com~n', [UID]),
+    format('SUMMARY:~w~n', [Title]),
+    format('DESCRIPTION:Ship: ~w~n', [Ship]),
+    format('DTSTART;VALUE=DATE:~w~n', [DTSTART]),
+    format('DTEND;VALUE=DATE:~w~n', [DTEND]),
+    writeln('END:VEVENT').
+
+atom_upper(Atom, Upper) :-
+    atom_string(Atom, Str),
+    string_upper(Str, UpperStr),
+    atom_string(Upper, UpperStr).
+
+char_upper(Char, Upper) :-
+    char_type(Char, to_upper(Upper)).
+
+date_to_ics([Y, M, D], DateStr, start) :-
+    format(atom(DateStr), '~d~|~`0t~d~2+~|~`0t~d~2+', [Y, M, D]).
+
+date_to_ics([Y, M, D], DateStr, end) :-
+    D1 is D+1,
+    format(atom(DateStr), '~d~|~`0t~d~2+~|~`0t~d~2+', [Y, M, D1]).
+
+generate_uid(ShowID, [Y, M, D], UID) :-
+    format(atom(UID), 'itin~w-~w~|~`0t~w~2+~|~`0t~w~2+', [ShowID, Y, M, D]).
