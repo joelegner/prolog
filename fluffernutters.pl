@@ -16,9 +16,15 @@ task( 0, 'Shave legs').
 task( 0, 'Fly to Jamaica!').
 
 % Events during the week
+
+% ShowID, Venue, Date, StartTime, Duration
 show(1, piano_bar, date(2025, 7, 6), time(22, 30), duration_hours(3)). 
 show(2, pool, date(2025, 7, 8), time(14, 0), duration_hours(1)). 
 show(3, piano_bar, date(2025, 7, 9), time(22, 30), duration_hours(3)). 
+
+% EventID, Venue, Description, Date, StartTime, Duration
+event( 1, nude_pool, 'DJ Gene Gene', date(2025, 7, 5), time(14, 0), duration_hours(3)).
+event( 2, disco, 'DJ Gene Gene', date(2025, 7, 5), time(23, 0), duration_hours(2)).
 
 % days_before(+StartDate, +Days, -EndDate)
 days_before(date(Y, M, D), Days, date(Y2, M2, D2)) :-
@@ -52,6 +58,7 @@ days_diff(date(Y1, M1, D1), date(Y2, M2, D2), Diff) :-
     SecondsDiff is Stamp2 - Stamp1,
     Diff is round(SecondsDiff / 86400).
 
+% print_human_task_list/0
 print_human_task_list :-
     % Get today's date (local time)
     get_time(NowStamp),
@@ -74,51 +81,91 @@ print_human_task_list :-
 
 % Calendar stuff
 
-calendar :-
-    writeln('BEGIN:VCALENDAR'),
-    writeln('VERSION:2.0'),
-    writeln('PRODID:-//Fluffernutters//Calendar Export//EN'),
-    forall(
-        show(ShowID, Venue, Date, StartTime, Duration),
-        (writeln(ShowID),
-        writeln(Venue),
-        writeln(Date),
-        writeln(StartTime),
-        writeln(Duration))
-        %  itinerary(ShowID, Name, Ship, _, _, _),
-        %  date_to_ics(Start, DTSTART, start),
-        %  date_to_ics(End, DTEND, end),
-        %  generate_uid(ShowID, Start, UID)),
-        % print_event(Name, Ship, DTSTART, DTEND, UID)
+/*
+BEGIN:VEVENT
+UID:itin18-20260830@ncl.com
+SUMMARY:BREAKAWAY: Canada & New England: Bar Harbor & Halifax
+DESCRIPTION:Venue: breakaway
+DTSTART;VALUE=DATE:20260830
+DTEND;VALUE=DATE:20260907
+END:VEVENT
+*/
 
-    ),
-    writeln('END:VCALENDAR').
+% date_to_ics(+date(Y,M,D), -String)
+date_to_ics(date(Y, M, D), ICS) :-
+    format(atom(ICS), '~d~|~`0t~d~2+~|~`0t~d~2+', [Y, M, D]).
 
-print_event(Name, Ship, DTSTART, DTEND, UID) :-
-    atom_upper(Ship, ShipCaps),
-    format(atom(Title), '~w: ~w', [ShipCaps, Name]),
-    writeln('BEGIN:VEVENT'),
-    format('UID:~w@ncl.com~n', [UID]),
-    format('SUMMARY:~w~n', [Title]),
-    format('DESCRIPTION:Ship: ~w~n', [Ship]),
-    format('DTSTART;VALUE=DATE:~w~n', [DTSTART]),
-    format('DTEND;VALUE=DATE:~w~n', [DTEND]),
-    writeln('END:VEVENT').
+% date_add_one_day(+Date, -NextDate)
+date_add_one_day(Date, NextDate) :-
+    days_before(Date, -1, NextDate).
 
+% generate_uid(+Prefix, +ID, +Date, -UID)
+generate_uid(Prefix, ID, date(Y, M, D), UID) :-
+    format(atom(UID), '~w~w-~d~|~`0t~d~2+~|~`0t~d~2+', [Prefix, ID, Y, M, D]).
+
+% atom_upper(+Atom, -UpperAtom)
 atom_upper(Atom, Upper) :-
     atom_string(Atom, Str),
     string_upper(Str, UpperStr),
     atom_string(Upper, UpperStr).
 
-char_upper(Char, Upper) :-
-    char_type(Char, to_upper(Upper)).
+% show_calendar/0
+show_calendar :-
+    writeln('BEGIN:VCALENDAR'),
+    writeln('VERSION:2.0'),
+    writeln('PRODID:-//Fluffernutters//Calendar Export//EN'),
 
-date_to_ics([Y, M, D], DateStr, start) :-
-    format(atom(DateStr), '~d~|~`0t~d~2+~|~`0t~d~2+', [Y, M, D]).
+    % Shows
+    forall(
+        show(ID, Venue, Date, _, _),
+        (
+            Name = 'The Wonder Twins',
+            date_to_ics(Date, DTSTART),
+            date_add_one_day(Date, Date2),
+            date_to_ics(Date2, DTEND),
+            generate_uid('show', ID, Date, UID),
+            atom_upper(Venue, VenueCaps),
+            format(atom(Title), '~w: ~w', [VenueCaps, Name]),
+            print_event(Title, Venue, DTSTART, DTEND, UID)
+        )
+    ),
 
-date_to_ics([Y, M, D], DateStr, end) :-
-    D1 is D+1,
-    format(atom(DateStr), '~d~|~`0t~d~2+~|~`0t~d~2+', [Y, M, D1]).
+    % Other events
+    forall(
+        event(ID, Venue, Desc, Date, _, _),
+        (
+            date_to_ics(Date, DTSTART),
+            date_add_one_day(Date, Date2),
+            date_to_ics(Date2, DTEND),
+            generate_uid('event', ID, Date, UID),
+            atom_upper(Venue, VenueCaps),
+            format(atom(Title), '~w: ~w', [VenueCaps, Desc]),
+            print_event(Title, Venue, DTSTART, DTEND, UID)
+        )
+    ),
 
-generate_uid(ShowID, [Y, M, D], UID) :-
-    format(atom(UID), 'itin~w-~w~|~`0t~w~2+~|~`0t~w~2+', [ShowID, Y, M, D]).
+    % Tasks
+    start_date(fluffernutters, EventStart),
+    forall(
+        task(DaysBefore, Task),
+        (
+            days_before(EventStart, DaysBefore, Date),
+            date_to_ics(Date, DTSTART),
+            date_add_one_day(Date, Date2),
+            date_to_ics(Date2, DTEND),
+            generate_uid('task', DaysBefore, Date, UID),
+            print_event(Task, 'Task', DTSTART, DTEND, UID)
+        )
+    ),
+
+    writeln('END:VCALENDAR').
+
+% print_event(+Summary, +Venue, +DTSTART, +DTEND, +UID)
+print_event(Summary, Venue, DTSTART, DTEND, UID) :-
+    writeln('BEGIN:VEVENT'),
+    format('UID:~w@fluffernutters.com~n', [UID]),
+    format('SUMMARY:~w~n', [Summary]),
+    format('DESCRIPTION:Venue: ~w~n', [Venue]),
+    format('DTSTART;VALUE=DATE:~w~n', [DTSTART]),
+    format('DTEND;VALUE=DATE:~w~n', [DTEND]),
+    writeln('END:VEVENT').
