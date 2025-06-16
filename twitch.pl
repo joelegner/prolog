@@ -1,7 +1,9 @@
-
 main :-
     make, phrase(twitch, Phrase),
     maplist(writeln, Phrase).
+
+hr -->
+    ['--------------------'].
 
 elaborate -->
     ['(How? This needs elaboration)'].
@@ -13,10 +15,12 @@ twitch -->
     performance_setup.
 
 twitch_account -->
-    ['Manage Twitch account'].
+    ['Manage Twitch account'],
+    hr.
 
 bank_account_connection -->
-    ['Connect Twitch to bank account'].
+    ['Connect Twitch to bank account'],
+    hr.
 
 streamlabs -->
     ['Use Streamlabs'],
@@ -24,7 +28,8 @@ streamlabs -->
     streamlabs_window.
 
 streamlabs_settings -->
-    ['Adjust StreamLabs settings'].
+    ['Adjust StreamLabs settings'],
+    hr.
 
 streamlabs_window -->
     ['Use StreamLabs with user interface'],
@@ -39,16 +44,20 @@ streamlabs_sidebar -->
     streamlabs_sidebar_highlighter.
 
 streamlabs_sidebar_editor_menu -->
-    ['Open StreamLabs editor sidebar menu'].
+    ['Open StreamLabs editor sidebar menu'],
+    hr.
 
 streamlabs_sidebar_themes_menu --> 
-    ['Open StreamLabs themes sidebar menu'].
+    ['Open StreamLabs themes sidebar menu'],
+    hr.
 
 streamlabs_sidebar_app_store_menu -->
-    ['Open StreamLabs App Store sidebar menu'].
+    ['Open StreamLabs App Store sidebar menu'],
+    hr.
 
 streamlabs_sidebar_highlighter -->
-    ['Use StreamLabs highlighter'].
+    ['Use StreamLabs highlighter'],
+    hr.
 
 streamlabs_main_window_content -->
     ['Work with Streamlabs main window'],
@@ -58,13 +67,16 @@ streamlabs_main_window_content -->
     streamlabs_source_selector.
 
 streamlabs_editor_display -->
-    ['Use StreamLabs editor display'].
+    ['Use StreamLabs editor display'],
+    hr.
 
 streamlabs_mini_feed -->
-    ['Use StreamLabs mini feed'].
+    ['Use StreamLabs mini feed'], 
+    hr.
 
 streamlabs_scene_selector -->
-    ['Use StreamLabs scene editor'].
+    ['Use StreamLabs scene editor'],
+    hr.
 
 streamlabs_source_selector -->
     ['Use StreamLabs source selector'],
@@ -92,7 +104,8 @@ running_state -->
     elaborate.
 
 decor -->
-    ['Decorate room'].
+    ['Decorate room'],
+    hr.
 
 equipment -->
     ['Set up equipment in room'],
@@ -116,10 +129,12 @@ keyboards -->
     joe_keyboard.
 
 julie_keyboard -->
-    ['Set up Julie\'s keyboard in the room'].
+    ['Set up Julie\'s keyboard in the room'],
+    hr.
 
 joe_keyboard -->
-    ['Set up Joe\'s keyboard in the room'].
+    ['Set up Joe\'s keyboard in the room'],
+    hr.
 
 thrones -->
     ['Set up two thrones'],
@@ -127,10 +142,12 @@ thrones -->
     julie_throne.
 
 joe_throne -->
-    ['Set up Joe\'s throne'].
+    ['Set up Joe\'s throne'],
+    hr.
 
 julie_throne -->
-    ['Set up Julie\'s throne'].
+    ['Set up Julie\'s throne'],
+    hr.
 
 lighting_equipment -->
     ['Set up lighting'],
@@ -139,10 +156,12 @@ lighting_equipment -->
     room_lights.
 
 ring_light -->
-    ['Set up ring light'].
+    ['Set up ring light'],
+    hr.
 
 broadcast_lights -->
-    ['Set up video lights on stands'].
+    ['Set up video lights on stands'], 
+    hr.
 
 room_lights -->
     ['Adjust room lighting'],
@@ -150,10 +169,12 @@ room_lights -->
     room_overhead_lights.
 
 room_blinds -->
-    ['Adjust room blinds'].
+    ['Adjust room blinds'],
+    hr.
 
 room_overhead_lights -->
-    ['Adjust overhead light settings'].
+    ['Adjust overhead light settings'],
+    hr.
 
 sound_equipment -->
     ['Set up equipment for sound capture'],
@@ -168,22 +189,28 @@ microphone_system -->
     microphone_connection.
 
 microphone_selection -->
-    ['Choose appropriate microphone for the room'].
+    ['Choose appropriate microphone for the room'],
+    hr.
 
 microphone_mounting -->
-    ['Mount microphone on stand or boom arm'].
+    ['Mount microphone on stand or boom arm'],
+    hr.
 
 microphone_connection -->
-    ['Connect microphone to audio interface or mixer'].
+    ['Connect microphone to audio interface or mixer'],
+    hr.
 
 locate_input_port -->
-    ['Find appropriate mic input on interface or mixer'].
+    ['Find appropriate mic input on interface or mixer'],
+    hr.
 
 plug_in_xlr_cable -->
-    ['Plug one end of XLR cable into microphone, other into input'].
+    ['Plug one end of XLR cable into microphone, other into input'],
+    hr.
 
 secure_connection -->
-    ['Ensure XLR connection is snug and secure'].
+    ['Ensure XLR connection is snug and secure'],
+    hr.
 
 mixer -->
     ['Set up audio mixer'],
@@ -196,10 +223,12 @@ place_mixer -->
     elaborate.
 
 connect_mixer_to_computer -->
-    ['Connect mixer output to laptop input'].
+    ['Connect mixer output to laptop input'],
+    hr.
 
 adjust_mixer_levels -->
-    ['Adjust mixer gain and EQ settings'].
+    ['Adjust mixer gain and EQ settings'],
+    hr.
 
 headphones -->
     ['Set up monitoring headphones'],
@@ -207,25 +236,33 @@ headphones -->
     check_monitoring_sound.
 
 plug_in_headphones -->
-    ['Connect headphones to mixer or interface'].
+    ['Connect headphones to mixer or interface'],
+    hr.
 
 check_monitoring_sound -->
-    ['Test headphone output and adjust volume'].
+    ['Test headphone output and adjust volume'],
+    hr.
 
 computer -->
-    ['Set up Julie\'s laptop'].
+    ['Set up Julie\'s laptop'],
+    hr.
 
 camera_placement -->
-    ['Decide on camera placement'].
+    ['Decide on camera placement'],
+    hr.
 
 keyboard_placement -->
-    ['Decide on keyboard and throne placement'].
+    ['Decide on keyboard and throne placement'],
+    hr.
 
 microphone_placement -->
-    ['Decide on microphone placement'].
+    ['Decide on microphone placement'],
+    hr.
 
 lighting_placement -->
-    ['Decide on lighting placement'].
+    ['Decide on lighting placement'],
+    hr.
 
 sound_placement -->
-    ['Decide on sound system placement'].
+    ['Decide on sound system placement'],
+    hr.
