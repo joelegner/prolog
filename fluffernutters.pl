@@ -41,6 +41,10 @@ event(9, prude_beach, 'Dinner on the Beach (Weather permitting)', date(2025, 7, 
 event(10, pier, 'Chinese lantern send off with music by John & Chuck', date(2025, 7, 7), time(22,30), duration_hours(0.5)).
 event(11, nude_pool, 'Moonlight Naked Pool Party', date(2025, 7, 7), time(23,30), duration_hours(2)).
 
+% TUESDAY, JULY 8 EVENTS
+event(12, nude_pool, 'Naughty Pool fun, featuring DJ Gene Gene', date(2025, 7, 8), time(15,0), duration_hours(2.5)).
+event(13, courtyard, 'Pineapple Under the Sea Glow Party with DJ Delly', date(2025, 7, 8), time(22,15), duration_hours(3)).
+
 % days_before(+StartDate, +Days, -EndDate)
 days_before(date(Y, M, D), Days, date(Y2, M2, D2)) :-
     FullStart = date(Y, M, D, 0, 0, 0, 0, -, -),
