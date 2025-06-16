@@ -1,0 +1,53 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Fluffernutters//Calendar Export//EN
+BEGIN:VEVENT
+UID:show1-20250706@fluffernutters.com
+SUMMARY:PIANO_BAR: The Wonder Twins
+DESCRIPTION:Venue: piano_bar
+DTSTART;TZID=America/New_York:20250706T223000
+DTEND;TZID=America/New_York:20250707T013000
+END:VEVENT
+BEGIN:VEVENT
+UID:show2-20250708@fluffernutters.com
+SUMMARY:POOL: The Wonder Twins
+DESCRIPTION:Venue: pool
+DTSTART;TZID=America/New_York:20250708T140000
+DTEND;TZID=America/New_York:20250708T150000
+END:VEVENT
+BEGIN:VEVENT
+UID:show3-20250709@fluffernutters.com
+SUMMARY:PIANO_BAR: The Wonder Twins
+DESCRIPTION:Venue: piano_bar
+DTSTART;TZID=America/New_York:20250709T223000
+DTEND;TZID=America/New_York:20250710T013000
+END:VEVENT
+BEGIN:VEVENT
+UID:event1-20250705@fluffernutters.com
+SUMMARY:NUDE_POOL: Pool tunes with DJ Gene Gene
+DESCRIPTION:Venue: nude_pool
+DTSTART;TZID=America/New_York:20250705T140000
+DTEND;TZID=America/New_York:20250705T170000
+END:VEVENT
+BEGIN:VEVENT
+UID:event2-20250705@fluffernutters.com
+SUMMARY:DISCO: Welcome to Hedo Kick-off Party with DJ Gene Gene
+DESCRIPTION:Venue: disco
+DTSTART;TZID=America/New_York:20250705T230000
+DTEND;TZID=America/New_York:20250706T010000
+END:VEVENT
+BEGIN:VEVENT
+UID:event3-20250706@fluffernutters.com
+SUMMARY:PIANO_BAR: Fluffernutter orientation for newbies and vets!
+DESCRIPTION:Venue: piano_bar
+DTSTART;TZID=America/New_York:20250706T103000
+DTEND;TZID=America/New_York:20250706T111500
+END:VEVENT
+BEGIN:VEVENT
+UID:event4-20250706@fluffernutters.com
+SUMMARY:PIANO_BAR: Resort Tour with Fluff Ambassadors
+DESCRIPTION:Venue: piano_bar
+DTSTART;TZID=America/New_York:20250706T111500
+DTEND;TZID=America/New_York:20250706T121500
+END:VEVENT
+END:VCALENDAR
