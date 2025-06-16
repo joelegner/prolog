@@ -45,6 +45,20 @@ event(11, nude_pool, 'Moonlight Naked Pool Party', date(2025, 7, 7), time(23,30)
 event(12, nude_pool, 'Naughty Pool fun, featuring DJ Gene Gene', date(2025, 7, 8), time(15,0), duration_hours(2.5)).
 event(13, courtyard, 'Pineapple Under the Sea Glow Party with DJ Delly', date(2025, 7, 8), time(22,15), duration_hours(3)).
 
+% WEDNESDAY, JULY 9 EVENTS
+event(14, nude_pool, 'Playground Pool Party with DJ Gene Gene', date(2025, 7, 9), time(14,00), duration_hours(3)).
+event(15, piano_bar, 'Craft Beer Tasting-bring multiples of your fave to share', date(2025, 7, 9), time(16,30), duration_hours(1.5)).
+
+% THURSDAY, JULY 10 EVENTS
+event(16, prude_beach_pool, 'FOAM PARTY!', date(2025,7,10), time(14,00), duration_hours(2)).
+event(17, pier, 'Pirate Cruise! Wear your Pink or Purple wristband! Line up beginning at 3:45 pm', date(2025,7,10), time(16,00), duration_hours(3)).
+event(18, main_stage, 'Fluffernutters Scholarship Presentation', date(2025, 7, 10), time(19, 30), duration_hours(1)).
+event(17, prude_beach_pool, 'John & Chuck entertain us with some Live music for our Animal House Frat Party!!', date(2025, 7, 10), time(22, 30), duration_hours(3)).
+
+% FRIDAY, JULY 11 EVENTS
+event(18, nude_pool, 'Fluff Shenanigans with DJ Delly', date(2025, 7, 11), time(14,00), duration_hours(3)).
+event(19, courtyard, 'Courtyard Dance Party hosted by the Resort', date(2025, 7, 11), time(22,30), duration_hours(3)).
+
 % days_before(+StartDate, +Days, -EndDate)
 days_before(date(Y, M, D), Days, date(Y2, M2, D2)) :-
     FullStart = date(Y, M, D, 0, 0, 0, 0, -, -),

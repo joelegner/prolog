@@ -113,4 +113,60 @@ DESCRIPTION:Venue: courtyard
 DTSTART;TZID=America/New_York:20250708T221500
 DTEND;TZID=America/New_York:20250709T011500
 END:VEVENT
+BEGIN:VEVENT
+UID:event14-20250709@fluffernutters.com
+SUMMARY:NUDE_POOL: Playground Pool Party with DJ Gene Gene
+DESCRIPTION:Venue: nude_pool
+DTSTART;TZID=America/New_York:20250709T140000
+DTEND;TZID=America/New_York:20250709T170000
+END:VEVENT
+BEGIN:VEVENT
+UID:event15-20250709@fluffernutters.com
+SUMMARY:PIANO_BAR: Craft Beer Tasting-bring multiples of your fave to share
+DESCRIPTION:Venue: piano_bar
+DTSTART;TZID=America/New_York:20250709T163000
+DTEND;TZID=America/New_York:20250709T180000
+END:VEVENT
+BEGIN:VEVENT
+UID:event16-20250710@fluffernutters.com
+SUMMARY:PRUDE_BEACH_POOL: FOAM PARTY!
+DESCRIPTION:Venue: prude_beach_pool
+DTSTART;TZID=America/New_York:20250710T140000
+DTEND;TZID=America/New_York:20250710T160000
+END:VEVENT
+BEGIN:VEVENT
+UID:event17-20250710@fluffernutters.com
+SUMMARY:PIER: Pirate Cruise! Wear your Pink or Purple wristband! Line up beginning at 3:45 pm
+DESCRIPTION:Venue: pier
+DTSTART;TZID=America/New_York:20250710T160000
+DTEND;TZID=America/New_York:20250710T190000
+END:VEVENT
+BEGIN:VEVENT
+UID:event18-20250710@fluffernutters.com
+SUMMARY:MAIN_STAGE: Fluffernutters Scholarship Presentation
+DESCRIPTION:Venue: main_stage
+DTSTART;TZID=America/New_York:20250710T193000
+DTEND;TZID=America/New_York:20250710T203000
+END:VEVENT
+BEGIN:VEVENT
+UID:event17-20250710@fluffernutters.com
+SUMMARY:PRUDE_BEACH_POOL: John & Chuck entertain us with some Live music for our Animal House Frat Party!!
+DESCRIPTION:Venue: prude_beach_pool
+DTSTART;TZID=America/New_York:20250710T223000
+DTEND;TZID=America/New_York:20250711T013000
+END:VEVENT
+BEGIN:VEVENT
+UID:event18-20250711@fluffernutters.com
+SUMMARY:NUDE_POOL: Fluff Shenanigans with DJ Delly
+DESCRIPTION:Venue: nude_pool
+DTSTART;TZID=America/New_York:20250711T140000
+DTEND;TZID=America/New_York:20250711T170000
+END:VEVENT
+BEGIN:VEVENT
+UID:event19-20250711@fluffernutters.com
+SUMMARY:COURTYARD: Courtyard Dance Party hosted by the Resort
+DESCRIPTION:Venue: courtyard
+DTSTART;TZID=America/New_York:20250711T223000
+DTEND;TZID=America/New_York:20250712T013000
+END:VEVENT
 END:VCALENDAR
