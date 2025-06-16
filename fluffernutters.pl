@@ -16,9 +16,9 @@ task( 0, 'Shave legs').
 task( 0, 'Fly to Jamaica!').
 
 % Events during the week
-show(1, piano_bar, date(2025, 7, 6), time(22, 30)). 
-show(2, pool, date(2025, 7, 8), time(14, 0)). 
-show(3, piano_bar, date(2025, 7, 9), time(22, 30)). 
+show(1, piano_bar, date(2025, 7, 6), time(22, 30), duration_hours(3)). 
+show(2, pool, date(2025, 7, 8), time(14, 0), duration_hours(1)). 
+show(3, piano_bar, date(2025, 7, 9), time(22, 30, duration_hours(3)). 
 
 % days_before(+StartDate, +Days, -EndDate)
 days_before(date(Y, M, D), Days, date(Y2, M2, D2)) :-
