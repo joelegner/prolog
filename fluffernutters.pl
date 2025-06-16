@@ -23,10 +23,23 @@ show(2, pool, date(2025, 7, 8), time(14, 0), duration_hours(1)).
 show(3, piano_bar, date(2025, 7, 9), time(22, 30), duration_hours(3)). 
 
 % EventID, Venue, Description, Date, StartTime, Duration
+
+% SATURDAY, JULY 5 EVENTS
 event(1, nude_pool, 'Pool tunes with DJ Gene Gene', date(2025, 7, 5), time(14, 0), duration_hours(3)).
 event(2, disco, 'Welcome to Hedo Kick-off Party with DJ Gene Gene', date(2025, 7, 5), time(23, 0), duration_hours(2)).
+
+% SUNDAY, JULY 6 EVENTS
 event(3, piano_bar, 'Fluffernutter orientation for newbies and vets!', date(2025, 7, 6), time(10, 30), duration_hours(0.75)).
 event(4, piano_bar, 'Resort Tour with Fluff Ambassadors', date(2025, 7, 6), time(11, 15), duration_hours(1)).
+event(5, disco, 'Cock \'n Tail Party--Purple Tickets, Drawing Card, School Supplies, Donations', date(2025, 7, 6), time(16, 00), duration_hours(2)).
+
+% MONDAY, JULY 7 EVENTS
+event(6, nude_pool, 'Classic Pool Fun featuring DJ Gene Gene', date(2025, 7, 7), time(14,00), duration_hours(3)).
+event(7, piano_bar, 'Bourbon/Whiskey Tasting', date(2025, 7, 7), time(16,00), duration_hours(1.5)).
+event(8, prude_beach, 'Interactive Vibrating Dinner (remotes exchanged at 7:00 pm)', date(2025, 7, 7), time(18,30), duration_hours(0.5)).
+event(9, prude_beach, 'Dinner on the Beach (Weather permitting)', date(2025, 7, 7), time(19,00), duration_hours(3)).
+event(10, pier, 'Chinese lantern send off with music by John & Chuck', date(2025, 7, 7), time(22,30), duration_hours(0.5)).
+event(11, nude_pool, 'Moonlight Naked Pool Party', date(2025, 7, 7), time(23,30), duration_hours(2)).
 
 % days_before(+StartDate, +Days, -EndDate)
 days_before(date(Y, M, D), Days, date(Y2, M2, D2)) :-

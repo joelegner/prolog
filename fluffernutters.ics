@@ -50,4 +50,53 @@ DESCRIPTION:Venue: piano_bar
 DTSTART;TZID=America/New_York:20250706T111500
 DTEND;TZID=America/New_York:20250706T121500
 END:VEVENT
+BEGIN:VEVENT
+UID:event5-20250706@fluffernutters.com
+SUMMARY:DISCO: Cock 'n Tail Party--Purple Tickets, Drawing Card, School Supplies, Donations
+DESCRIPTION:Venue: disco
+DTSTART;TZID=America/New_York:20250706T160000
+DTEND;TZID=America/New_York:20250706T180000
+END:VEVENT
+BEGIN:VEVENT
+UID:event6-20250707@fluffernutters.com
+SUMMARY:NUDE_POOL: Classic Pool Fun featuring DJ Gene Gene
+DESCRIPTION:Venue: nude_pool
+DTSTART;TZID=America/New_York:20250707T140000
+DTEND;TZID=America/New_York:20250707T170000
+END:VEVENT
+BEGIN:VEVENT
+UID:event7-20250707@fluffernutters.com
+SUMMARY:PIANO_BAR: Bourbon/Whiskey Tasting
+DESCRIPTION:Venue: piano_bar
+DTSTART;TZID=America/New_York:20250707T160000
+DTEND;TZID=America/New_York:20250707T173000
+END:VEVENT
+BEGIN:VEVENT
+UID:event8-20250707@fluffernutters.com
+SUMMARY:PRUDE_BEACH: Interactive Vibrating Dinner (remotes exchanged at 7:00 pm)
+DESCRIPTION:Venue: prude_beach
+DTSTART;TZID=America/New_York:20250707T183000
+DTEND;TZID=America/New_York:20250707T190000
+END:VEVENT
+BEGIN:VEVENT
+UID:event9-20250707@fluffernutters.com
+SUMMARY:PRUDE_BEACH: Dinner on the Beach (Weather permitting)
+DESCRIPTION:Venue: prude_beach
+DTSTART;TZID=America/New_York:20250707T190000
+DTEND;TZID=America/New_York:20250707T220000
+END:VEVENT
+BEGIN:VEVENT
+UID:event10-20250707@fluffernutters.com
+SUMMARY:PIER: Chinese lantern send off with music by John & Chuck
+DESCRIPTION:Venue: pier
+DTSTART;TZID=America/New_York:20250707T223000
+DTEND;TZID=America/New_York:20250707T230000
+END:VEVENT
+BEGIN:VEVENT
+UID:event11-20250707@fluffernutters.com
+SUMMARY:NUDE_POOL: Moonlight Naked Pool Party
+DESCRIPTION:Venue: nude_pool
+DTSTART;TZID=America/New_York:20250707T233000
+DTEND;TZID=America/New_York:20250708T013000
+END:VEVENT
 END:VCALENDAR
