@@ -10,12 +10,12 @@
 :- setting(title, text, '35x25 Twitch Floor Plan', 'Title of document').
 
 % Object definitions
-object(couch, rectangle(8, 2.5), rotate(90)).
-object(loveseat, rectangle(5, 2.5), rotate(45)).
+object(couch, rectangle(10, 3.5), rotate(0)).
+object(loveseat, rectangle(6, 3.5), rotate(0)).
 
 % Object placement (feet from lower-left corner)
-place(couch, 20, 0).
-place(loveseat, 0, 20).
+place(couch, 5, 0).
+place(loveseat, 0, 5).
 
 % Main predicate to run everything and write to file
 run :-
@@ -99,13 +99,24 @@ draw_object(Name) -->
         TX is Xft * Scale,
         TY is Yft * Scale,
 
-        number_string(TX, TXs),
-        number_string(TY, TYs),
+        % Paper and border sizes (points)
+        PaperWidth = 792,
+        PaperHeight = 612,
+        BorderWidth is 35 * Scale,
+        BorderHeight is 25 * Scale,
+        X0 is (PaperWidth - BorderWidth) / 2,
+        Y0 is (PaperHeight - BorderHeight) / 2,
+
+        % Add border origin offset to position
+        XPos is TX + X0,
+        YPos is TY + Y0,
+
+        number_string(XPos, TXs),
+        number_string(YPos, TYs),
         number_string(WX, WXs),
         number_string(HX, HXs),
         number_string(Angle, As),
 
-        % Build PostScript command lines as full strings:
         atomic_list_concat([TXs, ' ', TYs, ' translate'], TranslateLine),
         atomic_list_concat([As, ' rotate'], RotateLine),
         atomic_list_concat(['0 0 moveto'], MoveTo),
