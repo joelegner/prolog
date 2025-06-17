@@ -303,6 +303,7 @@ twitch:
 
 .PHONY: floorplan
 floorplan: floorplan.pdf
+	swipl -s floorplan.pl
 	open floorplan.pdf
 	
 floorplan.pdf: floorplan.ps
