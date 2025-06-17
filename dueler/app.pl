@@ -1,14 +1,46 @@
 :- module(app, [app_source_code//0, run/0]).
 
+/*
+This domain specific language for axiomatic design is envisioned this way.
+
+fr1 -->
+    [dp1],
+    fr11,
+    fr12,
+    fr13.
+
+fr11 -->
+    [dp11],
+    fr111,
+    fr112.
+
+fr12 -->
+    [dp12].
+
+fr13 -->
+    [dp13].
+
+fr111 -->
+    [dp111].
+
+fr112 -->
+    [dp112].
+*/
+
 make_dueling_fun -->
+    ['DuelerMVP App for iPad'],
     welcome_new_users,
     maintain_song_database,
-    view_lyrics.
+    view_songs.
 
 welcome_new_users -->
-    ['struct NewUserView'].
+    ['struct NewUserView'],
+    create_new_database,
+    open_existing_database,
+    import_set_list_maker_database.
 
-view_lyrics -->
+view_songs -->
+    ['struct SongView'],
     find_songs_fast,
     display_lyrics.
 
