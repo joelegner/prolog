@@ -1,8 +1,12 @@
 %!PS-Adobe-3.0
-%%BoundingBox: 0 0 612 792
-%%Title: 35x25 Floor Plan
+%%BoundingBox: 0 0 792 612
+%%Title: 35x25 Floor Plan (Landscape, Centered)
 %%Pages: 1
 %%EndComments
+
+% Rotate coordinate system to landscape
+90 rotate
+0 -612 translate
 
 % 1 foot = 18 points = 1/4 inch
 /ft 18 def
@@ -12,12 +16,12 @@
 /height_ft 25 def
 
 % Convert to points
-/w width_ft ft mul def
-/h height_ft ft mul def
+/w width_ft ft mul def    % 630 pt
+/h height_ft ft mul def   % 450 pt
 
-% Compute origin (lower-left corner) to center on 612x792
-/x0 612 w sub 2 div def
-/y0 792 h sub 2 div def
+% Compute origin (lower-left corner) to center on 792x612 paper
+/x0 792 w sub 2 div def
+/y0 612 h sub 2 div def
 
 % Set line width
 4 setlinewidth
