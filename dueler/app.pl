@@ -39,6 +39,15 @@ welcome_new_users -->
     open_existing_database,
     import_set_list_maker_database.
 
+create_new_database -->
+    ['struct OpenDatabaseView'].
+
+open_existing_database -->
+    ['struct NewDatabaseView'].
+
+import_set_list_maker_database -->
+    ['struct ImportDatabaseView'].
+
 view_songs -->
     ['struct SongView'],
     find_songs_fast,
