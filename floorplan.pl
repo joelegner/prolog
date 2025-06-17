@@ -5,9 +5,17 @@
 :- use_module(library(apply)).
 :- use_module(library(settings)).
 
-% Declare setting for border line width
+% Declare settings
 :- setting(border_line_width, number, 2, 'Width of border lines in points').
 :- setting(title, text, '35x25 Twitch Floor Plan', 'Title of document').
+
+% Object definitions
+object(couch, rectangle(8, 2.5), rotate(90)).
+object(loveseat, rectangle(5, 2.5), rotate(45)).
+
+% Object placement (feet from lower-left corner)
+place(couch, 20, 0).
+place(loveseat, 0, 20).
 
 % Main predicate to run everything and write to file
 run :-
@@ -44,7 +52,8 @@ set_scale -->
     ['/ft 18 def'].
 
 draw_content -->
-    draw_border.
+    draw_border,
+    draw_objects.
 
 draw_border -->
     ['% Box size in feet'],
@@ -71,13 +80,59 @@ draw_border -->
     ['closepath'],
     ['stroke'].
 
-% Convert a mixed list of atoms/numbers/strings into a single string
+draw_objects -->
+    { findall(Name, object(Name, _, _), Names) },
+    draw_object_list(Names).
+
+draw_object_list([]) --> [].
+draw_object_list([Name|Rest]) -->
+    draw_object(Name),
+    draw_object_list(Rest).
+
+draw_object(Name) -->
+    {
+        object(Name, rectangle(Wft, Hft), rotate(Angle)),
+        place(Name, Xft, Yft),
+        Scale is 18,
+        WX is Wft * Scale,
+        HX is Hft * Scale,
+        TX is Xft * Scale,
+        TY is Yft * Scale,
+
+        number_string(TX, TXs),
+        number_string(TY, TYs),
+        number_string(WX, WXs),
+        number_string(HX, HXs),
+        number_string(Angle, As),
+
+        % Build PostScript command lines as full strings:
+        atomic_list_concat([TXs, ' ', TYs, ' translate'], TranslateLine),
+        atomic_list_concat([As, ' rotate'], RotateLine),
+        atomic_list_concat(['0 0 moveto'], MoveTo),
+        atomic_list_concat([WXs, ' 0 rlineto'], RLine1),
+        atomic_list_concat(['0 ', HXs, ' rlineto'], RLine2),
+        atomic_list_concat(['-', WXs, ' 0 rlineto'], RLine3)
+    },
+    ['% Object: ~w'-[Name]],
+    ['gsave'],
+    [TranslateLine],
+    [RotateLine],
+    ['newpath'],
+    [MoveTo],
+    [RLine1],
+    [RLine2],
+    [RLine3],
+    ['closepath'],
+    ['stroke'],
+    ['grestore'].
+
+% Join parts into a single string
 join_line(Mixed, [Joined]) :-
     maplist(to_atom, Mixed, Parts),
     atomic_list_concat(Parts, '', Joined).
 
 to_atom(X, Atom) :-
-    (   string(X) -> Atom = X
-    ;   number(X) -> number_string(X, Atom)
-    ;   atom(X)   -> Atom = X
+    ( string(X) -> Atom = X
+    ; number(X) -> number_string(X, Atom)
+    ; atom(X)   -> Atom = X
     ).
