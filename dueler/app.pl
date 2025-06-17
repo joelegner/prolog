@@ -1,11 +1,47 @@
-:- module(app, [app_source_code//0]).
+:- module(app, [app_source_code//0, run/0]).
 
-:- use_module(data_model).      % <-- required because app_source_code uses data_model
-:- use_module(user_interface).  % <-- also needed here
-:- use_module(helpers).         % <-- same here
-:- use_module(struct).         % <-- same here
-:- use_module(text_util).         % <-- same here
+make_dueling_fun -->
+    welcome_new_users,
+    maintain_song_database,
+    view_lyrics.
 
+welcome_new_users -->
+    ['struct NewUserView'].
+
+view_lyrics -->
+    find_songs_fast,
+    display_lyrics.
+
+find_songs_fast -->
+    ['struct SongFinderView'].
+
+display_lyrics -->
+    ['struct LyricsView'].
+
+maintain_song_database -->
+    edit_song_data,
+    edit_set_lists.
+
+edit_song_data --> 
+    edit_song_metadata,
+    edit_song_lyrics.
+
+edit_song_metadata -->
+    ['struct SongMetadataView'],
+    edit_song_title,
+    edit_song_artist.
+
+edit_song_lyrics -->
+    ['struct LyricsEditor'].
+
+edit_song_title -->
+    ['Song Title Field'].
+
+edit_song_artist -->
+    ['Song Artist Field'].
+
+edit_set_lists -->
+    ['struct SetListEditorView'].
 
 the_app --> 
     the_app_imports,
@@ -31,3 +67,7 @@ the_app_imports -->
 
 the_app_struct_body -->
     [].
+
+run :-
+    phrase(make_dueling_fun, Report),
+    writeln(Report).

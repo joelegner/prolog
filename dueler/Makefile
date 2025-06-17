@@ -11,7 +11,8 @@ MAIN = duelermvp/duelermvp.pl
 all: run
 
 run:
-	swipl -s duelermvp.pl
+	swipl -s duelermvp.pl -g run -t halt
+	swipl -s app.pl -g run -t halt
 
 # Optional: if you want to redirect to a Swift source file
 write:
