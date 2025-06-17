@@ -3,6 +3,11 @@
 
 :- use_module(library(dcg/basics)).
 :- use_module(library(apply)).
+:- use_module(library(settings)).
+
+% Declare setting for border line width
+:- setting(border_line_width, number, 2, 'Width of border lines in points').
+:- setting(title, text, '35x25 Twitch Floor Plan', 'Title of document').
 
 % Main predicate to run everything and write to file
 run :-
@@ -21,7 +26,10 @@ page -->
 start_page --> 
     ['%!PS-Adobe-3.0'],
     ['%%BoundingBox: 0 0 792 612'],
-    ['%%Title: 35x25 Floor Plan (Landscape, Centered)'],
+    { setting(title, Title),
+      atomic_list_concat(['%%Title: ', Title], Line)
+    },
+    [Line],
     ['%%Pages: 1'],
     ['%%EndComments'].
 
@@ -31,7 +39,7 @@ rotate_coords -->
     ['0 -612 translate'].
 
 set_scale -->
-    { join_line(['% ', 1, 'foot = ', 18, ' points = ', 1, '/', 4, ' inch'], Result) },
+    { join_line(['% ', 1, ' foot = ', 18, ' points = ', 1, '/', 4, ' inch'], Result) },
     Result,
     ['/ft 18 def'].
 
@@ -49,7 +57,11 @@ draw_border -->
     ['/x0 792 w sub 2 div def'],
     ['/y0 612 h sub 2 div def'],
     ['% Set line width'],
-    ['4 setlinewidth'],
+    { setting(border_line_width, W),
+      number_string(W, WStr),
+      atomic_list_concat([WStr, ' setlinewidth'], Line)
+    },
+    [Line],
     ['% Draw rectangle'],
     ['newpath'],
     ['x0 y0 moveto'],
