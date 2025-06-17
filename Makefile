@@ -303,8 +303,10 @@ twitch:
 
 .PHONY: floorplan
 floorplan: floorplan.pdf
-	swipl -s floorplan.pl
 	open floorplan.pdf
 	
 floorplan.pdf: floorplan.ps
 	ps2pdf floorplan.ps
+
+floorplan.ps: floorplan.pl
+	swipl -s floorplan.pl -g run -t halt

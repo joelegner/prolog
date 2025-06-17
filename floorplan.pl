@@ -1,6 +1,16 @@
 % floorplan.pl
 % Floor plan drawing for Twitch setup.
 
+:- use_module(library(dcg/basics)).
+:- use_module(library(apply)).
+
+% Main predicate to run everything and write to file
+run :-
+    phrase(page, Lines),
+    open('floorplan.ps', write, Stream),
+    maplist(format(Stream, '~w~n'), Lines),
+    close(Stream).
+
 page -->
     start_page,
     rotate_coords,
