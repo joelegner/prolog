@@ -6,10 +6,52 @@
 :- use_module(helpers).
 :- use_module(tests).
 
-source_code --> 
-    app_source_code,
-    test_source_code.
+source_code_folder -->
+    ['Sources/'],
+    'DuelerMVPApp/',
+    'Models/',
+    'Views/',
+    'ViewModels/',
+    [].
+
+'DuelerMVPApp/' -->
+    ['DuelerMVPApp/'],
+    'DuelerMVPApp.swift'.
+
+'DuelerMVPApp.swift' -->
+    ['DuelerMVPApp.swift'],
+    'struct DuelerMVPApp'.
+
+'struct DuelerMVPApp' --> 
+    ['struct DuelerMVPApp'].
+
+'Models/' --> 
+    ['Models/'],
+    ['Song.swift'],
+    ['Playlist.swift'],
+    [].
+
+'Views/' --> 
+    ['Views/'],
+    'FirstTimeView',
+    'MainView/',
+    [].
+
+'ViewModels/' -->
+    ['ViewModels/'],
+    [].
+
+'FirstTimeView' -->
+    ['FirstTimeView.swift'].
+
+'MainView/' -->
+    ['MainView/'],
+    ['MainView.swift'],
+    ['SetListSidebarView.swift'],
+    ['SongFinderSidebarView.swift'],
+    ['LyricsView.swift'],
+    ['LyricsEditorView.swift'].
 
 run :-
-    phrase(source_code, SourceCode),
-    writeln(SourceCode).
+    phrase(source_code_folder, Repository),
+    writeln(Repository).
