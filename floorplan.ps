@@ -1,0 +1,34 @@
+%!PS-Adobe-3.0
+%%BoundingBox: 0 0 612 792
+%%Title: 35x25 Floor Plan
+%%Pages: 1
+%%EndComments
+
+% 1 foot = 18 points = 1/4 inch
+/ft 18 def
+
+% Box size in feet
+/width_ft 35 def
+/height_ft 25 def
+
+% Convert to points
+/w width_ft ft mul def
+/h height_ft ft mul def
+
+% Compute origin (lower-left corner) to center on 612x792
+/x0 612 w sub 2 div def
+/y0 792 h sub 2 div def
+
+% Set line width
+4 setlinewidth
+
+% Draw rectangle
+newpath
+x0 y0 moveto
+w 0 rlineto
+0 h rlineto
+w neg 0 rlineto
+closepath
+stroke
+
+showpage

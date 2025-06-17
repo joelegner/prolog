@@ -300,3 +300,10 @@ live:
 .PHONY: twitch
 twitch:
 	swipl -s twitch.pl -g main -t halt
+
+.PHONY: floorplan
+floorplan: floorplan.pdf
+	open floorplan.pdf
+	
+floorplan.pdf: floorplan.ps
+	ps2pdf floorplan.ps
