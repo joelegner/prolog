@@ -31,7 +31,8 @@ rotate_coords -->
     ['0 -612 translate'].
 
 set_scale -->
-    ['% 1 foot = 18 points = 1/4 inch'],
+    { join_line(['% ', 1, 'foot = ', 18, ' points = ', 1, '/', 4, ' inch'], Result) },
+    Result,
     ['/ft 18 def'].
 
 draw_content -->
@@ -57,3 +58,14 @@ draw_border -->
     ['w neg 0 rlineto'],
     ['closepath'],
     ['stroke'].
+
+% Convert a mixed list of atoms/numbers/strings into a single string
+join_line(Mixed, [Joined]) :-
+    maplist(to_atom, Mixed, Parts),
+    atomic_list_concat(Parts, '', Joined).
+
+to_atom(X, Atom) :-
+    (   string(X) -> Atom = X
+    ;   number(X) -> number_string(X, Atom)
+    ;   atom(X)   -> Atom = X
+    ).
