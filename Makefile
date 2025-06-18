@@ -310,3 +310,7 @@ floorplan.pdf: floorplan.ps
 
 floorplan.ps: floorplan.pl
 	swipl -s floorplan.pl -g run -t halt
+
+.PHONY: script
+script:
+	./script.pl joe legner
