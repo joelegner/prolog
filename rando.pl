@@ -1,7 +1,7 @@
 #!/usr/bin/env swipl
-% rando.py
+% rando.pl
 
-% We are telling the intepreter to start with our main/1 predicate. 
+% Tell the Prolog system to call main/1 with command-line arguments upon execution.
 :- initialization(main, main).
 
 /*
@@ -9,7 +9,7 @@ This is the darndest thing. Look at this code. This is all the code it took in P
 */
 
 /* 
-The argument of main/1 is a list of args passed to the command line program. We first set up the base case: no arguments passed. For this case we use the special empty list atom `[]`. Here we want to return a random number between 1 and 100 to match Ada-rando. This is trivial with the built-in predicate random_between/3. We write the result and are done.
+The argument of main/1 is a list of args passed to the command line program. We first set up the base case: no arguments passed. For this we use the empty list `[]`. The default behavior is to return a random number between 1 and 100 to match Ada-rando. This is trivial with the built-in predicate random_between/3. We write the result and are done.
 
 If an argument is passed, this predicate will not resolve, and Prolog will proceed to the next main/1 clause in the procedure for main/1. 
 */ 
