@@ -190,3 +190,7 @@ pair_to_string(X-Y, S) :-
 
 generate_svg :-
     write_svg('floorplan.svg').
+
+open_svg :-
+    generate_svg,
+    shell('open floorplan.svg').
