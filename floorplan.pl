@@ -157,6 +157,10 @@ point(c, 176, 200).
 point(d, 86, 290).
 point(e, 0, 290).
 
+% Two keyboards
+keyboard(joe_kb, length(52), width(12)).
+keyboard(julie_kb, length(52), width(12)).
+
 write_svg(File) :-
     findall(X-Y, (member(ID, [a,b,c,d,e]), point(ID, X, Y)), Pairs),
     maplist(pair_to_string, Pairs, Strings),
