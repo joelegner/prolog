@@ -317,3 +317,10 @@ script:
 .PHONY: scraping
 scraping:
 	scryer-prolog scraping.pl
+
+.PHONY: rando
+rando:
+	./rando.pl 
+	./rando.pl 1000
+	./rando.pl 250 300
+
