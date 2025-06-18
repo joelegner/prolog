@@ -1,5 +1,10 @@
 % scraping.pl
-% This one is intended to be run with scryer-prolog
+% Note! Use scryer-prolog.
+
+% It demonstrates a surprising fact: you can have a working Prolog program without
+% having to define even a single predicate. Here is one that can extract the titles
+% of articles from the Hacker News website and defines zero predicates of its own.
+
 % https://www.youtube.com/watch?v=zKrw-pRI9ac
 
 :- use_module(library(http/http_open)).
