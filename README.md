@@ -304,3 +304,30 @@ Prolog
 # ECLiPSe Constraint Programming System
 
 TODO: Check out [https://eclipseclp.org](https://eclipseclp.org)
+
+# SWI Prolog
+
+Not sure what this really means. They seem to be modules that are auto-loaded when starting the `swipl` top level.
+
+```prolog
+?- current_module(Module).
+Module = sandbox ;
+Module = predopts_analysis ;
+Module = prolog ;
+Module = prolog_stack ;
+Module = ansi_term ;
+Module = system ;
+Module = prolog_system_predicate_options ;
+Module = prolog_history ;
+Module = editline ;
+Module = qsave ;
+Module = base32 ;
+Module = prolog_debug_tools ;
+Module = user ;
+Module = predicate_options ;
+Module = shlib ;
+Module = prolog_clause ;
+Module = lists ;
+Module = prolog_debug ;
+```
+
