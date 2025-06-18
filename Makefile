@@ -324,3 +324,7 @@ rando:
 	./rando.pl 1000
 	./rando.pl 250 300
 
+
+.PHONY: svg
+svg:
+	./svg.pl

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="176in" height="290in" viewBox="0 0 176 290"
+     version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="0,0 176,0 176,200 86,290 0,290"
+           fill="none"
+           stroke="black"
+           stroke-width="0.02in" />
+  <text x="88" y="145"
+        text-anchor="middle"
+        dominant-baseline="middle"
+        font-size="12"
+        font-family="sans-serif"
+        fill="lightgrey"
+        opacity="0.6">
+    TWITCH ROOM
+  </text>
+</svg>
