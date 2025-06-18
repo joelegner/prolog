@@ -314,3 +314,6 @@ floorplan.ps: floorplan.pl
 .PHONY: script
 script:
 	./script.pl joe legner
+.PHONY: scraping
+scraping:
+	scryer-prolog scraping.pl
