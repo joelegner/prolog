@@ -1,5 +1,6 @@
 % floorplan.pl
 % Floor plan drawing for Twitch setup.
+% Note! This is superseded by svg.pl which uses DCGs and is much better to read.
 
 :- use_module(library(dcg/basics)).
 :- use_module(library(apply)).

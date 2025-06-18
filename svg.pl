@@ -1,7 +1,7 @@
 #!/usr/bin/env swipl
 % svg.pl
 % Experiment to generate an SVG using DCGs.
-
+% This supersedes the earlier attempt seen at the bottom of floorplan.pl.
 :- use_module(library(dcg/basics)).
 :- initialization(main, main).
 
