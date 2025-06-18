@@ -147,3 +147,46 @@ to_atom(X, Atom) :-
     ; number(X) -> number_string(X, Atom)
     ; atom(X)   -> Atom = X
     ).
+
+% Let's try it with a SVG
+
+% These are all in inches
+point(a, 0, 0).
+point(b, 176, 0).
+point(c, 176, 200).
+point(d, 86, 290).
+point(e, 0, 290).
+
+write_svg(File) :-
+    findall(X-Y, (member(ID, [a,b,c,d,e]), point(ID, X, Y)), Pairs),
+    maplist(pair_to_string, Pairs, Strings),
+    atomic_list_concat(Strings, ' ', PointString),
+    setup_call_cleanup(
+        open(File, write, Stream),
+        (
+            format(Stream, '<?xml version="1.0" encoding="UTF-8" standalone="no"?>~n', []),
+            format(Stream, '<svg width="176in" height="290in" viewBox="0 0 176 290"~n', []),
+            format(Stream, '     version="1.1" xmlns="http://www.w3.org/2000/svg">~n', []),
+            format(Stream, '  <polygon points="~w"~n', [PointString]),
+            format(Stream, '           fill="none"~n', []),
+            format(Stream, '           stroke="black"~n', []),
+            format(Stream, '           stroke-width="0.02in" />~n', []),
+            format(Stream, '  <text x="88" y="145"~n', []),
+            format(Stream, '        text-anchor="middle"~n', []),
+            format(Stream, '        dominant-baseline="middle"~n', []),
+            format(Stream, '        font-size="12"~n', []),
+            format(Stream, '        font-family="sans-serif"~n', []),
+            format(Stream, '        fill="lightgrey"~n', []),
+            format(Stream, '        opacity="0.6">~n', []),
+            format(Stream, '    FRONT ROOM~n', []),
+            format(Stream, '  </text>~n', []),
+            format(Stream, '</svg>~n', [])
+        ),
+        close(Stream)
+    ).
+
+pair_to_string(X-Y, S) :-
+    format(atom(S), '~w,~w', [X, Y]).
+
+generate_svg :-
+    write_svg('floorplan.svg').
