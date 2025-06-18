@@ -31,7 +31,7 @@ I am also interested in generating code from DCG rules. This is a strange applic
 
 # Chord Finding
 
-ChatGPT wrote this program at my request. 
+ChatGPT wrote this program at my request. It was an early experiment.
 
 ```bash
 % make chords
