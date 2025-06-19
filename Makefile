@@ -332,3 +332,7 @@ svg:
 .PHONY: pure_io
 pure_io:
 	swipl -s pure_io.pl
+
+.PHONY: joe
+joe:
+	./joe

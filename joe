@@ -1,0 +1,30 @@
+#!/usr/bin/env swipl
+% joe.pl
+% joe command line program reimplemented in Swift.
+:- initialization(main, main).
+
+main([]) :-
+    format("Welcome to joe~n~n", []),
+    nl.
+
+main([Cmd]) :- 
+    command(Cmd),
+    call(Cmd). 
+
+help :-
+    writeln("Available commands:"),
+    forall(
+        (
+            command(Cmd),
+            description(Cmd, Desc)
+        ),
+        (
+            format("~w - ~w~n", [Cmd, Desc])
+        )
+    ).
+
+command(help).
+command(prolog).
+
+description(help, "List sub commands").
+description(prolog, "Open prolog repository in VS Code.").
