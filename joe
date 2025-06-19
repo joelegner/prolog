@@ -23,16 +23,24 @@ write_subcommands :-
         )
     ).
 
-% Command declarations
+/*
+TO ADD A NEW COMMAND:
+1. Declare the command.
+2. Describe the command.
+3. Implement the command.
+
+See examples for help and prolog commands below
+*/
+
+% 1. Command declarations
 command(help).
 command(prolog).
 
-% Command descriptions
+% 2. Command descriptions
 description(help, "List sub commands").
 description(prolog, "Open prolog repository in VS Code.").
 
-% Command implementations
-
+% 3. Command implementations
 help :- 
     writeln("\nUsage: joe <subcommand>\n"),
     write_subcommands,
