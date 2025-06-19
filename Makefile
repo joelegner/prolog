@@ -328,3 +328,7 @@ rando:
 .PHONY: svg
 svg:
 	./svg.pl
+
+.PHONY: pure_io
+pure_io:
+	swipl -s pure_io.pl
