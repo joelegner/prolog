@@ -4,27 +4,40 @@
 :- initialization(main, main).
 
 main([]) :-
-    format("Welcome to joe~n~n", []),
-    nl.
+    help.
 
 main([Cmd]) :- 
     command(Cmd),
     call(Cmd). 
 
-help :-
-    writeln("Available commands:"),
+
+write_subcommands :-
+    writeln("Available subcommands:"),
     forall(
         (
             command(Cmd),
             description(Cmd, Desc)
         ),
         (
-            format("~w - ~w~n", [Cmd, Desc])
+            format("    ~w: ~w~n", [Cmd, Desc])
         )
     ).
 
+% Command declarations
 command(help).
 command(prolog).
 
+% Command descriptions
 description(help, "List sub commands").
 description(prolog, "Open prolog repository in VS Code.").
+
+% Command implementations
+
+help :- 
+    writeln("\nUsage: joe <subcommand>\n"),
+    write_subcommands,
+    nl.
+
+prolog :-
+    writeln("Opening prolog repository"),
+    shell('code /Users/joelegner/Desktop/iCloud\\ Desktop/Programming/prolog/').
