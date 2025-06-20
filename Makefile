@@ -336,3 +336,8 @@ pure_io:
 .PHONY: joe
 joe:
 	./joe
+
+.PHONY: clipz
+clipz:
+	scryer-prolog clpz.pl
+
