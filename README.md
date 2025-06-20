@@ -8,6 +8,7 @@ There are various implementations of Prolog available. The one assumed here is *
 - SWI-Tinker: [https://wasm.swi-prolog.org/wasm/tinker](https://wasm.swi-prolog.org/wasm/tinker)
 - Useful Prolog References: [https://swi-prolog.discourse.group/t/useful-prolog-references/1089](https://swi-prolog.discourse.group/t/useful-prolog-references/1089)
 - ECLiPSe Constraint Programming System: [https://eclipseclp.org](https://eclipseclp.org)
+- awesome-prolog: [https://github.com/klaudiosinani/awesome-prolog](https://github.com/klaudiosinani/awesome-prolog)
 
 There is another Prolog implementation installed on my computer called **Scryer Prolog**, and that one is used here for `scraping.pl`. The top level command is `scryer-prolog`. 
 
