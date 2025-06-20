@@ -1,35 +1,80 @@
-% book.pl
+% book_dcg.pl
 
 book --> 
+    preamble,
     frontmatter,
     mainmatter,
-    backmatter.
+    backmatter,
+    postamble.
 
-frontmatter --> 
-    [title_page],
-    [table_of_contents],
-    [preface],
-    [acknowledgements],
-    [introduction].
+% Preamble and postamble
+preamble -->
+    "\\documentclass{book}\n",
+    "\\usepackage{makeidx}\n",
+    "\\makeindex\n",
+    "\\begin{document}\n".
 
-mainmatter --> 
+postamble -->
+    "\\end{document}\n".
+
+% Front matter
+frontmatter -->
+    title_page,
+    table_of_contents,
+    preface,
+    acknowledgements,
+    introduction.
+
+title_page -->
+    "\\title{My Book Title}\n",
+    "\\author{Joe Legner}\n",
+    "\\date{}\n",
+    "\\maketitle\n".
+
+table_of_contents -->
+    "\\tableofcontents\n".
+
+preface -->
+    "\\chapter*{Preface}\n",
+    "This is the preface.\n".
+
+acknowledgements -->
+    "\\chapter*{Acknowledgements}\n",
+    "Thanks to all.\n".
+
+introduction -->
+    "\\chapter{Introduction}\n",
+    "This is the introduction.\n".
+
+% Main matter
+mainmatter -->
     part.
 
-part --> 
-    [part],
+part -->
+    "\\part{Part Title}\n",
     chapter.
 
 chapter -->
-    [chapter],
+    "\\chapter{Chapter Title}\n",
     section.
 
 section -->
-    [section],
+    "\\section{Section Title}\n",
     paragraph.
 
 paragraph -->
-    [paragraph].
+    "This is a paragraph.\n".
 
+% Back matter
 backmatter -->
-    [glossary],
-    [index].
+    glossary,
+    index.
+
+glossary -->
+    "\\chapter*{Glossary}\n",
+    "\\begin{description}\n",
+    "\\item[Term] Definition\n",
+    "\\end{description}\n".
+
+index -->
+    "\\printindex\n".
