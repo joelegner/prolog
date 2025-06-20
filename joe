@@ -6,9 +6,8 @@
 /*
 These are from the Swift version. X means it is implemented. 
 - [ ] book: Open book project in VS Code.
-- [ ] books: Open libgen.is website.
+- [X] books: Open libgen.is website.
 - [ ] chords: Give chords for key.
-- [ ] joe: Open joe project in Xcode.
 - [ ] kb: Open KB project in VS Code.
 - [ ] notes: Give notes for chord.
 - [ ] prog: Open Programming folder in Finder.
@@ -40,11 +39,13 @@ See examples for help and prolog commands below
 command(help).
 command(prolog).
 command(sn).
+command(books).
 
 % 3. Command descriptions
 description(help, "List sub commands").
 description(prolog, "Open prolog repository in VS Code").
 description(sn, "Generate a random 4-digit serial number").
+description(books, "Open Libgen website").
 
 % 4. Command implementations
 help :- 
@@ -55,6 +56,9 @@ help :-
 prolog :-
     writeln("Opening prolog repository"),
     shell('code /Users/joelegner/Desktop/iCloud\\ Desktop/Programming/prolog/').
+
+books :-
+    shell('open "https://libgen.li"'). % TODO: Change to libgen.is
 
 % Generate random 4-digit serial number.
 % First digit: 123456789abcdefghijklmnopqrstuvwxyz
