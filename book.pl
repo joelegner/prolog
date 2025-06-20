@@ -1,41 +1,35 @@
 % book.pl
-% Tree printer
 
-print_tree(Node) :-
-    print_tree(Node, 0).
+book --> 
+    frontmatter,
+    mainmatter,
+    backmatter.
 
-print_tree(Node, Indent) :-
-    tab(Indent),
-    (   value(Node, String)
-    ->  format(''~w'', [String])  % print the string with quotes
-    ;   write(Node)
-    ),
-    nl,
-    (   children(Node, Children)
-    ->  NewIndent is Indent + 4,
-        print_children(Children, NewIndent)
-    ;   true
-    ).
+frontmatter --> 
+    [title_page],
+    [table_of_contents],
+    [preface],
+    [acknowledgements],
+    [introduction].
 
-print_children([], _).
-print_children([Child|Rest], Indent) :-
-    print_tree(Child, Indent),
-    print_children(Rest, Indent).
+mainmatter --> 
+    part.
 
-% Define children relationships
+part --> 
+    [part],
+    chapter.
 
-children(book, [frontmatter, mainmatter, backmatter]).
-children(frontmatter, [title_page, contents, preface, introduction]).
-children(title_page, [title, author, date]).
-children(title, []).
-children(author, []).
-children(date, []).
-children(contents, []).
-children(preface, []).
-children(introduction, []).
-children(mainmatter, []).
-children(backmatter, []).
+chapter -->
+    [chapter],
+    section.
 
-% Define values for specific nodes
+section -->
+    [section],
+    paragraph.
 
-value(author, 'Joe Legner').
+paragraph -->
+    [paragraph].
+
+backmatter -->
+    [glossary],
+    [index].
