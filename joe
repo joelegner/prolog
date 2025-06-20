@@ -5,15 +5,15 @@
 
 /*
 These are from the Swift version. X means it is implemented. 
-- [ ] book: Open book project in VS Code.
+- [X] book: Open book project in VS Code.
 - [X] books: Open libgen.is website.
 - [ ] chords: Give chords for key.
-- [ ] kb: Open KB project in VS Code.
+- [X] kb: Open KB project in VS Code. 
 - [ ] notes: Give notes for chord.
-- [ ] prog: Open Programming folder in Finder.
+- [X] prog: Open Programming folder in Finder.
 - [X] prolog: Open prolog project in VS Code.
 - [X] sn: Generate a 4-digit random serial number.
-- [ ] trip: Open trip checklist project in VS Code.
+- [X] trip: Open trip checklist project in VS Code.
 
 */
 
@@ -37,15 +37,23 @@ See examples for help and prolog commands below
 
 % 2. Command declarations
 command(help).
+command(book).
+command(books).
+command(kb).
+command(prog).
 command(prolog).
 command(sn).
-command(books).
+command(trip).
 
 % 3. Command descriptions
 description(help, "List sub commands").
+description(book, 'Open book project in VS Code').
+description(books, "Open Libgen website").
+description(kb, 'Open KB project in VS Code').
+description(prog, 'Open Programming folder in Finder').
 description(prolog, "Open prolog repository in VS Code").
 description(sn, "Generate a random 4-digit serial number").
-description(books, "Open Libgen website").
+description(trip, 'Open trip checklist project in VS Code').
 
 % 4. Command implementations
 help :- 
@@ -82,3 +90,15 @@ write_subcommands :-
             format("    ~w: ~w~n", [Cmd, Desc])
         )
     ).
+
+book :-
+    shell('code /Users/joelegner/Desktop/iCloud\\ Desktop/Projects/book').
+
+kb :- 
+    shell('code /Users/joelegner/Desktop/iCloud\\ Desktop/References/kb').
+
+prog :-
+    shell('open /Users/joelegner/Desktop/iCloud\\ Desktop/Programming').
+
+trip :-
+    shell('code /Users/joelegner/Library/Mobile\\ Documents/com~apple~CloudDocs/Desktop/Family/tripchecklist').
