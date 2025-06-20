@@ -1,20 +1,28 @@
 % book_dcg.pl
 
+/*
+Try this out:
+phrase(book, Codes), string_codes(String, Codes), write(String).
+*/
+
 book --> 
     preamble,
+    begin_document,
     frontmatter,
     mainmatter,
     backmatter,
-    postamble.
+    end_document.
 
 % Preamble and postamble
 preamble -->
     "\\documentclass{book}\n",
     "\\usepackage{makeidx}\n",
-    "\\makeindex\n",
+    "\\makeindex\n".
+
+begin_document -->
     "\\begin{document}\n".
 
-postamble -->
+end_document -->
     "\\end{document}\n".
 
 % Front matter
