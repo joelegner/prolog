@@ -3,6 +3,8 @@
 % joe command line program reimplemented in Swift.
 :- initialization(main, main).
 
+% 1. Main program
+
 main([]) :-
     help.
 
@@ -10,7 +12,34 @@ main([Cmd]) :-
     command(Cmd),
     call(Cmd). 
 
+/*
+TO ADD A NEW COMMAND:
+Declare the command.
+Describe the command.
+Implement the command.
 
+See examples for help and prolog commands below
+*/
+
+% 2. Command declarations
+command(help).
+command(prolog).
+
+% 3. Command descriptions
+description(help, "List sub commands").
+description(prolog, "Open prolog repository in VS Code.").
+
+% 4. Command implementations
+help :- 
+    writeln("\nUsage: joe <subcommand>\n"),
+    write_subcommands,
+    nl.
+
+prolog :-
+    writeln("Opening prolog repository"),
+    shell('code /Users/joelegner/Desktop/iCloud\\ Desktop/Programming/prolog/').
+
+% 5. Helpers
 write_subcommands :-
     writeln("Available subcommands:"),
     forall(
@@ -22,30 +51,3 @@ write_subcommands :-
             format("    ~w: ~w~n", [Cmd, Desc])
         )
     ).
-
-/*
-TO ADD A NEW COMMAND:
-1. Declare the command.
-2. Describe the command.
-3. Implement the command.
-
-See examples for help and prolog commands below
-*/
-
-% 1. Command declarations
-command(help).
-command(prolog).
-
-% 2. Command descriptions
-description(help, "List sub commands").
-description(prolog, "Open prolog repository in VS Code.").
-
-% 3. Command implementations
-help :- 
-    writeln("\nUsage: joe <subcommand>\n"),
-    write_subcommands,
-    nl.
-
-prolog :-
-    writeln("Opening prolog repository"),
-    shell('code /Users/joelegner/Desktop/iCloud\\ Desktop/Programming/prolog/').
