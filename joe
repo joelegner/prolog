@@ -3,6 +3,21 @@
 % joe command line program reimplemented in Swift.
 :- initialization(main, main).
 
+/*
+These are from the Swift version. X means it is implemented. 
+- [ ] book: Open book project in VS Code.
+- [ ] books: Open libgen.is website.
+- [ ] chords: Give chords for key.
+- [ ] joe: Open joe project in Xcode.
+- [ ] kb: Open KB project in VS Code.
+- [ ] notes: Give notes for chord.
+- [ ] prog: Open Programming folder in Finder.
+- [X] prolog: Open prolog project in VS Code.
+- [X] sn: Generate a 4-digit random serial number.
+- [ ] trip: Open trip checklist project in VS Code.
+
+*/
+
 % 1. Main program
 
 main([]) :-
@@ -24,10 +39,12 @@ See examples for help and prolog commands below
 % 2. Command declarations
 command(help).
 command(prolog).
+command(sn).
 
 % 3. Command descriptions
 description(help, "List sub commands").
-description(prolog, "Open prolog repository in VS Code.").
+description(prolog, "Open prolog repository in VS Code").
+description(sn, "Generate a random 4-digit serial number").
 
 % 4. Command implementations
 help :- 
@@ -38,6 +55,16 @@ help :-
 prolog :-
     writeln("Opening prolog repository"),
     shell('code /Users/joelegner/Desktop/iCloud\\ Desktop/Programming/prolog/').
+
+% Generate random 4-digit serial number.
+% First digit: 123456789abcdefghijklmnopqrstuvwxyz
+% Second through forth digits: 0123456789abcdefghijklmnopqrstuvwxyz
+sn :- 
+    random_select(D1, [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z], _),
+    random_select(D2, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z], _),
+    random_select(D3, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z], _),
+    random_select(D4, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z], _),
+    format("~w~w~w~w~n", [D1, D2, D3, D4]).
 
 % 5. Helpers
 write_subcommands :-
