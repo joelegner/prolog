@@ -341,3 +341,7 @@ joe:
 clipz:
 	scryer-prolog clpz.pl
 
+
+.PHONY: member
+member:
+	swipl -s member.pl
