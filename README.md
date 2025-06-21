@@ -93,3 +93,25 @@ This starts a Prolog session with the `world.pl` clauses loaded. Now we can star
 % All 2 tests passed in 0.016 seconds (0.012 cpu)
 true.
 ```
+
+# `findall/3`
+
+The `findall/3` predicate seems to be pure. Let's see how it works. First we will start with this query from an episode of The Power of Prolog.
+
+```prolog
+?- member(X, "abc").
+X = a ;
+X = b ;
+X = c.
+```
+
+You can see the engine found three answers. Displaying them all required me to type `;` twice, because the result of the query was disjunctive. Specifically, it had three valid solutions. Let's see how `forall/3` can help us.
+
+Using `forall/3` we can apply `member` repeatedly and collect the valid solutions in a list. 
+
+```prolog
+?- findall(X, member(X, "abc"), Solns).
+Solns = [a, b, c].
+```
+
+This query requires no interaction to get all the solutions. They all come out in the first call as a list.
