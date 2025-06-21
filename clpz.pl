@@ -1,7 +1,9 @@
 % clpz.pl
 % Module CLP(Z). 
 
-% Note!: Requires scryer-prolog. https://www.scryer.pl/clpz
+% Note!: Requires scryer-prolog. 
+% https://www.scryer.pl/clpz
+% https://www.metalevel.at/prolog/clpz
 
 :- use_module(library(clpz)).
 
