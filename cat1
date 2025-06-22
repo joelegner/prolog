@@ -9,9 +9,6 @@ lines([])     --> [].
 
 line(Line) --> string_without("\n", Cs), "\n", { atom_codes(Line, Cs) }.
 
-parse(File, Lines) :-
-    phrase_from_file(lines(Lines), File).
-
 output_stream(Stream, Lines) -->
     output_lines(Stream, Lines, 1).
 
@@ -25,8 +22,7 @@ output_lines(Stream, [Line|Rest], N) -->
 
 :- initialization(main, main).
 
-main([Filename]) :-
-    parse(Filename, Lines),
+main([File]) :-
+    phrase_from_file(lines(Lines), File),
     current_output(Stream),
     phrase(output_stream(Stream, Lines), _).
-
