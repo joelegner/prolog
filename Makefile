@@ -357,3 +357,11 @@ second:
 swift:
 	./swift.pl > swift.swift
 	swift swift.swift
+
+.PHONY: phrase_to_file
+phrase_to_file:
+	swipl -s phrase_to_file.pl -g main -t halt
+
+.PHONY: phrase_string
+phrase_string:
+	swipl -s phrase_string.pl
