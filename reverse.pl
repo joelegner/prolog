@@ -26,7 +26,7 @@ Reverse = [TR | H].
 reverse([], []).
 reverse([H | T], Reverse) :-
     reverse(T, TR),
-    Reverse = [TR | H].
+    append(TR, [H], Reverse).
 
 /*
 It works! I think I did it. Here is a test:
