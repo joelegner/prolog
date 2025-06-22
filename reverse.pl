@@ -1,4 +1,10 @@
 %% reverse.pl
+
+:- module(reverse, [
+    reverse/2
+]).
+
+
 /*
 As an exercise, I want to reverse a list like this:
 
