@@ -40,9 +40,9 @@ fill_second_shell -->
 
 finish_loading -->
     "Load Yorkvilles", nl,
-    "Load dolly", nl,
     "Load keyboards", nl,
-    "Load 4bar", nl.
+    "Load 4bar", nl,
+    "Load dolly", nl.
 
 set_up -->
     set_up_pianos, nl,
@@ -85,7 +85,10 @@ sound_check_mains -->
     "Turn down mains until show", nl.
 
 play -->
-    "Play the show", nl.
+    "Turn up the mains", nl,
+    "Start the show", nl,
+    "Play the show", nl,
+    "End the show", nl.
 
 load_out -->
     "Load out after the show", nl.
