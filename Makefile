@@ -348,3 +348,7 @@ member:
 .PHONY: reverse
 reverse:
 	swipl -s reverse.pl
+
+.PHONY: second
+second:
+	swipl -s second.pl
