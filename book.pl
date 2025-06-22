@@ -86,3 +86,17 @@ glossary -->
 
 index -->
     "\\printindex\n".
+
+/*
+This works. It is a good breakthrough.
+
+?- consult('phrase_to_file.pl').
+true.
+
+?- phrase_to_file(book, 'book.tex').
+true.
+
+?- shell("ls book.tex").
+book.tex
+true.
+*/
