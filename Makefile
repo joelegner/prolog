@@ -352,3 +352,7 @@ reverse:
 .PHONY: second
 second:
 	swipl -s second.pl
+
+.PHONY: swift
+swift:
+	swipl -s swift.pl
