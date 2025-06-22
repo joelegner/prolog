@@ -360,8 +360,12 @@ swift:
 
 .PHONY: phrase_to_file
 phrase_to_file:
-	swipl -s phrase_to_file.pl -g main -t halt
+	swipl -s phrase_to_file.pl 
 
 .PHONY: phrase_string
 phrase_string:
 	swipl -s phrase_string.pl
+
+.PHONY: phrase_to_file_example
+phrase_to_file_example:
+	swipl -s phrase_to_file_example.pl -g main -t halt
