@@ -2,7 +2,7 @@
 :- use_module(phrase_to_file).
 
 file --> 
-    "Hello, World!!".
+    "Hello, World!".
 
 main :-
     phrase_to_file(file, 'phrase_to_file.txt').
