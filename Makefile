@@ -344,3 +344,7 @@ clipz:
 .PHONY: member
 member:
 	swipl -s member.pl
+
+.PHONY: reverse
+reverse:
+	swipl -s reverse.pl
