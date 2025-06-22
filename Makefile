@@ -201,8 +201,7 @@ piano:
 
 .PHONY: piano_setup
 piano_setup:
-	swipl -s piano_setup.pl -g ready_to_play
-	# swipl -s piano_setup.pl -g ready_to_play -t halt
+	swipl -s piano_setup.pl -g run -t halt
 
 .PHONY: physics
 physics:
