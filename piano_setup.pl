@@ -6,7 +6,7 @@ gig -->
     play, nl,
     load_out, nl,
     drive_back, nl,
-    unload.
+    unload, nl.
 
 nl --> "\n".
 
@@ -17,12 +17,14 @@ drive_back -->
     "Drive back home", nl.
 
 load -->
+    "Create CHECKLIST", nl,
     "Put the seats down", nl,
-    load_first_shell,
-    fill_first_shell,
-    load_second_shell,
-    fill_second_shell,
-    finish_loading.
+    load_first_shell, nl,
+    fill_first_shell, nl,
+    load_second_shell, nl,
+    fill_second_shell, nl,
+    finish_loading, nl,
+    "Complete CHECKLIST", nl.
 
 load_first_shell --> 
     "Load the first shell", nl.
@@ -66,7 +68,7 @@ turn_on_system -->
 
 sound_check -->
     sound_check_monitors, nl,
-    sound_check_mains.
+    sound_check_mains, nl.
 
 sound_check_monitors -->
     "Sound check player 1 monitor", nl,
