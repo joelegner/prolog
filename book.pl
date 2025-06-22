@@ -1,4 +1,7 @@
 % book_dcg.pl
+:- module(book, [
+    book//0
+]).
 
 /*
 Try this out:
