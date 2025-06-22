@@ -115,3 +115,5 @@ Solns = [a, b, c].
 ```
 
 This query requires no interaction to get all the solutions. They all come out in the first call as a list.
+
+
