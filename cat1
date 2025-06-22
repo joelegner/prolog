@@ -1,45 +1,20 @@
 #!/usr/bin/env swipl
 % cat1 — Axiomatic line-numbering file display tool
-%
-% Functional Requirements (FR):
-%   FR1: Parse file input into a list of lines.
-%   FR2: Output the list of lines, each with a line number.
-%   FR3: Compose reading and writing steps.
-%
-% Design Parameters (DP):
-%   DP1: Use DCG for state threading and idiomatic form.
-%   DP2: Use format/3 for numbered output.
-%   DP3: Use phrase/2 with intermediate phrase list.
-%
-% Process Variables (PVs):
-%   Filename: source file path
-%   Stream: output stream (user_output)
-%   Lines: list of strings
-%   LineNumber: DCG-threaded counter
 
-:- use_module(library(readutil)).
-:- use_module(library(dcg/basics)).
+:- use_module(library(dcg/basics)).  % For basic DCG utilities
+:- use_module(library(pure_input)). % For phrase_from_file/2
 
-%------------------------------------------------------------------------------
-% FR1: Parse input file into a list of lines.
-%------------------------------------------------------------------------------
-input_file(Filename, Lines) -->
-    {
-        open(Filename, read, Stream),
-        read_lines(Stream, Lines),
-        close(Stream)
-    }.
+% Define a DCG that parses a sequence of lowercase words, each ending with a newline.
+lines([L|Ls]) --> line(L), lines(Ls).
+lines([])     --> [].
 
-read_lines(Stream, []) :-
-    at_end_of_stream(Stream).
-read_lines(Stream, [Line|Rest]) :-
-    \+ at_end_of_stream(Stream),
-    read_line_to_string(Stream, Line),
-    read_lines(Stream, Rest).
+line(Line) --> string_without("\n", Cs), "\n", { atom_codes(Line, Cs) }.
 
-%------------------------------------------------------------------------------
-% FR2: Output lines to stream, each with a line number.
-%------------------------------------------------------------------------------
+% Entry point: read lines from file and print them
+parse(File, Lines) :-
+    phrase_from_file(lines(Lines), File).
+
+
 output_stream(Stream, Lines) -->
     output_lines(Stream, Lines, 1).
 
@@ -52,20 +27,12 @@ output_lines(Stream, [Line|Rest], N) -->
     output_lines(Stream, Rest, N1).
 
 %------------------------------------------------------------------------------
-% FR3: Compose input and output with intermediate phrase structure
-%------------------------------------------------------------------------------
-run_cat1(Filename) :-
-    phrase(input_file(Filename, Lines), []),
-    phrase(output_stream(user_output, Lines), []).
-
-%------------------------------------------------------------------------------
 % Entry point with shebang compatibility and argument parsing
 %------------------------------------------------------------------------------
 :- initialization(main, main).
 
-main(Argv) :-
-    ( Argv = [Filename] ->
-        run_cat1(Filename)
-    ; format(user_error, "Usage: cat1 <filename>~n", []),
-      halt(1)
-    ).
+main([Filename]) :-
+    parse(Filename, Lines),
+    current_output(Stream),
+    phrase(output_stream(Stream, Lines), _).
+
