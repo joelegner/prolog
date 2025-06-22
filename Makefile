@@ -355,4 +355,5 @@ second:
 
 .PHONY: swift
 swift:
-	swipl -s swift.pl
+	./swift.pl > swift.swift
+	swift swift.swift
