@@ -1,6 +1,9 @@
 %% last_but_one.pl
 /*
 Find the second to last.
+
+https://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/
+Problem P02. 
 */
 
 last_but_one(List, El) :-
