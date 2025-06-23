@@ -11,3 +11,13 @@ chars
 string
 */
 
+date :-
+    shell("date").
+
+/*
+List files:
+?- ls.
+
+List files that match wildcard:
+?- ls('*.txt').
+*/

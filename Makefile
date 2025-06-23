@@ -380,3 +380,7 @@ last_but_one:
 .PHONY: kth
 kth:
 	swipl -s kth.pl
+
+.PHONY: time
+time:
+	swipl -s time.pl
