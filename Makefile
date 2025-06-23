@@ -376,3 +376,7 @@ last:
 .PHONY: last_but_one
 last_but_one:
 	swipl -s last_but_one.pl
+
+.PHONY: kth
+kth:
+	swipl -s kth.pl
