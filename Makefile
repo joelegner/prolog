@@ -368,3 +368,7 @@ phrase_string:
 .PHONY: phrase_to_file_example
 phrase_to_file_example:
 	swipl -s phrase_to_file_example.pl -g main -g book -t halt
+
+.PHONY: last
+last:
+	swipl -s last.pl
