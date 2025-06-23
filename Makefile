@@ -372,3 +372,7 @@ phrase_to_file_example:
 .PHONY: last
 last:
 	swipl -s last.pl
+
+.PHONY: last_but_one
+last_but_one:
+	swipl -s last_but_one.pl
