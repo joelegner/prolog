@@ -11,6 +11,10 @@ chars
 string
 */
 
+% Clear the screen
+c :-
+    shell("clear").
+
 date :-
     shell("date").
 
