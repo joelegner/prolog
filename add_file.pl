@@ -6,14 +6,15 @@ main([FileStem]) :-
     atom_concat(FileStem, '.pl', PLFile),
 
     (   exists_file(PLFile)
-    ->  format("File ~w already exists.~n", [PLFile])
+    ->  format("File ~w already exists.~n", [PLFile]),
+        halt(1)  % <-- Exit immediately to stop further processing
     ;   create_prolog_file_with_header(PLFile),
-        format("Created ~w~n", [PLFile])
-    ),
+        format("Created ~w~n", [PLFile]),
+        append_to_makefile(FileStem, PLFile),
+        format("Added ~w target to Makefile~n", [FileStem]),
+        halt(0)
+    ).
 
-    append_to_makefile(FileStem, PLFile),
-    format("Added ~w target to Makefile~n", [FileStem]),
-    halt(0).
 
 main(_) :-
     format("Usage: add_file.pl <filename (without extension)>~n"),
