@@ -1,10 +1,29 @@
 % accounting.pl
 % This is an accounting proof of concept.
 % Here is the structure of the data. It was adapted from a (much longer) spreadsheet.
-show(date(2025, 04, 20), venue(escape), pay(base(56250), tips(cash(8800), venmo(0)))).
-show(date(2025, 04, 22), venue(escape), pay(base(56250), tips(cash(9300), venmo(0)))).
-show(date(2025, 04, 24), venue(escape), pay(base(56250), tips(cash(9700), venmo(0)))).
-show(date(2025, 04, 26), venue(escape), pay(base(56250), tips(cash(6000), venmo(0)))).
+show(
+    year_month_day(2025, 04, 20),
+    venue(escape),
+    pay(base(56250), tips(cash(8800), venmo(0)))
+).
+
+show(
+    year_month_day(2025, 04, 22),
+    venue(escape),
+    pay(base(56250), tips(cash(9300), venmo(0)))
+).
+
+show(
+    year_month_day(2025, 04, 24),
+    venue(escape),
+    pay(base(56250), tips(cash(9700), venmo(0)))
+).
+
+show(
+    year_month_day(2025, 04, 26),
+    venue(escape),
+    pay(base(56250), tips(cash(6000), venmo(0)))
+).
 
 % Rule to extract cash tips
 cash_tip(Tip) :-
@@ -15,7 +34,7 @@ all_show_dates(Dates) :-
     findall(Date, show(Date, _, _), Dates).
 
 % Get the first and last date (chronologically)
-date_range(StartDate, EndDate) :-
+start_date_end_date(StartDate, EndDate) :-
     all_show_dates(Dates),
     sort(Dates, SortedDates),
     SortedDates = [StartDate|_],
@@ -39,24 +58,24 @@ average_cash_tips(Average) :-
     Average is Total / Count.
 
 % Helper: format a date as M/D/YYYY
-format_date(date(Year, Month, Day), Formatted) :-
-    format(atom(Formatted), '~w/~w/~w', [Month, Day, Year]).
+year_month_day_string(year_month_day(Year, Month, Day), String) :-
+    format(atom(String), '~w/~w/~w', [Month, Day, Year]).
 
-format_dollars(Cents, Formatted) :-
+cents_currency_string(Cents, CurrencyString) :-
     integer(Cents),
     Dollars is 1.0*Cents/100.0,
-    format(atom(Formatted), '$~2f', [Dollars]).
+    format(atom(CurrencyString), '$~2f', [Dollars]).
 
 % Print the full report directly
 print_cash_tips_report :-
     number_of_shows(Count),
-    date_range(Start, End),
+    start_date_end_date(Start, End),
     total_cash_tips(Total),
     average_cash_tips(Average),
-    format_date(Start, StartStr),
-    format_date(End, EndStr),
-    format_dollars(Total, TotalStr),
-    format_dollars(Average, AverageStr),
+    year_month_day_string(Start, StartStr),
+    year_month_day_string(End, EndStr),
+    cents_currency_string(Total, TotalStr),
+    cents_currency_string(Average, AverageStr),
     format('For ~w shows from ~w to ~w, cash tips totaled ~w for an average of ~w per show.~n',
            [Count, StartStr, EndStr, TotalStr, AverageStr]).
 
