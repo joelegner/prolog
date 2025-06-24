@@ -34,7 +34,7 @@ design_parameter(X) :-
     zig(_, X).
 
 % Link up DPs by parent and child relationships through shared FRs.
-parent(P, C) :-
+parent_child(P, C) :-
     zig(_, P),
     zag(P, FRs),
     member(FR, FRs),
