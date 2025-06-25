@@ -1,5 +1,7 @@
 %% ansi_term.pl
 % Demo and test file for using the SWI-Prolog ansi_term library.
+% ChatGPT wrote this one.
+% TODO: Explore and study this file.
 
 :- use_module(library(ansi_term)).
 
