@@ -392,3 +392,7 @@ ascii_canvas:
 .PHONY: units
 units:
 	swipl -s units.pl
+
+.PHONY: ansi_term
+ansi_term:
+	swipl -s ansi_term.pl -g main -g halt
