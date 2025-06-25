@@ -388,3 +388,7 @@ time:
 .PHONY: ascii_canvas
 ascii_canvas:
 	swipl -s ascii_canvas.pl
+
+.PHONY: units
+units:
+	swipl -s units.pl
