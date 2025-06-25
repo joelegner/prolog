@@ -384,3 +384,7 @@ kth:
 .PHONY: time
 time:
 	swipl -s time.pl
+
+.PHONY: ascii_canvas
+ascii_canvas:
+	swipl -s ascii_canvas.pl
