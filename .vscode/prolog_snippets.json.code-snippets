@@ -1,0 +1,22 @@
+{
+	"Test suite": {
+		"scope": "prolog",
+		"prefix": "begin_tests",
+		"body": [
+			":- begin_tests(${1:test_suite_name}).",
+			"$0",
+			":- end_tests(${1:test_suite_name})."
+		],
+		"description": "Add begin_tests/1 and end_tests/1."
+	},
+	"Test case": {
+		"scope": "prolog",
+		"prefix": "test",
+		"body": [
+			"test(${1:test_name}) :-",
+			"    ${2:% your test logic here},",
+			"    ${3:Actual} =:= ${4:Expected}."
+		],
+		"description": "Add a test case."
+	}
+}
