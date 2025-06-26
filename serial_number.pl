@@ -3,13 +3,18 @@
 
 :- module(serial_number, [
     serial_number/1,
-    run/0
+    run/0,
+    serial_number_pbcopy/0
     ]).
 
 :- use_module(shell_output).
 
 serial_number(SN) :-
     shell_output_atom('joe sn', SN).
+
+serial_number_pbcopy :-
+    shell('joe sn | pbcopy'),
+    writeln("Serial number copied to clipboard.").
 
 run :-
     serial_number(SN),
