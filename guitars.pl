@@ -14,15 +14,14 @@ num_guitars_owned_needed(Owned, Needed) :-
     Owned is Needed - 1.
 
 main :-
-    write('How many guitars do you have now? '), flush_output(current_output),
+    write('Enter a positive integer.\nHow many guitars do you have now? '), flush_output(current_output),
     read_line_to_string(user_input, Input),
     (   catch(number_string(N, Input), _, fail),
         integer(N),
         N > 0
     ->  guitars:num_guitars_owned_needed(N, Needed),
         format('You need ~w guitars.~n', [Needed])
-    ;   write('Invalid input. Terminating.'), nl,
-        halt(1)
+    ;   halt(0)
     ).
 
 :- initialization(main, main).
