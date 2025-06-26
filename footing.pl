@@ -1,64 +1,48 @@
-% footing.pl
-:- use_module(library(http/json)).        % For json_write/3, json_read/2, etc.
-:- use_module(library(http/json_convert)). % Optional: for term <-> JSON conversion
+%% footing.pl
 
-% This is a mockup of the read_input that will take a filename
-% and return a Project. 
-read_input(_, Project) :-     
-    % I think this is my first ever prolog dictionary (Project mock):
-    Project = _{
-    name: 'Test Project',
-    design: _{
-        name: 'Footing 1',
-        footing: [4, 4, 1],
-        load: [20, 40, 60]
-    }
-}.
+/*
+Started over on June 25, 2025 with my latest state-of-the-art knowledge level. 
 
-save_project(File, Project) :-
-    open(File, write, Stream),
-    writeq(Stream, Project),
-    write(Stream, '.'),
-    close(Stream).
+Here are some points to make as we proceed this time.
 
-load_project(File, Project) :-
-    open(File, read, Stream),
-    read(Stream, Project),
-    close(Stream).
+1. Consider using a DCG for the input definition. There is phrase_to_file predicate.
 
+2. Consider using a DCG for the output definition. I made a phrase_from_file predicate.
 
-design(_, Model) :-
-    Model = designed_model.
+3. Predicate names: term1_term1(Term1, Term2). In other words, the predicate name should be the two objects the predicate relates. This gives us the right order of arguments, too. And it leads to purer code. It gets us to think _declaratively_. 
 
-report(_, Report) :-
-    Report = 'This is your report.'.
+4. Predicate should ideally work in two directions.
 
-:- begin_tests(json_io).
-:- use_module(library(http/json)).
+5. We should test every predicate, including in novel ways.
 
-test(write_and_read_json_roundtrip) :-
-    File = 'test.json',
-    Project = _{
-        name: 'Test Project',
-        number: 'Project No. 1',
-        engineer: 'Joe Legner',
-        footings: _{
-            name: 'Footing A-1',
-            load: [20, 40, 60]
-        }
-    },
+With these things in mind, what is the problem we are solving? 
 
-    % Write JSON to file
-    open(File, write, Out),
-    json_write(Out, Project, [width(0)]),
-    close(Out),
+If we are using Prolog, we can reformulate the question:
 
-    % Read JSON back from file
-    open(File, read, In),
-    json_read_dict(In, ReadProject),
-    close(In),
+What relation are we trying establish?
 
-    % Assert equality
-    assertion(ReadProject = Project).
-:- end_tests(json_io).
+We are trying to establish the relation of input to output. Let's start there.
+*/ 
 
+:- use_module(library(clpfd)).
+
+input_output(Input, Output) :-
+    Output #= Input + 1.
+
+:- begin_tests(input_output_tests).
+
+test(input_to_output) :-
+    input_output(24, Output),
+    Output #= 25.
+
+test(output_to_input) :-
+    input_output(Input, 30),
+    Input #= 29.
+
+test(both_known_true) :-
+    input_output(5, 6).
+
+test(both_known_false, [fail]) :-
+    input_output(5, 7).
+
+:- end_tests(input_output_tests).
