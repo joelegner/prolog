@@ -293,6 +293,10 @@ zig:
 	swipl -s axiomatic_design -g print_zig_templates -t halt | pbcopy
 	echo 'Copied zig templates to clipboard with pbcopy'
 
+.PHONY: serial_number
+serial_number:
+	swipl -s serial_number.pl -g run
+
 .PHONY: storage
 storage:
 	swipl -s storage.pl

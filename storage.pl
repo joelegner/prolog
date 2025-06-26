@@ -61,7 +61,7 @@ all_ids(IDs) :-
     IDs = [CN_ids, FR_ids, DP_ids].
 
 /*
-NOTE!: Not sure about the following. It feels like I should continue with DPs instead of this.
+NOTE!: Not sure about the following. It feels lidyke I should continue with DPs instead of this.
 */
 
 % HOMES =======================================================================

@@ -1,5 +1,11 @@
 % shell_output.pl
 
+:- module(shell_output, [
+    shell_output_atom/2,
+    shell_output_string/2,
+    trim/2
+    ]).
+
 :- use_module(library(dcg/basics)).  % For `blanks//0`, `string//1`, etc.
 
 % DCG that removes leading/trailing whitespace including newlines
