@@ -59,3 +59,43 @@ all_ids(IDs) :-
     all_fr_ids(FR_ids),
     all_dp_ids(DP_ids),
     IDs = [CN_ids, FR_ids, DP_ids].
+
+/*
+NOTE!: Not sure about the following. It feels like I should continue with DPs instead of this.
+*/
+
+% HOMES =======================================================================
+
+home(front_room).
+home(garage).
+home(walsingham_way).
+home(uhaul_storage_unit).
+home(big_plastic_cabinet).
+home(white_cabinet1).
+home(white_cabinet2).
+home(orange_spool1).
+home(orange_spool2).
+home(orange_spool3).
+
+home_in_home(front_room, walsingham_way).
+home_in_home(garage, walsingham_way).
+home_in_home(big_plastic_cabinet, garage).
+home_in_home(white_cabinet1, garage).
+home_in_home(white_cabinet2, garage).
+home_in_home(orange_spool1, big_plastic_cabinet).
+home_in_home(orange_spool2, big_plastic_cabinet).
+home_in_home(orange_spool3, big_plastic_cabinet).
+
+% ITEMS =======================================================================
+
+item(xlr6, 'XLR cable, 6 feet long').
+item(xlr10, 'XLR cable, 10 feet long').
+item(xlr20, 'XLR cable, 20 feet long').
+item(xlr25, 'XLR cable, 25 feet long').
+item(xlr50, 'XLR cable, 50 feet long').
+
+% Bulk items are not tracked as unique individuals
+bulk_item([xlr6, xlr10, xlr20, xlr25, xlr50]).
+
+% INFOSYS =====================================================================
+
