@@ -396,3 +396,7 @@ units:
 .PHONY: ansi_term
 ansi_term:
 	swipl -s ansi_term.pl -g main -g halt
+
+.PHONY: guitars
+guitars:
+	swipl -s guitars.pl
