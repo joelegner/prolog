@@ -39,11 +39,11 @@ solution([a|As]) --> [b], solution(As).
 
 :- begin_tests(problem_definition_solution).
 
-test(def_to_sol) :-
+test(def_to_soln) :-
     problem_definition_solution([a,a,a], Solution),
     Solution == [b,b,b].
 
-test(sol_to_def) :-
+test(soln_to_def) :-
     once(problem_definition_solution(Definition, [b,b])),
     Definition == [a,a].
 
