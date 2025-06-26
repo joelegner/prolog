@@ -28,10 +28,10 @@ The only other way to do this would be to put :- use_module(library(clpfd) in se
 
 % Clear the screen
 c :-
-    shell("clear").
+    shell('clear').
 
 date :-
-    shell("date").
+    shell('date').
 
 /*
 List files:
