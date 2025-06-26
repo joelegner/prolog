@@ -14,3 +14,14 @@ serial_number(SN) :-
 run :-
     serial_number(SN),
     writeln(SN).
+
+/*
+Usage example:
+
+repeat 5 swipl -s serial_number.pl -g run -t halt
+yqbxw
+z6qev
+dk00x
+e2r89
+l7chx
+*/
