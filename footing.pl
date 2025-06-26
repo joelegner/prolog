@@ -46,3 +46,9 @@ test(both_known_false, [fail]) :-
     input_output(5, 7).
 
 :- end_tests(input_output_tests).
+
+/*
+This is a stub predicate for fooding design. It might be nice for the definition and solution to both be lists. That way we can use a DCG to generate, parse, check, and complete them.
+*/
+problem_definition_solution(_Definition, _Solution) :-
+    fail.
