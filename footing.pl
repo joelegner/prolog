@@ -37,6 +37,10 @@ problem_definition_solution(Definition, Solution) :-
 solution([])     --> [].
 solution([a|As]) --> [b], solution(As).
 
+/*
+TODO: Define better DCG for footing design. Some thoughts.
+*/
+
 :- begin_tests(problem_definition_solution).
 
 test(def_to_soln) :-
