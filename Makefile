@@ -1,13 +1,13 @@
-.PHONY: accounting
-accounting:
-	swipl -s accounting.pl
-
-.PHONY: act
-act:
-	swipl -s act.pl
-
 .PHONY: all
-all: buddhism goals htmlgen kowalski measurement measurement_no_clpr practice project_ethernet zag zig gma_family length_tests
+all: goals length_tests measurement measurement_no_clpr zag zig
+
+.PHONY: ansi_term
+ansi_term:
+	swipl -s ansi_term.pl -g main -g halt
+
+.PHONY: ascii_canvas
+ascii_canvas:
+	swipl -s ascii_canvas.pl
 
 .PHONY: axiology
 axiology:
@@ -17,31 +17,16 @@ axiology:
 axiomatic_design:
 	swipl -s axiomatic_design.pl -g print_design_report
 
-.PHONY: basics
-basics:
-	swipl -s basics.pl
-
 .PHONY: book
 book:
 	swipl -s book.pl
 
-.PHONY: bridge
-bridge:
-	swipl -s bridge.pl
-
-.PHONY: builder
-builder: builder.pl fluffernutters.pl
-	swipl -o builder -c builder.pl
-	./builder fluffernutters.pl
-	open .build/fluffernutters.pl/main.pdf
-
-.PHONY: buddhism
-buddhism:
-	swipl -s buddhism.pl -g main -t halt
-
 .PHONY: business
 business:
 	swipl -s business.pl
+
+.PHONY: calendar
+calendar: howl2026.ics
 
 .PHONY: chords
 chords:
@@ -50,6 +35,10 @@ chords:
 .PHONY: clean
 clean:
 	rm $(DESIGN_EXE)
+
+.PHONY: clipz
+clipz:
+	scryer-prolog clpz.pl
 
 .PHONY: colors
 colors:
@@ -93,11 +82,15 @@ family:
 files:
 	swipl -s files.pl -g run
 
-.PHONY: fluffernutters
-fluffernutters:
-	swipl -s fluffernutters.pl -g print_human_task_list -t halt
-	swipl -s fluffernutters.pl -g show_calendar -t halt > fluffernutters.ics
+.PHONY: floorplan
+floorplan: floorplan.pdf
+	open floorplan.pdf
 
+floorplan.pdf: floorplan.ps
+	ps2pdf floorplan.ps
+
+floorplan.ps: floorplan.pl
+	swipl -s floorplan.pl -g run -t halt
 
 .PHONY: footing
 footing:
@@ -115,17 +108,13 @@ gma:
 gma_example:
 	swipl -s gma_example.pl gma.pl
 
-.PHONY: gma_family
-gma_family:
-	swipl -s gma_family.pl -g print_valid_family_configs -t halt > gma_family.txt
-
 .PHONY: goals
 goals:
 	swipl -s goals.pl -g print_sorted_goals -t halt
 
-.PHONY: htmlgen
-htmlgen: 
-	swipl -s htmlgen.pl -g go -t halt
+.PHONY: guitars
+guitars:
+	swipl -s guitars.pl
 
 .PHONY: inheritance
 inheritance:
@@ -135,17 +124,13 @@ inheritance:
 inches_from_feet:
 	swipl -s inches_from_feet.pl
 
+.PHONY: joe
+joe:
+	./joe
+
 .PHONY: json
 json:
 	swipl -s json.pl
-
-.PHONY: journey
-journey:
-	swipl -s journey.pl
-
-.PHONY: kowalski
-kowalski:
-	swipl -s kowalski.pl -g main -t halt
 
 .PHONY: labels
 labels:
@@ -170,6 +155,10 @@ length_tests:
 .PHONY: lists
 lists:
 	swipl -s lists.pl -g run_tests
+
+.PHONY: live
+live:
+	swipl -s live.pl -g main -t halt
 
 .PHONY: live_another_day
 live_another_day:
@@ -203,45 +192,84 @@ piano:
 piano_setup:
 	swipl -s piano_setup.pl -g run -t halt
 
-.PHONY: physics
-physics:
-	swipl -s physics.pl
+.PHONY: planning
+planning:
+	swipl -s planning.pl
 
-.PHONY: practice
-practice:
-	swipl -s practice.pl -g main -t halt
+.PHONY: phrase_string
+phrase_string:
+	swipl -s phrase_string.pl
 
-.PHONY: probability
-probability:
-	swipl -s probability.pl
+.PHONY: phrase_to_file
+phrase_to_file:
+	swipl -s phrase_to_file.pl 
+
+.PHONY: phrase_to_file_example
+phrase_to_file_example:
+	swipl -s phrase_to_file_example.pl -g main -g book -t halt
 
 .PHONY: prologscript
 prologscript:
 	swipl -s prologscript.pl
 
-.PHONY: project_ethernet
-project_ethernet:
-	swipl -s project_ethernet.pl -g run -t halt
+.PHONY: pure_io
+pure_io:
+	swipl -s pure_io.pl
 
-.PHONY: roguelike
-roguelike:
-	swipl -s roguelike.pl -g start_game
+.PHONY: rando
+rando:
+	./rando.pl 
+	./rando.pl 1000
+	./rando.pl 250 300
+
+.PHONY: reverse
+reverse:
+	swipl -s reverse.pl
+
+.PHONY: scraping
+scraping:
+	scryer-prolog scraping.pl
+
+.PHONY: script
+script:
+	./script.pl joe legner
+
+.PHONY: second
+second:
+	swipl -s second.pl
+
+.PHONY: structural
+structural:
+	swipl -s structural.pl
+
+.PHONY: svg
+svg:
+	./svg.pl
+
+.PHONY: swift
+swift:
+	./swift.pl > swift.swift
+	swift swift.swift
 
 .PHONY: system
 system:
 	swipl -s system.pl
 
-.PHONY: task
-task:
-	swipl -s task.pl
-
 .PHONY: testing_example
 testing_example:
 	swipl -s testing_example.pl
 
+.PHONY: time
+time:
+	swipl -s time.pl
+
 .PHONY: tree
 tree:
 	swipl -s tree.pl
+
+.PHONY: twitch
+twitch:
+	swipl -s twitch.pl -g main -t halt
 
 .PHONY: twt_setup
 twt_setup:
@@ -251,9 +279,9 @@ twt_setup:
 universe:
 	swipl -s universe.pl
 
-.PHONY: virtues
-virtues:
-	swipl -s virtues.pl
+.PHONY: units
+units:
+	swipl -s units.pl
 
 .PHONY: zag
 zag:
@@ -264,139 +292,3 @@ zag:
 zig:
 	swipl -s axiomatic_design -g print_zig_templates -t halt | pbcopy
 	echo 'Copied zig templates to clipboard with pbcopy'
-
-.PHONY: planning
-planning:
-	swipl -s planning.pl
-
-.PHONY: structural
-structural:
-	swipl -s structural.pl
-
-.PHONY: orientation_report
-orientation_report:
-	swipl -s orientation_report.pl -s orientation_reports -g write_canvas -t halt
-	cupsfilter orientation_report.txt > orientation_report.pdf
-	open orientation_report.pdf
-
-gantt.txt: howl2026.pl
-	swipl -s howl2026.pl -g gantt -t halt > gantt.txt
-	cat gantt.txt | pbcopy
-	cat gantt.txt
-
-howl2026.ics: howl2026.pl
-	swipl -s howl2026.pl -g calendar -t halt > howl2026.ics
-	cat howl2026.ics | pbcopy
-	cat howl2026.ics
-
-.PHONY: calendar
-calendar: howl2026.ics
-
-.PHONY: live
-live:
-	swipl -s live.pl -g main -t halt
-
-.PHONY: twitch
-twitch:
-	swipl -s twitch.pl -g main -t halt
-
-.PHONY: floorplan
-floorplan: floorplan.pdf
-	open floorplan.pdf
-	
-floorplan.pdf: floorplan.ps
-	ps2pdf floorplan.ps
-
-floorplan.ps: floorplan.pl
-	swipl -s floorplan.pl -g run -t halt
-
-.PHONY: script
-script:
-	./script.pl joe legner
-.PHONY: scraping
-scraping:
-	scryer-prolog scraping.pl
-
-.PHONY: rando
-rando:
-	./rando.pl 
-	./rando.pl 1000
-	./rando.pl 250 300
-
-
-.PHONY: svg
-svg:
-	./svg.pl
-
-.PHONY: pure_io
-pure_io:
-	swipl -s pure_io.pl
-
-.PHONY: joe
-joe:
-	./joe
-
-.PHONY: clipz
-clipz:
-	scryer-prolog clpz.pl
-
-.PHONY: member
-member:
-	swipl -s member.pl
-
-.PHONY: reverse
-reverse:
-	swipl -s reverse.pl
-
-.PHONY: second
-second:
-	swipl -s second.pl
-
-.PHONY: swift
-swift:
-	./swift.pl > swift.swift
-	swift swift.swift
-
-.PHONY: phrase_to_file
-phrase_to_file:
-	swipl -s phrase_to_file.pl 
-
-.PHONY: phrase_string
-phrase_string:
-	swipl -s phrase_string.pl
-
-.PHONY: phrase_to_file_example
-phrase_to_file_example:
-	swipl -s phrase_to_file_example.pl -g main -g book -t halt
-
-.PHONY: last
-last:
-	swipl -s last.pl
-
-.PHONY: last_but_one
-last_but_one:
-	swipl -s last_but_one.pl
-
-.PHONY: kth
-kth:
-	swipl -s kth.pl
-
-.PHONY: time
-time:
-	swipl -s time.pl
-
-.PHONY: ascii_canvas
-ascii_canvas:
-	swipl -s ascii_canvas.pl
-
-.PHONY: units
-units:
-	swipl -s units.pl
-
-.PHONY: ansi_term
-ansi_term:
-	swipl -s ansi_term.pl -g main -g halt
-
-.PHONY: guitars
-guitars:
-	swipl -s guitars.pl

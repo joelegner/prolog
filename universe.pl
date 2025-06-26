@@ -1,30 +1,30 @@
 % Direct containment relation
-holds(the_universe, cosmic_structures).
-holds(cosmic_structures, local_galaxy_group).
-holds(local_galaxy_group, milky_way_galaxy).
-holds(milky_way_galaxy, orion_cygnus_arm).
-holds(orion_cygnus_arm, solar_system).
-holds(solar_system, planets).
-holds(planets, inner_planets).
-holds(inner_planets, earth).
-holds(inner_planets, mercury).
-holds(inner_planets, venus).
-holds(inner_planets, mars).
-holds(earth, northern_hemisphere).
-holds(earth, southern_hemisphere).
-holds(northern_hemisphere, north_america).
-holds(north_america, united_states_of_america).
-holds(united_states_of_america, the_east).
-holds(the_east, the_southeast).
-holds(the_southeast, florida).
-holds(florida, hillsborough_county).
-holds(hillsborough_county, valrico).
-holds(valrico, walsingham_lot).
-holds(walsingham_lot, walsingham_house).
+container_contained(the_universe, cosmic_structures).
+container_contained(cosmic_structures, local_galaxy_group).
+container_contained(local_galaxy_group, milky_way_galaxy).
+container_contained(milky_way_galaxy, orion_cygnus_arm).
+container_contained(orion_cygnus_arm, solar_system).
+container_contained(solar_system, planets).
+container_contained(planets, inner_planets).
+container_contained(inner_planets, earth).
+container_contained(inner_planets, mercury).
+container_contained(inner_planets, venus).
+container_contained(inner_planets, mars).
+container_contained(earth, northern_hemisphere).
+container_contained(earth, southern_hemisphere).
+container_contained(northern_hemisphere, north_america).
+container_contained(north_america, united_states_of_america).
+container_contained(united_states_of_america, the_east).
+container_contained(the_east, the_southeast).
+container_contained(the_southeast, florida).
+container_contained(florida, hillsborough_county).
+container_contained(hillsborough_county, valrico).
+container_contained(valrico, walsingham_lot).
+container_contained(walsingham_lot, walsingham_house).
 
 % Recursive lookup of all containers of a place
 where_is(Place, [Container|Rest]) :-
-    holds(Container, Place),
+    container_contained(Container, Place),
     where_is(Container, Rest).
 where_is(the_universe, []).  % base case
 

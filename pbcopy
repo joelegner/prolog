@@ -1,0 +1,44 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	deleted:    accounting.pl
+	deleted:    act.pl
+	deleted:    basics.pl
+	deleted:    bridge.pl
+	deleted:    buddhism.pl
+	deleted:    builder.pl
+	deleted:    builder.tex
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    fluffernutters.ics
+	deleted:    fluffernutters.pl
+	deleted:    gantt.txt
+	deleted:    howl2026.ics
+	deleted:    howl2026.pl
+	deleted:    htmlgen.pl
+	deleted:    journey.pl
+	deleted:    kowalski.pl
+	deleted:    label_files.sh
+	deleted:    life.pl
+	deleted:    member.pl
+	deleted:    orientation_report.pl
+	deleted:    orientation_report.txt
+	deleted:    orientation_reports.pl
+	deleted:    physics.pl
+	deleted:    practice.pl
+	deleted:    probability.pl
+	deleted:    project_ethernet.pl
+	deleted:    roguelike.pl
+	deleted:    task.pl
+	deleted:    tpe.pl
+	modified:   universe.pl
+	deleted:    virtues.pl
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	pbcopy
+
