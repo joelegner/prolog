@@ -24,31 +24,39 @@ What relation are we trying establish?
 We are trying to establish the relation of input to output. Let's start there.
 */ 
 
+% footing.pl
+
 :- use_module(library(clpfd)).
+:- use_module(library(dcg/basics)).
 
-input_output(Input, Output) :-
-    Output #= Input + 1.
+% This is the core predicate relating definition and solution.
+problem_definition_solution(Definition, Solution) :-
+    phrase(solution(Definition), Solution).
 
-:- begin_tests(input_output_tests).
+% DCG: maps each 'a' in Definition to a 'b' in Solution
+solution([])     --> [].
+solution([a|As]) --> [b], solution(As).
 
-test(input_to_output) :-
-    input_output(24, Output),
-    Output #= 25.
+:- begin_tests(problem_definition_solution).
 
-test(output_to_input) :-
-    input_output(Input, 30),
-    Input #= 29.
+test(def_to_sol) :-
+    problem_definition_solution([a,a,a], Solution),
+    Solution == [b,b,b].
+
+test(sol_to_def) :-
+    once(problem_definition_solution(Definition, [b,b])),
+    Definition == [a,a].
 
 test(both_known_true) :-
-    input_output(5, 6).
+    problem_definition_solution([a,a], [b,b]).
 
 test(both_known_false, [fail]) :-
-    input_output(5, 7).
+    problem_definition_solution([a,a], [b,b,b]).
 
-:- end_tests(input_output_tests).
+test(non_a_input, [fail]) :-
+    problem_definition_solution([x], _).
 
-/*
-This is a stub predicate for fooding design. It might be nice for the definition and solution to both be lists. That way we can use a DCG to generate, parse, check, and complete them.
-*/
-problem_definition_solution(_Definition, _Solution) :-
-    fail.
+test(non_b_output, [fail]) :-
+    problem_definition_solution(_, [x]).
+
+:- end_tests(problem_definition_solution).
