@@ -315,4 +315,5 @@ combination:
 
 .PHONY: nato_alphabet
 nato_alphabet:
+	swipl -s nato_alphabet.pl -g run_tests -t halt
 	swipl -s nato_alphabet.pl -g run
