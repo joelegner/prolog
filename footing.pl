@@ -81,7 +81,9 @@ S = Snow
 */
 run :-
     soil_loads_area(2000, [40, 100, 30], Area),
-    format('Area = ~w sq ft~n', [Area]).
+    area_square_width(Area, Width),
+    label([Width]), % This is key. It forces Prolog to make Width concrete.
+    format('Area = ~w sq ft, Width = ~w ft~n', [Area, Width]).
 
 soil_loads_area(Soil, Loads, Area) :-
     loads_combined(Loads, Combinations),
@@ -134,4 +136,6 @@ This is how my mind worked writing this program. I think it's the right way to d
 
 % TODO: Below start adding predicates to design the sides of the footing to meet the area.
 
-% TODO: Write this: area_footing_width(Area, Width) :- 
+area_square_width(Area, SquareWidth) :- 
+    SquareWidth in 1..100,
+    SquareWidth*SquareWidth #> Area.
