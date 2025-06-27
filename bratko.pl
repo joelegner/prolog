@@ -62,16 +62,19 @@ Word = two ;
 Number = 3,
 Word = three.
 
-Here is the rewrite:
+Here is the rewrite which follows coding standard recommendations. 
 */
 translate( Number, Word) :-
-    Number = 1, Word = one.
+    Number = 1, 
+    Word = one.
 
 translate( Number, Word) :-
-    Number = 2, Word = two.
+    Number = 2, 
+    Word = two.
 
 translate( Number, Word) :-
-    Number = 3, Word = three.
+    Number = 3, 
+    Word = three.
 
 /* 
 Running my live code gives the same answer. Boom.
@@ -84,3 +87,6 @@ Word = two ;
 Number = 3,
 Word = three.
 */
+
+open :-
+    shell('open "Books/Ivan Bratko - Prolog Programming for Artificial Intelligence-Addison-Wesley (2012).pdf"').
