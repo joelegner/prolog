@@ -304,3 +304,7 @@ storage:
 .PHONY: shell_output
 shell_output:
 	swipl -s shell_output.pl
+
+.PHONY: bratko
+bratko:
+	swipl -s bratko.pl
