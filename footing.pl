@@ -64,3 +64,38 @@ test(non_b_output, [fail]) :-
     problem_definition_solution(_, [x]).
 
 :- end_tests(problem_definition_solution).
+
+% My default should be to append new clauses on existing programs, unless it's time for refactoring.
+
+/*
+This algorithm from Bratko inspires me:
+
+procedure execute(Program, GoalList, Success);
+
+What I want my footing design to be is this:
+
+Loads:
+D = Dead
+L = Live
+S = Snow
+*/
+
+soil_loads_footing(Soil, Loads, Area) :-
+    loads_combined(Loads, Combinations),
+    soil_combos_footing(Soil, Combinations, Area).
+
+loads_combined(Loads, Combinations) :-
+    Loads = [D1, L, _], 
+    Combo1 #= D1 + L,
+    Loads = [D2, _, S], 
+    Combo2 #= D2 + S,
+    Combinations = [Combo1, Combo2].
+
+run :-
+    soil_loads_footing(2000, [40, 100, 30], Area),
+    format('Area = ~w sq ft~n', [Area]).
+
+soil_combos_footing(Soil, Combinations, Area) :-
+    max_list(Combinations, P),
+    P1 #= P * 1000,
+    Area #= P1 div Soil.
