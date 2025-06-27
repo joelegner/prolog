@@ -87,6 +87,3 @@ Word = two ;
 Number = 3,
 Word = three.
 */
-
-open :-
-    shell('open "Books/Ivan Bratko - Prolog Programming for Artificial Intelligence-Addison-Wesley (2012).pdf"').
