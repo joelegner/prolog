@@ -79,6 +79,9 @@ D = Dead
 L = Live
 S = Snow
 */
+run :-
+    soil_loads_footing(2000, [40, 100, 30], Area),
+    format('Area = ~w sq ft~n', [Area]).
 
 soil_loads_footing(Soil, Loads, Area) :-
     loads_combined(Loads, Combinations),
@@ -90,10 +93,6 @@ loads_combined(Loads, Combinations) :-
     Loads = [D2, _, S], 
     Combo2 #= D2 + S,
     Combinations = [Combo1, Combo2].
-
-run :-
-    soil_loads_footing(2000, [40, 100, 30], Area),
-    format('Area = ~w sq ft~n', [Area]).
 
 soil_combos_footing(Soil, Combinations, Area) :-
     max_list(Combinations, P),

@@ -94,7 +94,7 @@ floorplan.ps: floorplan.pl
 
 .PHONY: footing
 footing:
-	swipl -s footing.pl -g run_tests
+	swipl -s footing.pl -g run_tests -g run
 
 .PHONY: forall
 forall:
