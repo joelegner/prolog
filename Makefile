@@ -312,3 +312,7 @@ bratko:
 .PHONY: combination
 combination:
 	swipl -s combination.pl
+
+.PHONY: nato_alphabet
+nato_alphabet:
+	swipl -s nato_alphabet.pl -g run
