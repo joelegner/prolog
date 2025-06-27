@@ -80,21 +80,58 @@ L = Live
 S = Snow
 */
 run :-
-    soil_loads_footing(2000, [40, 100, 30], Area),
+    soil_loads_area(2000, [40, 100, 30], Area),
     format('Area = ~w sq ft~n', [Area]).
 
-soil_loads_footing(Soil, Loads, Area) :-
+soil_loads_area(Soil, Loads, Area) :-
     loads_combined(Loads, Combinations),
-    soil_combos_footing(Soil, Combinations, Area).
+    soil_combos_area(Soil, Combinations, Area).
 
 loads_combined(Loads, Combinations) :-
-    Loads = [D1, L, _], 
-    Combo1 #= D1 + L,
-    Loads = [D2, _, S], 
-    Combo2 #= D2 + S,
+    Loads = [D, L, _], 
+    Combo1 #= D + L,
+    Loads = [D, _, S], 
+    Combo2 #= D + S,
     Combinations = [Combo1, Combo2].
 
-soil_combos_footing(Soil, Combinations, Area) :-
+soil_combos_area(Soil, Combinations, Area) :-
     max_list(Combinations, P),
     P1 #= P * 1000,
     Area #= P1 div Soil.
+
+/*
+This is a good start. My way of thinking worked well. Here's how it went. Take loads_combined for the first example. It relates the list of Loads to a list of Load Combination values. The first thing I did was write the predicate:
+
+loads_combined(Loads, Combinations) :-
+
+Now I know I need to get from loads to combinations. The first thing to do is to extract dead and live loads. So I added the lines uniting loads with lists including variables.
+
+loads_combined(Loads, Combinations) :-
+    Loads = [D, L, _], 
+    Loads = [D, _, S], 
+
+I need to calculate the load combinations. Let's add that code using the #= operator from CLP(FD).
+
+loads_combined(Loads, Combinations) :-
+    Loads = [D, L, _], 
+    Combo1 #= D + L,
+    Loads = [D, _, S], 
+    Combo2 #= D + S,
+
+Finally, we just need to wrap those combined loads into a list:
+
+loads_combined(Loads, Combinations) :-
+    Loads = [D, L, _], 
+    Combo1 #= D + L,
+    Loads = [D, _, S], 
+    Combo2 #= D + S,
+    Combinations = [Combo1, Combo2].
+
+?- make, run. % Gave me the right answer.
+
+This is how my mind worked writing this program. I think it's the right way to do it.
+*/
+
+% TODO: Below start adding predicates to design the sides of the footing to meet the area.
+
+% TODO: Write this: area_footing_width(Area, Width) :- 
