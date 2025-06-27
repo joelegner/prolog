@@ -308,3 +308,7 @@ shell_output:
 .PHONY: bratko
 bratko:
 	swipl -s bratko.pl
+
+.PHONY: combination
+combination:
+	swipl -s combination.pl
