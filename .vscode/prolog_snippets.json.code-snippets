@@ -18,5 +18,13 @@
 			"    ${3:Actual} =:= ${4:Expected}."
 		],
 		"description": "Add a test case."
+	},
+	"Write a list" : {
+		"scope": "prolog",
+		"prefix": "wlist", 
+		"body": [
+			"maplist(writeln, ${1:List})$0"
+		],
+		"description": "Write each item in a list."
 	}
 }
