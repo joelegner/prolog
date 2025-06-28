@@ -82,7 +82,8 @@ S = Snow
 run :-
     soil_loads_area(2000, [40, 100, 30], Area),
     area_square_width(Area, Width),
-    format('Area = ~w sq ft, Width = ~w ft~n', [Area, Width]).
+    WidthFeet is Width/12.0,
+    format('Area = ~w sq ft, Width = ~2f ft~n', [Area, WidthFeet]).
 
 soil_loads_area(Soil, Loads, Area) :-
     loads_combined(Loads, Combinations),
@@ -134,8 +135,8 @@ This is how my mind worked writing this program. I think it's the right way to d
 */
 
 area_square_width(Area, SquareWidth) :- 
-    SquareWidth in 1..100,
-    SquareWidth*SquareWidth #> Area,
+    SquareWidth in 1..2000,
+    SquareWidth*SquareWidth #> Area*12*12,
     indomain(SquareWidth).
 
 /*
