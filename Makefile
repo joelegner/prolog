@@ -317,3 +317,7 @@ combination:
 nato_alphabet:
 	swipl -s nato_alphabet.pl -g run_tests -t halt
 	swipl -s nato_alphabet.pl -g run
+
+.PHONY: conc
+conc:
+	swipl -s conc.pl
