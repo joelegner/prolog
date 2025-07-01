@@ -102,4 +102,19 @@ test(double_list) :-
     double_list([5, 4, 3, 2, 1], Doubled),
     assertion(Doubled == [10, 8, 6, 4, 2]).
 
+test(add_to_list_bratko) :-
+    X = a,
+    L1 = [b,c,d],
+    % The big moment:
+    L2 = [X|L1],
+    assertion(L2 == [a,b,c,d]).
+
+test(add_to_list_bratko_two) :-
+    X1 = i,
+    X2 = j,
+    L1 = [k,l,m],
+    % The big moment:
+    L2 = [X1,X2|L1],
+    assertion(L2 == [i, j, k, l, m]).
+
 :- end_tests(list_utils).
