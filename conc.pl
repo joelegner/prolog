@@ -1,5 +1,9 @@
 %% conc.pl
 
+:- module(conc, [
+    conc/3
+]).
+
 /*
 Experiment with home-grown concatentation predicate. It's only for academic value. Use append/3 instead of this. 
 */
