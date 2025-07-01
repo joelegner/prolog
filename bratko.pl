@@ -1,11 +1,13 @@
 %% bratko.pl
 
+:- use_module(conc).
+
 % Ivan Bratko, Prolog Programming for Artificial Intelligence (2012).
 
 % Section 2.2, page 43
 
-vertical(seg(point(X1, Y1), point(X1, Y2))).
-horizontal(seg(point(X1, Y1), point(X2, Y1))).
+% vertical(seg(point(X1, Y1), point(X1, Y2))).
+% horizontal(seg(point(X1, Y1), point(X2, Y1))).
 
 % Exercise 2.6, page 46.
 
@@ -87,3 +89,13 @@ Word = two ;
 Number = 3,
 Word = three.
 */
+
+/* 
+Sis a sublist of L if:
+(1) L can be decomposed into two lists, Ll and L2, and
+(2) L2 can be decomposed into two lists, S and some L3.
+*/
+
+sublist(S, L) :-
+    conc(_, L2, L), 
+    conc(S, _, L2).
