@@ -99,3 +99,38 @@ Sis a sublist of L if:
 sublist(S, L) :-
     conc(_, L2, L), 
     conc(S, _, L2).
+
+del([X, [X|Tail]], Tail).
+
+del(X, [Y|Tail], [Y|Tail1]) :-
+    del(X, Tail, Tail1).
+
+insert(X, List, BiggerList) :-
+    del(X, BiggerList, List).
+
+permutation([], []).
+permutation(List, [First|Perm]) :-
+    select(First, List, Rest),
+    permutation(Rest, Perm).
+
+unique_permutation(List, Perm) :-
+    setof(P, permutation(List, P), Perms),
+    member(Perm, Perms).
+
+/*
+?- findall(P, unique_permutation([a,a,a,a,a], P), Perms), length(Perms, PermCount).
+Perms = [[a, a, a, a, a]],
+PermCount = 1.
+
+?- findall(P, unique_permutation([a,b,c,a,d], P), Perms), length(Perms, PermCount).
+Perms = [[a, a, b, c, d], [a, a, b, d, c], [a, a, c, b, d], [a, a, c, d, b], [a, a, d, b|...], [a, a, d|...], [a, b|...], [a|...], [...|...]|...],
+PermCount = 60.
+
+?- findall(P, unique_permutation([a,b,c,e,d], P), Perms), length(Perms, PermCount).
+Perms = [[a, b, c, d, e], [a, b, c, e, d], [a, b, d, c, e], [a, b, d, e, c], [a, b, e, c|...], [a, b, e|...], [a, c|...], [a|...], [...|...]|...],
+PermCount = 120.
+
+?- findall(P, unique_permutation([a,e,a,e,a], P), Perms), length(Perms, PermCount).
+Perms = [[a, a, a, e, e], [a, a, e, a, e], [a, a, e, e, a], [a, e, a, a, e], [a, e, a, e|...], [a, e, e|...], [e, a|...], [e|...], [...|...]|...],
+PermCount = 10.
+*/
