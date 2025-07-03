@@ -325,3 +325,7 @@ conc:
 .PHONY: list_length
 list_length:
 	swipl -s list_length.pl -g run_tests
+
+.PHONY: strings
+strings:
+	swipl -s strings.pl
