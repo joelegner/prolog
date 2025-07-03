@@ -329,3 +329,7 @@ list_length:
 .PHONY: strings
 strings:
 	swipl -s strings.pl
+
+.PHONY: server
+server:
+	swipl -s server.pl
