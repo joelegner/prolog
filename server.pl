@@ -18,5 +18,5 @@ swipl -s server.pl
 home_page(_Request) :-
     reply_html_page(
         title('Demo server'),
-        [ h1('Hello world!')
+        [ h1(Hello, World!')
         ]).
