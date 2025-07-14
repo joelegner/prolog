@@ -76,6 +76,21 @@ home(white_cabinet2).
 home(orange_spool1).
 home(orange_spool2).
 home(orange_spool3).
+home(master_bedroom).
+home(joes_nightstand).
+home(julies_nightstand).
+home(dresser).
+home(dresser_drawer_lower_left).
+home(dresser_drawer_middle_left).
+home(dresser_drawer_top_left).
+home(dresser_drawer_lower_right).
+home(dresser_drawer_middle_right).
+home(dresser_drawer_top_right).
+home(dresser_drawer_top_middle).
+home(chest_of_drawers).
+home(router_table).
+home(router_table_top_drawer).
+home(router_table_bottom_drawer).
 
 home_in_home(front_room, walsingham_way).
 home_in_home(garage, walsingham_way).
@@ -85,6 +100,18 @@ home_in_home(white_cabinet2, garage).
 home_in_home(orange_spool1, big_plastic_cabinet).
 home_in_home(orange_spool2, big_plastic_cabinet).
 home_in_home(orange_spool3, big_plastic_cabinet).
+home_in_home(joes_nightstand, master_bedroom).
+home_in_home(julies_nightstand, master_bedroom).
+home_in_home(dresser, master_bedroom).
+home_in_home(chest_of_drawers, master_bedroom).
+home_in_home(dresser_drawer_lower_left, dresser).
+home_in_home(dresser_drawer_middle_left, dresser).
+home_in_home(dresser_drawer_top_left, dresser).
+home_in_home(dresser_drawer_lower_right, dresser).
+home_in_home(dresser_drawer_middle_right, dresser).
+home_in_home(router_table, master_bedroom).
+home_in_home(router_table_top_drawer, router_table).
+home_in_home(router_table_bottom_drawer, dresser).
 
 % ITEMS =======================================================================
 
@@ -93,9 +120,15 @@ item(xlr10, 'XLR cable, 10 feet long').
 item(xlr20, 'XLR cable, 20 feet long').
 item(xlr25, 'XLR cable, 25 feet long').
 item(xlr50, 'XLR cable, 50 feet long').
+item(bose_headsphones, 'Bose Quiet Comfort Headphones').
+item(user_manual, 'User manual').
+item(clipboard, 'Clipboard').
 
 % Bulk items are not tracked as unique individuals
-bulk_item([xlr6, xlr10, xlr20, xlr25, xlr50]).
+bulk_item([xlr6, xlr10, xlr20, xlr25, xlr50, user_manual, clipboard]).
 
-% INFOSYS =====================================================================
-
+% ITEM HOMES ==================================================================
+item_home(bose_headsphones, joes_nightstand).
+item_home(user_manual, dresser_drawer_lower_left).
+item_home(user_manual, dresser_drawer_lower_left).
+item_home(clipboard, router_table_top_drawer).
