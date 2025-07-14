@@ -333,3 +333,10 @@ strings:
 .PHONY: server
 server:
 	swipl -s server.pl
+
+.PHONY: clipboard
+clipboard: pasteboard
+
+.PHONY: pasteboard
+pasteboard:
+	swipl -s pasteboard.pl -g run_tests
