@@ -152,11 +152,14 @@ item_home(joes_bed, master_bedroom).
 item_home(julies_bed, master_bedroom).
 item_home(iec, power_cords_tote).
 
-% Helper predicate to find all items in a home (including sub-homes)
+% Helper predicate to find all items in a home (including sub-homes and containers)
 items_in_home(Home, Items) :-
     findall(Item, (
-        item_home(Item, DirectHome),
-        (DirectHome = Home ; home_path(DirectHome, Home))
+        (   item_home(Item, DirectHome),
+            (DirectHome = Home ; home_path(DirectHome, Home))
+        ;   home_in_home(Item, DirectHome),
+            (DirectHome = Home ; home_path(DirectHome, Home))
+        )
     ), Items).
 
 % Helper predicate to check if a home is contained within another home (recursively)
@@ -199,12 +202,18 @@ display_home(Home, Level) :-
 % Helper predicate to display items directly in a home
 display_items_in_home(Home, Level) :-
     findall(Item, item_home(Item, Home), DirectItems),
+    findall(Container, home_in_home(Container, Home), DirectContainers),
     indent(Level, Indent),
+    % Display regular items
     forall(member(Item, DirectItems), (
         (   item(Item, Description) ->
             format('~w- ~w: ~w~n', [Indent, Item, Description])
         ;   format('~w- ~w~n', [Indent, Item])
         )
+    )),
+    % Display containers as items
+    forall(member(Container, DirectContainers), (
+        format('~w- ~w (container)~n', [Indent, Container])
     )).
 
 % Helper predicate to display sub-homes
@@ -230,6 +239,7 @@ report :-
     % Part 2: Items and their homes (with full paths)
     writeln('ITEMS AND THEIR LOCATIONS:'),
     writeln('-------------------------'),
+    % Regular items
     findall(Item, item_home(Item, _), AllItems),
     sort(AllItems, SortedItems),
     forall(member(Item, SortedItems), (
@@ -242,6 +252,16 @@ report :-
         ;   format('~w (in ~w)~n', [Item, FullPath])
         )
     )),
+    % Containers as items
+    findall(Container, home_in_home(Container, _), AllContainers),
+    sort(AllContainers, SortedContainers),
+    forall(member(Container, SortedContainers), (
+        home_in_home(Container, DirectHome),
+        home_full_path(DirectHome, Path),
+        reverse(Path, ReversedPath),
+        atomic_list_concat(ReversedPath, ' > ', FullPath),
+        format('~w (container in ~w)~n', [Container, FullPath])
+    )),
     nl,
     
     % Part 3: Summary statistics
@@ -251,8 +271,13 @@ report :-
     length(AllHomes, HomeCount),
     findall(I, item_home(I, _), AllTrackedItems),
     length(AllTrackedItems, ItemCount),
+    findall(C, home_in_home(C, _), AllContainers),
+    length(AllContainers, ContainerCount),
+    TotalItems is ItemCount + ContainerCount,
     format('Total homes: ~w~n', [HomeCount]),
-    format('Total tracked items: ~w~n', [ItemCount]),
+    format('Total regular items: ~w~n', [ItemCount]),
+    format('Total containers: ~w~n', [ContainerCount]),
+    format('Total items (including containers): ~w~n', [TotalItems]),
     nl,
     
     % Part 4: Check for unfulfilled customer needs
