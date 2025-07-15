@@ -3,7 +3,7 @@
 <node TEXT="Prolog README.md" LOCALIZED_STYLE_REF="AutomaticLayout.level.root" FOLDED="false" ID="ID_452131666" CREATED="1610381621610" MODIFIED="1751485767492">
 <font NAME="Times New Roman"/>
 <hook NAME="MapStyle">
-    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_icon_for_attributes="true" associatedTemplateLocation="template:/joes-freeplane-template.mm" show_note_icons="true" followedTemplateLocation="template:/joes-freeplane-template.mm" followedMapLastTime="1656438878472" fit_to_viewport="false" show_icons="BESIDE_NODES" show_tags="UNDER_NODES"/>
+    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_icon_for_attributes="true" show_tags="UNDER_NODES" associatedTemplateLocation="template:/joes-freeplane-template.mm" show_note_icons="true" followedTemplateLocation="template:/joes-freeplane-template.mm" followedMapLastTime="1656438878472" fit_to_viewport="false" show_icons="BESIDE_NODES"/>
     <tags category_separator="::"/>
 
 <map_styles>
@@ -92,7 +92,74 @@
 <node TEXT="Markus Triska" ID="ID_1684369815" CREATED="1751487167934" MODIFIED="1751487170142"/>
 <node TEXT="Jan Wielemaker" ID="ID_1002763806" CREATED="1751487673919" MODIFIED="1751487673919"/>
 </node>
-<node TEXT="Glossary" POSITION="bottom_or_right" ID="ID_1058936135" CREATED="1751485830835" MODIFIED="1751487161358"/>
+<node TEXT="Glossary" POSITION="bottom_or_right" ID="ID_1631974131" CREATED="1752510202688" MODIFIED="1752510221033">
+<node TEXT="atom" ID="ID_540056601" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="Textual constant in Prolog that starts with a lowercase letter or is enclosed in single quotes, such as hello or &apos;Hello World&apos;." ID="ID_1032035110" CREATED="1752510202688" MODIFIED="1752510261121"/>
+</node>
+<node TEXT="backtracking" FOLDED="true" ID="ID_589750147" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="The process by which Prolog automatically undoes variable bindings and tries alternative solutions when a goal fails." ID="ID_1269099599" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="body" ID="ID_800639722" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="The right side of a rule after the :- operator, containing the conditions that must be satisfied." ID="ID_1055333561" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="clause" ID="ID_345767799" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="Fact" ID="ID_1325768573" CREATED="1752511276232" MODIFIED="1752511319433">
+<node TEXT="head." ID="ID_937960119" CREATED="1752511319761" MODIFIED="1752511321881"/>
+<node TEXT="head :- true." ID="ID_1833055681" CREATED="1752511322216" MODIFIED="1752511324490"/>
+</node>
+<node TEXT="Rule" ID="ID_1426510368" CREATED="1752511279024" MODIFIED="1752511330002">
+<node TEXT="head :- body." ID="ID_47015110" CREATED="1752511330409" MODIFIED="1752511332794"/>
+</node>
+</node>
+<node TEXT="cut (!)" FOLDED="true" ID="ID_1238571421" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="A special operator that prevents backtracking beyond the point where it appears in a clause." ID="ID_742473189" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="fact" FOLDED="true" ID="ID_491140486" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="A clause that states something is unconditionally true, such as parent(john, mary)." ID="ID_626069483" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="functor" FOLDED="true" ID="ID_1108238959" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="The name and arity (number of arguments) of a compound term, such as parent/2 for parent(john, mary)." ID="ID_57424801" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="goal" FOLDED="true" ID="ID_1249879123" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="A query or subgoal that Prolog attempts to prove or satisfy during execution." ID="ID_1769046384" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="ground term" FOLDED="true" ID="ID_699461467" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="A term that contains no uninstantiated variables." ID="ID_1821001767" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="head" ID="ID_1391312405" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="The left side of a rule before the :- operator, representing what the rule concludes." ID="ID_286932649" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="list" FOLDED="true" ID="ID_1615127747" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="A data structure in Prolog written as [H|T] where H is the head and T is the tail, or as [a, b, c] for explicit elements." ID="ID_986484452" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="predicate" FOLDED="true" ID="ID_763455751" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="A named relationship or property that can be true or false, defined by a set of clauses." ID="ID_128821831" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="procedure" FOLDED="true" ID="ID_908979029" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="The complete set of clauses that define a particular predicate." ID="ID_1423856120" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="query" FOLDED="true" ID="ID_118459408" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="A question posed to the Prolog system to find solutions, typically entered at the prompt with ?-." ID="ID_280062996" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="recursion" FOLDED="true" ID="ID_240070056" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="The technique where a predicate calls itself, either directly or indirectly, to solve problems." ID="ID_1007333510" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="rule" ID="ID_1261173182" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="A clause that defines when something is true based on conditions, written as head :- body." ID="ID_966538761" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="SLD resolution" ID="ID_1402750745" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="The inference mechanism Prolog uses to prove goals by selecting literals and resolving them with program clauses." ID="ID_451966638" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="term" ID="ID_767693598" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="Any data object in Prolog, including atoms, numbers, variables, and compound terms." ID="ID_1965846313" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="unification" ID="ID_902293209" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="The process of matching two terms by finding variable bindings that make them identical." ID="ID_1041167005" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+<node TEXT="variable" ID="ID_146111442" CREATED="1752510202688" MODIFIED="1752510202688">
+<node TEXT="A placeholder that starts with an uppercase letter or underscore and can be bound to values during execution." ID="ID_1444301723" CREATED="1752510202688" MODIFIED="1752510202688"/>
+</node>
+</node>
 <node TEXT="Lists" POSITION="bottom_or_right" ID="ID_1369733757" CREATED="1751485769771" MODIFIED="1751485771556">
 <node TEXT="List syntax" ID="ID_1437870552" CREATED="1751486234901" MODIFIED="1751486237477">
 <node TEXT="[]" ID="ID_1944498574" CREATED="1751486760623" MODIFIED="1751486762159"/>
