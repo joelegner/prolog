@@ -69,6 +69,7 @@ NOTE!: Not sure about the following. It feels lidyke I should continue with DPs 
 home(front_room).
 home(garage).
 home(walsingham_way).
+home(living_room).
 home(uhaul_storage_unit).
 home(big_plastic_cabinet).
 home(white_cabinet1).
@@ -77,6 +78,7 @@ home(orange_spool1).
 home(orange_spool2).
 home(orange_spool3).
 home(master_bedroom).
+home(dining_area).
 home(joes_nightstand).
 home(julies_nightstand).
 home(dresser).
@@ -91,9 +93,13 @@ home(chest_of_drawers).
 home(router_table).
 home(router_table_top_drawer).
 home(router_table_bottom_drawer).
+home(power_cords_tote).
 
 home_in_home(front_room, walsingham_way).
 home_in_home(garage, walsingham_way).
+home_in_home(dining_area, walsingham_way).
+home_in_home(power_cords_tote, dining_area).
+home_in_home(living_room, walsingham_way).
 home_in_home(big_plastic_cabinet, garage).
 home_in_home(white_cabinet1, garage).
 home_in_home(white_cabinet2, garage).
@@ -115,23 +121,33 @@ home_in_home(router_table_bottom_drawer, dresser).
 
 % ITEMS =======================================================================
 
-item(xlr6, 'XLR cable, 6 feet long').
+item(bose_headsphones, 'Bose Quiet Comfort Headphones').
+item(clipboard, 'Clipboard').
+item(joes_bed, 'Joe\'s bed').
+item(julies_bed, 'Julie\'s bed').
+item(user_manual, 'User manual').
 item(xlr10, 'XLR cable, 10 feet long').
 item(xlr20, 'XLR cable, 20 feet long').
 item(xlr25, 'XLR cable, 25 feet long').
 item(xlr50, 'XLR cable, 50 feet long').
-item(bose_headsphones, 'Bose Quiet Comfort Headphones').
-item(user_manual, 'User manual').
-item(clipboard, 'Clipboard').
+item(xlr6, 'XLR cable, 6 feet long').
+item(iec, 'IEC power cable').
 
 % Bulk items are not tracked as unique individuals
-bulk_item([xlr6, xlr10, xlr20, xlr25, xlr50, user_manual, clipboard]).
+bulk_item([xlr6, xlr10, xlr20, xlr25, xlr50, user_manual, clipboard, iec]).
 
 % ITEM HOMES ==================================================================
 item_home(bose_headsphones, joes_nightstand).
-item_home(user_manual, dresser_drawer_lower_left).
-item_home(user_manual, dresser_drawer_lower_left).
 item_home(clipboard, router_table_top_drawer).
+item_home(user_manual, dresser_drawer_lower_left).
+item_home(xlr10, orange_spool1).
+item_home(xlr20, orange_spool2).
+item_home(xlr25, orange_spool2).
+item_home(xlr50, orange_spool2).
+item_home(xlr6, orange_spool1).
+item_home(joes_bed, master_bedroom).
+item_home(julies_bed, master_bedroom).
+item_home(iec, power_cords_tote).
 
 % Helper predicate to find all items in a home (including sub-homes)
 items_in_home(Home, Items) :-
