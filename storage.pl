@@ -132,3 +132,120 @@ item_home(bose_headsphones, joes_nightstand).
 item_home(user_manual, dresser_drawer_lower_left).
 item_home(user_manual, dresser_drawer_lower_left).
 item_home(clipboard, router_table_top_drawer).
+
+% Helper predicate to find all items in a home (including sub-homes)
+items_in_home(Home, Items) :-
+    findall(Item, (
+        item_home(Item, DirectHome),
+        (DirectHome = Home ; home_path(DirectHome, Home))
+    ), Items).
+
+% Helper predicate to check if a home is contained within another home (recursively)
+home_path(SubHome, ParentHome) :-
+    home_in_home(SubHome, ParentHome).
+home_path(SubHome, ParentHome) :-
+    home_in_home(SubHome, IntermediateHome),
+    home_path(IntermediateHome, ParentHome).
+
+% Helper predicate to get the full path of a home
+home_full_path(Home, Path) :-
+    home_full_path_acc(Home, [], Path).
+
+home_full_path_acc(Home, Acc, Path) :-
+    (   home_in_home(Home, Parent) ->
+        home_full_path_acc(Parent, [Home|Acc], Path)
+    ;   Path = [Home|Acc]
+    ).
+
+% Helper predicate to get indentation for hierarchical display
+indent(0, '').
+indent(N, Indent) :-
+    N > 0,
+    N1 is N - 1,
+    indent(N1, RestIndent),
+    atom_concat('  ', RestIndent, Indent).
+
+% Helper predicate to display a home and its contents at a given level
+display_home(Home, Level) :-
+    indent(Level, Indent),
+    items_in_home(Home, Items),
+    length(Items, ItemCount),
+    format('~w~w (~w items)~n', [Indent, Home, ItemCount]),
+    % Display items in this home
+    NextLevel is Level + 1,
+    display_items_in_home(Home, NextLevel),
+    % Display sub-homes
+    display_sub_homes(Home, NextLevel).
+
+% Helper predicate to display items directly in a home
+display_items_in_home(Home, Level) :-
+    findall(Item, item_home(Item, Home), DirectItems),
+    indent(Level, Indent),
+    forall(member(Item, DirectItems), (
+        (   item(Item, Description) ->
+            format('~w- ~w: ~w~n', [Indent, Item, Description])
+        ;   format('~w- ~w~n', [Indent, Item])
+        )
+    )).
+
+% Helper predicate to display sub-homes
+display_sub_homes(Home, Level) :-
+    findall(SubHome, home_in_home(SubHome, Home), SubHomes),
+    forall(member(SubHome, SubHomes), display_home(SubHome, Level)).
+
+% Helper predicate to find top-level homes (homes that are not contained in other homes)
+top_level_homes(TopHomes) :-
+    findall(Home, (home(Home), \+ home_in_home(Home, _)), TopHomes).
+
+report :-
+    writeln('=== THAT STORAGE SYSTEM (TSS) REPORT ==='),
+    nl,
+    
+    % Part 1: Homes and their contents (hierarchical)
+    writeln('HOMES AND CONTENTS:'),
+    writeln('------------------'),
+    top_level_homes(TopHomes),
+    forall(member(Home, TopHomes), display_home(Home, 0)),
+    nl,
+    
+    % Part 2: Items and their homes (with full paths)
+    writeln('ITEMS AND THEIR LOCATIONS:'),
+    writeln('-------------------------'),
+    findall(Item, item_home(Item, _), AllItems),
+    sort(AllItems, SortedItems),
+    forall(member(Item, SortedItems), (
+        item_home(Item, DirectHome),
+        home_full_path(DirectHome, Path),
+        reverse(Path, ReversedPath),
+        atomic_list_concat(ReversedPath, ' > ', FullPath),
+        (   item(Item, Description) ->
+            format('~w: ~w (in ~w)~n', [Item, Description, FullPath])
+        ;   format('~w (in ~w)~n', [Item, FullPath])
+        )
+    )),
+    nl,
+    
+    % Part 3: Summary statistics
+    writeln('SUMMARY:'),
+    writeln('--------'),
+    findall(H, home(H), AllHomes),
+    length(AllHomes, HomeCount),
+    findall(I, item_home(I, _), AllTrackedItems),
+    length(AllTrackedItems, ItemCount),
+    format('Total homes: ~w~n', [HomeCount]),
+    format('Total tracked items: ~w~n', [ItemCount]),
+    nl,
+    
+    % Part 4: Check for unfulfilled customer needs
+    writeln('CUSTOMER NEEDS STATUS:'),
+    writeln('---------------------'),
+    unfulfilled_cns(Unfulfilled),
+    (   Unfulfilled = [] ->
+        writeln('All customer needs are addressed by functional requirements.')
+    ;   writeln('Unfulfilled customer needs:'),
+        forall(member(CN, Unfulfilled), (
+            cn(CN, Description),
+            format('  ~w: ~w~n', [CN, Description])
+        ))
+    ),
+    nl.
