@@ -67,6 +67,7 @@ NOTE!: Not sure about the following. It feels lidyke I should continue with DPs 
 % HOMES =======================================================================
 
 home(front_room).
+home(tommys_bedroom).
 home(garage).
 home(walsingham_way).
 home(living_room).
@@ -118,6 +119,8 @@ home_in_home(dresser_drawer_middle_right, dresser).
 home_in_home(router_table, master_bedroom).
 home_in_home(router_table_top_drawer, router_table).
 home_in_home(router_table_bottom_drawer, dresser).
+home_in_home(master_bedroom, walsingham_way).
+home_in_home(tommys_bedroom, walsingham_way).
 
 % ITEMS =======================================================================
 
