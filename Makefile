@@ -340,3 +340,7 @@ clipboard: pasteboard
 .PHONY: pasteboard
 pasteboard:
 	swipl -s pasteboard.pl -g run_tests
+
+.PHONY: poem
+poem:
+	swipl -s poem.pl
