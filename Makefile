@@ -352,3 +352,7 @@ dates:
 .PHONY: robot
 robot:
 	swipl -s robot.pl
+
+.PHONY: roguelike
+roguelike:
+	swipl -s roguelike.pl
