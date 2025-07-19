@@ -5,53 +5,77 @@
 grid_width(80).
 grid_height(24).
 
-% Define obstacles and walls using # symbol
-% Wall pattern 1: Horizontal wall near top
-obstacle(10, 20).
-obstacle(11, 20).
-obstacle(12, 20).
-obstacle(13, 20).
+% Dungeon Layout with Rooms and Corridors
+% Room 1: Starting room (bottom-left)
+obstacle(X, Y) :- room1_walls(X, Y).
+room1_walls(5, Y) :- Y >= 1, Y =< 8.     % Right wall
+room1_walls(X, 8) :- X >= 2, X =< 6.     % Top wall
+room1_walls(X, 1) :- X >= 6, X =< 15.    % Bottom extension
 
-% Wall pattern 2: Vertical wall with gap
-obstacle(25, 15).
-obstacle(25, 14).
-obstacle(25, 13).
-obstacle(25, 12).
-obstacle(25, 11).
+% Corridor 1: Horizontal passage
+obstacle(X, Y) :- corridor1_walls(X, Y).
+corridor1_walls(X, 4) :- X >= 6, X =< 20. % Top wall of corridor
+corridor1_walls(X, 2) :- X >= 6, X =< 20. % Bottom wall of corridor
 
-% Wall pattern 3: L-shaped obstacle
-obstacle(40, 10).
-obstacle(41, 10).
-obstacle(42, 10).
-obstacle(42, 11).
-obstacle(42, 12).
+% Room 2: Middle-left room
+obstacle(X, Y) :- room2_walls(X, Y).
+room2_walls(15, Y) :- Y >= 5, Y =< 12.    % Left wall
+room2_walls(25, Y) :- Y >= 5, Y =< 12.    % Right wall  
+room2_walls(X, 12) :- X >= 15, X =< 25.   % Top wall
+room2_walls(X, 5) :- X >= 15, X =< 18.    % Bottom wall (with gap)
+room2_walls(X, 5) :- X >= 22, X =< 25.    % Bottom wall (with gap)
 
-% Wall pattern 4: Scattered blocks
-obstacle(15, 8).
-obstacle(16, 8).
-obstacle(18, 8).
-obstacle(30, 18).
-obstacle(31, 18).
-obstacle(32, 18).
-obstacle(50, 5).
-obstacle(51, 5).
-obstacle(52, 5).
-obstacle(60, 15).
-obstacle(61, 15).
-obstacle(62, 15).
-obstacle(63, 15).
+% Corridor 2: Vertical passage up
+% obstacle(X, Y) :- corridor2_walls(X, Y).
+corridor2_walls(19, Y) :- Y >= 13, Y =< 18. % Left wall
+corridor2_walls(21, Y) :- Y >= 13, Y =< 18. % Right wall
 
-% Wall pattern 5: Near goal area
-obstacle(70, 24).
-obstacle(71, 24).
-obstacle(71, 23).
-obstacle(72, 22).
-obstacle(73, 21).
-obstacle(74, 20).
-obstacle(74, 20).
-obstacle(75, 20).
-obstacle(76, 20).
-obstacle(77, 20).
+% Room 3: Upper-middle room
+obstacle(X, Y) :- room3_walls(X, Y).
+room3_walls(15, Y) :- Y >= 18, Y =< 24.   % Left wall
+room3_walls(35, Y) :- Y >= 18, Y =< 24.   % Right wall
+room3_walls(X, 24) :- X >= 15, X =< 35.   % Top wall
+room3_walls(X, 18) :- X >= 15, X =< 18.   % Bottom wall (with gap)
+room3_walls(X, 18) :- X >= 22, X =< 32.   % Bottom wall (with gap)
+
+% Corridor 3: Horizontal passage right
+obstacle(X, Y) :- corridor3_walls(X, Y).
+corridor3_walls(X, 22) :- X >= 36, X =< 50. % Top wall
+corridor3_walls(X, 20) :- X >= 36, X =< 50. % Bottom wall
+
+% Room 4: Right-side room
+obstacle(X, Y) :- room4_walls(X, Y).
+room4_walls(45, Y) :- Y >= 15, Y =< 19.   % Left wall
+room4_walls(60, Y) :- Y >= 15, Y =< 19.   % Right wall
+room4_walls(X, 19) :- X >= 45, X =< 60.   % Top wall
+room4_walls(X, 15) :- X >= 45, X =< 48.   % Bottom wall (with gap)
+room4_walls(X, 15) :- X >= 52, X =< 60.   % Bottom wall (with gap)
+
+% Corridor 4: Down and right to final room
+obstacle(X, Y) :- corridor4_walls(X, Y).
+corridor4_walls(55, Y) :- Y >= 10, Y =< 14. % Vertical part
+corridor4_walls(57, Y) :- Y >= 10, Y =< 14. % Vertical part
+corridor4_walls(X, 10) :- X >= 58, X =< 75. % Horizontal part top
+corridor4_walls(X, 8) :- X >= 58, X =< 75.  % Horizontal part bottom
+
+% Final Room: Goal area (upper-right)
+obstacle(X, Y) :- final_room_walls(X, Y).
+final_room_walls(70, Y) :- Y >= 15, Y =< 22. % Left wall
+final_room_walls(80, Y) :- Y >= 15, Y =< 23. % Right wall (gap at top)
+final_room_walls(X, 15) :- X >= 70, X =< 80. % Bottom wall
+final_room_walls(X, 24) :- X >= 70, X =< 79. % Top wall (gap at corner)
+
+% Some interior obstacles for interest
+obstacle(8, 6).   % Room 1 obstacle
+obstacle(9, 6).
+obstacle(22, 9).  % Room 2 obstacle
+obstacle(23, 9).
+obstacle(28, 21). % Room 3 obstacle  
+obstacle(29, 21).
+obstacle(52, 17). % Room 4 obstacle
+obstacle(53, 17).
+obstacle(75, 18). % Final room obstacle
+obstacle(76, 18).
 
 % Valid position check (must not be obstacle)
 valid_pos(X, Y) :-
@@ -229,3 +253,33 @@ show_color_legend :-
 % ?- show_complete_path.
 % ?- show_empty_grid.
 % ?- show_color_legend.
+
+/*
+=== Full Progress (Goal Reached) ===
+Player at (80,24)
+..............#####################..................................##########@
+..............#...................#..................................,,,,,,,,,,#
+..............#...................################..................,#.........#
+..............#............##.....#.................................,#.........#
+..............#...................################..................,#.........#
+..............#...................#.........################........,#.........#
+..............####...###########..#.........#..............#........,#....##...#
+............................................#......##......#........,#.........#
+............................................#..............#........,#.........#
+............................................####...#########........,###########
+......................................................#.#............,..........
+.....,,,,,,,,,,,,,,,,,,,,.............................#.#.............,.........
+....,.........###########,............................#.#..............,........
+...,..........#.........#.,...........................#.#...............,,,.....
+..,...........#.........#..,..........................#.###################,....
+.,............#......##.#...,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,.....
+,#####........#.........#................................##################.....
+,...#.........#.........#.......................................................
+,...#..##.....#.........#.......................................................
+,...#.........####...####.......................................................
+,...################............................................................
+,...#...........................................................................
+,...################............................................................
+,...###########.................................................................
+
+*/
