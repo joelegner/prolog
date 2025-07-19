@@ -1,7 +1,3 @@
-%% roguelike.pl
-
-% This was written by Claude AI free on July 18, 2025.
-
 % Dungeon Crawler Grid System with Pathfinding
 % 80x24 grid with coordinates (1,1) at lower-left, (80,24) at upper-right
 
@@ -17,11 +13,11 @@ obstacle(12, 20).
 obstacle(13, 20).
 
 % Wall pattern 2: Vertical wall with gap
-obstacle(25, 24).
-obstacle(25, 23).
-obstacle(25, 22).
-obstacle(25, 21).
-obstacle(25, 20).
+obstacle(25, 15).
+obstacle(25, 14).
+obstacle(25, 13).
+obstacle(25, 12).
+obstacle(25, 11).
 
 % Wall pattern 3: L-shaped obstacle
 obstacle(40, 10).
@@ -46,20 +42,16 @@ obstacle(62, 15).
 obstacle(63, 15).
 
 % Wall pattern 5: Near goal area
-obstacle(70, 20).
-obstacle(71, 20).
-obstacle(72, 20).
-obstacle(73, 20).
+obstacle(70, 24).
+obstacle(71, 24).
+obstacle(71, 23).
+obstacle(72, 22).
+obstacle(73, 21).
 obstacle(74, 20).
-
-% Wall pattern 6: Near goal area
-obstacle(75, 24).
-obstacle(75, 23).
-obstacle(75, 22).
-obstacle(76, 22).
-obstacle(77, 22).
-obstacle(78, 22).
-obstacle(79, 22).
+obstacle(74, 20).
+obstacle(75, 20).
+obstacle(76, 20).
+obstacle(77, 20).
 
 % Valid position check (must not be obstacle)
 valid_pos(X, Y) :-
@@ -139,12 +131,12 @@ display_row_with_breadcrumbs(Col, Row, PlayerX, PlayerY, VisitedPositions) :-
 display_row_with_breadcrumbs(Col, Row, PlayerX, PlayerY, VisitedPositions) :-
     Col =< 80,
     (   (Col == PlayerX, Row == PlayerY) ->
-        write('@')                           % Current player position
+        write('\033[1;37m@\033[0m')          % Player: Bold White
     ;   obstacle(Col, Row) ->
-        write('#')                           % Obstacle/wall
+        write('\033[0;37m#\033[0m')          % Obstacles: Light Gray
     ;   member((Col, Row), VisitedPositions) ->
-        write('*')                           % Breadcrumb for visited position
-    ;   write('.')                           % Empty space
+        write('\033[0;34m,\033[0m')          % Breadcrumbs: Dark Blue
+    ;   write('\033[1;30m.\033[0m')          % Empty space: Dark Gray
     ),
     NextCol is Col + 1,
     display_row_with_breadcrumbs(NextCol, Row, PlayerX, PlayerY, VisitedPositions).
@@ -169,38 +161,38 @@ demo_pathfinding :-
     StartX = 1, StartY = 1,
     GoalX = 80, GoalY = 24,
     
-    write('Finding path from (1,1) to (80,24)...'), nl,
+    write('\033[1;36mFinding path from (1,1) to (80,24)...\033[0m'), nl,
     find_path(StartX, StartY, GoalX, GoalY, Path),
     length(Path, PathLen),
-    format('Path found with ~w steps~n~n', [PathLen]),
+    format('\033[1;36mPath found with ~w steps\033[0m~n~n', [PathLen]),
     
     % Display at 1/4 progress
-    write('=== 1/4 Progress ==='), nl,
+    write('\033[1;35m=== 1/4 Progress ===\033[0m'), nl,
     get_position_at_fraction(Path, 0.25, X1, Y1),
     get_visited_positions(Path, 0.25, Visited1),
-    format('Player at (~w,~w)~n', [X1, Y1]),
+    format('\033[1;35mPlayer at (~w,~w)\033[0m~n', [X1, Y1]),
     display_grid_with_breadcrumbs(X1, Y1, Visited1),
     nl,
     
     % Display at 1/2 progress
-    write('=== 1/2 Progress ==='), nl,
+    write('\033[1;35m=== 1/2 Progress ===\033[0m'), nl,
     get_position_at_fraction(Path, 0.5, X2, Y2),
     get_visited_positions(Path, 0.5, Visited2),
-    format('Player at (~w,~w)~n', [X2, Y2]),
+    format('\033[1;35mPlayer at (~w,~w)\033[0m~n', [X2, Y2]),
     display_grid_with_breadcrumbs(X2, Y2, Visited2),
     nl,
     
     % Display at 3/4 progress
-    write('=== 3/4 Progress ==='), nl,
+    write('\033[1;35m=== 3/4 Progress ===\033[0m'), nl,
     get_position_at_fraction(Path, 0.75, X3, Y3),
     get_visited_positions(Path, 0.75, Visited3),
-    format('Player at (~w,~w)~n', [X3, Y3]),
+    format('\033[1;35mPlayer at (~w,~w)\033[0m~n', [X3, Y3]),
     display_grid_with_breadcrumbs(X3, Y3, Visited3),
     nl,
     
     % Display at full progress (goal)
-    write('=== Full Progress (Goal Reached) ==='), nl,
-    format('Player at (~w,~w)~n', [GoalX, GoalY]),
+    write('\033[1;35m=== Full Progress (Goal Reached) ===\033[0m'), nl,
+    format('\033[1;35mPlayer at (~w,~w)\033[0m~n', [GoalX, GoalY]),
     display_grid_with_breadcrumbs(GoalX, GoalY, Path),
     nl.
 
@@ -217,8 +209,17 @@ print_path([(X,Y)|Rest]) :-
 
 % Show grid with obstacles (for debugging)
 show_empty_grid :-
-    write('=== Empty Grid with Obstacles ==='), nl,
+    write('\033[1;34m=== Empty Grid with Obstacles ===\033[0m'), nl,
     display_grid_with_breadcrumbs(1, 1, []),
+    nl.
+
+% Color legend display
+show_color_legend :-
+    write('\033[1;34m=== Color Legend ===\033[0m'), nl,
+    write('\033[1;37m@\033[0m - Player (Bold White)'), nl,
+    write('\033[0;37m#\033[0m - Obstacles/Walls (Light Gray)'), nl,
+    write('\033[0;34m,\033[0m - Breadcrumbs/Trail (Dark Blue)'), nl,
+    write('\033[1;30m.\033[0m - Empty Space (Dark Gray)'), nl,
     nl.
 
 % Query examples:
@@ -227,3 +228,4 @@ show_empty_grid :-
 % ?- display_grid_with_breadcrumbs(40, 12, [(1,1), (2,2), (3,3)]).
 % ?- show_complete_path.
 % ?- show_empty_grid.
+% ?- show_color_legend.
