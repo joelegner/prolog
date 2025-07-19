@@ -348,3 +348,7 @@ poem:
 .PHONY: dates
 dates:
 	swipl -s dates.pl
+
+.PHONY: robot
+robot:
+	swipl -s robot.pl
