@@ -344,3 +344,7 @@ pasteboard:
 .PHONY: poem
 poem:
 	swipl -s poem.pl
+
+.PHONY: dates
+dates:
+	swipl -s dates.pl
