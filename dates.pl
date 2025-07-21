@@ -95,3 +95,8 @@ print_months :-
             format("~w~n", [Str])
         )
     ).
+
+year_month_day_date(Y, M, D, date(Y, M, D)).
+date_year(date(Y, _, _), Y).
+date_month(date(_, M, _), M).
+date_day(date(_, _, D), D).
