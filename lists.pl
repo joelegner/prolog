@@ -6,7 +6,12 @@
 my_list([apple, banana, cherry]).
 
 % Get the first item in a list
-first_item([First|_], First).
+list_first([First|_], First).
+
+% Get the last item in the list by reversing the list and using first_item.
+list_last(List, Last) :-
+    reverse(List, Rev),
+    list_first(Rev, Last).
 
 % Get the rest of the list
 rest_of_list([_|Rest], Rest).
@@ -62,10 +67,15 @@ More specifically, this example fits the common _map_ pattern, where a function 
 % TEST CODE FOR LISTS
 :- begin_tests(list_utils).
 
-test(first_item) :-
+test(list_first) :-
     my_list(L),
-    first_item(L, F),
+    list_first(L, F),
     assertion(F == apple).
+
+test(list_last) :-
+    my_list(List),
+    list_last(List, Last),
+    assertion(Last == cherry).
 
 test(rest_of_list) :-
     my_list(L),
