@@ -356,3 +356,7 @@ robot:
 .PHONY: roguelike
 roguelike:
 	swipl -s roguelike.pl
+
+.PHONY: food
+food:
+	swipl -s food.pl
