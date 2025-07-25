@@ -364,3 +364,7 @@ food:
 .PHONY: story
 story:
 	swipl -s story.pl
+
+.PHONY: ooda
+ooda:
+	swipl -s ooda.pl
