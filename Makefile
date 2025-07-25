@@ -360,3 +360,7 @@ roguelike:
 .PHONY: food
 food:
 	swipl -s food.pl
+
+.PHONY: story
+story:
+	swipl -s story.pl
