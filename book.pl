@@ -1,6 +1,7 @@
 % book_dcg.pl
 :- module(book, [
-    book//0
+    book//0,
+    build/0
 ]).
 
 /*
@@ -89,6 +90,11 @@ glossary -->
 
 index -->
     "\\printindex\n".
+
+:- use_module(phrase_to_file).
+
+build :-
+    phrase_to_file(book, 'book.tex').
 
 /*
 This works. It is a good breakthrough.
