@@ -368,3 +368,7 @@ story:
 .PHONY: ooda
 ooda:
 	swipl -s ooda.pl
+
+.PHONY: plan
+plan:
+	swipl -s plan.pl
