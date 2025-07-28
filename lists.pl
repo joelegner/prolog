@@ -102,7 +102,7 @@ oddlength(List) :-
     Mod #= 1.
 
 /*
-This Bratko Exercise 3.6. My solution works.
+Bratko Exercise 3.6. My solution works.
 
 ?- shift([1,2,3,4,5], L1), shift(L1, L2).
 L1 = [2,3,4,5,1],
@@ -111,6 +111,31 @@ L2 = [3,4,5,1,2].
 shift(List, Shifted) :-
     List = [H|T],
     append(T, [H], Shifted).
+
+/*
+Bratko Exercise 3.8.
+Define the relation subset(Set, Subset) where Set and Subset are two lists representing two sets. We would like to be able to use this relation not only to check for the subset relation, but also to generate a possible subsets of a given set.
+
+This seems to work, but it feels like a kludge and not very elegant. It might just work by luck. It should be refactored or totally re-imagined.
+
+But at any rate, it seems to generate subsets.
+
+?- subset([a,b,c], S).
+S = [a,b,c] ;
+S = [b,c] ;
+S = [a] ;
+S = [b] ;
+S = [c].
+*/
+subset(Set, Subset) :-
+    append(_, Subset, Set),
+    length(Subset, L),
+    L #> 1.
+subset(Set, Subset) :-
+    member(X, Set),
+    Subset = [X],
+    length(Subset, L),
+    L #> 0.
 
 % TEST CODE FOR LISTS
 :- begin_tests(list_utils).
