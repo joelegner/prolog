@@ -137,6 +137,20 @@ subset(Set, Subset) :-
     length(Subset, L),
     L #> 0.
 
+/*
+Bratko Exercise 3.10
+This one seems easy. Define the predicate equal_length(L1, L2) which is true if lists L1 and L2 have equal number of elements. It works.
+
+?- equal_length([a,b,c,d], [1,2,[],4]).
+true.
+
+?- equal_length([a,b,c,d], [1,2,4]).
+false.
+*/
+equal_length(L1, L2) :-
+    length(L1, L),
+    length(L2, L).
+
 % TEST CODE FOR LISTS
 :- begin_tests(list_utils).
 
@@ -219,5 +233,12 @@ test(shift) :-
     shift(L1, L2),
     L1 = [2,3,4,5,1],
     L2 = [3,4,5,1,2].
+
+/* Test for Bratko Exercise 3.10 */
+test(equal_length) :-
+    equal_length([a,b,c,d], [1,2,[],4]).
+
+test(equal_length_fail, [fail]) :-
+    equal_length([a,b,c,d], [1,[],4]).
 
 :- end_tests(list_utils).
