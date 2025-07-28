@@ -64,6 +64,43 @@ More specifically, this example fits the common _map_ pattern, where a function 
 - Structural recursion over lists
 */
 
+/*
+Some things inspired by Ivan Bratko. First here is a list. 
+
+Interestingly, this declares the four atoms. 
+?- ann.
+true.
+
+?- annie.
+ERROR: Unknown procedure: annie/0 (DWIM could not correct goal)
+
+Here is the usual Head|tail stuff:
+
+?- [Head | Tail] = [ann, tennis, tom, skiing].
+Head = ann,
+Tail = [tennis,tom,skiing].
+
+?- [ann, tennis, tom, skiing] = [ann, T | _].
+T = tennis.
+
+.( Head, Tail )
+*/
+
+/*
+Bratko Exercise 3.3:
+Define two predicates: evenlength(List) and oddlength(List). They are true when the length of the list is even or odd, respectively.
+*/
+
+evenlength(List) :-
+    length(List, Length),
+    Mod is Length mod 2,
+    Mod #= 0.
+
+oddlength(List) :-
+    length(List, Length),
+    Mod is Length mod 2,
+    Mod #= 1.
+
 % TEST CODE FOR LISTS
 :- begin_tests(list_utils).
 
@@ -126,5 +163,18 @@ test(add_to_list_bratko_two) :-
     % The big moment:
     L2 = [X1,X2|L1],
     assertion(L2 == [i, j, k, l, m]).
+
+/* Tests for Bratko Exercise 3.3 */
+test(even_length_list) :-
+    evenlength([a, b, c, d]).
+
+test(even_length_list_fail, [fail]) :-
+    evenlength([a, b, c]).
+
+test(odd_length_list) :-
+    oddlength([a, b, c]).
+
+test(odd_length_list_fail, [fail]) :-
+    oddlength([a, b, c, d]).
 
 :- end_tests(list_utils).
