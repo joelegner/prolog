@@ -101,6 +101,17 @@ oddlength(List) :-
     Mod is Length mod 2,
     Mod #= 1.
 
+/*
+This Bratko Exercise 3.6. My solution works.
+
+?- shift([1,2,3,4,5], L1), shift(L1, L2).
+L1 = [2,3,4,5,1],
+L2 = [3,4,5,1,2].
+*/
+shift(List, Shifted) :-
+    List = [H|T],
+    append(T, [H], Shifted).
+
 % TEST CODE FOR LISTS
 :- begin_tests(list_utils).
 
@@ -176,5 +187,12 @@ test(odd_length_list) :-
 
 test(odd_length_list_fail, [fail]) :-
     oddlength([a, b, c, d]).
+
+/* Test for Bratko Exercise 3.6 */
+test(shift) :-
+    shift([1,2,3,4,5], L1),
+    shift(L1, L2),
+    L1 = [2,3,4,5,1],
+    L2 = [3,4,5,1,2].
 
 :- end_tests(list_utils).
