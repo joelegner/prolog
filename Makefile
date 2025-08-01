@@ -372,3 +372,7 @@ ooda:
 .PHONY: plan
 plan:
 	swipl -s plan.pl
+
+.PHONY: project_management
+project_management:
+	swipl -s project_management.pl
