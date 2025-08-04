@@ -1,150 +1,120 @@
 % robot.pl
-% Don't get excited -- this was written by Claude AI on July 18, 2025.
+/*
+Ivan Bratko section 4.2
 
-% ============================================================================
-% AUTOMATED ROBOT PLANNING SYSTEM
-% ============================================================================
-% This system demonstrates classical AI planning using pure Prolog.
-% 
-% ARCHITECTURE FLOW:
-% 1. DOMAIN MODEL - Defines the basic entities in our world (rooms, objects)
-% 2. ACTION SPECIFICATION - Declares what operations are possible (move, pickup, etc.)
-% 3. PHYSICS ENGINE - Rules for when actions work and how they change the world
-% 4. REASONING ENGINE - Search algorithm that finds sequences of actions
-% 5. USER INTERFACE - Utilities to display plans and execute them step-by-step
-% 6. APPLICATION LAYER - Pre-configured examples and problem instances
-%
-% State Representation: state(RobotLocation, BoxLocation, RobotHolding)
-% where RobotHolding is either 'nothing' or 'box'
-% ============================================================================
+Represent the state of the world with a structure (compound term).
+state(arg1, arg2, arg3).
 
-% ============================================================================
-% 1. DOMAIN MODEL (World Description)
-% ============================================================================
-% Basic facts about the world - the fundamental entities that exist
+arg1: Location of the robot.
+arg2: Location of the basket.
+arg3: Location of the rubbish.
 
-% Define possible locations
-location(room1).
-location(room2).
-location(room3).
+So the initial state looks like this:
+*/
+state(door, corner2, floor(middle)).
 
-% ============================================================================
-% 2. ACTION SPECIFICATION (What Can Happen)
-% ============================================================================
-% Abstract action templates - the vocabulary of possible operations
+/*
+The final goal is for the rubbish to be in the basket.
 
-% Define possible actions
-action(move(From, To)) :- 
-    location(From), 
-    location(To), 
-    From \= To.
+We _could_ represent this state like this:
+state(corner2, corner2, in_basket).
 
-action(pickup(Location)) :- 
-    location(Location).
+But why bother with the robot and basket locations? Argument arg3 is enough.
 
-action(putdown(Location)) :- 
-    location(Location).
+We can now formulate the GOAL of the robot:
+*/
+state(_, _, in_basket).
 
-% ============================================================================
-% 3. PHYSICS ENGINE (Action Semantics)
-% ============================================================================
-% World dynamics - rules that govern how actions interact with states
-% This is like the physics of our virtual world
+/*
+What about actions?
 
-% Action preconditions and effects
-% Move: robot must be at From location and not holding anything heavy
-can_do(move(From, To), state(From, BoxLoc, nothing)) :-
-    location(From),
-    location(To),
-    From \= To.
+A1: pickup, pick up rubbish from floor
+A2: drop, drop rubbish into basket. 
+A3: push(Pos1, Pos2), push basket from position Pos1 to Pos2
+A4: go(Pos1, Pos2), go from Pos1 to Pos2.  
 
-% Can also move while holding a box (robot is strong enough)
-can_do(move(From, To), state(From, BoxLoc, box)) :-
-    location(From),
-    location(To),
-    From \= To.
+Notice the order of the actions. If we declare the actions in this order, then it represents the order of precedent. This means when Prolog needs to decide between a pair of available actions, it will pick the action that was declared first. 
 
-% Pickup: robot and box must be at same location, robot holding nothing
-can_do(pickup(Loc), state(Loc, Loc, nothing)) :-
-    location(Loc).
+The general representation of an action includes a starting state, and end state, and an action in between. 
 
-% Putdown: robot must be holding the box
-can_do(putdown(Loc), state(Loc, _, box)) :-
-    location(Loc).
+action(State1, Action, State2).
 
-% State transitions after actions
-% Moving changes robot location, box moves with robot if being held
-result(move(From, To), state(From, BoxLoc, nothing), state(To, BoxLoc, nothing)).
-result(move(From, To), state(From, _, box), state(To, To, box)).
+          Action
+State1 --------------> State2
+*/
 
-% Pickup changes what robot is holding and confirms box location
-result(pickup(Loc), state(Loc, Loc, nothing), state(Loc, Loc, box)).
+/*
+Let's look at the action schema for the "pickup" action, A1 above. We can pick up only when the rubbish position is on the floor. Once we pick up, the rubbish is held.
+*/
+action(
+    state(Pos1, Pos2, floor(Pos1)),
+    pickup,
+    state(Pos1, Pos2, held)
+).
 
-% Putdown changes what robot is holding, box stays at current location
-result(putdown(Loc), state(Loc, _, box), state(Loc, Loc, nothing)).
 
-% ============================================================================
-% 4. REASONING ENGINE (Search Algorithm)
-% ============================================================================
-% Problem-solving algorithm - explores possible action sequences to find plans
-% Uses depth-first search with cycle detection
+/*
+Consider the action "drop" labeled A2 above. It can only be performed when the robot is at the trash bin.
 
-% Planning predicate - finds sequence of actions to reach goal
-% Uses visited states list to prevent cycles
-plan(StartState, GoalState, Plan) :-
-    plan(StartState, GoalState, [StartState], Plan).
+Let's look at an "action schema" for the drop action. You can identify an action schema by the presence of variables. The drop action takes no arguments.
+*/
+action(
+    state(Pos, Pos, held),
+    drop,
+    state(Pos, Pos, in_basket)
+).
 
-% Base case: already at goal
-plan(State, State, _, []).
+/*
+We need an action schema for the "push" move, A3. The push action takes two arguments, a previous position and a new position.
+*/
+action(
+    state(Pos, Pos, Loc),
+    go(Pos, NewPos),
+    state(NewPos, NewPos, Loc)
+).
 
-% Recursive case: try an action and continue planning
-plan(CurrentState, GoalState, Visited, [Action|RestPlan]) :-
-    can_do(Action, CurrentState),
-    result(Action, CurrentState, NextState),
-    \+ member(NextState, Visited),  % Don't revisit states
-    plan(NextState, GoalState, [NextState|Visited], RestPlan).
+/*
+Let's look at the action schema for the go action, A4.
+*/
+action(
+    state(Pos1, Pos2, Loc),
+    go(Pos1, NewPos1),
+    state(NewPos1, Pos2, Loc)
+).
 
-% ============================================================================
-% 5. USER INTERFACE (Presentation Layer)
-% ============================================================================
-% Input/output and user experience - makes results human-readable
+/*
+Now we want to do the computations using our model. We want to compute a plan of actions that move from a starting state to an ending state. Can the robot, starting in some initial state, clean rubbish into the basket? If yes, what is the sequence of steps to do that? 
 
-% Helper predicate to execute and show plan steps
-execute_plan([], _, Step, Step).
-execute_plan([Action|RestActions], CurrentState, StepNum, FinalStep) :-
-    result(Action, CurrentState, NextState),
-    NextStepNum is StepNum + 1,
-    format('Step ~w: ~w~n', [StepNum, Action]),
-    format('  State: ~w~n', [NextState]),
-    execute_plan(RestActions, NextState, NextStepNum, FinalStep).
+This is the essence of planning, in Life as in Prolog. 
 
-% Convenience predicate to plan and show execution
-solve_problem(StartState, GoalState) :-
-    plan(StartState, GoalState, Actions),
-    format('Initial state: ~w~n', [StartState]),
-    format('Goal state: ~w~n', [GoalState]),
-    format('Plan found with ~w steps:~n', [Actions]),
-    nl,
-    execute_plan(Actions, StartState, 1, _).
+We can represent a plan like this:
+plan(StartState, GoalState, Plan).
 
-% ============================================================================
-% 6. APPLICATION LAYER (Specific Use Cases)
-% ============================================================================
-% Concrete applications - pre-configured problem instances and examples
+Plan is a sequence of actions. We might consider refactoring:
 
-% Example queries to try:
-% ?- solve_problem(state(room1, room2, nothing), state(room1, room1, nothing)).
-% ?- solve_problem(state(room1, room1, nothing), state(room3, room3, nothing)).
-% ?- solve_problem(state(room1, room2, nothing), state(room3, room3, box)).
+plan(StartState, GoalState, Actions). 
 
-% More complex example - move box from room1 to room3
-example1 :-
-    solve_problem(state(room1, room1, nothing), state(room3, room3, nothing)).
+This predicate is true if there exists a sequence of possible actions that change the start state to the goal state. 
 
-% Example where robot starts away from box
-example2 :-
-    solve_problem(state(room1, room2, nothing), state(room3, room3, nothing)).
+Do we call the code below the "plan schema"?
 
-% Example with specific holding requirement
-example3 :-
-    solve_problem(state(room1, room1, nothing), state(room2, room2, box)).
+If the start state is already the goal state, we are done. Our action list is an empty list. This is the first clause in the procedure. 
+*/
+plan(StartState, StartState, []).
+
+/*
+If the first clause does not resolve, one or more actions will be necessary to make the plan true. 
+*/
+plan(State1, GoalState, [Action1|RestOfPlan]) :-
+    action(State1, Action1, State2),
+    plan(State2, GoalState, RestOfPlan).
+
+/*
+This query will find the plan to hold the rubbish and stop there.
+
+?- State0 = state(door, corner2, floor(middle)), plan(State0, state(_, _, held), Plan). 
+State0 = state(door,corner2,floor(middle)),
+Plan = [go(door,middle),pickup] ;
+
+The key here is that Goal = state(_, _, held). We do not care about anything but the rubbish being held. Yet still the simple plan finding procedure works. 
+*/
