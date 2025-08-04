@@ -1,9 +1,9 @@
 .PHONY: all
 all: goals length_tests measurement measurement_no_clpr zag zig
 
-.PHONY: ansi_term
-ansi_term:
-	swipl -s ansi_term.pl -g main -g halt
+.PHONY: terminal
+terminal:
+	swipl -s terminal.pl -g main -g halt
 
 .PHONY: ascii_canvas
 ascii_canvas:
