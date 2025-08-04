@@ -118,3 +118,14 @@ Plan = [go(door,middle),pickup] ;
 
 The key here is that Goal = state(_, _, held). We do not care about anything but the rubbish being held. Yet still the simple plan finding procedure works. 
 */
+
+/*
+To see how flexible this planner is consider this query.
+
+?- S0 = state(point(0, 200), point(600, 400), floor(point(300, 200))), plan(S0, state(_, _, in_basket), Plan). % Query 1
+
+We have replaced door, corner2, and so on with coordinates. To do this we just inserted the points into the query. There is no other code than what you see here. And by jove it works. Here is the output of Query 1.
+
+S0 = state(point(0,200),point(600,400),floor(point(300,200))),
+Plan = [go(point(0,200),point(300,200)),pickup,go(point(300,200),point(600,400)),drop]
+*/
