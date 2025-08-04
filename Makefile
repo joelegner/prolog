@@ -1,10 +1,6 @@
 .PHONY: all
 all: goals length_tests measurement measurement_no_clpr zag zig
 
-.PHONY: terminal
-terminal:
-	swipl -s terminal.pl -g main -g halt
-
 .PHONY: ascii_canvas
 ascii_canvas:
 	swipl -s ascii_canvas.pl
@@ -21,6 +17,10 @@ axiomatic_design:
 book:
 	swipl -s book.pl
 
+.PHONY: bratko
+bratko:
+	swipl -s bratko.pl
+
 .PHONY: business
 business:
 	swipl -s business.pl
@@ -36,6 +36,9 @@ chords:
 clean:
 	rm $(DESIGN_EXE)
 
+.PHONY: clipboard
+clipboard: pasteboard
+
 .PHONY: clipz
 clipz:
 	scryer-prolog clpz.pl
@@ -44,9 +47,21 @@ clipz:
 colors:
 	swipl -s colors.pl
 
+.PHONY: combination
+combination:
+	swipl -s combination.pl
+
+.PHONY: conc
+conc:
+	swipl -s conc.pl
+
 .PHONY: crossword
 crossword:
 	swipl -s crossword.pl
+
+.PHONY: dates
+dates:
+	swipl -s dates.pl
 
 .PHONY: dcg
 dcg:
@@ -92,6 +107,10 @@ floorplan.pdf: floorplan.ps
 floorplan.ps: floorplan.pl
 	swipl -s floorplan.pl -g run -t halt
 
+.PHONY: food
+food:
+	swipl -s food.pl
+
 .PHONY: footing
 footing:
 	swipl -s footing.pl -g run_tests -g run
@@ -116,13 +135,13 @@ goals:
 guitars:
 	swipl -s guitars.pl
 
-.PHONY: inheritance
-inheritance:
-	swipl -s inheritance.pl
-
 .PHONY: inches_from_feet
 inches_from_feet:
 	swipl -s inches_from_feet.pl
+
+.PHONY: inheritance
+inheritance:
+	swipl -s inheritance.pl
 
 .PHONY: joe
 joe:
@@ -152,6 +171,10 @@ length:
 length_tests:
 	swipl -s length.pl -s length_tests.pl -g run_tests -t halt
 
+.PHONY: list_length
+list_length:
+	swipl -s list_length.pl -g run_tests
+
 .PHONY: lists
 lists:
 	swipl -s lists.pl -g run_tests
@@ -176,13 +199,22 @@ measurement:
 measurement_no_clpr:
 	swipl -s measurement_no_clpr.pl -g main -t halt
 
+.PHONY: nato_alphabet
+nato_alphabet:
+	swipl -s nato_alphabet.pl -g run_tests -t halt
+	swipl -s nato_alphabet.pl -g run
+
+.PHONY: ooda
+ooda:
+	swipl -s ooda.pl
+
 .PHONY: page
 page:
 	swipl -s page.pl
 
-.PHONY: philosophy
-philosophy:
-	swipl -s philosophy.pl
+.PHONY: pasteboard
+pasteboard:
+	swipl -s pasteboard.pl -g run_tests
 
 .PHONY: piano
 piano:
@@ -191,6 +223,14 @@ piano:
 .PHONY: piano_setup
 piano_setup:
 	swipl -s piano_setup.pl -g run -t halt
+
+.PHONY: philosophy
+philosophy:
+	swipl -s philosophy.pl
+
+.PHONY: plan
+plan:
+	swipl -s plan.pl
 
 .PHONY: planning
 planning:
@@ -208,9 +248,17 @@ phrase_to_file:
 phrase_to_file_example:
 	swipl -s phrase_to_file_example.pl -g main -g book -t halt
 
+.PHONY: poem
+poem:
+	swipl -s poem.pl
+
 .PHONY: prologscript
 prologscript:
 	swipl -s prologscript.pl
+
+.PHONY: project_management
+project_management:
+	swipl -s project_management.pl
 
 .PHONY: pure_io
 pure_io:
@@ -226,6 +274,14 @@ rando:
 reverse:
 	swipl -s reverse.pl
 
+.PHONY: robot
+robot:
+	swipl -s robot.pl
+
+.PHONY: roguelike
+roguelike:
+	swipl -s roguelike.pl
+
 .PHONY: scraping
 scraping:
 	scryer-prolog scraping.pl
@@ -237,6 +293,30 @@ script:
 .PHONY: second
 second:
 	swipl -s second.pl
+
+.PHONY: serial_number
+serial_number:
+	swipl -s serial_number.pl -g run
+
+.PHONY: server
+server:
+	swipl -s server.pl
+
+.PHONY: shell_output
+shell_output:
+	swipl -s shell_output.pl
+
+.PHONY: storage
+storage:
+	swipl -s storage.pl
+
+.PHONY: story
+story:
+	swipl -s story.pl
+
+.PHONY: strings
+strings:
+	swipl -s strings.pl
 
 .PHONY: structural
 structural:
@@ -254,6 +334,10 @@ swift:
 .PHONY: system
 system:
 	swipl -s system.pl
+
+.PHONY: terminal
+terminal:
+	swipl -s terminal.pl -g main -g halt
 
 .PHONY: testing_example
 testing_example:
@@ -292,87 +376,3 @@ zag:
 zig:
 	swipl -s axiomatic_design -g print_zig_templates -t halt | pbcopy
 	echo 'Copied zig templates to clipboard with pbcopy'
-
-.PHONY: serial_number
-serial_number:
-	swipl -s serial_number.pl -g run
-
-.PHONY: storage
-storage:
-	swipl -s storage.pl
-
-.PHONY: shell_output
-shell_output:
-	swipl -s shell_output.pl
-
-.PHONY: bratko
-bratko:
-	swipl -s bratko.pl
-
-.PHONY: combination
-combination:
-	swipl -s combination.pl
-
-.PHONY: nato_alphabet
-nato_alphabet:
-	swipl -s nato_alphabet.pl -g run_tests -t halt
-	swipl -s nato_alphabet.pl -g run
-
-.PHONY: conc
-conc:
-	swipl -s conc.pl
-
-.PHONY: list_length
-list_length:
-	swipl -s list_length.pl -g run_tests
-
-.PHONY: strings
-strings:
-	swipl -s strings.pl
-
-.PHONY: server
-server:
-	swipl -s server.pl
-
-.PHONY: clipboard
-clipboard: pasteboard
-
-.PHONY: pasteboard
-pasteboard:
-	swipl -s pasteboard.pl -g run_tests
-
-.PHONY: poem
-poem:
-	swipl -s poem.pl
-
-.PHONY: dates
-dates:
-	swipl -s dates.pl
-
-.PHONY: robot
-robot:
-	swipl -s robot.pl
-
-.PHONY: roguelike
-roguelike:
-	swipl -s roguelike.pl
-
-.PHONY: food
-food:
-	swipl -s food.pl
-
-.PHONY: story
-story:
-	swipl -s story.pl
-
-.PHONY: ooda
-ooda:
-	swipl -s ooda.pl
-
-.PHONY: plan
-plan:
-	swipl -s plan.pl
-
-.PHONY: project_management
-project_management:
-	swipl -s project_management.pl
