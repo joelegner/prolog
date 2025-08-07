@@ -380,3 +380,7 @@ zig:
 .PHONY: trip_planning
 trip_planning:
 	swipl -s trip_planning.pl
+
+.PHONY: sets
+sets:
+	swipl -s sets.pl
