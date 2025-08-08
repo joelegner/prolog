@@ -13,7 +13,14 @@ story -->
     resolution.
 
 exposition -->
-    [exposition].
+    setting,
+    characters.
+
+setting -->
+    [setting].
+
+characters -->
+    [main_character].
 
 rising_action -->
     [rising_action].
