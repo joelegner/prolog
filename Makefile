@@ -384,3 +384,7 @@ trip_planning:
 .PHONY: sets
 sets:
 	swipl -s sets.pl
+
+.PHONY: causal_relations
+causal_relations:
+	swipl -s causal_relations.pl
