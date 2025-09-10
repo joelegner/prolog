@@ -388,3 +388,11 @@ sets:
 .PHONY: causal_relations
 causal_relations:
 	swipl -s causal_relations.pl
+
+.PHONY: house
+house:
+	swipl -s house.pl
+
+.PHONY: __main__
+__main__:
+	python3 __main__.py
