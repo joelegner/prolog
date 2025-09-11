@@ -1,5 +1,7 @@
-% Dungeon Crawler Grid System with Pathfinding
-% 80x24 grid with coordinates (1,1) at lower-left, (80,24) at upper-right
+% roguelike.pl
+/*
+Dungeon Crawler Grid System with Pathfinding on 80x24 grid with coordinates (1,1) at lower-left, (80,24) at upper-right.
+*/
 
 % Grid dimensions
 grid_width(80).
@@ -246,13 +248,17 @@ show_color_legend :-
     write('\033[1;30m.\033[0m - Empty Space (Dark Gray)'), nl,
     nl.
 
-% Query examples:
-% ?- demo_pathfinding.
-% ?- find_path(1, 1, 80, 24, Path).
-% ?- display_grid_with_breadcrumbs(40, 12, [(1,1), (2,2), (3,3)]).
-% ?- show_complete_path.
-% ?- show_empty_grid.
-% ?- show_color_legend.
+/* Query examples:
+
+```prolog
+?- demo_pathfinding.
+?- find_path(1, 1, 80, 24, Path).
+?- display_grid_with_breadcrumbs(40, 12, [(1,1), (2,2), (3,3)]).
+?- show_complete_path.
+?- show_empty_grid.
+?- show_color_legend.
+```
+*/
 
 /*
 === Full Progress (Goal Reached) ===
