@@ -88,9 +88,11 @@ passion_terms(PassionName, Greek, Latin) :-
     passion(PassionName, _, _, Greek, Latin).
 
 % Find all anger-related passions
-anger_related(Passion) :-
-    passion(Passion, lust, _, _, _),
-    (Passion = anger ; subtype_of(Passion, anger)).
+anger_related(Passions) :-
+    findall(Passion,
+    (passion(Passion, lust, _, _, _),
+    (Passion = anger ; subtype_of(Passion, anger))),
+    Passions).
 
 % Find passions related to others (social aspects)
 social_passion(Passion) :-
@@ -98,23 +100,34 @@ social_passion(Passion) :-
     (sub_string(Definition, _, _, _, 'another') ; 
      sub_string(Definition, _, _, _, 'other')).
 
-% Find future-oriented vs present-oriented passions
-future_oriented(Passion) :-
-    passion(Passion, Genus, _, _, _),
-    temporal_orientation(Genus, future).
+social_passions(Passions) :-
+    findall(Passion, social_passion(Passion), Passions).
 
-present_oriented(Passion) :-
-    passion(Passion, Genus, _, _, _),
-    temporal_orientation(Genus, present).
+% Find future-oriented vs present-oriented passions
+future_oriented(Passions) :-
+    findall(Passion, 
+    (passion(Passion, Genus, _, _, _),
+    temporal_orientation(Genus, future)),
+    Passions).
+
+present_oriented(Passions) :-
+    findall(Passion, 
+    (passion(Passion, Genus, _, _, _),
+    temporal_orientation(Genus, present)),
+    Passions).
 
 % Find passions involving apparent goods vs evils
-involves_apparent_good(Passion) :-
-    passion(Passion, Genus, _, _, _),
-    valuation(Genus, apparent_good).
+involves_apparent_good(Passions) :-
+    findall(Passion, 
+    (passion(Passion, Genus, _, _, _),
+    valuation(Genus, apparent_good)),
+    Passions).
 
-involves_apparent_evil(Passion) :-
-    passion(Passion, Genus, _, _, _),
-    valuation(Genus, apparent_evil).
+involves_apparent_evil(Passions) :-
+    findall(Passion, 
+    (passion(Passion, Genus, _, _, _),
+    valuation(Genus, apparent_evil)),
+    Passions).
 
 % Additional classifications based on content analysis
 physical_manifestation(fright, 'paleness, trembling and chattering of teeth').
@@ -140,7 +153,7 @@ not_passion(preliminary_impressions, 'pre-emotions to which even the wise person
 % Examples of queries you can run:
 % ?- passions_of_genus(lust, X).
 % ?- passion_def(anger, Def).
-% ?- social_passion(X).
+% ?- social_passions(X).
 % ?- future_oriented(X).
 % ?- anger_related(X).
 % ?- intensity_marker(insatiable, X).
