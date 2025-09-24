@@ -396,3 +396,11 @@ house:
 .PHONY: __main__
 __main__:
 	python3 __main__.py
+
+.PHONY: project
+project:
+	swipl -s project.pl
+
+.PHONY: passions
+passions:
+	swipl -s passions.pl
