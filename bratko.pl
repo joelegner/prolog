@@ -134,3 +134,100 @@ PermCount = 120.
 Perms = [[a, a, a, e, e], [a, a, e, a, e], [a, a, e, e, a], [a, e, a, a, e], [a, e, a, e|...], [a, e, e|...], [e, a|...], [e|...], [...|...]|...],
 PermCount = 10.
 */
+
+/*
+More reading on Wednesday, October 1, 2025.
+
+We want a predicate `sumlist(List, PartialSum, TotalSum)` where TotalSum = PartialSum + sum over List.
+
+Let's start by calling an AUXILIARY PREDICATE. This is a common pattern in Prolog. Here the original predicate is `sumlist/2` and the auxiliary predicate is `sumlist/3`. The auxiliary predicate lets us add an accumulator. In the code below, the accumulator is `PartialSum`.
+*/
+sumlist(List, Sum) :-
+    sumlist(List, 0, Sum).
+
+/*
+The base case is an empty list. Since we are using this recursively, it is the terminating case. That's why we want it to come before the recursive case that follows it. You might thing the code should be:
+
+```prolog
+sumlist([], 0, 0). 
+```
+
+The problem with this is that when we use it recursively, it will report zero for the final answer. Instead what we want is to assign the value PartialSum to the value TotalSum. We could do it like this to be verbose:
+
+```
+sumlist([], PartialSum, TotalSum) :-
+    PartialSum = TotalSum.
+```
+
+But this can be refactored. This is another common Prolog pattern:
+
+Refactor `f(X, Y) :- X = Y` into `f(X, X).`. This eliminates one variable and puts the same variable twice in the head. That way the two instances of `X` are unified by Prolog when the program runs. 
+
+So here is our resulting predicate:
+*/
+sumlist([], Sum, Sum).
+
+/*
+We now need to do the work with the recursive predicate. We have our accumulator, `PartialSum`. The list gets split into its head `First` and the `Rest` of the list. First is an element of the list. Rest is a list, which could include the empty list `[]`.
+
+We have a before `PartialSum` and an after `NewPartialSum`. The last line is the recursive call. As you can see, it passes the `Rest` of the list and the `NewPartialSum` back into itself. Once we get to the last element in the list, `Rest=[]` and the above predicate `sumlist([], Sum, Sum)` does the equivalent of setting TotalSum equal to NewPartialSum. 
+*/
+sumlist([First | Rest], PartialSum, TotalSum) :-
+    NewPartialSum is PartialSum + First,
+    sumlist( Rest, NewPartialSum, TotalSum).
+
+
+/*
+# Example Usage of sumlist/2:
+
+Example Execution of `sumlist([1,2,3], Sum).`
+
+1. Call: sumlist([1,2,3], Sum)
+2. Expand: sumlist([1,2,3], 0, Sum)
+
+3. Match recursive clause:
+   PartialSum = 0, First = 1, Rest = [2,3]
+   NewPartialSum = 0 + 1 = 1
+   Next call: sumlist([2,3], 1, Sum)
+
+4. Match recursive clause:
+   PartialSum = 1, First = 2, Rest = [3]
+   NewPartialSum = 1 + 2 = 3
+   Next call: sumlist([3], 3, Sum)
+
+5. Match recursive clause:
+   PartialSum = 3, First = 3, Rest = []
+   NewPartialSum = 3 + 3 = 6
+   Next call: sumlist([], 6, Sum)
+
+6. Match base case:
+   sumlist([], Sum, Sum)
+   Unify: Sum = 6
+
+Final Result: Sum = 6
+*/
+
+/*
+# Trace Session
+
+The `leash(-all)` call makes it possible to run the trace without typing `c` for `creep` every time. 
+
+?- leash(-all), trace, sumlist([1,2,3], Sum). 
+   Call: (13) sumlist([1, 2, 3], _112256)
+   Call: (14) sumlist([1, 2, 3], 0, _112256)
+   Call: (15) _116234 is 0+1
+   Exit: (15) 1 is 0+1
+   Call: (15) sumlist([2, 3], 1, _112256)
+   Call: (16) _118676 is 1+2
+   Exit: (16) 3 is 1+2
+   Call: (16) sumlist([3], 3, _112256)
+   Call: (17) _121118 is 3+3
+   Exit: (17) 6 is 3+3
+   Call: (17) sumlist([], 6, _112256)
+   Exit: (17) sumlist([], 6, 6)
+   Exit: (16) sumlist([3], 3, 6)
+   Exit: (15) sumlist([2, 3], 1, 6)
+   Exit: (14) sumlist([1, 2, 3], 0, 6)
+   Exit: (13) sumlist([1, 2, 3], 6)
+Sum = 6.
+*/
