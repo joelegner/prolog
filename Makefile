@@ -404,3 +404,7 @@ project:
 .PHONY: passions
 passions:
 	swipl -s passions.pl
+
+.PHONY: location_event-structure
+location_event-structure:
+	swipl -s location_event-structure.pl
