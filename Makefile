@@ -353,7 +353,7 @@ tree:
 
 .PHONY: twitch
 twitch:
-	swipl -s twitch.pl -g main -t halt
+	swipl -s twitch.pl
 
 .PHONY: twt_setup
 twt_setup:
