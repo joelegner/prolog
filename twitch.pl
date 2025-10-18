@@ -2,6 +2,10 @@ module(twitch, [
     todo/1
 ]).
 
+% Zig-zagging will be discontinuous because of how Axiomatic Design works.
+:- discontiguous fr_zig_dps/2.
+:- discontiguous dp_zag_frs/2.
+
 % p9 is the project number.
 project_name(       p9,     'P9: Joe Twitch Channel Project').
 project_author(     p9,     'Joe Legner').
@@ -19,21 +23,29 @@ cn(cn1, 'Make $1 streaming Angband on Twitch').
 % Top Level FR
 fr_name_cns(fr0, 'Make first $1 streaming Angband on Twitch', [cn1]).
 
-% Design Parameters (DP)
+% LEVEL 0 Design Parameters (DP)
 dp_name(dp0, Name) :- production_system_acronym(dragon, Name).
+
+% LEVEL 1 Design Parameters (DP)
 dp_name(dp1, 'DRAGON Design System').
 dp_name(dp2, 'DRAGON Business System').
 dp_name(dp3, 'DRAGON Creative System').
+
+% LEVEL 2 Design Parameters (DP)
+dp_name(dp11, 'twitch.pl Prolog Program').
 
 % Start zig-zagging
 fr_zig_dps(fr0, [dp0]).
 fr_zig_dps(fr1, [dp1]).
 fr_zig_dps(fr2, [dp2]).
 fr_zig_dps(fr3, [dp3]).
+fr_zig_dps(fr11, [dp11]).
 
 parent_fr_child_fr_name(f0, fr1, 'Design the DRAGON system').
 parent_fr_child_fr_name(f0, fr2, 'Run the business side').
 parent_fr_child_fr_name(f0, fr3, 'Produce Twitch streams').
+
+parent_fr_child_fr_name(f1, fr11, 'Validate Axiomatic Design').
 
 fr_dp(FR, DP) :-
     fr_zig_dps(FR, DPs),
