@@ -408,3 +408,7 @@ passions:
 .PHONY: location_event-structure
 location_event-structure:
 	swipl -s location_event-structure.pl
+
+.PHONY: format
+format:
+	swipl -s format.pl
